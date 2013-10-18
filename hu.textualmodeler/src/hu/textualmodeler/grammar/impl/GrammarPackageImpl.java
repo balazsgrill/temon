@@ -396,6 +396,15 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTerminalItem_Scope() {
+		return (EReference)terminalItemEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNonTerminalItem() {
 		return nonTerminalItemEClass;
 	}
@@ -547,6 +556,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		terminalItemEClass = createEClass(TERMINAL_ITEM);
 		createEAttribute(terminalItemEClass, TERMINAL_ITEM__FEATURE_NAME);
 		createEReference(terminalItemEClass, TERMINAL_ITEM__TERMINAL);
+		createEReference(terminalItemEClass, TERMINAL_ITEM__SCOPE);
 
 		nonTerminalItemEClass = createEClass(NON_TERMINAL_ITEM);
 		createEAttribute(nonTerminalItemEClass, NON_TERMINAL_ITEM__FEATURE_NAME);
@@ -635,6 +645,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEClass(terminalItemEClass, TerminalItem.class, "TerminalItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTerminalItem_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, TerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTerminalItem_Terminal(), this.getTerminal(), null, "terminal", null, 1, 1, TerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTerminalItem_Scope(), theScopePackage.getScope(), null, "scope", null, 0, 1, TerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nonTerminalItemEClass, NonTerminalItem.class, "NonTerminalItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNonTerminalItem_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, NonTerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

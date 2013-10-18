@@ -4,6 +4,7 @@
 package hu.textualmodeler.parser;
 
 import hu.textualmodeler.grammar.Terminal;
+import hu.textualmodeler.grammar.scope.Scope;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -14,6 +15,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public interface IFeatureResolver {
 
-	public Object resolve(EObject context, EStructuralFeature feature, Terminal terminal, String value);
+	public Object resolve(EObject context, EStructuralFeature feature, Terminal terminal, String value, Scope scope);
 	
 }

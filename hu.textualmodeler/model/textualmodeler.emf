@@ -14,7 +14,7 @@ package ast{
 	}
 	
 	class TerminalNode extends VisibleNode{
-		ref grammar.Terminal terminal;
+		ref grammar.TerminalItem terminal;
 		attr String content;
 	}
 	
@@ -86,6 +86,7 @@ package grammar{
 	class TerminalItem extends SyntaxItem{
 		attr String featureName;
 		ref Terminal[1] terminal;
+		val scope.Scope scope;
 	}
 
 	class NonTerminalItem extends SyntaxItem{

@@ -10,7 +10,7 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TerminalNode" eSuperTypes="#//ast/VisibleNode">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/TerminalItem"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="FeatureSet" abstract="true" interface="true">
@@ -73,6 +73,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" lowerBound="1"
           eType="#//grammar/Terminal"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scope" eType="#//grammar/scope/Scope"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NonTerminalItem" eSuperTypes="#//grammar/SyntaxItem">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

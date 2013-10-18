@@ -301,7 +301,7 @@ public class EarleyState {
 						node = AstFactory.eINSTANCE.createTerminalNode();
 					}
 					node.setContent(match.getProcessedValue());
-					node.setTerminal(terminal.getTerminal());
+					node.setTerminal(terminal);
 					node.setStart(position);
 					node.setLength(match.size);
 					steps.getChildren().add(node);
