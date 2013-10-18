@@ -1,0 +1,140 @@
+@namespace(uri="http://textualmodeler.hu", prefix="textualmodeler")
+package textualmodeler;
+
+@namespace(uri="http://textualmodeler.hu/ast", prefix="ast")
+package ast{
+	
+	abstract class Node{
+		
+	}
+	
+	abstract class VisibleNode extends Node{
+		attr int[1] start;
+		attr int[1] length;
+	}
+	
+	class TerminalNode extends VisibleNode{
+		ref grammar.Terminal terminal;
+		attr String content;
+	}
+	
+	abstract interface FeatureSet{
+		attr String featureName;
+	}
+	
+	class FeatureSetValue extends Node, FeatureSet{
+		attr String value;
+	}
+	
+	class FeatureSetTerminalNode extends TerminalNode, FeatureSet{
+		
+	}
+	
+	class CompositeNode extends Node{
+		ref grammar.Rule nonterminal;
+		val Node[*] children;
+	}
+	
+	class SetContainmentFeature extends Node, FeatureSet{
+	}
+	
+	class PushElement extends Node{
+		attr String[1] eclassURI;
+	}
+	
+	class PopElement extends Node{
+		
+	}
+	
+}
+
+@namespace(uri="http://textualmodeler.hu/grammar", prefix="grammar")
+package grammar{
+
+	class GrammarModel{
+		val Terminal[*] terminals;
+		val Rule[*] rules;
+		attr String[1] startItem;
+		ref GrammarModel[*] ~import;
+	}
+
+	class Terminal{
+		attr String[1] name;
+		attr String[1] regex;
+		attr boolean hide;
+		val Replace[*] replace;
+	}
+
+	class Replace{
+		attr String[1] search;
+		attr String[1] replace;
+	}
+
+	class Rule{
+		attr String[1] nonTerminal;
+		val RuleItem[*] body;
+	}
+	
+	abstract class RuleItem{
+	}
+	
+	abstract class SyntaxItem extends RuleItem{
+		attr boolean optional;
+		attr boolean many;
+	}
+	
+	class TerminalItem extends SyntaxItem{
+		attr String featureName;
+		ref Terminal[1] terminal;
+	}
+
+	class NonTerminalItem extends SyntaxItem{
+		attr String featureName;
+		val scope.Scope scope;
+		attr String[1] nonTerminal;
+	}
+
+	class SetValue extends RuleItem{
+		attr String[1] featureName;
+		attr String[1] value;
+	}
+
+	class Push extends RuleItem{
+		attr String[1] eclassURI;
+		attr String featureName;
+	}
+
+	class Pop extends RuleItem{		
+	}
+
+	@namespace(uri="http://textualmodeler.hu/grammar/scope", prefix="scope")
+	package scope{
+		
+		abstract class Scope{
+			
+		}
+		
+		class FeatureScope extends Scope{
+			attr String[1] featureName;
+		}
+		
+		class ContainerScope extends Scope{
+			
+		}
+		
+		class TransitiveScope extends Scope{
+			attr boolean optional;
+			val Scope subScope;
+		}
+		
+		class ChainedScope extends Scope{
+			val Scope[*] subScopes;	
+		}
+		
+		class ConditionalScope extends Scope{
+			attr String featureName;
+		}
+		
+	}
+
+}
