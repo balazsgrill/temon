@@ -114,6 +114,14 @@
       <eClassifiers xsi:type="ecore:EClass" name="ConditionalScope" eSuperTypes="#//grammar/scope/Scope">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="GlobalScope" eSuperTypes="#//grammar/scope/Scope">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclassURI" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="UnionScope" eSuperTypes="#//grammar/scope/Scope">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="subScopes" upperBound="-1"
+            eType="#//grammar/scope/Scope" containment="true"/>
+      </eClassifiers>
     </eSubpackages>
   </eSubpackages>
 </ecore:EPackage>

@@ -67,6 +67,24 @@ public interface ScopeFactory extends EFactory {
 	ConditionalScope createConditionalScope();
 
 	/**
+	 * Returns a new object of class '<em>Global Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Global Scope</em>'.
+	 * @generated
+	 */
+	GlobalScope createGlobalScope();
+
+	/**
+	 * Returns a new object of class '<em>Union Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Union Scope</em>'.
+	 * @generated
+	 */
+	UnionScope createUnionScope();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

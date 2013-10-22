@@ -92,6 +92,14 @@ public class ScopeAdapterFactory extends AdapterFactoryImpl {
 				return createConditionalScopeAdapter();
 			}
 			@Override
+			public Adapter caseGlobalScope(GlobalScope object) {
+				return createGlobalScopeAdapter();
+			}
+			@Override
+			public Adapter caseUnionScope(UnionScope object) {
+				return createUnionScopeAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +200,34 @@ public class ScopeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConditionalScopeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.grammar.scope.GlobalScope <em>Global Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.grammar.scope.GlobalScope
+	 * @generated
+	 */
+	public Adapter createGlobalScopeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.grammar.scope.UnionScope <em>Union Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.grammar.scope.UnionScope
+	 * @generated
+	 */
+	public Adapter createUnionScopeAdapter() {
 		return null;
 	}
 

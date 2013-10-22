@@ -107,6 +107,20 @@ public class ScopeSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ScopePackage.GLOBAL_SCOPE: {
+				GlobalScope globalScope = (GlobalScope)theEObject;
+				T result = caseGlobalScope(globalScope);
+				if (result == null) result = caseScope(globalScope);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ScopePackage.UNION_SCOPE: {
+				UnionScope unionScope = (UnionScope)theEObject;
+				T result = caseUnionScope(unionScope);
+				if (result == null) result = caseScope(unionScope);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -198,6 +212,36 @@ public class ScopeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConditionalScope(ConditionalScope object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Global Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Global Scope</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGlobalScope(GlobalScope object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Union Scope</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Union Scope</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUnionScope(UnionScope object) {
 		return null;
 	}
 

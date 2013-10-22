@@ -136,6 +136,13 @@ package grammar{
 			attr String featureName;
 		}
 		
+		class GlobalScope extends Scope{
+			attr String[1] eclassURI; 
+		}
+		
+		class UnionScope extends Scope{
+			val Scope[*] subScopes;	
+		}
 	}
 
 }

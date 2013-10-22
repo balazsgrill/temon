@@ -102,6 +102,12 @@
         <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/ConditionalScope">
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/ConditionalScope/featureName"/>
         </genClasses>
+        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/GlobalScope">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/GlobalScope/eclassURI"/>
+        </genClasses>
+        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/UnionScope">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/scope/UnionScope/subScopes"/>
+        </genClasses>
       </nestedGenPackages>
     </nestedGenPackages>
   </genPackages>

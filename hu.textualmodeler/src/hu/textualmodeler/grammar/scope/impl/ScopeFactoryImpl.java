@@ -61,6 +61,8 @@ public class ScopeFactoryImpl extends EFactoryImpl implements ScopeFactory {
 			case ScopePackage.TRANSITIVE_SCOPE: return createTransitiveScope();
 			case ScopePackage.CHAINED_SCOPE: return createChainedScope();
 			case ScopePackage.CONDITIONAL_SCOPE: return createConditionalScope();
+			case ScopePackage.GLOBAL_SCOPE: return createGlobalScope();
+			case ScopePackage.UNION_SCOPE: return createUnionScope();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -114,6 +116,26 @@ public class ScopeFactoryImpl extends EFactoryImpl implements ScopeFactory {
 	public ConditionalScope createConditionalScope() {
 		ConditionalScopeImpl conditionalScope = new ConditionalScopeImpl();
 		return conditionalScope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GlobalScope createGlobalScope() {
+		GlobalScopeImpl globalScope = new GlobalScopeImpl();
+		return globalScope;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UnionScope createUnionScope() {
+		UnionScopeImpl unionScope = new UnionScopeImpl();
+		return unionScope;
 	}
 
 	/**

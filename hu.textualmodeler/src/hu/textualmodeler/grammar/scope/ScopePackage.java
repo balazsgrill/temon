@@ -271,6 +271,81 @@ public interface ScopePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.grammar.scope.impl.GlobalScopeImpl <em>Global Scope</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.grammar.scope.impl.GlobalScopeImpl
+	 * @see hu.textualmodeler.grammar.scope.impl.ScopePackageImpl#getGlobalScope()
+	 * @generated
+	 */
+	int GLOBAL_SCOPE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_SCOPE__ECLASS_URI = SCOPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Global Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_SCOPE_FEATURE_COUNT = SCOPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Global Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GLOBAL_SCOPE_OPERATION_COUNT = SCOPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.textualmodeler.grammar.scope.impl.UnionScopeImpl <em>Union Scope</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.grammar.scope.impl.UnionScopeImpl
+	 * @see hu.textualmodeler.grammar.scope.impl.ScopePackageImpl#getUnionScope()
+	 * @generated
+	 */
+	int UNION_SCOPE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Sub Scopes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNION_SCOPE__SUB_SCOPES = SCOPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Union Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNION_SCOPE_FEATURE_COUNT = SCOPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Union Scope</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNION_SCOPE_OPERATION_COUNT = SCOPE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.scope.Scope <em>Scope</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -384,6 +459,48 @@ public interface ScopePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getConditionalScope_FeatureName();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.scope.GlobalScope <em>Global Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Global Scope</em>'.
+	 * @see hu.textualmodeler.grammar.scope.GlobalScope
+	 * @generated
+	 */
+	EClass getGlobalScope();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.textualmodeler.grammar.scope.GlobalScope#getEclassURI <em>Eclass URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Eclass URI</em>'.
+	 * @see hu.textualmodeler.grammar.scope.GlobalScope#getEclassURI()
+	 * @see #getGlobalScope()
+	 * @generated
+	 */
+	EAttribute getGlobalScope_EclassURI();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.scope.UnionScope <em>Union Scope</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Union Scope</em>'.
+	 * @see hu.textualmodeler.grammar.scope.UnionScope
+	 * @generated
+	 */
+	EClass getUnionScope();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hu.textualmodeler.grammar.scope.UnionScope#getSubScopes <em>Sub Scopes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Sub Scopes</em>'.
+	 * @see hu.textualmodeler.grammar.scope.UnionScope#getSubScopes()
+	 * @see #getUnionScope()
+	 * @generated
+	 */
+	EReference getUnionScope_SubScopes();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -507,6 +624,42 @@ public interface ScopePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONDITIONAL_SCOPE__FEATURE_NAME = eINSTANCE.getConditionalScope_FeatureName();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.grammar.scope.impl.GlobalScopeImpl <em>Global Scope</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.grammar.scope.impl.GlobalScopeImpl
+		 * @see hu.textualmodeler.grammar.scope.impl.ScopePackageImpl#getGlobalScope()
+		 * @generated
+		 */
+		EClass GLOBAL_SCOPE = eINSTANCE.getGlobalScope();
+
+		/**
+		 * The meta object literal for the '<em><b>Eclass URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GLOBAL_SCOPE__ECLASS_URI = eINSTANCE.getGlobalScope_EclassURI();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.grammar.scope.impl.UnionScopeImpl <em>Union Scope</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.grammar.scope.impl.UnionScopeImpl
+		 * @see hu.textualmodeler.grammar.scope.impl.ScopePackageImpl#getUnionScope()
+		 * @generated
+		 */
+		EClass UNION_SCOPE = eINSTANCE.getUnionScope();
+
+		/**
+		 * The meta object literal for the '<em><b>Sub Scopes</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UNION_SCOPE__SUB_SCOPES = eINSTANCE.getUnionScope_SubScopes();
 
 	}
 

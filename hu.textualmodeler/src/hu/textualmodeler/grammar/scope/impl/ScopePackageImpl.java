@@ -14,11 +14,13 @@ import hu.textualmodeler.grammar.scope.ChainedScope;
 import hu.textualmodeler.grammar.scope.ConditionalScope;
 import hu.textualmodeler.grammar.scope.ContainerScope;
 import hu.textualmodeler.grammar.scope.FeatureScope;
+import hu.textualmodeler.grammar.scope.GlobalScope;
 import hu.textualmodeler.grammar.scope.Scope;
 import hu.textualmodeler.grammar.scope.ScopeFactory;
 import hu.textualmodeler.grammar.scope.ScopePackage;
 import hu.textualmodeler.grammar.scope.TransitiveScope;
 
+import hu.textualmodeler.grammar.scope.UnionScope;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -74,6 +76,20 @@ public class ScopePackageImpl extends EPackageImpl implements ScopePackage {
 	 * @generated
 	 */
 	private EClass conditionalScopeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass globalScopeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass unionScopeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -248,6 +264,42 @@ public class ScopePackageImpl extends EPackageImpl implements ScopePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGlobalScope() {
+		return globalScopeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGlobalScope_EclassURI() {
+		return (EAttribute)globalScopeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUnionScope() {
+		return unionScopeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUnionScope_SubScopes() {
+		return (EReference)unionScopeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ScopeFactory getScopeFactory() {
 		return (ScopeFactory)getEFactoryInstance();
 	}
@@ -287,6 +339,12 @@ public class ScopePackageImpl extends EPackageImpl implements ScopePackage {
 
 		conditionalScopeEClass = createEClass(CONDITIONAL_SCOPE);
 		createEAttribute(conditionalScopeEClass, CONDITIONAL_SCOPE__FEATURE_NAME);
+
+		globalScopeEClass = createEClass(GLOBAL_SCOPE);
+		createEAttribute(globalScopeEClass, GLOBAL_SCOPE__ECLASS_URI);
+
+		unionScopeEClass = createEClass(UNION_SCOPE);
+		createEReference(unionScopeEClass, UNION_SCOPE__SUB_SCOPES);
 	}
 
 	/**
@@ -322,6 +380,8 @@ public class ScopePackageImpl extends EPackageImpl implements ScopePackage {
 		transitiveScopeEClass.getESuperTypes().add(this.getScope());
 		chainedScopeEClass.getESuperTypes().add(this.getScope());
 		conditionalScopeEClass.getESuperTypes().add(this.getScope());
+		globalScopeEClass.getESuperTypes().add(this.getScope());
+		unionScopeEClass.getESuperTypes().add(this.getScope());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(scopeEClass, Scope.class, "Scope", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -340,6 +400,12 @@ public class ScopePackageImpl extends EPackageImpl implements ScopePackage {
 
 		initEClass(conditionalScopeEClass, ConditionalScope.class, "ConditionalScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConditionalScope_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, ConditionalScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(globalScopeEClass, GlobalScope.class, "GlobalScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGlobalScope_EclassURI(), ecorePackage.getEString(), "eclassURI", null, 1, 1, GlobalScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(unionScopeEClass, UnionScope.class, "UnionScope", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUnionScope_SubScopes(), this.getScope(), null, "subScopes", null, 0, -1, UnionScope.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 	}
 
 } //ScopePackageImpl
