@@ -13,6 +13,8 @@ import hu.textualmodeler.grammar.scope.Scope;
 import hu.textualmodeler.grammar.scope.TransitiveScope;
 import hu.textualmodeler.grammar.scope.UnionScope;
 import hu.textualmodeler.parser.IFeatureResolver;
+import hu.textualmodeler.parser.IGlobalScope;
+import hu.textualmodeler.parser.ModelBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +35,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public class ScopedFeatureResolver implements IFeatureResolver {
 
+	private final IGlobalScope globalScope;
+	
+	public ScopedFeatureResolver(IGlobalScope globalScope) {
+		this.globalScope = globalScope;
+	}
+	
 	/* (non-Javadoc)
 	 * @see hu.textualmodeler.parser.IFeatureResolver#resolve(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, hu.textualmodeler.grammar.Terminal, java.lang.String, hu.textualmodeler.grammar.scope.Scope)
 	 */
@@ -125,7 +133,10 @@ public class ScopedFeatureResolver implements IFeatureResolver {
 			
 			context = new ArrayList<>(result);
 		}else if (scope instanceof GlobalScope){
-			//TODO
+			context = new ArrayList<>(
+					globalScope.getGlobalInstances(
+							context.get(0), 
+							ModelBuilder.findEClass(((GlobalScope) scope).getEclassURI())));
 		}else if (scope instanceof UnionScope){
 			List<EObject> result = new ArrayList<>();
 			for(Scope ch : ((ChainedScope) scope).getSubScopes()){
