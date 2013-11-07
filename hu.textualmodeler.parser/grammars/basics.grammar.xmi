@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:grammar="http://textualmodeler.hu/grammar" xmi:id="_3yl34LGQEeK1ScU5DNcoWg">
+<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:grammar="http://textualmodeler.hu/grammar" xmi:id="_3yl34LGQEeK1ScU5DNcoWg" startItem="" name="basics">
   <terminals xmi:id="_gP1EELGDEeKaMu577qmfxA" name="WHITESPACE" regex="\s+" hide="true"/>
   <terminals xmi:id="_tb_jYLGDEeKaMu577qmfxA" name="OPERATOR_SEMICOLON" regex=";"/>
   <terminals xmi:id="_eJ7KsLGHEeK-59W38_3F4g" name="QUALIFIEDID" regex="([a-zA-Z]\w*)(\.[a-zA-Z]\w*)*"/>

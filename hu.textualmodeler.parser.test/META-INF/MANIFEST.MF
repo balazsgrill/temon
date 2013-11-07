@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: hu.textualmodeler.parser.test
+Bundle-Version: 0.1.0.qualifier
+Fragment-Host: hu.textualmodeler.parser;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.junit

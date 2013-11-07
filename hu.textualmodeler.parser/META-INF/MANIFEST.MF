@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Parser
-Bundle-SymbolicName: hu.textualmodeler.parser
+Bundle-SymbolicName: hu.textualmodeler.parser;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: hu.textualmodeler;bundle-version="0.1.0",

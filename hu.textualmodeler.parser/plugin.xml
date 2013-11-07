@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="hu.textualmodeler.grammars" name="Grammar definition models" schema="schema/hu.textualmodeler.grammars.exsd"/>
+   <extension
+         point="hu.textualmodeler.grammars">
+      <grammar
+            id="basics"
+            model="grammars/basics.grammar.xmi">
+      </grammar>
+      <grammar
+            id="grammar"
+            model="grammars/grammar.grammar.xmi">
+      </grammar>
+   </extension>
+
+</plugin>
