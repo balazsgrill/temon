@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.textualmodeler.parser.test.model/src" modelPluginID="hu.textualmodeler.parser.test.model"
+    modelName="People" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>people.ecore</foreignModel>
+  <genPackages prefix="People" disposableProviderFactory="true" ecorePackage="people.ecore#/">
+    <genClasses ecoreClass="people.ecore#//People">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference people.ecore#//People/people"/>
+    </genClasses>
+    <genClasses ecoreClass="people.ecore#//Human">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute people.ecore#//Human/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference people.ecore#//Human/father"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference people.ecore#//Human/mother"/>
+    </genClasses>
+    <genClasses ecoreClass="people.ecore#//Man"/>
+    <genClasses ecoreClass="people.ecore#//Woman"/>
+  </genPackages>
+</genmodel:GenModel>

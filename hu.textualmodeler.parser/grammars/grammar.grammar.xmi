@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
+<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmlns:scope="http://textualmodeler.hu/grammar/scope" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
   <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_SYNTAX" regex="syntax"/>
   <terminals xmi:id="_Ve5BULGUEeK1ScU5DNcoWg" name="KEYWORD_IMPORT" regex="import"/>
   <terminals xmi:id="_9bZhMLGVEeK1ScU5DNcoWg" name="KEYWORD_TERMINAL" regex="terminal"/>
@@ -34,6 +34,10 @@
     <body xsi:type="grammar:TerminalItem" xmi:id="_kwBCALGUEeK1ScU5DNcoWg" terminal="_Ve5BULGUEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_rvmDQLGUEeK1ScU5DNcoWg" featureName="import">
       <terminal href="basics.grammar.xmi#_eJ7KsLGHEeK-59W38_3F4g"/>
+      <scope xsi:type="scope:ChainedScope">
+        <subScopes xsi:type="scope:GlobalScope" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
+        <subScopes xsi:type="scope:ConditionalScope" featureName="name"/>
+      </scope>
     </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_71r9ELGUEeK1ScU5DNcoWg">
       <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
@@ -73,6 +77,13 @@
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_0bb1MLGYEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_k82nULGYEeK1ScU5DNcoWg" featureName="terminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+      <scope xsi:type="scope:ChainedScope">
+        <subScopes xsi:type="scope:ContainerScope"/>
+        <subScopes xsi:type="scope:TransitiveScope" optional="true">
+          <subScope xsi:type="scope:FeatureScope" featureName="import"/>
+        </subScopes>
+        <subScopes xsi:type="scope:FeatureScope" featureName="terminals"/>
+      </scope>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" nonTerminal="Multiplicitiy"/>
     <body xsi:type="grammar:Pop" xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
