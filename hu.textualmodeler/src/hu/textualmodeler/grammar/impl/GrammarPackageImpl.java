@@ -234,6 +234,15 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getGrammarModel_Name() {
+		return (EAttribute)grammarModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTerminal() {
 		return terminalEClass;
 	}
@@ -532,6 +541,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		createEReference(grammarModelEClass, GRAMMAR_MODEL__RULES);
 		createEAttribute(grammarModelEClass, GRAMMAR_MODEL__START_ITEM);
 		createEReference(grammarModelEClass, GRAMMAR_MODEL__IMPORT);
+		createEAttribute(grammarModelEClass, GRAMMAR_MODEL__NAME);
 
 		terminalEClass = createEClass(TERMINAL);
 		createEAttribute(terminalEClass, TERMINAL__NAME);
@@ -621,6 +631,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEReference(getGrammarModel_Rules(), this.getRule(), null, "rules", null, 0, -1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGrammarModel_StartItem(), ecorePackage.getEString(), "startItem", null, 1, 1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGrammarModel_Import(), this.getGrammarModel(), null, "import", null, 0, -1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGrammarModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTerminal_Name(), ecorePackage.getEString(), "name", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

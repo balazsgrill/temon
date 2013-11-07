@@ -42,6 +42,8 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="import" upperBound="-1"
           eType="#//grammar/GrammarModel"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Terminal">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"

@@ -56,6 +56,7 @@ package grammar{
 		val Rule[*] rules;
 		attr String[1] startItem;
 		ref GrammarModel[*] ~import;
+		attr String[1] name;
 	}
 
 	class Terminal{

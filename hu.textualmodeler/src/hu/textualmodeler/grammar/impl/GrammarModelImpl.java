@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getRules <em>Rules</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getStartItem <em>Start Item</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getImport <em>Import</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -90,6 +91,26 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 	 * @ordered
 	 */
 	protected EList<GrammarModel> import_;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +193,27 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.GRAMMAR_MODEL__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -199,6 +241,8 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 				return getStartItem();
 			case GrammarPackage.GRAMMAR_MODEL__IMPORT:
 				return getImport();
+			case GrammarPackage.GRAMMAR_MODEL__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -227,6 +271,9 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 				getImport().clear();
 				getImport().addAll((Collection<? extends GrammarModel>)newValue);
 				return;
+			case GrammarPackage.GRAMMAR_MODEL__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -251,6 +298,9 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 			case GrammarPackage.GRAMMAR_MODEL__IMPORT:
 				getImport().clear();
 				return;
+			case GrammarPackage.GRAMMAR_MODEL__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -271,6 +321,8 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 				return START_ITEM_EDEFAULT == null ? startItem != null : !START_ITEM_EDEFAULT.equals(startItem);
 			case GrammarPackage.GRAMMAR_MODEL__IMPORT:
 				return import_ != null && !import_.isEmpty();
+			case GrammarPackage.GRAMMAR_MODEL__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -287,6 +339,8 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (startItem: ");
 		result.append(startItem);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
