@@ -8,10 +8,13 @@
             id="basics"
             model="grammars/basics.grammar.xmi">
       </grammar>
-      <grammar
-            id="grammar"
-            model="grammars/grammar.grammar.xmi">
-      </grammar>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="hu.textualmodeler.parser.grammar.GrammarResourceFactory"
+            type="grammar">
+      </parser>
    </extension>
 
 </plugin>

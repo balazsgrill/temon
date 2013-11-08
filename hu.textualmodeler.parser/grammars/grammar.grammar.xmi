@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmlns:scope="http://textualmodeler.hu/grammar/scope" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
-  <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_SYNTAX" regex="syntax"/>
+  <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_SYNTAX" regex="grammar"/>
   <terminals xmi:id="_Ve5BULGUEeK1ScU5DNcoWg" name="KEYWORD_IMPORT" regex="import"/>
   <terminals xmi:id="_9bZhMLGVEeK1ScU5DNcoWg" name="KEYWORD_TERMINAL" regex="terminal"/>
   <terminals xmi:id="_UIBqILGWEeK1ScU5DNcoWg" name="KEYWORD_HIDDEN" regex="hidden"/>

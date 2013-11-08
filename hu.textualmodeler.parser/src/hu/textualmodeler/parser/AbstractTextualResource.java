@@ -84,10 +84,10 @@ public abstract class AbstractTextualResource extends ResourceImpl {
 		IFeatureResolver featureResolver = new ScopedFeatureResolver(createGlobalScope());
 		ModelBuilder builder = new ModelBuilder(featureResolver);
 		
-		this.contents.clear();
+		this.getContents().clear();
 		if (this.ast instanceof CompositeNode){
 			EObject element = builder.build((CompositeNode)this.ast);
-			this.contents.add(element);
+			this.getContents().add(element);
 		}
 		
 	}

@@ -1,0 +1,2 @@
+grammar people <People>;
+import basics;

@@ -162,7 +162,7 @@ public class ModelBuilder {
 	@SuppressWarnings("unchecked")
 	public static void eSetOrAdd(EObject element, EStructuralFeature feature, Object value){
 		if (feature.isMany()){
-			((List<Object>)element.eGet(feature)).add(element);
+			((List<Object>)element.eGet(feature)).add(value);
 		}else{
 			element.eSet(feature, value);
 		}

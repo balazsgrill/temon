@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  */
 public class GrammarRegistry implements IGlobalScope {
 
-	private final ResourceSet resourceSet; 
+	private ResourceSet resourceSet = null; 
 	
 	private static final String EPID = "hu.textualmodeler.grammars";
 	
@@ -40,20 +40,22 @@ public class GrammarRegistry implements IGlobalScope {
 		return instance;
 	}
 	
-	private GrammarRegistry() {
-		resourceSet = new ResourceSetImpl();
-		
-		for(IConfigurationElement ce : Platform.getExtensionRegistry().getConfigurationElementsFor(EPID)){
-			String loc = ce.getAttribute("model");
-			
-			String contributor = ce.getContributor().getName();
-			
-			URI uri = URI.createPlatformPluginURI(contributor+"/"+loc, true);
-			
-			try{
-				resourceSet.getResource(uri, true);
-			}catch(Exception e){
-				e.printStackTrace();
+	private void lazyinit(){
+		if (resourceSet == null){
+			resourceSet = new ResourceSetImpl();
+
+			for(IConfigurationElement ce : Platform.getExtensionRegistry().getConfigurationElementsFor(EPID)){
+				String loc = ce.getAttribute("model");
+
+				String contributor = ce.getContributor().getName();
+
+				URI uri = URI.createPlatformPluginURI(contributor+"/"+loc, true);
+
+				try{
+					resourceSet.getResource(uri, true);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -63,6 +65,7 @@ public class GrammarRegistry implements IGlobalScope {
 	 */
 	@Override
 	public Collection<EObject> getGlobalInstances(EObject context, EClass eclass) {
+		lazyinit();
 		if (GrammarPackage.eINSTANCE.getGrammarModel().isSuperTypeOf(eclass)){
 			List<EObject> result = new ArrayList<>();
 			for(Resource r : resourceSet.getResources()){
@@ -75,6 +78,7 @@ public class GrammarRegistry implements IGlobalScope {
 
 	
 	public GrammarModel getGrammar(String ID){
+		lazyinit();
 		for(Resource r : resourceSet.getResources()){
 			for(EObject e : r.getContents()){
 				if (e instanceof GrammarModel){
