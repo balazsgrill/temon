@@ -2,7 +2,6 @@
  */
 package hu.textualmodeler.grammar;
 
-import hu.textualmodeler.grammar.scope.Scope;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +12,6 @@ import hu.textualmodeler.grammar.scope.Scope;
  * The following features are supported:
  * <ul>
  *   <li>{@link hu.textualmodeler.grammar.NonTerminalItem#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link hu.textualmodeler.grammar.NonTerminalItem#getScope <em>Scope</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.NonTerminalItem#getNonTerminal <em>Non Terminal</em>}</li>
  * </ul>
  * </p>
@@ -48,32 +46,6 @@ public interface NonTerminalItem extends SyntaxItem {
 	 * @generated
 	 */
 	void setFeatureName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Scope</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scope</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Scope</em>' containment reference.
-	 * @see #setScope(Scope)
-	 * @see hu.textualmodeler.grammar.GrammarPackage#getNonTerminalItem_Scope()
-	 * @model containment="true"
-	 * @generated
-	 */
-	Scope getScope();
-
-	/**
-	 * Sets the value of the '{@link hu.textualmodeler.grammar.NonTerminalItem#getScope <em>Scope</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Scope</em>' containment reference.
-	 * @see #getScope()
-	 * @generated
-	 */
-	void setScope(Scope value);
 
 	/**
 	 * Returns the value of the '<em><b>Non Terminal</b></em>' attribute.

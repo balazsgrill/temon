@@ -470,22 +470,13 @@ public interface GrammarPackage extends EPackage {
 	int NON_TERMINAL_ITEM__FEATURE_NAME = SYNTAX_ITEM_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NON_TERMINAL_ITEM__SCOPE = SYNTAX_ITEM_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Non Terminal</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_ITEM__NON_TERMINAL = SYNTAX_ITEM_FEATURE_COUNT + 2;
+	int NON_TERMINAL_ITEM__NON_TERMINAL = SYNTAX_ITEM_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Non Terminal Item</em>' class.
@@ -494,7 +485,7 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NON_TERMINAL_ITEM_FEATURE_COUNT = SYNTAX_ITEM_FEATURE_COUNT + 3;
+	int NON_TERMINAL_ITEM_FEATURE_COUNT = SYNTAX_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Non Terminal Item</em>' class.
@@ -916,17 +907,6 @@ public interface GrammarPackage extends EPackage {
 	EAttribute getNonTerminalItem_FeatureName();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link hu.textualmodeler.grammar.NonTerminalItem#getScope <em>Scope</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Scope</em>'.
-	 * @see hu.textualmodeler.grammar.NonTerminalItem#getScope()
-	 * @see #getNonTerminalItem()
-	 * @generated
-	 */
-	EReference getNonTerminalItem_Scope();
-
-	/**
 	 * Returns the meta object for the attribute '{@link hu.textualmodeler.grammar.NonTerminalItem#getNonTerminal <em>Non Terminal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1265,14 +1245,6 @@ public interface GrammarPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NON_TERMINAL_ITEM__FEATURE_NAME = eINSTANCE.getNonTerminalItem_FeatureName();
-
-		/**
-		 * The meta object literal for the '<em><b>Scope</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NON_TERMINAL_ITEM__SCOPE = eINSTANCE.getNonTerminalItem_Scope();
 
 		/**
 		 * The meta object literal for the '<em><b>Non Terminal</b></em>' attribute feature.

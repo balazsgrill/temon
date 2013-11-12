@@ -171,6 +171,11 @@ public class CompositeNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
+				 AstFactory.eINSTANCE.createWhitespaceNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
 				 AstFactory.eINSTANCE.createTerminalNode()));
 
 		newChildDescriptors.add

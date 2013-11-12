@@ -72,6 +72,29 @@ public class AstItemProviderAdapterFactory extends AstAdapterFactory implements 
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.ast.WhitespaceNode} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected WhitespaceNodeItemProvider whitespaceNodeItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link hu.textualmodeler.ast.WhitespaceNode}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createWhitespaceNodeAdapter() {
+		if (whitespaceNodeItemProvider == null) {
+			whitespaceNodeItemProvider = new WhitespaceNodeItemProvider(this);
+		}
+
+		return whitespaceNodeItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.ast.TerminalNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -331,6 +354,7 @@ public class AstItemProviderAdapterFactory extends AstAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
+		if (whitespaceNodeItemProvider != null) whitespaceNodeItemProvider.dispose();
 		if (terminalNodeItemProvider != null) terminalNodeItemProvider.dispose();
 		if (featureSetValueItemProvider != null) featureSetValueItemProvider.dispose();
 		if (featureSetTerminalNodeItemProvider != null) featureSetTerminalNodeItemProvider.dispose();

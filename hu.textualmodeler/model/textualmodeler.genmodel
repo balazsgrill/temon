@@ -78,7 +78,6 @@
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/NonTerminalItem">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/NonTerminalItem/featureName"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/NonTerminalItem/scope"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/NonTerminalItem/nonTerminal"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/SetValue">

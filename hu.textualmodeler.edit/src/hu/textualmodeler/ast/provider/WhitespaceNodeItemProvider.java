@@ -1,14 +1,17 @@
 /**
  */
-package hu.textualmodeler.grammar.provider;
+package hu.textualmodeler.ast.provider;
 
 
-import hu.textualmodeler.grammar.GrammarPackage;
-import hu.textualmodeler.grammar.NonTerminalItem;
+import hu.textualmodeler.ast.AstPackage;
+import hu.textualmodeler.ast.WhitespaceNode;
+
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -16,17 +19,15 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.grammar.NonTerminalItem} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.ast.WhitespaceNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class NonTerminalItemItemProvider
-	extends SyntaxItemItemProvider
+public class WhitespaceNodeItemProvider
+	extends VisibleNodeItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -39,7 +40,7 @@ public class NonTerminalItemItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NonTerminalItemItemProvider(AdapterFactory adapterFactory) {
+	public WhitespaceNodeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -54,65 +55,42 @@ public class NonTerminalItemItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFeatureNamePropertyDescriptor(object);
-			addNonTerminalPropertyDescriptor(object);
+			addTerminalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Feature Name feature.
+	 * This adds a property descriptor for the Terminal feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFeatureNamePropertyDescriptor(Object object) {
+	protected void addTerminalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NonTerminalItem_featureName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NonTerminalItem_featureName_feature", "_UI_NonTerminalItem_type"),
-				 GrammarPackage.Literals.NON_TERMINAL_ITEM__FEATURE_NAME,
+				 getString("_UI_WhitespaceNode_terminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_WhitespaceNode_terminal_feature", "_UI_WhitespaceNode_type"),
+				 AstPackage.Literals.WHITESPACE_NODE__TERMINAL,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Non Terminal feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNonTerminalPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NonTerminalItem_nonTerminal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NonTerminalItem_nonTerminal_feature", "_UI_NonTerminalItem_type"),
-				 GrammarPackage.Literals.NON_TERMINAL_ITEM__NON_TERMINAL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns NonTerminalItem.gif.
+	 * This returns WhitespaceNode.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/NonTerminalItem"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/WhitespaceNode"));
 	}
 
 	/**
@@ -123,10 +101,8 @@ public class NonTerminalItemItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((NonTerminalItem)object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_NonTerminalItem_type") :
-			getString("_UI_NonTerminalItem_type") + " " + label;
+		WhitespaceNode whitespaceNode = (WhitespaceNode)object;
+		return getString("_UI_WhitespaceNode_type") + " " + whitespaceNode.getStart();
 	}
 
 	/**
@@ -139,13 +115,6 @@ public class NonTerminalItemItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(NonTerminalItem.class)) {
-			case GrammarPackage.NON_TERMINAL_ITEM__FEATURE_NAME:
-			case GrammarPackage.NON_TERMINAL_ITEM__NON_TERMINAL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

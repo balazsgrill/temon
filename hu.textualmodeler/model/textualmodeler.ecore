@@ -83,8 +83,6 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NonTerminalItem" eSuperTypes="#//grammar/SyntaxItem">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="scope" eType="#//grammar/scope/Scope"
-          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="nonTerminal" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>

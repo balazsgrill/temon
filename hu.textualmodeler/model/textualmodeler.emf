@@ -96,7 +96,6 @@ package grammar{
 
 	class NonTerminalItem extends SyntaxItem{
 		attr String featureName;
-		val scope.Scope scope;
 		attr String[1] nonTerminal;
 	}
 

@@ -432,17 +432,8 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNonTerminalItem_Scope() {
-		return (EReference)nonTerminalItemEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getNonTerminalItem_NonTerminal() {
-		return (EAttribute)nonTerminalItemEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)nonTerminalItemEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -570,7 +561,6 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		nonTerminalItemEClass = createEClass(NON_TERMINAL_ITEM);
 		createEAttribute(nonTerminalItemEClass, NON_TERMINAL_ITEM__FEATURE_NAME);
-		createEReference(nonTerminalItemEClass, NON_TERMINAL_ITEM__SCOPE);
 		createEAttribute(nonTerminalItemEClass, NON_TERMINAL_ITEM__NON_TERMINAL);
 
 		setValueEClass = createEClass(SET_VALUE);
@@ -660,7 +650,6 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		initEClass(nonTerminalItemEClass, NonTerminalItem.class, "NonTerminalItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNonTerminalItem_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, NonTerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNonTerminalItem_Scope(), theScopePackage.getScope(), null, "scope", null, 0, 1, NonTerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNonTerminalItem_NonTerminal(), ecorePackage.getEString(), "nonTerminal", null, 1, 1, NonTerminalItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(setValueEClass, SetValue.class, "SetValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

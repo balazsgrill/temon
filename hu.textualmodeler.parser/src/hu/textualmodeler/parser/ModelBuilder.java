@@ -100,12 +100,14 @@ public class ModelBuilder {
 				this.currentContainerFeature = ((SetContainmentFeature) node).getFeatureName();
 			}else if (node instanceof FeatureSetTerminalNode){
 				TerminalItem termitem = ((FeatureSetTerminalNode) node).getTerminal();
-				FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
-						termitem.getTerminal(), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
-				if (fv.unconditional()){
-					fv.resolve();
-				}else{
-					featureValues.add(fv);
+				if (!modelStack.isEmpty()){
+					FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
+							termitem.getTerminal(), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
+					if (fv.unconditional()){
+						fv.resolve();
+					}else{
+						featureValues.add(fv);
+					}
 				}
 			}
 		}

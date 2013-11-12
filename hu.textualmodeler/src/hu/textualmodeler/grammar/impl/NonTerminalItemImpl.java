@@ -4,15 +4,8 @@ package hu.textualmodeler.grammar.impl;
 
 import hu.textualmodeler.grammar.GrammarPackage;
 import hu.textualmodeler.grammar.NonTerminalItem;
-
-import hu.textualmodeler.grammar.scope.Scope;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -23,7 +16,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link hu.textualmodeler.grammar.impl.NonTerminalItemImpl#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link hu.textualmodeler.grammar.impl.NonTerminalItemImpl#getScope <em>Scope</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.NonTerminalItemImpl#getNonTerminal <em>Non Terminal</em>}</li>
  * </ul>
  * </p>
@@ -50,16 +42,6 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 	 * @ordered
 	 */
 	protected String featureName = FEATURE_NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getScope() <em>Scope</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScope()
-	 * @generated
-	 * @ordered
-	 */
-	protected Scope scope;
 
 	/**
 	 * The default value of the '{@link #getNonTerminal() <em>Non Terminal</em>}' attribute.
@@ -126,49 +108,6 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Scope getScope() {
-		return scope;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetScope(Scope newScope, NotificationChain msgs) {
-		Scope oldScope = scope;
-		scope = newScope;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GrammarPackage.NON_TERMINAL_ITEM__SCOPE, oldScope, newScope);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScope(Scope newScope) {
-		if (newScope != scope) {
-			NotificationChain msgs = null;
-			if (scope != null)
-				msgs = ((InternalEObject)scope).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GrammarPackage.NON_TERMINAL_ITEM__SCOPE, null, msgs);
-			if (newScope != null)
-				msgs = ((InternalEObject)newScope).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GrammarPackage.NON_TERMINAL_ITEM__SCOPE, null, msgs);
-			msgs = basicSetScope(newScope, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.NON_TERMINAL_ITEM__SCOPE, newScope, newScope));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getNonTerminal() {
 		return nonTerminal;
 	}
@@ -191,26 +130,10 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case GrammarPackage.NON_TERMINAL_ITEM__SCOPE:
-				return basicSetScope(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case GrammarPackage.NON_TERMINAL_ITEM__FEATURE_NAME:
 				return getFeatureName();
-			case GrammarPackage.NON_TERMINAL_ITEM__SCOPE:
-				return getScope();
 			case GrammarPackage.NON_TERMINAL_ITEM__NON_TERMINAL:
 				return getNonTerminal();
 		}
@@ -227,9 +150,6 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 		switch (featureID) {
 			case GrammarPackage.NON_TERMINAL_ITEM__FEATURE_NAME:
 				setFeatureName((String)newValue);
-				return;
-			case GrammarPackage.NON_TERMINAL_ITEM__SCOPE:
-				setScope((Scope)newValue);
 				return;
 			case GrammarPackage.NON_TERMINAL_ITEM__NON_TERMINAL:
 				setNonTerminal((String)newValue);
@@ -249,9 +169,6 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 			case GrammarPackage.NON_TERMINAL_ITEM__FEATURE_NAME:
 				setFeatureName(FEATURE_NAME_EDEFAULT);
 				return;
-			case GrammarPackage.NON_TERMINAL_ITEM__SCOPE:
-				setScope((Scope)null);
-				return;
 			case GrammarPackage.NON_TERMINAL_ITEM__NON_TERMINAL:
 				setNonTerminal(NON_TERMINAL_EDEFAULT);
 				return;
@@ -269,8 +186,6 @@ public class NonTerminalItemImpl extends SyntaxItemImpl implements NonTerminalIt
 		switch (featureID) {
 			case GrammarPackage.NON_TERMINAL_ITEM__FEATURE_NAME:
 				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
-			case GrammarPackage.NON_TERMINAL_ITEM__SCOPE:
-				return scope != null;
 			case GrammarPackage.NON_TERMINAL_ITEM__NON_TERMINAL:
 				return NON_TERMINAL_EDEFAULT == null ? nonTerminal != null : !NON_TERMINAL_EDEFAULT.equals(nonTerminal);
 		}
