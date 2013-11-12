@@ -75,9 +75,13 @@ public class EarleyParser implements IParser {
 				EarleyState state = queue.poll();
 //				System.out.println("Considering: "+ state);
 				
+//				if (state.hasHidden(input)){
+//					table.get(currentLevel).add(state.scanHidden(input));
+//				}else
 				if (state.isCompleted()){
 					int consumed = state.getPosition();
-					consumed = input.bypassHidden(consumed);
+					
+					//consumed = input.bypassHidden(consumed);
 					if (consumed == input.length()){
 						finished.add(state);
 					}else{
@@ -98,13 +102,12 @@ public class EarleyParser implements IParser {
 						}
 					}
 					
-//					int scan =0;
-					for(EarleyState s : state.scan(input, grammar)){
+					EarleyState prescannedState = state.scanHidden(input);
+					for(EarleyState s : prescannedState.scan(input, grammar)){
+						s = s.scanHidden(input);
 						int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
 						table.get(currentLevel+level).add(s);
-//						scan++;
 					}
-//					System.out.println("Scanned: "+scan+" {"+input.substring(state.getPosition(), state.getPosition()+20));
 				}else
 				if (state.completion()){
 					for(EarleyState s : state.complete(table)){

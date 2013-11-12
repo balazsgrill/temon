@@ -3,18 +3,26 @@
  */
 package hu.textualmodeler.editor;
 
+import hu.textualmodeler.ast.FeatureSetTerminalNode;
+import hu.textualmodeler.ast.Node;
+import hu.textualmodeler.ast.VisibleNode;
+import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.editor.impl.DelayedExecutor;
 import hu.textualmodeler.editor.impl.TextualModelContentOutlinePage;
+import hu.textualmodeler.parser.AbstractTextualResource;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.LinkedList;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -22,6 +30,10 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.TextEvent;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
@@ -37,8 +49,21 @@ public class TextualModelEditor extends TextEditor {
 	private EditingDomain edomain;
 	private Resource resource = null;
 	
+	private final StyleRange[] styles;
+	
 	public TextualModelEditor() {
 		super();
+		
+		Color black = getSharedColors().getColor(new RGB(0,0,0));
+		Color grey = getSharedColors().getColor(new RGB(50,50,50));
+		Color comment = getSharedColors().getColor(new RGB(50,150,50));
+		
+		styles = new StyleRange[]{
+				new StyleRange(0, 0, black, null, SWT.NONE),
+				new StyleRange(0, 0, black, null, SWT.BOLD),
+				new StyleRange(0, 0, grey, null, SWT.NONE),
+				new StyleRange(0, 0, comment, null, SWT.NONE),
+		};
 	}
 	
 	volatile boolean dirty = false;
@@ -78,11 +103,65 @@ public class TextualModelEditor extends TextEditor {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			try {
+				is.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if (resource instanceof AbstractTextualResource){
+			final Node node = ((AbstractTextualResource) resource).getAST();
+			if (node != null){
+				getSourceViewer().getTextWidget().getDisplay().asyncExec(new Runnable(){
+					public void run() {
+						setStyles(node);
+					};
+				});
+			}
 		}
 		
 		if (contentOutlinePage != null){
 			contentOutlinePage.update();
 		}
+	}
+	
+	private void setStyles(Node root){
+		LinkedList<VisibleNode> tokens = new LinkedList<>();
+		
+		TreeIterator<EObject> iterator = root.eAllContents();
+		while(iterator.hasNext()){
+			EObject eobject = iterator.next();
+			
+			if (eobject instanceof VisibleNode){
+				tokens.add((VisibleNode)eobject);
+			}
+		}
+		
+		int[] ranges = new int[tokens.size()*2];
+		StyleRange[] styles = new StyleRange[tokens.size()];
+		
+		for(int i=0;i<tokens.size();i++){
+			VisibleNode node = tokens.get(i);
+			
+			ranges[i*2] = node.getStart();
+			ranges[i*2+1] = node.getLength();
+			
+			if (node instanceof FeatureSetTerminalNode){
+				styles[i] = this.styles[2];
+			}else{
+				if (node instanceof WhitespaceNode){
+					styles[i] = this.styles[3];
+				}else{
+					styles[i] = this.styles[1];
+				}
+			}
+			 
+		}
+		
+		getSourceViewer().getTextWidget().setStyleRanges(ranges, styles);
 	}
 	
 	private static EditingDomain createEditingDomain(){

@@ -1,6 +1,4 @@
 grammar people <People>;
 import basics;
 
-<People> :- <Human>*?;
-
-<Human> :-
+<People> :- <Human>;

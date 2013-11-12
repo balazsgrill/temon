@@ -11,6 +11,7 @@ import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
 import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
+import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.NonTerminalItem;
 import hu.textualmodeler.grammar.Pop;
 import hu.textualmodeler.grammar.Push;
@@ -223,11 +224,6 @@ public class EarleyState {
 				predicted.add(new EarleyState(currentRule, index+1, position, steps, origin));
 			}
 			
-//			String featurename = nonterm.getFeatureName();
-			
-//			if (featurename != null){
-//				steps = Collections.<Node>singletonList(new SetNextFeature(featurename));
-//			}
 			Collection<Rule> rules = grammar.getRule(((NonTerminalItem) next).getNonTerminal());
 			
 			for(Rule rule : rules){
@@ -279,13 +275,35 @@ public class EarleyState {
 		return completion() && origin == -1;
 	}
 	
+	public boolean hasHidden(IParserInput input){
+		return !input.bypassHidden(position).isEmpty();
+	}
+	
+	public EarleyState scanHidden(IParserInput input){
+		List<WhitespaceNode> hiddenNodes = input.bypassHidden(this.position);
+		if (!hiddenNodes.isEmpty()){
+			CompositeNode steps = EcoreUtil.copy(this.steps);
+			
+			steps.getChildren().addAll(hiddenNodes);
+			
+			WhitespaceNode last = hiddenNodes.get(hiddenNodes.size()-1);
+			int position = last.getStart()+last.getLength();
+			return new EarleyState(currentRule, index, position, steps, origin);
+		}
+		
+		return this;
+	}
+	
 	public List<EarleyState> scan(IParserInput input, IGrammar grammar){
 		if (scanning()){
 			RuleItem item = getNextItem();
 			
 			if (item instanceof TerminalItem){
 				TerminalItem terminal = (TerminalItem)item;
-				int position = input.bypassHidden(this.position);
+				
+				int position = this.position;
+				
+						
 				List<EarleyState> states = new LinkedList<EarleyState>();
 				
 				TerminalMatch match = input.match(terminal.getTerminal(), position);
@@ -304,6 +322,9 @@ public class EarleyState {
 					node.setTerminal(terminal);
 					node.setStart(position);
 					node.setLength(match.size);
+					
+					//steps.getChildren().addAll(EcoreUtil.copyAll(hiddenNodes));
+					
 					steps.getChildren().add(node);
 					
 					int length = match.size;

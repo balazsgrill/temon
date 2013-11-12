@@ -13,6 +13,10 @@ package ast{
 		attr int[1] length;
 	}
 	
+	class WhitespaceNode extends VisibleNode{
+		ref grammar.Terminal terminal;
+	}
+	
 	class TerminalNode extends VisibleNode{
 		ref grammar.TerminalItem terminal;
 		attr String content;

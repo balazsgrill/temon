@@ -131,6 +131,61 @@ public interface AstPackage extends EPackage {
 	int VISIBLE_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.WhitespaceNodeImpl <em>Whitespace Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.WhitespaceNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getWhitespaceNode()
+	 * @generated
+	 */
+	int WHITESPACE_NODE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__START = VISIBLE_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__LENGTH = VISIBLE_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__TERMINAL = VISIBLE_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Whitespace Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE_FEATURE_COUNT = VISIBLE_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Whitespace Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE_OPERATION_COUNT = VISIBLE_NODE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.TerminalNodeImpl <em>Terminal Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,7 +193,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getTerminalNode()
 	 * @generated
 	 */
-	int TERMINAL_NODE = 2;
+	int TERMINAL_NODE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -202,7 +257,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSet()
 	 * @generated
 	 */
-	int FEATURE_SET = 3;
+	int FEATURE_SET = 4;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -239,7 +294,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetValue()
 	 * @generated
 	 */
-	int FEATURE_SET_VALUE = 4;
+	int FEATURE_SET_VALUE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -285,7 +340,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetTerminalNode()
 	 * @generated
 	 */
-	int FEATURE_SET_TERMINAL_NODE = 5;
+	int FEATURE_SET_TERMINAL_NODE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -358,7 +413,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getCompositeNode()
 	 * @generated
 	 */
-	int COMPOSITE_NODE = 6;
+	int COMPOSITE_NODE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
@@ -404,7 +459,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
 	 * @generated
 	 */
-	int SET_CONTAINMENT_FEATURE = 7;
+	int SET_CONTAINMENT_FEATURE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -441,7 +496,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPushElement()
 	 * @generated
 	 */
-	int PUSH_ELEMENT = 8;
+	int PUSH_ELEMENT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
@@ -478,7 +533,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPopElement()
 	 * @generated
 	 */
-	int POP_ELEMENT = 9;
+	int POP_ELEMENT = 10;
 
 	/**
 	 * The number of structural features of the '<em>Pop Element</em>' class.
@@ -540,6 +595,27 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getVisibleNode_Length();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.WhitespaceNode <em>Whitespace Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Whitespace Node</em>'.
+	 * @see hu.textualmodeler.ast.WhitespaceNode
+	 * @generated
+	 */
+	EClass getWhitespaceNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.textualmodeler.ast.WhitespaceNode#getTerminal <em>Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Terminal</em>'.
+	 * @see hu.textualmodeler.ast.WhitespaceNode#getTerminal()
+	 * @see #getWhitespaceNode()
+	 * @generated
+	 */
+	EReference getWhitespaceNode_Terminal();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.TerminalNode <em>Terminal Node</em>}'.
@@ -756,6 +832,24 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VISIBLE_NODE__LENGTH = eINSTANCE.getVisibleNode_Length();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.WhitespaceNodeImpl <em>Whitespace Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.WhitespaceNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getWhitespaceNode()
+		 * @generated
+		 */
+		EClass WHITESPACE_NODE = eINSTANCE.getWhitespaceNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHITESPACE_NODE__TERMINAL = eINSTANCE.getWhitespaceNode_Terminal();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.TerminalNodeImpl <em>Terminal Node</em>}' class.

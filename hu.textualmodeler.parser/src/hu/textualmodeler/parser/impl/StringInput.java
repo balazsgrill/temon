@@ -3,16 +3,20 @@
  */
 package hu.textualmodeler.parser.impl;
 
+import hu.textualmodeler.ast.AstFactory;
+import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.IParserInput;
 import hu.textualmodeler.parser.ParsingError;
 import hu.textualmodeler.parser.TerminalMatch;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -140,13 +144,19 @@ public class StringInput implements IParserInput {
 	}
 	
 	@Override
-	public int bypassHidden(int position) {
+	public List<WhitespaceNode> bypassHidden(int position) {
+		List<WhitespaceNode> hiddenNodes = new ArrayList<>();
 		TerminalMatch match = null;
 		int current = position;
 		while((match = matchHiddenTerminals(current)) != null){
+			WhitespaceNode hnode = AstFactory.eINSTANCE.createWhitespaceNode();
+			hnode.setStart(current);
+			hnode.setLength(match.size);
+			hnode.setTerminal(match.terminal);
+			hiddenNodes.add(hnode);
 			current += match.size;
 		}
-		return current;
+		return hiddenNodes;
 	}
 	
 	@Override

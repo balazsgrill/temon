@@ -56,6 +56,7 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case AstPackage.WHITESPACE_NODE: return createWhitespaceNode();
 			case AstPackage.TERMINAL_NODE: return createTerminalNode();
 			case AstPackage.FEATURE_SET_VALUE: return createFeatureSetValue();
 			case AstPackage.FEATURE_SET_TERMINAL_NODE: return createFeatureSetTerminalNode();
@@ -66,6 +67,16 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WhitespaceNode createWhitespaceNode() {
+		WhitespaceNodeImpl whitespaceNode = new WhitespaceNodeImpl();
+		return whitespaceNode;
 	}
 
 	/**

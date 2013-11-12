@@ -87,7 +87,9 @@ public abstract class AbstractTextualResource extends ResourceImpl {
 		this.getContents().clear();
 		if (this.ast instanceof CompositeNode){
 			EObject element = builder.build((CompositeNode)this.ast);
-			this.getContents().add(element);
+			if (element != null){
+				this.getContents().add(element);
+			}
 		}
 		
 	}

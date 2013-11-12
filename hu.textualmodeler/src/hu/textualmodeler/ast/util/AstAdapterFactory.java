@@ -76,6 +76,10 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 				return createVisibleNodeAdapter();
 			}
 			@Override
+			public Adapter caseWhitespaceNode(WhitespaceNode object) {
+				return createWhitespaceNodeAdapter();
+			}
+			@Override
 			public Adapter caseTerminalNode(TerminalNode object) {
 				return createTerminalNodeAdapter();
 			}
@@ -152,6 +156,20 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVisibleNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.WhitespaceNode <em>Whitespace Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.WhitespaceNode
+	 * @generated
+	 */
+	public Adapter createWhitespaceNodeAdapter() {
 		return null;
 	}
 

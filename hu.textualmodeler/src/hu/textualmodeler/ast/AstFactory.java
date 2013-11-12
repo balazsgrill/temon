@@ -22,6 +22,15 @@ public interface AstFactory extends EFactory {
 	AstFactory eINSTANCE = hu.textualmodeler.ast.impl.AstFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Whitespace Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Whitespace Node</em>'.
+	 * @generated
+	 */
+	WhitespaceNode createWhitespaceNode();
+
+	/**
 	 * Returns a new object of class '<em>Terminal Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -15,6 +15,7 @@ import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
 
+import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.GrammarPackage;
 
 import hu.textualmodeler.grammar.impl.GrammarPackageImpl;
@@ -50,6 +51,13 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * @generated
 	 */
 	private EClass visibleNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass whitespaceNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,6 +218,24 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 */
 	public EAttribute getVisibleNode_Length() {
 		return (EAttribute)visibleNodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getWhitespaceNode() {
+		return whitespaceNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getWhitespaceNode_Terminal() {
+		return (EReference)whitespaceNodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -381,6 +407,9 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		createEAttribute(visibleNodeEClass, VISIBLE_NODE__START);
 		createEAttribute(visibleNodeEClass, VISIBLE_NODE__LENGTH);
 
+		whitespaceNodeEClass = createEClass(WHITESPACE_NODE);
+		createEReference(whitespaceNodeEClass, WHITESPACE_NODE__TERMINAL);
+
 		terminalNodeEClass = createEClass(TERMINAL_NODE);
 		createEReference(terminalNodeEClass, TERMINAL_NODE__TERMINAL);
 		createEAttribute(terminalNodeEClass, TERMINAL_NODE__CONTENT);
@@ -437,6 +466,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		// Add supertypes to classes
 		visibleNodeEClass.getESuperTypes().add(this.getNode());
+		whitespaceNodeEClass.getESuperTypes().add(this.getVisibleNode());
 		terminalNodeEClass.getESuperTypes().add(this.getVisibleNode());
 		featureSetValueEClass.getESuperTypes().add(this.getNode());
 		featureSetValueEClass.getESuperTypes().add(this.getFeatureSet());
@@ -454,6 +484,9 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEClass(visibleNodeEClass, VisibleNode.class, "VisibleNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVisibleNode_Start(), ecorePackage.getEInt(), "start", null, 1, 1, VisibleNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVisibleNode_Length(), ecorePackage.getEInt(), "length", null, 1, 1, VisibleNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(whitespaceNodeEClass, WhitespaceNode.class, "WhitespaceNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getWhitespaceNode_Terminal(), theGrammarPackage.getTerminal(), null, "terminal", null, 0, 1, WhitespaceNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(terminalNodeEClass, TerminalNode.class, "TerminalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminalNode_Terminal(), theGrammarPackage.getTerminalItem(), null, "terminal", null, 0, 1, TerminalNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

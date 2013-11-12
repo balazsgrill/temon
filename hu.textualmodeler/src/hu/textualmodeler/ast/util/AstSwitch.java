@@ -79,6 +79,14 @@ public class AstSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AstPackage.WHITESPACE_NODE: {
+				WhitespaceNode whitespaceNode = (WhitespaceNode)theEObject;
+				T result = caseWhitespaceNode(whitespaceNode);
+				if (result == null) result = caseVisibleNode(whitespaceNode);
+				if (result == null) result = caseNode(whitespaceNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AstPackage.TERMINAL_NODE: {
 				TerminalNode terminalNode = (TerminalNode)theEObject;
 				T result = caseTerminalNode(terminalNode);
@@ -171,6 +179,21 @@ public class AstSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseVisibleNode(VisibleNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Whitespace Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Whitespace Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseWhitespaceNode(WhitespaceNode object) {
 		return null;
 	}
 
