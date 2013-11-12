@@ -154,7 +154,7 @@ public class EarleyState {
 				SetValue setValue = (SetValue)item;
 				FeatureSetValue n = AstFactory.eINSTANCE.createFeatureSetValue();
 				n.setFeatureName(setValue.getFeatureName());
-				n.setValue(setValue.getFeatureName());
+				n.setValue(setValue.getValue());
 				steps.getChildren().add(n);
 			}else{
 				throw new RuntimeException("Unexpected silent element: "+item);

@@ -91,7 +91,7 @@
         <subScopes xsi:type="scope:FeatureScope" featureName="terminals"/>
       </scope>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicitiy"/>
+    <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
     <body xsi:type="grammar:NonTerminalItem" optional="true" featureName="scope" nonTerminal="Scope"/>
     <body xsi:type="grammar:Pop" xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
   </rules>
@@ -109,7 +109,7 @@
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_jUEPILGZEeK1ScU5DNcoWg" terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_2IkQwLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicitiy"/>
+    <body xsi:type="grammar:NonTerminalItem" xmi:id="_2IkQwLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
     <body xsi:type="grammar:Pop" xmi:id="_aBaYALGZEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_tL0-cLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
@@ -126,7 +126,7 @@
     <body xsi:type="grammar:Push" xmi:id="_mUmygLGaEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#Pop" featureName="body"/>
     <body xsi:type="grammar:Pop" xmi:id="_nSD5QLGaEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_me9eoLZLEeKDArD2cbZQHA" nonTerminal="Multiplicitiy">
+  <rules xmi:id="_me9eoLZLEeKDArD2cbZQHA" nonTerminal="Multiplicity">
     <body xsi:type="grammar:TerminalItem" xmi:id="_o4m2kLZLEeKDArD2cbZQHA" featureName="" terminal="_Zjqs4LZLEeKDArD2cbZQHA"/>
     <body xsi:type="grammar:SetValue" featureName="many" value="true"/>
   </rules>
