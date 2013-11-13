@@ -141,7 +141,7 @@ public class EarleyState {
 			}else
 			if (item instanceof Push){
 				Push push = (Push)item;
-				if (push.getFeatureName() != null){
+				if (push.getFeatureName() != null && !push.getFeatureName().trim().isEmpty()){
 					SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
 					scf.setFeatureName(push.getFeatureName());
 					steps.getChildren().add(scf);
@@ -248,7 +248,7 @@ public class EarleyState {
 						CompositeNode parentSteps = EcoreUtil.copy(p.steps);
 						CompositeNode childSteps = EcoreUtil.copy(steps);
 						
-						if (nonterm.getFeatureName() != null){
+						if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
 							SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
 							scf.setFeatureName(nonterm.getFeatureName());
 							 

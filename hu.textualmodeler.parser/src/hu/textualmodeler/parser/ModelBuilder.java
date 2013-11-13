@@ -71,44 +71,55 @@ public class ModelBuilder {
 		private List<FeatureValue> featureValues = new LinkedList<>();
 		
 		public void process(Node node){
-			if (node instanceof CompositeNode){
-				for(Node n : ((CompositeNode) node).getChildren()){
-					process(n);
-				}
-			}else if (node instanceof FeatureSetValue){
-				FeatureValue fv = new FeatureValue(modelStack.peek(), 
-						getFeature(((FeatureSetValue) node).getFeatureName()), null, 
-						((FeatureSetValue) node).getValue(), null);
-				if (fv.unconditional()) {
-					fv.resolve();
-				}else{
-					featureValues.add(fv);
-				}
-			}else if (node instanceof PopElement){
-				modelStack.pop();
-			}else if (node instanceof PushElement){
-				EClass eclass = findEClass(((PushElement) node).getEclassURI());
-				EObject element = eclass.getEPackage().getEFactoryInstance().create(eclass);
-				if (currentContainerFeature != null){
-					EStructuralFeature feature = getFeature(currentContainerFeature);
-					EObject parent = modelStack.peek();
-					eSetOrAdd(parent, feature, element);
-					currentContainerFeature = null;
-				}
-				modelStack.push(element);
-			}else if (node instanceof SetContainmentFeature){
-				this.currentContainerFeature = ((SetContainmentFeature) node).getFeatureName();
-			}else if (node instanceof FeatureSetTerminalNode){
-				TerminalItem termitem = ((FeatureSetTerminalNode) node).getTerminal();
-				if (!modelStack.isEmpty()){
-					FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
-							termitem.getTerminal(), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
-					if (fv.unconditional()){
+			try{
+				if (node instanceof CompositeNode){
+					for(Node n : ((CompositeNode) node).getChildren()){
+						process(n);
+					}
+				}else if (node instanceof FeatureSetValue){
+					FeatureValue fv = new FeatureValue(modelStack.peek(), 
+							getFeature(((FeatureSetValue) node).getFeatureName()), null, 
+							((FeatureSetValue) node).getValue(), null);
+					if (fv.unconditional()) {
 						fv.resolve();
 					}else{
 						featureValues.add(fv);
 					}
+				}else if (node instanceof PopElement){
+					modelStack.pop();
+				}else if (node instanceof PushElement){
+					EClass eclass = findEClass(((PushElement) node).getEclassURI());
+					EObject element = eclass.getEPackage().getEFactoryInstance().create(eclass);
+					if (currentContainerFeature != null){
+						EStructuralFeature feature = getFeature(currentContainerFeature);
+						if (feature == null) throw new IllegalArgumentException("Could not find feature: "+currentContainerFeature);
+						EObject parent = modelStack.peek();
+						eSetOrAdd(parent, feature, element);
+						currentContainerFeature = null;
+					}
+					modelStack.push(element);
+				}else if (node instanceof SetContainmentFeature){
+					
+					this.currentContainerFeature = ((SetContainmentFeature) node).getFeatureName();
+					if (this.currentContainerFeature.trim().isEmpty()) {
+						throw new IllegalArgumentException("Grammar error: Invalid container feature!");
+					}
+					
+				}else if (node instanceof FeatureSetTerminalNode){
+					TerminalItem termitem = ((FeatureSetTerminalNode) node).getTerminal();
+					if (!modelStack.isEmpty()){
+						FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
+								termitem.getTerminal(), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
+						if (fv.unconditional()){
+							fv.resolve();
+						}else{
+							featureValues.add(fv);
+						}
+					}
 				}
+			}catch(Exception e){
+				e.printStackTrace();
+				//TODO properly process model building errors
 			}
 		}
 		
