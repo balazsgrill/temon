@@ -11,5 +11,5 @@ terminal WOMAN "woman";
 <T> :- MAN {"http://people/1.0#Man";
 <T> :- WOMAN {"http://people/1.0#Woman";
 
-<Content> :- name=IDENTIFIER father=IDENTIFIER?[../people/=name];
+<Content> :- name=IDENTIFIER father=IDENTIFIER?[../people/=name] mother=IDENTIFIER?[../people/=name];
 

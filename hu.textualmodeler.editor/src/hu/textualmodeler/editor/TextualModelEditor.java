@@ -57,12 +57,14 @@ public class TextualModelEditor extends TextEditor {
 		Color black = getSharedColors().getColor(new RGB(0,0,0));
 		Color grey = getSharedColors().getColor(new RGB(50,50,50));
 		Color comment = getSharedColors().getColor(new RGB(50,150,50));
+		Color reference = getSharedColors().getColor(new RGB(50,50,200));
 		
 		styles = new StyleRange[]{
 				new StyleRange(0, 0, black, null, SWT.NONE),
 				new StyleRange(0, 0, black, null, SWT.BOLD),
 				new StyleRange(0, 0, grey, null, SWT.NONE),
 				new StyleRange(0, 0, comment, null, SWT.NONE),
+				new StyleRange(0, 0, reference, null, SWT.NONE),
 		};
 	}
 	
@@ -150,7 +152,11 @@ public class TextualModelEditor extends TextEditor {
 			ranges[i*2+1] = node.getLength();
 			
 			if (node instanceof FeatureSetTerminalNode){
-				styles[i] = this.styles[2];
+				if (((FeatureSetTerminalNode) node).getTerminal().getScope() != null){
+					styles[i] = this.styles[4];
+				}else{
+					styles[i] = this.styles[2];
+				}
 			}else{
 				if (node instanceof WhitespaceNode){
 					styles[i] = this.styles[3];

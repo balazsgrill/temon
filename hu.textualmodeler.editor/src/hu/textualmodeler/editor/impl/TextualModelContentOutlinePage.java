@@ -3,6 +3,9 @@
  */
 package hu.textualmodeler.editor.impl;
 
+import hu.textualmodeler.ast.Node;
+import hu.textualmodeler.parser.AbstractTextualResource;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -75,10 +78,14 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 
 	@Override
 	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof Resource){
+		if (inputElement instanceof AbstractTextualResource){
 			List<Object> result = new LinkedList<Object>();
 			result.addAll(((Resource) inputElement).getErrors());
 			result.addAll(((Resource) inputElement).getContents());
+			Node ast = ((AbstractTextualResource) inputElement).getAST();
+			if (ast != null){
+				result.add(ast);
+			}
 			return result.toArray();
 		}
 		return new Object[0];
