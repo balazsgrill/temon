@@ -131,7 +131,6 @@ public class EarleyParser implements IParser {
 		}
 		
 		if (finished.isEmpty()){
-			System.out.println("Syntax error");
 			if (best != null){
 				int[] lc = input.getLineAndColumn(best.getPosition());
 				TerminalItem ti = (TerminalItem)best.getNextItem();

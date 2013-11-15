@@ -85,10 +85,12 @@
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
       <scope xsi:type="scope:ChainedScope">
         <subScopes xsi:type="scope:ContainerScope"/>
+        <subScopes xsi:type="scope:ContainerScope"/>
         <subScopes xsi:type="scope:TransitiveScope" optional="true">
           <subScope xsi:type="scope:FeatureScope" featureName="import"/>
         </subScopes>
         <subScopes xsi:type="scope:FeatureScope" featureName="terminals"/>
+        <subScopes xsi:type="scope:ConditionalScope" featureName="name"/>
       </scope>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
