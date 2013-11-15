@@ -8,5 +8,22 @@
             model="people.grammar">
       </grammar>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="hu.textualmodeler.editor.TextualModelEditor"
+            default="false"
+            extensions="people"
+            id="hu.textualmodeler.parser.test.editor"
+            name="People editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="hu.textualmodeler.parser.test.PeopleResourceFactory"
+            type="people">
+      </parser>
+   </extension>
 
 </fragment>

@@ -13,7 +13,7 @@ import hu.textualmodeler.parser.IGrammar;
 import hu.textualmodeler.parser.IParser;
 import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.IParserInput;
-import hu.textualmodeler.parser.ParsingError;
+import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.Grammar;
 
 import java.util.LinkedList;

@@ -5,7 +5,9 @@ package hu.textualmodeler.parser;
 
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.Node;
+import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.GrammarModel;
+import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.ScopedFeatureResolver;
 import hu.textualmodeler.parser.impl.StringInput;
 import hu.textualmodeler.parser.impl.earley.EarleyParser;
@@ -57,32 +59,37 @@ public abstract class AbstractTextualResource extends ResourceImpl {
 		
 		String data = inputStreamToString(inputStream);
 		
+		final IParserInput[] input = new IParserInput[1];
 		IParserContext context = new IParserContext() {
 			
 			@Override
 			public void logError(Diagnostic diagnostic) {
-				System.out.println(diagnostic);
 				getErrors().add(diagnostic);
 			}
 			
 			@Override
 			public void logError(Exception e) {
-				getErrors().add(new ParsingError(e.getMessage(), ""));
+				getErrors().add(new ParsingError(e.getMessage(), input[0], null));
 			}
 			
 			@Override
 			public IProgressMonitor getMonitor() {
 				return new NullProgressMonitor();
 			}
+
+			@Override
+			public void logError(String message, VisibleNode node) {
+				getErrors().add(new ParsingError(message, input[0], node));
+			}
 		};
 		
 		IParser parser = new EarleyParser(loadGrammar());
-		IParserInput input = new StringInput(data, parser.getGrammar().terminals(), context);
+		input[0] = new StringInput(data, parser.getGrammar().terminals(), context);
 		
-		this.ast = parser.parse(input, context, 0);
+		this.ast = parser.parse(input[0], context, 0);
 		
 		IFeatureResolver featureResolver = new ScopedFeatureResolver(createGlobalScope());
-		ModelBuilder builder = new ModelBuilder(featureResolver);
+		ModelBuilder builder = new ModelBuilder(featureResolver, context);
 		
 		this.getContents().clear();
 		if (this.ast instanceof CompositeNode){

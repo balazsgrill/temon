@@ -3,10 +3,6 @@
  */
 package hu.textualmodeler.parser;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
-
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
@@ -14,15 +10,22 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
 import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.TerminalNode;
+import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.grammar.TerminalItem;
 import hu.textualmodeler.grammar.scope.Scope;
+import hu.textualmodeler.parser.errors.ReferencedElementNotFoundException;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Stack;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 
@@ -35,12 +38,12 @@ public class ModelBuilder {
 	private class FeatureValue{
 		public final EObject context;
 		public final EStructuralFeature feature;
-		public final Terminal terminal;
+		public final TerminalNode terminal;
 		public final String value;
 		public final Scope scope;
 		
 		public FeatureValue(EObject context, EStructuralFeature feature,
-				Terminal terminal, String value, Scope scope) {
+				TerminalNode terminal, String value, Scope scope) {
 			super();
 			this.context = context;
 			this.feature = feature;
@@ -49,10 +52,16 @@ public class ModelBuilder {
 			this.scope = scope;
 		}
 		
-		public void resolve(){
-			Object o = featureResolver.resolve(context, feature, terminal, value, scope);
+		public void resolve() throws ReferencedElementNotFoundException{
+			Terminal term = null;
+			if (terminal != null && terminal.getTerminal() != null){
+				term = terminal.getTerminal().getTerminal();
+			}
+			Object o = featureResolver.resolve(context, feature, term, value, scope);
 			if (o != null){
 				eSetOrAdd(context, feature, o);
+			}else{
+				throw new ReferencedElementNotFoundException(value);
 			}
 		}
 		
@@ -109,7 +118,7 @@ public class ModelBuilder {
 					TerminalItem termitem = ((FeatureSetTerminalNode) node).getTerminal();
 					if (!modelStack.isEmpty()){
 						FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
-								termitem.getTerminal(), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
+								((FeatureSetTerminalNode) node), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
 						if (fv.unconditional()){
 							fv.resolve();
 						}else{
@@ -119,13 +128,19 @@ public class ModelBuilder {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-				//TODO properly process model building errors
+				pcontext.logError(e.getMessage(), 
+						(node instanceof VisibleNode) ? (VisibleNode)node : null);
+					
 			}
 		}
 		
 		public void resolve(){
 			for(FeatureValue fv : featureValues){
-				fv.resolve();
+				try {
+					fv.resolve();
+				} catch (ReferencedElementNotFoundException e) {
+					pcontext.logError(e.getMessage(), fv.terminal);
+				}
 			}
 			featureValues.clear();
 		}
@@ -139,12 +154,15 @@ public class ModelBuilder {
 	
 	private final IFeatureResolver featureResolver;
 	
+	private final IParserContext pcontext;
+	
 	public IFeatureResolver getFeatureResolver() {
 		return featureResolver;
 	}
 	
-	public ModelBuilder(IFeatureResolver featureResolver) {
+	public ModelBuilder(IFeatureResolver featureResolver, IParserContext pcontext) {
 		this.featureResolver = featureResolver;
+		this.pcontext = pcontext;
 	}
 	
 	public EObject build(CompositeNode root){

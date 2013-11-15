@@ -8,8 +8,8 @@ import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.IParserInput;
-import hu.textualmodeler.parser.ParsingError;
 import hu.textualmodeler.parser.TerminalMatch;
+import hu.textualmodeler.parser.errors.ParsingError;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,7 +41,7 @@ public class StringInput implements IParserInput {
 			try{
 				this.terminals.put(terminal, Pattern.compile(terminal.getRegex()));
 			}catch(Exception e){
-				context.logError(new ParsingError(e.getMessage(), ""));
+				context.logError(new ParsingError(e.getMessage(), this, null));
 			}
 		}
 		for(Terminal terminal : terminals){

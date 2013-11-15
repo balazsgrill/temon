@@ -5,4 +5,6 @@ Bundle-SymbolicName: hu.textualmodeler.parser.test;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Fragment-Host: hu.textualmodeler.parser;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: org.junit
+Require-Bundle: org.junit,
+ hu.textualmodeler.editor;bundle-version="0.1.0",
+ org.eclipse.ui;bundle-version="3.105.0"
