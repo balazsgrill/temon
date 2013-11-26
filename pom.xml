@@ -8,13 +8,16 @@
         <packaging>pom</packaging>
 
         <modules>
-                <module>hu.textualmodeler</module>
-                <module>hu.textualmodeler.editor</module>
-                <module>hu.textualmodeler.parser</module>
+        	
+        	<!-- Core modules -->	
+        	<module>hu.textualmodeler</module>
+            <module>hu.textualmodeler.editor</module>
+            <module>hu.textualmodeler.parser</module>
                 
+            <!-- Parser tests -->
+            <module>hu.textualmodeler.parser.test.model</module>
+            <module>hu.textualmodeler.parser.test</module>
                 
-                <module>hu.textualmodeler.parser.test</module>
-                <module>hu.textualmodeler.parser.test.model</module>
 
         </modules>
 
