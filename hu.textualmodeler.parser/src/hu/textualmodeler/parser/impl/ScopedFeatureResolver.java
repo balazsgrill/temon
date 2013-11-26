@@ -97,16 +97,18 @@ public class ScopedFeatureResolver implements IFeatureResolver {
 			
 			String featureName = ((FeatureScope) scope).getFeatureName();
 			for(EObject eo : context){
-				for(EReference ref : eo.eClass().getEAllReferences()){
-					if (ref.getName().equals(featureName)){
-						Object o = eo.eGet(ref);
-						if (o instanceof EObject){
-							result.add((EObject)o);
-						}
-						if (o instanceof List<?>){
-							for(Object u : (List<?>)o){
-								if (u instanceof EObject){
-									result.add((EObject)u);
+				if (eo != null && eo.eClass() != null){
+					for(EReference ref : eo.eClass().getEAllReferences()){
+						if (ref.getName().equals(featureName)){
+							Object o = eo.eGet(ref);
+							if (o instanceof EObject){
+								result.add((EObject)o);
+							}
+							if (o instanceof List<?>){
+								for(Object u : (List<?>)o){
+									if (u instanceof EObject){
+										result.add((EObject)u);
+									}
 								}
 							}
 						}
