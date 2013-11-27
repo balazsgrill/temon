@@ -97,7 +97,11 @@ public class ModelBuilder {
 				}else if (node instanceof PopElement){
 					modelStack.pop();
 				}else if (node instanceof PushElement){
-					EClass eclass = findEClass(((PushElement) node).getEclassURI());
+					String eclassURI = ((PushElement) node).getEclassURI();
+					EClass eclass = findEClass(eclassURI);
+					if (eclass == null){
+						throw new IllegalArgumentException("Could not find EClass "+eclassURI);
+					}
 					EObject element = eclass.getEPackage().getEFactoryInstance().create(eclass);
 					if (currentContainerFeature != null){
 						EStructuralFeature feature = getFeature(currentContainerFeature);
