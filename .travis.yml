@@ -11,15 +11,13 @@ branches:
     - master
 after_success:
   - cd ..
-  - mkdir gh_pages
-  - cd gh_pages
   - ssh -o StrictHostKeyChecking=no github.com
-  - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
-  - git fetch
+  - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git gh_pages
+  - cd gh_pages
   - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
   - "[ -d \"site\" ] && rm site"
   - mkdir site
-  - cp ../hu.textualmodeler.site/target/repository/* site
+  - cp ../../textualmodeler/hu.textualmodeler.site/target/repository/* site
   - git add site
   - git commit "Publish update site"
   - git push deploy
