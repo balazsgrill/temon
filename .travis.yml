@@ -12,6 +12,7 @@ branches:
 after_success:
   - mkdir gh_pages
   - cd gh_pages
+  - ssh -o StrictHostKeyChecking=no github.com
   - git clone -b gh-pages git@github.com:balazsgrill/textualmodeler.git
   - "[ -d \"site\" ] && rm site"
   - mkdir site
