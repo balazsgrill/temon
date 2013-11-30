@@ -17,9 +17,9 @@ after_success:
   - git config user.email balage.g@gmail.com
   - git config user.name balazsgrill
   - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
-  - "[ -d \"site\" ] && rm site"
-  - mkdir site
-  - cp ../textualmodeler/hu.textualmodeler.site/target/repository/* site
+  - "[ -d \"site/$TRAVIS_BRANCH\" ] && rm site/$TRAVIS_BRANCH"
+  - mkdir site/$TRAVIS_BRANCH
+  - cp -R ../textualmodeler/hu.textualmodeler.site/target/repository/* site/$TRAVIS_BRANCH
   - git add site
-  - git commit -m "Publish update site"
+  - git commit -m "Publish build $TRAVIS_JOB_NUMBER"
   - git push deploy
