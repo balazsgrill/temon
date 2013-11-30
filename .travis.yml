@@ -10,10 +10,11 @@ branches:
   only:
     - master
 after_success:
+  - cd ..
   - mkdir gh_pages
   - cd gh_pages
   - ssh -o StrictHostKeyChecking=no github.com
-  - git clone -b gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
+  - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
   - git fetch
   - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
   - "[ -d \"site\" ] && rm site"
