@@ -19,5 +19,5 @@ after_success:
   - mkdir site
   - cp ../../textualmodeler/hu.textualmodeler.site/target/repository/* site
   - git add site
-  - git commit "Publish update site"
+  - git commit -m "Publish update site"
   - git push deploy
