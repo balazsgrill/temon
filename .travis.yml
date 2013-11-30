@@ -14,10 +14,12 @@ after_success:
   - ssh -o StrictHostKeyChecking=no github.com
   - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git gh_pages
   - cd gh_pages
+  - git config user.email balage.g@gmail.com
+  - git config user.name balazsgrill
   - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
   - "[ -d \"site\" ] && rm site"
   - mkdir site
-  - cp ../../textualmodeler/hu.textualmodeler.site/target/repository/* site
+  - cp ../textualmodeler/hu.textualmodeler.site/target/repository/* site
   - git add site
   - git commit -m "Publish update site"
   - git push deploy
