@@ -3,10 +3,10 @@ jdk: openjdk7
 script: mvn integration-test
 env:
   global:
-    - GHP_URL
     - GIT_NAME="Balazs Grill"
     - GIT_EMAIL=balage.g@gmail.com
     - secure: "SZytRDjpv8Xa84Lib0DFDNagJ0fl/u5sJn3Ow3zh+E4I4ItM2kalV/TxEv9fVYlmlzdpJ6VUAOgomcWovbh3pSwcNFuo//SBRDzONtXkuOTB4dbgdj2sggcu5GGFDQx8RBcM6fsEFUBG7GlsD4T2WQTdOgmvipVPSZDv1WGDDn8="
+    - repo=https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
 branches:
   only:
     - master
@@ -14,10 +14,10 @@ after_success:
   - mkdir gh_pages
   - cd gh_pages
   - ssh -o StrictHostKeyChecking=no github.com
-  - git clone -b gh-pages $GHP_URL
+  - git clone -b gh-pages $repo
   - "[ -d \"site\" ] && rm site"
   - mkdir site
   - cp ../hu.textualmodeler.site/target/repository/* site
   - git add site
   - git commit "Publish update site"
-  - git push $GHP_URL
+  - git push $repo
