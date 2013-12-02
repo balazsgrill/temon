@@ -26,14 +26,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  * @author balazs.grill
  *
  */
-public abstract class AbstractTextualResource extends ResourceImpl {
+public abstract class AbstractTextualResource extends ResourceImpl implements IParserContext{
 
-	public AbstractTextualResource() {
-		super();
-	}
+	private IParserInput input;
+	private IParser parser;
 	
 	public AbstractTextualResource(URI uri) {
 		super(uri);
+	}
+	
+	public IGrammar getGrammar(){
+		return parser.getGrammar();
 	}
 	
 	private static String inputStreamToString(InputStream inputStream) throws IOException{
@@ -59,37 +62,13 @@ public abstract class AbstractTextualResource extends ResourceImpl {
 		
 		String data = inputStreamToString(inputStream);
 		
-		final IParserInput[] input = new IParserInput[1];
-		IParserContext context = new IParserContext() {
-			
-			@Override
-			public void logError(Diagnostic diagnostic) {
-				getErrors().add(diagnostic);
-			}
-			
-			@Override
-			public void logError(Exception e) {
-				getErrors().add(new ParsingError(e.getMessage(), input[0], null));
-			}
-			
-			@Override
-			public IProgressMonitor getMonitor() {
-				return new NullProgressMonitor();
-			}
-
-			@Override
-			public void logError(String message, VisibleNode node) {
-				getErrors().add(new ParsingError(message, input[0], node));
-			}
-		};
+		parser = new EarleyParser(loadGrammar());
+		input = new StringInput(data, parser.getGrammar().terminals(), this);
 		
-		IParser parser = new EarleyParser(loadGrammar());
-		input[0] = new StringInput(data, parser.getGrammar().terminals(), context);
-		
-		this.ast = parser.parse(input[0], context, 0);
+		this.ast = parser.parse(input, this, 0);
 		
 		IFeatureResolver featureResolver = new ScopedFeatureResolver(createGlobalScope());
-		ModelBuilder builder = new ModelBuilder(featureResolver, context);
+		ModelBuilder builder = new ModelBuilder(featureResolver, this);
 		
 		this.getContents().clear();
 		if (this.ast instanceof CompositeNode){
@@ -99,6 +78,26 @@ public abstract class AbstractTextualResource extends ResourceImpl {
 			}
 		}
 		
+	}
+	
+	@Override
+	public void logError(Diagnostic diagnostic) {
+		getErrors().add(diagnostic);
+	}
+	
+	@Override
+	public void logError(Exception e) {
+		getErrors().add(new ParsingError(e.getMessage(), input, null));
+	}
+	
+	@Override
+	public IProgressMonitor getMonitor() {
+		return new NullProgressMonitor();
+	}
+
+	@Override
+	public void logError(String message, VisibleNode node) {
+		getErrors().add(new ParsingError(message, input, node));
 	}
 	
 }

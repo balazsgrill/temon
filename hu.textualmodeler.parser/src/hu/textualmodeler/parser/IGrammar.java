@@ -18,4 +18,6 @@ public interface IGrammar {
 	
 	public Collection<Rule> getRule(String nonTerminal);
 	
+	public Collection<String> getUsedEClassURIs();
+	
 }

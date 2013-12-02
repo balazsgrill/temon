@@ -17,10 +17,6 @@ import hu.textualmodeler.parser.impl.GrammarRegistry;
  */
 public class GrammarResource extends AbstractTextualResource {
 	
-	public GrammarResource() {
-		super();
-	}
-	
 	public GrammarResource(URI uri){
 		super(uri);
 	}

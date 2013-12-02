@@ -22,12 +22,6 @@ import hu.textualmodeler.parser.impl.GrammarRegistry;
 public class PeopleResource extends AbstractTextualResource {
 
 	/**
-	 * 
-	 */
-	public PeopleResource() {
-	}
-
-	/**
 	 * @param uri
 	 */
 	public PeopleResource(URI uri) {

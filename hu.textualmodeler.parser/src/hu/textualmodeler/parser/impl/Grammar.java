@@ -4,7 +4,9 @@
 package hu.textualmodeler.parser.impl;
 
 import hu.textualmodeler.grammar.GrammarModel;
+import hu.textualmodeler.grammar.Push;
 import hu.textualmodeler.grammar.Rule;
+import hu.textualmodeler.grammar.RuleItem;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.parser.IGrammar;
 
@@ -72,6 +74,21 @@ public class Grammar implements IGrammar {
 	public Collection<Rule> getRule(String nonTerminal) {
 		List<Rule> r = rules.get(nonTerminal);
 		return r == null ? Collections.<Rule>emptyList() : r;
+	}
+
+	@Override
+	public Collection<String> getUsedEClassURIs() {
+		List<String> result = new LinkedList<>();
+		for(List<Rule> ruleList : rules.values()){
+			for(Rule rule : ruleList){
+				for(RuleItem ri : rule.getBody()){
+					if (ri instanceof Push){
+						result.add(((Push) ri).getEclassURI());
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 }

@@ -6,17 +6,19 @@ package hu.textualmodeler.editor.impl;
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.parser.AbstractTextualResource;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -28,34 +30,44 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
  */
 public class TextualModelContentOutlinePage extends ContentOutlinePage implements ITreeContentProvider{
 
-	private final Resource resource;
+	private final AbstractTextualResource resource;
+	private AdapterFactory adapterFactory;
 	
-	private final LabelProvider labelProvider = new LabelProvider(){
-		@Override
-		public String getText(Object element) {
-			if (element instanceof Diagnostic){
-				Diagnostic d = (Diagnostic)element;
-				return d.getMessage() +" ("+d.getLine()+":"+d.getColumn()+")";
-			}
-			if (element instanceof EObject){
-				if (((EObject) element).eContainmentFeature() != null){
-					String cont = ((EObject) element).eContainmentFeature().getName();
-					return cont+": "+((EObject) element).eClass().getName()+" (hash: "+element.hashCode()+")";
-				}
-				return ((EObject) element).eClass().getName()+" (hash: "+element.hashCode()+")";
-			}
-			return super.getText(element);
-		}
-	};
+	private ITreeContentProvider contentProvider;
+	private ILabelProvider labelProvider;
+	
+	private AdapterFactory createDomainAdapterFactory(){
+		final List<AdapterFactory> factories = new ArrayList<AdapterFactory>(2);
+		factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+		factories.add(new ReflectiveItemProviderAdapterFactory());
+		return new ComposedAdapterFactory(factories);
+
+	}
 	
 	public TextualModelContentOutlinePage(Resource resource) {
-		this.resource = resource;
+		if (resource instanceof AbstractTextualResource){
+			this.resource = (AbstractTextualResource)resource;
+			
+		}else{
+			throw new IllegalArgumentException("Not a textual resource");
+		}
 	}
 	
 	public void update(){
 		Display.getDefault().asyncExec(new Runnable(){
 			@Override
 			public void run() {
+				if (adapterFactory == null){
+					adapterFactory = createDomainAdapterFactory();
+					
+					contentProvider = new AdapterFactoryContentProvider(adapterFactory);
+					labelProvider = new AdapterFactoryLabelProvider(adapterFactory);	
+					
+					getTreeViewer().setContentProvider(TextualModelContentOutlinePage.this);
+					getTreeViewer().setLabelProvider(labelProvider);
+					getTreeViewer().setInput(resource);
+				}
+				
 				TextualModelContentOutlinePage.this.getTreeViewer().refresh();
 			}
 		});
@@ -64,16 +76,18 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
-		
-		getTreeViewer().setContentProvider(this);
-		getTreeViewer().setLabelProvider(labelProvider);
-		getTreeViewer().setInput(resource);
 	}
 
 	@Override
+	public void dispose() {
+		if (labelProvider != null){
+			labelProvider.dispose();
+		}
+		super.dispose();
+	}
+	
+	@Override
 	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -81,7 +95,7 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 		if (inputElement instanceof AbstractTextualResource){
 			List<Object> result = new LinkedList<Object>();
 			result.addAll(((Resource) inputElement).getErrors());
-			result.addAll(((Resource) inputElement).getContents());
+			result.addAll(((AbstractTextualResource) inputElement).getContents());
 			Node ast = ((AbstractTextualResource) inputElement).getAST();
 			if (ast != null){
 				result.add(ast);
@@ -90,48 +104,21 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 		}
 		return new Object[0];
 	}
-
-	private String toText(EStructuralFeature f, Object o){
-		if (f instanceof EAttribute){
-			return f.getName()+" = \""+o+"\""; 
-		}
-		if (f instanceof EReference){
-			return f.getName()+" -> "+labelProvider.getText(o);
-		}
-		return "<>";
-	}
-	
-	private boolean showAsChild(EStructuralFeature sf){
-		return (sf instanceof EAttribute) || !((EReference)sf).isContainment();
-	}
 	
 	@Override
 	public Object[] getChildren(Object parentElement) {
+		if (parentElement instanceof Resource){
+			return contentProvider.getElements(parentElement);
+		}
 		if (parentElement instanceof EObject){
-			List<Object> result = new LinkedList<Object>();
-			for(EStructuralFeature sf : ((EObject) parentElement).eClass().getEAllStructuralFeatures()) 
-				if (showAsChild(sf)){
-				Object v = ((EObject) parentElement).eGet(sf);
-				if (v != null){
-					if (v instanceof List<?>){
-						for(Object o : ((List<?>) v).toArray()){
-							result.add(toText(sf, o));
-						}
-					}else{
-						result.add(toText(sf, v));
-					}
-				}
-			}
-			result.addAll(((EObject) parentElement).eContents());
-			return result.toArray();
+			return contentProvider.getChildren(parentElement);
 		}
 		return new Object[0];
 	}
 
 	@Override
 	public Object getParent(Object element) {
-		// TODO Auto-generated method stub
-		return null;
+		return contentProvider.getParent(element);
 	}
 
 	@Override
