@@ -205,7 +205,8 @@ public class TextualModelEditor extends TextEditor {
 	
 	private IContentOutlinePage getContentOutlinePage(){
 		if (contentOutlinePage == null){
-			return contentOutlinePage = new TextualModelContentOutlinePage(resource);
+			contentOutlinePage = new TextualModelContentOutlinePage(resource);
+			reloader.trigger();
 		}
 		return contentOutlinePage;
 	}
