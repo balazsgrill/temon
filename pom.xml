@@ -11,6 +11,7 @@
         	
         	<!-- Core modules -->	
         	<module>hu.textualmodeler</module>
+        	<module>hu.textualmodeler.edit</module>
             <module>hu.textualmodeler.editor</module>
             <module>hu.textualmodeler.parser</module>
                 

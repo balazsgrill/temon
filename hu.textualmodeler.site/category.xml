@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/hu.textualmodeler.feature_0.1.0.qualifier.jar" id="hu.textualmodeler.feature" version="0.1.0.qualifier"/>
+   <feature url="features/hu.textualmodeler.feature-sources-feature.jar" id="hu.textualmodeler.feature.source" version="0.1.0.qualifier"/>
 </site>
