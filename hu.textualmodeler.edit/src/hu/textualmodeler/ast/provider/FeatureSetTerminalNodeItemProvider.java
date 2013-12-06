@@ -92,21 +92,20 @@ public class FeatureSetTerminalNodeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureSetTerminalNode"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TerminalNode"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FeatureSetTerminalNode)object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_FeatureSetTerminalNode_type") :
-			getString("_UI_FeatureSetTerminalNode_type") + " " + label;
+		FeatureSetTerminalNode featureSetTerminalNode = (FeatureSetTerminalNode)object;
+		String label = featureSetTerminalNode.getFeatureName();
+		
+		return label + " = \""+featureSetTerminalNode.getContent()+"\"";
 	}
 
 	/**

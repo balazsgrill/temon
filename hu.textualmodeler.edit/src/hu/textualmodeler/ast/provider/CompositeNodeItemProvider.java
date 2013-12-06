@@ -12,9 +12,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -131,10 +129,16 @@ public class CompositeNodeItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
+		if (object instanceof CompositeNode){
+			String nonTerminal = ((CompositeNode) object).getNonterminal().getNonTerminal();
+			if (nonTerminal == null){
+				return "Root";
+			}
+			return getString("_UI_CompositeNode_type") + " -> " +nonTerminal;
+		}
 		return getString("_UI_CompositeNode_type");
 	}
 

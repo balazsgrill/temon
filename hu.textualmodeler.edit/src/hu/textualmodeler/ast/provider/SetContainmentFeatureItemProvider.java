@@ -99,14 +99,11 @@ public class SetContainmentFeatureItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		String label = ((SetContainmentFeature)object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SetContainmentFeature_type") :
-			getString("_UI_SetContainmentFeature_type") + " " + label;
+		return label + "->";
 	}
 
 	/**

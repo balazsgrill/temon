@@ -122,14 +122,13 @@ public class FeatureSetValueItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		String label = ((FeatureSetValue)object).getFeatureName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_FeatureSetValue_type") :
-			getString("_UI_FeatureSetValue_type") + " " + label;
+		String value = ((FeatureSetValue)object).getValue();
+		
+		return label + " = \"" + value + "\"";
 	}
 
 	/**

@@ -4,14 +4,12 @@ package hu.textualmodeler.ast.provider;
 
 
 import hu.textualmodeler.ast.AstPackage;
-import hu.textualmodeler.ast.WhitespaceNode;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -90,7 +88,7 @@ public class WhitespaceNodeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/WhitespaceNode"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TerminalNode"));
 	}
 
 	/**
@@ -101,8 +99,7 @@ public class WhitespaceNodeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		WhitespaceNode whitespaceNode = (WhitespaceNode)object;
-		return getString("_UI_WhitespaceNode_type") + " " + whitespaceNode.getStart();
+		return getString("_UI_WhitespaceNode_type");
 	}
 
 	/**

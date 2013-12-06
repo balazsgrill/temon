@@ -122,12 +122,11 @@ public class TerminalNodeItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
 		TerminalNode terminalNode = (TerminalNode)object;
-		return getString("_UI_TerminalNode_type") + " " + terminalNode.getStart();
+		return "\"" + terminalNode.getContent() + "\"";
 	}
 
 	/**
