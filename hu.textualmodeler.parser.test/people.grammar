@@ -9,4 +9,4 @@ terminal WOMAN "woman";
 <Human> :- MAN {"http://people/1.0#Man" <Content> } OPERATOR_SEMICOLON;
 <Human> :- WOMAN {"http://people/1.0#Woman"  <Content> } OPERATOR_SEMICOLON;
 
-<Content> :- name=IDENTIFIER father=IDENTIFIER?[../people/=name] mother=IDENTIFIER?[../people/=name];
+<Content> :- name=IDENTIFIER father=IDENTIFIER? mother=IDENTIFIER?;

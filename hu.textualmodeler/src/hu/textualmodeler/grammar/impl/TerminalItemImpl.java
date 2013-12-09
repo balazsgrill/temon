@@ -5,14 +5,9 @@ package hu.textualmodeler.grammar.impl;
 import hu.textualmodeler.grammar.GrammarPackage;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.grammar.TerminalItem;
-
-import hu.textualmodeler.grammar.scope.Scope;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -24,7 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalItemImpl#getFeatureName <em>Feature Name</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalItemImpl#getTerminal <em>Terminal</em>}</li>
- *   <li>{@link hu.textualmodeler.grammar.impl.TerminalItemImpl#getScope <em>Scope</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,16 +54,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 	 * @ordered
 	 */
 	protected Terminal terminal;
-
-	/**
-	 * The cached value of the '{@link #getScope() <em>Scope</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getScope()
-	 * @generated
-	 * @ordered
-	 */
-	protected Scope scope;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,63 +138,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Scope getScope() {
-		return scope;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetScope(Scope newScope, NotificationChain msgs) {
-		Scope oldScope = scope;
-		scope = newScope;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, GrammarPackage.TERMINAL_ITEM__SCOPE, oldScope, newScope);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setScope(Scope newScope) {
-		if (newScope != scope) {
-			NotificationChain msgs = null;
-			if (scope != null)
-				msgs = ((InternalEObject)scope).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - GrammarPackage.TERMINAL_ITEM__SCOPE, null, msgs);
-			if (newScope != null)
-				msgs = ((InternalEObject)newScope).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - GrammarPackage.TERMINAL_ITEM__SCOPE, null, msgs);
-			msgs = basicSetScope(newScope, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.TERMINAL_ITEM__SCOPE, newScope, newScope));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case GrammarPackage.TERMINAL_ITEM__SCOPE:
-				return basicSetScope(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -219,8 +146,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 			case GrammarPackage.TERMINAL_ITEM__TERMINAL:
 				if (resolve) return getTerminal();
 				return basicGetTerminal();
-			case GrammarPackage.TERMINAL_ITEM__SCOPE:
-				return getScope();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -238,9 +163,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 				return;
 			case GrammarPackage.TERMINAL_ITEM__TERMINAL:
 				setTerminal((Terminal)newValue);
-				return;
-			case GrammarPackage.TERMINAL_ITEM__SCOPE:
-				setScope((Scope)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -260,9 +182,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 			case GrammarPackage.TERMINAL_ITEM__TERMINAL:
 				setTerminal((Terminal)null);
 				return;
-			case GrammarPackage.TERMINAL_ITEM__SCOPE:
-				setScope((Scope)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,8 +198,6 @@ public class TerminalItemImpl extends SyntaxItemImpl implements TerminalItem {
 				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
 			case GrammarPackage.TERMINAL_ITEM__TERMINAL:
 				return terminal != null;
-			case GrammarPackage.TERMINAL_ITEM__SCOPE:
-				return scope != null;
 		}
 		return super.eIsSet(featureID);
 	}

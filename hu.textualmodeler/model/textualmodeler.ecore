@@ -78,8 +78,6 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" lowerBound="1"
           eType="#//grammar/Terminal"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="scope" eType="#//grammar/scope/Scope"
-          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NonTerminalItem" eSuperTypes="#//grammar/SyntaxItem">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -98,33 +96,5 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
-    <eSubpackages name="scope" nsURI="http://textualmodeler.hu/grammar/scope" nsPrefix="scope">
-      <eClassifiers xsi:type="ecore:EClass" name="Scope" abstract="true"/>
-      <eClassifiers xsi:type="ecore:EClass" name="FeatureScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" lowerBound="1"
-            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ContainerScope" eSuperTypes="#//grammar/scope/Scope"/>
-      <eClassifiers xsi:type="ecore:EClass" name="TransitiveScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="subScope" eType="#//grammar/scope/Scope"
-            containment="true"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ChainedScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="subScopes" upperBound="-1"
-            eType="#//grammar/scope/Scope" containment="true"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ConditionalScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="GlobalScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclassURI" lowerBound="1"
-            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="UnionScope" eSuperTypes="#//grammar/scope/Scope">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="subScopes" upperBound="-1"
-            eType="#//grammar/scope/Scope" containment="true"/>
-      </eClassifiers>
-    </eSubpackages>
   </eSubpackages>
 </ecore:EPackage>

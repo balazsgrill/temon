@@ -22,12 +22,4 @@
             genModel="model/textualmodeler.genmodel"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated textualmodeler -->
-      <package
-            uri="http://textualmodeler.hu/grammar/scope"
-            class="hu.textualmodeler.grammar.scope.ScopePackage"
-            genModel="model/textualmodeler.genmodel"/>
-   </extension>
-
 </plugin>

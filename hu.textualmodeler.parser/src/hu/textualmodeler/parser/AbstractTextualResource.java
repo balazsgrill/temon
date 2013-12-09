@@ -8,7 +8,6 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.parser.errors.ParsingError;
-import hu.textualmodeler.parser.impl.ScopedFeatureResolver;
 import hu.textualmodeler.parser.impl.StringInput;
 import hu.textualmodeler.parser.impl.earley.EarleyParser;
 
@@ -48,7 +47,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	
 	protected abstract GrammarModel loadGrammar();
 	
-	protected abstract IGlobalScope createGlobalScope();
+	protected abstract IFeatureResolver createFeatureResolver();
 	
 	private Node ast;
 	
@@ -67,7 +66,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 		
 		this.ast = parser.parse(input, this, 0);
 		
-		IFeatureResolver featureResolver = new ScopedFeatureResolver(createGlobalScope());
+		IFeatureResolver featureResolver = createFeatureResolver();
 		ModelBuilder builder = new ModelBuilder(featureResolver, this);
 		
 		this.getContents().clear();

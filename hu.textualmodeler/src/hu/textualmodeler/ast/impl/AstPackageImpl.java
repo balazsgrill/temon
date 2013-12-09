@@ -14,21 +14,13 @@ import hu.textualmodeler.ast.PushElement;
 import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
-
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.GrammarPackage;
-
 import hu.textualmodeler.grammar.impl.GrammarPackageImpl;
-
-import hu.textualmodeler.grammar.scope.ScopePackage;
-
-import hu.textualmodeler.grammar.scope.impl.ScopePackageImpl;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -163,17 +155,14 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		// Obtain or create and register interdependencies
 		GrammarPackageImpl theGrammarPackage = (GrammarPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) instanceof GrammarPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) : GrammarPackage.eINSTANCE);
-		ScopePackageImpl theScopePackage = (ScopePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ScopePackage.eNS_URI) instanceof ScopePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ScopePackage.eNS_URI) : ScopePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAstPackage.createPackageContents();
 		theGrammarPackage.createPackageContents();
-		theScopePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAstPackage.initializePackageContents();
 		theGrammarPackage.initializePackageContents();
-		theScopePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAstPackage.freeze();

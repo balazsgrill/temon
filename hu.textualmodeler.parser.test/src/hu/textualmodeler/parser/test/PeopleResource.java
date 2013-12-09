@@ -3,17 +3,20 @@
  */
 package hu.textualmodeler.parser.test;
 
-import java.util.Collection;
-import java.util.Collections;
+import hu.textualmodeler.grammar.GrammarModel;
+import hu.textualmodeler.grammar.Terminal;
+import hu.textualmodeler.parser.AbstractTextualResource;
+import hu.textualmodeler.parser.BasicFeatureResolver;
+import hu.textualmodeler.parser.IFeatureResolver;
+import hu.textualmodeler.parser.grammar.GrammarRegistry;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
-import hu.textualmodeler.grammar.GrammarModel;
-import hu.textualmodeler.parser.AbstractTextualResource;
-import hu.textualmodeler.parser.IGlobalScope;
-import hu.textualmodeler.parser.impl.GrammarRegistry;
+import people.Human;
+import people.People;
+import people.PeoplePackage;
 
 /**
  * @author balazs.grill
@@ -36,16 +39,28 @@ public class PeopleResource extends AbstractTextualResource {
 		return GrammarRegistry.getInstance().getGrammar("people");
 	}
 
-	/* (non-Javadoc)
-	 * @see hu.textualmodeler.parser.AbstractTextualResource#createGlobalScope()
-	 */
+	private static Human findByName(People people, String name){
+		for(Human h : people.getPeople()){
+			if (name.equals(h.getName())){
+				return h;
+			}
+		}
+		return null;
+	}
+	
 	@Override
-	protected IGlobalScope createGlobalScope() {
-		return new IGlobalScope() {
-			
+	protected IFeatureResolver createFeatureResolver() {
+		return new BasicFeatureResolver(){
 			@Override
-			public Collection<EObject> getGlobalInstances(EObject context, EClass eclass) {
-				return Collections.emptyList();
+			public Object resolve(EObject context, EStructuralFeature feature,
+					Terminal terminal, String value) {
+				
+				if (PeoplePackage.eINSTANCE.getHuman_Father().equals(feature) || PeoplePackage.eINSTANCE.getHuman_Mother().equals(feature)){
+					People p = (People) context.eContainer();
+					return findByName(p, value);
+				}
+				
+				return super.resolve(context, feature, terminal, value);
 			}
 		};
 	}

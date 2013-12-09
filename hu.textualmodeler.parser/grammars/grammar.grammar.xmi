@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmlns:scope="http://textualmodeler.hu/grammar/scope" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
+<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
   <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_GRAMMAR" regex="grammar"/>
   <terminals xmi:id="_Ve5BULGUEeK1ScU5DNcoWg" name="KEYWORD_IMPORT" regex="import"/>
   <terminals xmi:id="_9bZhMLGVEeK1ScU5DNcoWg" name="KEYWORD_TERMINAL" regex="terminal"/>
@@ -13,11 +13,6 @@
   <terminals xmi:id="_Zjqs4LZLEeKDArD2cbZQHA" name="OPERATOR_MULTI" regex="\+"/>
   <terminals xmi:id="_eFcO8LZLEeKDArD2cbZQHA" name="OPERATOR_OPTIONAL" regex="\?"/>
   <terminals name="OPERATOR_OPT_MULTI" regex="\*"/>
-  <terminals name="OP_SCOPE_START" regex="\["/>
-  <terminals name="OP_SCOPE_END" regex="\]"/>
-  <terminals name="OP_SCOPE_CHAIN" regex="\/"/>
-  <terminals name="OP_SCOPE_UNION" regex="\|"/>
-  <terminals name="OP_SCOPE_CONTAINER" regex="\.\."/>
   <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
     <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
     <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
@@ -40,10 +35,6 @@
     <body xsi:type="grammar:TerminalItem" xmi:id="_kwBCALGUEeK1ScU5DNcoWg" terminal="_Ve5BULGUEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_rvmDQLGUEeK1ScU5DNcoWg" featureName="import">
       <terminal href="basics.grammar.xmi#_eJ7KsLGHEeK-59W38_3F4g"/>
-      <scope xsi:type="scope:ChainedScope">
-        <subScopes xsi:type="scope:GlobalScope" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
-        <subScopes xsi:type="scope:ConditionalScope" featureName="name"/>
-      </scope>
     </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_71r9ELGUEeK1ScU5DNcoWg">
       <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
@@ -83,18 +74,8 @@
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_0bb1MLGYEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_k82nULGYEeK1ScU5DNcoWg" featureName="terminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
-      <scope xsi:type="scope:ChainedScope">
-        <subScopes xsi:type="scope:ContainerScope"/>
-        <subScopes xsi:type="scope:ContainerScope"/>
-        <subScopes xsi:type="scope:TransitiveScope" optional="true">
-          <subScope xsi:type="scope:FeatureScope" featureName="import"/>
-        </subScopes>
-        <subScopes xsi:type="scope:FeatureScope" featureName="terminals"/>
-        <subScopes xsi:type="scope:ConditionalScope" featureName="name"/>
-      </scope>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
-    <body xsi:type="grammar:NonTerminalItem" optional="true" featureName="scope" nonTerminal="Scope"/>
     <body xsi:type="grammar:Pop" xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_xGQCELGYEeK1ScU5DNcoWg" nonTerminal="TerminalItemFeatureName">
@@ -148,88 +129,6 @@
       <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
     <body xsi:type="grammar:Pop" xmi:id="_BwNPFd8ZEeKzJqytnsiUUA"/>
-  </rules>
-  <rules nonTerminal="Scope">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.13"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="" nonTerminal="ScopeContent"/>
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.14"/>
-  </rules>
-  <rules nonTerminal="ScopeContent">
-    <body xsi:type="grammar:NonTerminalItem" nonTerminal="ScopeContent3"/>
-  </rules>
-  <rules nonTerminal="ScopeContent0">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.13"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="" nonTerminal="ScopeContent"/>
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.14"/>
-  </rules>
-  <rules nonTerminal="ScopeContent0">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#FeatureScope"/>
-    <body xsi:type="grammar:TerminalItem" featureName="featureName">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
-    </body>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent0">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#ConditionalScope"/>
-    <body xsi:type="grammar:TerminalItem" terminal="_274_wLGYEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" featureName="featureName">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
-    </body>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent0">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#ContainerScope"/>
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.17"/>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent0">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#GlobalScope"/>
-    <body xsi:type="grammar:TerminalItem" featureName="eClassURI">
-      <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
-    </body>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent1">
-    <body xsi:type="grammar:NonTerminalItem" nonTerminal="ScopeContent0"/>
-  </rules>
-  <rules nonTerminal="ScopeContent1">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#TransitiveScope"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScope" nonTerminal="ScopeContent0"/>
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.12"/>
-    <body xsi:type="grammar:SetValue" featureName="optional" value="true"/>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent1">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#TransitiveScope"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScope" nonTerminal="ScopeContent0"/>
-    <body xsi:type="grammar:TerminalItem" terminal="_Zjqs4LZLEeKDArD2cbZQHA"/>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent2">
-    <body xsi:type="grammar:NonTerminalItem" featureName="" nonTerminal="ScopeContent1"/>
-  </rules>
-  <rules nonTerminal="ScopeContent2">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#ChainedScope"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScopes" nonTerminal="ScopeContent1"/>
-    <body xsi:type="grammar:NonTerminalItem" many="true" nonTerminal="ScopeContent_Chained"/>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent_Chained">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.15"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScopes" nonTerminal="ScopeContent1"/>
-  </rules>
-  <rules nonTerminal="ScopeContent3">
-    <body xsi:type="grammar:NonTerminalItem" nonTerminal="ScopeContent2"/>
-  </rules>
-  <rules nonTerminal="ScopeContent3">
-    <body xsi:type="grammar:Push" eclassURI="http://textualmodeler.hu/grammar/scope#UnionScope"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScopes" nonTerminal="ScopeContent2"/>
-    <body xsi:type="grammar:NonTerminalItem" many="true" nonTerminal="ScopeContent_Union"/>
-    <body xsi:type="grammar:Pop"/>
-  </rules>
-  <rules nonTerminal="ScopeContent_Union">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.16"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="subScopes" nonTerminal="ScopeContent2"/>
   </rules>
   <import href="basics.grammar.xmi#_3yl34LGQEeK1ScU5DNcoWg"/>
 </grammar:GrammarModel>

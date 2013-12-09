@@ -1,7 +1,7 @@
 package hu.textualmodeler.parser.test;
 
 import hu.textualmodeler.grammar.GrammarModel;
-import hu.textualmodeler.parser.impl.GrammarRegistry;
+import hu.textualmodeler.parser.grammar.GrammarRegistry;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;

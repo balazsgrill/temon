@@ -91,7 +91,6 @@ package grammar{
 	class TerminalItem extends SyntaxItem{
 		attr String featureName;
 		ref Terminal[1] terminal;
-		val scope.Scope scope;
 	}
 
 	class NonTerminalItem extends SyntaxItem{
@@ -110,43 +109,6 @@ package grammar{
 	}
 
 	class Pop extends RuleItem{		
-	}
-
-	@namespace(uri="http://textualmodeler.hu/grammar/scope", prefix="scope")
-	package scope{
-		
-		abstract class Scope{
-			
-		}
-		
-		class FeatureScope extends Scope{
-			attr String[1] featureName;
-		}
-		
-		class ContainerScope extends Scope{
-			
-		}
-		
-		class TransitiveScope extends Scope{
-			attr boolean optional;
-			val Scope subScope;
-		}
-		
-		class ChainedScope extends Scope{
-			val Scope[*] subScopes;	
-		}
-		
-		class ConditionalScope extends Scope{
-			attr String featureName;
-		}
-		
-		class GlobalScope extends Scope{
-			attr String[1] eclassURI; 
-		}
-		
-		class UnionScope extends Scope{
-			val Scope[*] subScopes;	
-		}
 	}
 
 }

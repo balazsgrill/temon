@@ -406,22 +406,13 @@ public interface GrammarPackage extends EPackage {
 	int TERMINAL_ITEM__TERMINAL = SYNTAX_ITEM_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Scope</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERMINAL_ITEM__SCOPE = SYNTAX_ITEM_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Terminal Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_ITEM_FEATURE_COUNT = SYNTAX_ITEM_FEATURE_COUNT + 3;
+	int TERMINAL_ITEM_FEATURE_COUNT = SYNTAX_ITEM_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Terminal Item</em>' class.
@@ -875,17 +866,6 @@ public interface GrammarPackage extends EPackage {
 	EReference getTerminalItem_Terminal();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link hu.textualmodeler.grammar.TerminalItem#getScope <em>Scope</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Scope</em>'.
-	 * @see hu.textualmodeler.grammar.TerminalItem#getScope()
-	 * @see #getTerminalItem()
-	 * @generated
-	 */
-	EReference getTerminalItem_Scope();
-
-	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.NonTerminalItem <em>Non Terminal Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1219,14 +1199,6 @@ public interface GrammarPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TERMINAL_ITEM__TERMINAL = eINSTANCE.getTerminalItem_Terminal();
-
-		/**
-		 * The meta object literal for the '<em><b>Scope</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TERMINAL_ITEM__SCOPE = eINSTANCE.getTerminalItem_Scope();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.grammar.impl.NonTerminalItemImpl <em>Non Terminal Item</em>}' class.

@@ -13,8 +13,6 @@ import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.Terminal;
-import hu.textualmodeler.grammar.TerminalItem;
-import hu.textualmodeler.grammar.scope.Scope;
 import hu.textualmodeler.parser.errors.ReferencedElementNotFoundException;
 
 import java.util.LinkedList;
@@ -40,16 +38,14 @@ public class ModelBuilder {
 		public final EStructuralFeature feature;
 		public final TerminalNode terminal;
 		public final String value;
-		public final Scope scope;
 		
 		public FeatureValue(EObject context, EStructuralFeature feature,
-				TerminalNode terminal, String value, Scope scope) {
+				TerminalNode terminal, String value) {
 			super();
 			this.context = context;
 			this.feature = feature;
 			this.terminal = terminal;
 			this.value = value;
-			this.scope = scope;
 		}
 		
 		public void resolve() throws ReferencedElementNotFoundException{
@@ -57,7 +53,7 @@ public class ModelBuilder {
 			if (terminal != null && terminal.getTerminal() != null){
 				term = terminal.getTerminal().getTerminal();
 			}
-			Object o = featureResolver.resolve(context, feature, term, value, scope);
+			Object o = featureResolver.resolve(context, feature, term, value);
 			if (o != null){
 				eSetOrAdd(context, feature, o);
 			}else{
@@ -88,7 +84,7 @@ public class ModelBuilder {
 				}else if (node instanceof FeatureSetValue){
 					FeatureValue fv = new FeatureValue(modelStack.peek(), 
 							getFeature(((FeatureSetValue) node).getFeatureName()), null, 
-							((FeatureSetValue) node).getValue(), null);
+							((FeatureSetValue) node).getValue());
 					if (fv.unconditional()) {
 						fv.resolve();
 					}else{
@@ -119,10 +115,9 @@ public class ModelBuilder {
 					}
 					
 				}else if (node instanceof FeatureSetTerminalNode){
-					TerminalItem termitem = ((FeatureSetTerminalNode) node).getTerminal();
 					if (!modelStack.isEmpty()){
 						FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
-								((FeatureSetTerminalNode) node), ((FeatureSetTerminalNode) node).getContent(), termitem.getScope());
+								((FeatureSetTerminalNode) node), ((FeatureSetTerminalNode) node).getContent());
 						if (fv.unconditional()){
 							fv.resolve();
 						}else{
