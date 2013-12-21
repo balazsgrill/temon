@@ -17,6 +17,8 @@ import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.GrammarPackage;
 import hu.textualmodeler.grammar.impl.GrammarPackageImpl;
+import hu.textualmodeler.tokens.TokensPackage;
+import hu.textualmodeler.tokens.impl.TokensPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -155,14 +157,17 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		// Obtain or create and register interdependencies
 		GrammarPackageImpl theGrammarPackage = (GrammarPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) instanceof GrammarPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) : GrammarPackage.eINSTANCE);
+		TokensPackageImpl theTokensPackage = (TokensPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) instanceof TokensPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) : TokensPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAstPackage.createPackageContents();
 		theGrammarPackage.createPackageContents();
+		theTokensPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAstPackage.initializePackageContents();
 		theGrammarPackage.initializePackageContents();
+		theTokensPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAstPackage.freeze();

@@ -1,13 +1,21 @@
 /**
  */
-package hu.textualmodeler.ast.provider;
+package hu.textualmodeler.tokens.provider;
 
 
-import hu.textualmodeler.ast.AstPackage;
+import hu.textualmodeler.ast.provider.TextualmodelerEditPlugin;
+
+import hu.textualmodeler.tokens.TokenValue;
+import hu.textualmodeler.tokens.TokensPackage;
+
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -15,15 +23,18 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.ast.WhitespaceNode} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.tokens.TokenValue} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class WhitespaceNodeItemProvider
-	extends VisibleNodeItemProvider
+public class TokenValueItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -36,7 +47,7 @@ public class WhitespaceNodeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public WhitespaceNodeItemProvider(AdapterFactory adapterFactory) {
+	public TokenValueItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -51,9 +62,32 @@ public class WhitespaceNodeItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addValuePropertyDescriptor(object);
 			addTerminalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_TokenValue_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TokenValue_value_feature", "_UI_TokenValue_type"),
+				 TokensPackage.Literals.TOKEN_VALUE__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -67,9 +101,9 @@ public class WhitespaceNodeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_WhitespaceNode_terminal_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_WhitespaceNode_terminal_feature", "_UI_WhitespaceNode_type"),
-				 AstPackage.Literals.WHITESPACE_NODE__TERMINAL,
+				 getString("_UI_TokenValue_terminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TokenValue_terminal_feature", "_UI_TokenValue_type"),
+				 TokensPackage.Literals.TOKEN_VALUE__TERMINAL,
 				 true,
 				 false,
 				 true,
@@ -79,24 +113,28 @@ public class WhitespaceNodeItemProvider
 	}
 
 	/**
-	 * This returns WhitespaceNode.gif.
+	 * This returns TokenValue.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/WhitespaceNode"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TokenValue"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_WhitespaceNode_type");
+		String label = ((TokenValue)object).getValue();
+		return label == null || label.length() == 0 ?
+			getString("_UI_TokenValue_type") :
+			getString("_UI_TokenValue_type") + " " + label;
 	}
 
 	/**
@@ -109,6 +147,12 @@ public class WhitespaceNodeItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(TokenValue.class)) {
+			case TokensPackage.TOKEN_VALUE__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 
@@ -122,6 +166,17 @@ public class WhitespaceNodeItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return TextualmodelerEditPlugin.INSTANCE;
 	}
 
 }

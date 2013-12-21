@@ -74,7 +74,6 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/TerminalItem/featureName"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/TerminalItem/terminal"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/TerminalItem/scope"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/NonTerminalItem">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/NonTerminalItem/featureName"/>
@@ -89,30 +88,18 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Push/featureName"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Pop"/>
-      <nestedGenPackages prefix="Scope" basePackage="hu.textualmodeler.grammar" disposableProviderFactory="true"
-          ecorePackage="textualmodeler.ecore#//grammar/scope">
-        <genClasses image="false" ecoreClass="textualmodeler.ecore#//grammar/scope/Scope"/>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/FeatureScope">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/FeatureScope/featureName"/>
-        </genClasses>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/ContainerScope"/>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/TransitiveScope">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/TransitiveScope/optional"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/scope/TransitiveScope/subScope"/>
-        </genClasses>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/ChainedScope">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/scope/ChainedScope/subScopes"/>
-        </genClasses>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/ConditionalScope">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/ConditionalScope/featureName"/>
-        </genClasses>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/GlobalScope">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/scope/GlobalScope/eclassURI"/>
-        </genClasses>
-        <genClasses ecoreClass="textualmodeler.ecore#//grammar/scope/UnionScope">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/scope/UnionScope/subScopes"/>
-        </genClasses>
-      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Tokens" basePackage="hu.textualmodeler" disposableProviderFactory="true"
+        ecorePackage="textualmodeler.ecore#//tokens">
+      <genClasses ecoreClass="textualmodeler.ecore#//tokens/TokenValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//tokens/TokenValue/value"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenValue/terminal"/>
+      </genClasses>
+      <genClasses ecoreClass="textualmodeler.ecore#//tokens/TokenList">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenList/head"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenList/tail"/>
+      </genClasses>
     </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

@@ -97,4 +97,16 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
   </eSubpackages>
+  <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokens" nsPrefix="tokens">
+    <eClassifiers xsi:type="ecore:EClass" name="TokenValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TokenList">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="head" eType="#//tokens/TokenValue"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tail" eType="#//tokens/TokenList"
+          containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

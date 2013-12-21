@@ -20,4 +20,6 @@ public interface IGrammar {
 	
 	public Collection<String> getUsedEClassURIs();
 	
+	public Collection<Rule> rules();
+	
 }

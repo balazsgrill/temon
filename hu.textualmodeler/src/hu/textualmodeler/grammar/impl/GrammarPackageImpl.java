@@ -17,6 +17,8 @@ import hu.textualmodeler.grammar.SetValue;
 import hu.textualmodeler.grammar.SyntaxItem;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.grammar.TerminalItem;
+import hu.textualmodeler.tokens.TokensPackage;
+import hu.textualmodeler.tokens.impl.TokensPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -155,14 +157,17 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		// Obtain or create and register interdependencies
 		AstPackageImpl theAstPackage = (AstPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AstPackage.eNS_URI) instanceof AstPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AstPackage.eNS_URI) : AstPackage.eINSTANCE);
+		TokensPackageImpl theTokensPackage = (TokensPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) instanceof TokensPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) : TokensPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theGrammarPackage.createPackageContents();
 		theAstPackage.createPackageContents();
+		theTokensPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theGrammarPackage.initializePackageContents();
 		theAstPackage.initializePackageContents();
+		theTokensPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGrammarPackage.freeze();

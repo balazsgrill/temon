@@ -91,4 +91,13 @@ public class Grammar implements IGrammar {
 		return result;
 	}
 
+	@Override
+	public Collection<Rule> rules() {
+		LinkedList<Rule> result = new LinkedList<>();
+		for(List<Rule> rule : rules.values()){
+			result.addAll(rule);
+		}
+		return result;
+	}
+	
 }
