@@ -149,6 +149,7 @@ public class ModelBuilder {
 		}
 		
 		public EStructuralFeature getFeature(String name){
+			if (modelStack.isEmpty()) return null;
 			EObject current = modelStack.peek();
 			return findFeature(current.eClass(), name);
 		}
