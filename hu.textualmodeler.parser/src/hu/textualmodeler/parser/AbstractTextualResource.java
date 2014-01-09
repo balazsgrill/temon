@@ -75,6 +75,8 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 			if (element != null){
 				this.getContents().add(element);
 			}
+		}else{
+			logError("Failed to create AST", null);
 		}
 		
 	}

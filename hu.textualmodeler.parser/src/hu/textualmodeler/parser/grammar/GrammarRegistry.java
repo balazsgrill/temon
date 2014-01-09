@@ -7,7 +7,9 @@ import hu.textualmodeler.grammar.GrammarModel;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.Platform;
@@ -25,6 +27,8 @@ public class GrammarRegistry{
 
 	private ResourceSet resourceSet = null; 
 	
+	private final Map<String, URI> grammarURIs = new HashMap<String, URI>();
+	
 	private static final String EPID = "hu.textualmodeler.grammars";
 	
 	private static GrammarRegistry instance;
@@ -41,17 +45,13 @@ public class GrammarRegistry{
 			resourceSet = new ResourceSetImpl();
 
 			for(IConfigurationElement ce : Platform.getExtensionRegistry().getConfigurationElementsFor(EPID)){
+				String id = ce.getAttribute("id");
+				
 				String loc = ce.getAttribute("model");
-
 				String contributor = ce.getContributor().getName();
-
 				URI uri = URI.createPlatformPluginURI(contributor+"/"+loc, true);
 
-				try{
-					resourceSet.getResource(uri, true);
-				}catch(Exception e){
-					e.printStackTrace();
-				}
+				grammarURIs.put(id, uri);
 			}
 		}
 	}
@@ -77,15 +77,31 @@ public class GrammarRegistry{
 	
 	public GrammarModel getGrammar(String ID){
 		lazyinit();
-		for(Resource r : resourceSet.getResources()){
-			for(EObject e : r.getContents()){
-				if (e instanceof GrammarModel){
-					if (ID.equals(((GrammarModel) e).getName())){
-						return (GrammarModel)e;
+		URI uri = grammarURIs.get(ID);
+		if (uri != null){
+			try{
+				Resource r = resourceSet.getResource(uri, true);
+				for(EObject e : r.getContents()){
+					if (e instanceof GrammarModel){
+						if (ID.equals(((GrammarModel) e).getName())){
+							return (GrammarModel)e;
+						}
 					}
 				}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
 		}
+		
+//		for(Resource r : resourceSet.getResources()){
+//			for(EObject e : r.getContents()){
+//				if (e instanceof GrammarModel){
+//					if (ID.equals(((GrammarModel) e).getName())){
+//						return (GrammarModel)e;
+//					}
+//				}
+//			}
+//		}
 		return null;
 	}
 	

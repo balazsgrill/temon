@@ -91,7 +91,11 @@ public class ModelBuilder {
 						featureValues.add(fv);
 					}
 				}else if (node instanceof PopElement){
-					modelStack.pop();
+					if (modelStack.isEmpty()){
+						pcontext.logError("Could not finish rule", null);
+					}else{
+						modelStack.pop();
+					}
 				}else if (node instanceof PushElement){
 					String eclassURI = ((PushElement) node).getEclassURI();
 					EClass eclass = findEClass(eclassURI);
