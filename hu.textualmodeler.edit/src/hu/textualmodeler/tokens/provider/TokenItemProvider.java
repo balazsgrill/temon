@@ -5,7 +5,7 @@ package hu.textualmodeler.tokens.provider;
 
 import hu.textualmodeler.ast.provider.TextualmodelerEditPlugin;
 
-import hu.textualmodeler.tokens.TokenList;
+import hu.textualmodeler.tokens.Token;
 import hu.textualmodeler.tokens.TokensFactory;
 import hu.textualmodeler.tokens.TokensPackage;
 
@@ -19,22 +19,24 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.tokens.TokenList} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.tokens.Token} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TokenListItemProvider
+public class TokenItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +50,7 @@ public class TokenListItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TokenListItemProvider(AdapterFactory adapterFactory) {
+	public TokenItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -63,8 +65,54 @@ public class TokenListItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addValuePropertyDescriptor(object);
+			addTerminalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Token_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_value_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Terminal feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTerminalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Token_terminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_terminal_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__TERMINAL,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -79,8 +127,7 @@ public class TokenListItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(TokensPackage.Literals.TOKEN_LIST__HEAD);
-			childrenFeatures.add(TokensPackage.Literals.TOKEN_LIST__TAIL);
+			childrenFeatures.add(TokensPackage.Literals.TOKEN__TAIL);
 		}
 		return childrenFeatures;
 	}
@@ -99,14 +146,14 @@ public class TokenListItemProvider
 	}
 
 	/**
-	 * This returns TokenList.gif.
+	 * This returns Token.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TokenList"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Token"));
 	}
 
 	/**
@@ -117,7 +164,10 @@ public class TokenListItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_TokenList_type");
+		String label = ((Token)object).getValue();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Token_type") :
+			getString("_UI_Token_type") + " " + label;
 	}
 
 	/**
@@ -131,9 +181,11 @@ public class TokenListItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(TokenList.class)) {
-			case TokensPackage.TOKEN_LIST__HEAD:
-			case TokensPackage.TOKEN_LIST__TAIL:
+		switch (notification.getFeatureID(Token.class)) {
+			case TokensPackage.TOKEN__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case TokensPackage.TOKEN__TAIL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -153,13 +205,8 @@ public class TokenListItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(TokensPackage.Literals.TOKEN_LIST__HEAD,
-				 TokensFactory.eINSTANCE.createTokenValue()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(TokensPackage.Literals.TOKEN_LIST__TAIL,
-				 TokensFactory.eINSTANCE.createTokenList()));
+				(TokensPackage.Literals.TOKEN__TAIL,
+				 TokensFactory.eINSTANCE.createToken()));
 	}
 
 	/**

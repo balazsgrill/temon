@@ -66,15 +66,15 @@ public class TokensSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case TokensPackage.TOKEN_VALUE: {
-				TokenValue tokenValue = (TokenValue)theEObject;
-				T result = caseTokenValue(tokenValue);
+			case TokensPackage.TOKEN: {
+				Token token = (Token)theEObject;
+				T result = caseToken(token);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case TokensPackage.TOKEN_LIST: {
-				TokenList tokenList = (TokenList)theEObject;
-				T result = caseTokenList(tokenList);
+			case TokensPackage.TERMINAL_LIST: {
+				TerminalList terminalList = (TerminalList)theEObject;
+				T result = caseTerminalList(terminalList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -83,32 +83,32 @@ public class TokensSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Token Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Token</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Token Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Token</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTokenValue(TokenValue object) {
+	public T caseToken(Token object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Token List</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Terminal List</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Token List</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Terminal List</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseTokenList(TokenList object) {
+	public T caseTerminalList(TerminalList object) {
 		return null;
 	}
 

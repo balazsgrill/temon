@@ -68,12 +68,12 @@ public class TokensAdapterFactory extends AdapterFactoryImpl {
 	protected TokensSwitch<Adapter> modelSwitch =
 		new TokensSwitch<Adapter>() {
 			@Override
-			public Adapter caseTokenValue(TokenValue object) {
-				return createTokenValueAdapter();
+			public Adapter caseToken(Token object) {
+				return createTokenAdapter();
 			}
 			@Override
-			public Adapter caseTokenList(TokenList object) {
-				return createTokenListAdapter();
+			public Adapter caseTerminalList(TerminalList object) {
+				return createTerminalListAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -96,30 +96,30 @@ public class TokensAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.tokens.TokenValue <em>Token Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.tokens.Token <em>Token</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see hu.textualmodeler.tokens.TokenValue
+	 * @see hu.textualmodeler.tokens.Token
 	 * @generated
 	 */
-	public Adapter createTokenValueAdapter() {
+	public Adapter createTokenAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.tokens.TokenList <em>Token List</em>}'.
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.tokens.TerminalList <em>Terminal List</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see hu.textualmodeler.tokens.TokenList
+	 * @see hu.textualmodeler.tokens.TerminalList
 	 * @generated
 	 */
-	public Adapter createTokenListAdapter() {
+	public Adapter createTerminalListAdapter() {
 		return null;
 	}
 

@@ -56,6 +56,7 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/regex"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/hide"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/Terminal/replace"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/priority"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Replace">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Replace/search"/>
@@ -91,14 +92,15 @@
     </nestedGenPackages>
     <nestedGenPackages prefix="Tokens" basePackage="hu.textualmodeler" disposableProviderFactory="true"
         ecorePackage="textualmodeler.ecore#//tokens">
-      <genClasses ecoreClass="textualmodeler.ecore#//tokens/TokenValue">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//tokens/TokenValue/value"/>
+      <genClasses ecoreClass="textualmodeler.ecore#//tokens/Token">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/Token/tail"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//tokens/Token/value"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenValue/terminal"/>
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/Token/terminal"/>
       </genClasses>
-      <genClasses ecoreClass="textualmodeler.ecore#//tokens/TokenList">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenList/head"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TokenList/tail"/>
+      <genClasses ecoreClass="textualmodeler.ecore#//tokens/TerminalList">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//tokens/TerminalList/terminals"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

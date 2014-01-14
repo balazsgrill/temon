@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="ASCII"?>
+<eMFPatternLanguage:PatternModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:eMFPatternLanguage="http://www.eclipse.org/incquery/patternlanguage/emf/EMFPatternLanguage" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:patternLanguage="http://www.eclipse.org/incquery/patternlanguage/PatternLanguage">
+  <patterns name="hu.textualmodeler.query.terminal" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="t">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="s"/>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/terminal"/>
+            </type>
+          </tail>
+          <src var="t"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="terminal"/>
+          </dst>
+        </head>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/grammar#//Terminal"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EAttribute" href="http://textualmodeler.hu/grammar#//Terminal/name"/>
+            </type>
+          </tail>
+          <src var="terminal"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="s"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.notEOF" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <modifiers private="true"/>
+    <parameters name="t">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/terminal"/>
+            </type>
+          </tail>
+          <src var="t"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="_terminal"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.EOF" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <modifiers private="true"/>
+    <parameters name="t">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint" negative="true">
+        <call patternRef="//@patterns.1">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="t"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.START" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="eof">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.10">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="eof"/>
+          </parameters>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.2">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="eof"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Content" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="QUALIFIEDID"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="first"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </dst>
+        </head>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.5">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.6">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Content_1" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:CompareConstraint">
+        <leftOperand xsi:type="patternLanguage:VariableValue">
+          <value var="first"/>
+        </leftOperand>
+        <rightOperand xsi:type="patternLanguage:VariableValue">
+          <value var="next"/>
+        </rightOperand>
+      </constraints>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="QUALIFIEDID"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="first"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Content_2" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:CompareConstraint">
+        <leftOperand xsi:type="patternLanguage:VariableValue">
+          <value var="first"/>
+        </leftOperand>
+        <rightOperand xsi:type="patternLanguage:VariableValue">
+          <value var="next"/>
+        </rightOperand>
+      </constraints>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="QUALIFIEDID"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="first"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Human_1" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="MAN"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="first"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </dst>
+        </head>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.4">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="OPERATOR_SEMICOLON"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="o2"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Human_2" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="WOMAN"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="first"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </dst>
+        </head>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.4">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.0">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o2"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:StringValue" value="OPERATOR_SEMICOLON"/>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PathExpressionConstraint">
+        <head>
+          <type xsi:type="eMFPatternLanguage:ClassType">
+            <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+          </type>
+          <tail>
+            <type xsi:type="eMFPatternLanguage:ReferenceType">
+              <refname xsi:type="ecore:EReference" href="http://textualmodeler.hu/tokens#//Token/tail"/>
+            </type>
+          </tail>
+          <src var="o2"/>
+          <dst xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </dst>
+        </head>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.Human" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.7">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.8">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.People" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.11">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <patterns name="hu.textualmodeler.query.People_1" fileName="platform:/resource/hu.textualmodeler.query/src/hu/textualmodeler/query/TestQuery.eiq">
+    <parameters name="first">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <parameters name="next">
+      <type xsi:type="eMFPatternLanguage:ClassType">
+        <classname xsi:type="ecore:EClass" href="http://textualmodeler.hu/tokens#//Token"/>
+      </type>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="patternLanguage:CompareConstraint">
+        <leftOperand xsi:type="patternLanguage:VariableValue">
+          <value var="first"/>
+        </leftOperand>
+        <rightOperand xsi:type="patternLanguage:VariableValue">
+          <value var="next"/>
+        </rightOperand>
+      </constraints>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.9">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="first"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </parameters>
+        </call>
+      </constraints>
+      <constraints xsi:type="patternLanguage:PatternCompositionConstraint">
+        <call patternRef="//@patterns.11">
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="o1"/>
+          </parameters>
+          <parameters xsi:type="patternLanguage:VariableValue">
+            <value var="next"/>
+          </parameters>
+        </call>
+      </constraints>
+    </bodies>
+  </patterns>
+  <importPackages>
+    <packageImport>
+      <ePackage href="http://textualmodeler.hu/tokens#/"/>
+    </packageImport>
+    <packageImport>
+      <ePackage href="http://textualmodeler.hu/grammar#/"/>
+    </packageImport>
+  </importPackages>
+</eMFPatternLanguage:PatternModel>

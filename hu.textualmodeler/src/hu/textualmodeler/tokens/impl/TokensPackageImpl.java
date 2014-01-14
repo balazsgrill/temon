@@ -3,23 +3,17 @@
 package hu.textualmodeler.tokens.impl;
 
 import hu.textualmodeler.ast.AstPackage;
-
 import hu.textualmodeler.ast.impl.AstPackageImpl;
-
 import hu.textualmodeler.grammar.GrammarPackage;
-
 import hu.textualmodeler.grammar.impl.GrammarPackageImpl;
-
-import hu.textualmodeler.tokens.TokenList;
-import hu.textualmodeler.tokens.TokenValue;
+import hu.textualmodeler.tokens.TerminalList;
+import hu.textualmodeler.tokens.Token;
 import hu.textualmodeler.tokens.TokensFactory;
 import hu.textualmodeler.tokens.TokensPackage;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -34,15 +28,13 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tokenValueEClass = null;
-
+	private EClass tokenEClass = null;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass tokenListEClass = null;
-
+	private EClass terminalListEClass = null;
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
@@ -117,8 +109,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTokenValue() {
-		return tokenValueEClass;
+	public EClass getToken() {
+		return tokenEClass;
 	}
 
 	/**
@@ -126,8 +118,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTokenValue_Value() {
-		return (EAttribute)tokenValueEClass.getEStructuralFeatures().get(0);
+	public EReference getToken_Tail() {
+		return (EReference)tokenEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -135,8 +127,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTokenValue_Terminal() {
-		return (EReference)tokenValueEClass.getEStructuralFeatures().get(1);
+	public EAttribute getToken_Value() {
+		return (EAttribute)tokenEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -144,8 +136,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTokenList() {
-		return tokenListEClass;
+	public EReference getToken_Terminal() {
+		return (EReference)tokenEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -153,8 +145,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTokenList_Head() {
-		return (EReference)tokenListEClass.getEStructuralFeatures().get(0);
+	public EClass getTerminalList() {
+		return terminalListEClass;
 	}
 
 	/**
@@ -162,8 +154,8 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTokenList_Tail() {
-		return (EReference)tokenListEClass.getEStructuralFeatures().get(1);
+	public EReference getTerminalList_Terminals() {
+		return (EReference)terminalListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -194,13 +186,13 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 		isCreated = true;
 
 		// Create classes and their features
-		tokenValueEClass = createEClass(TOKEN_VALUE);
-		createEAttribute(tokenValueEClass, TOKEN_VALUE__VALUE);
-		createEReference(tokenValueEClass, TOKEN_VALUE__TERMINAL);
+		tokenEClass = createEClass(TOKEN);
+		createEReference(tokenEClass, TOKEN__TAIL);
+		createEAttribute(tokenEClass, TOKEN__VALUE);
+		createEReference(tokenEClass, TOKEN__TERMINAL);
 
-		tokenListEClass = createEClass(TOKEN_LIST);
-		createEReference(tokenListEClass, TOKEN_LIST__HEAD);
-		createEReference(tokenListEClass, TOKEN_LIST__TAIL);
+		terminalListEClass = createEClass(TERMINAL_LIST);
+		createEReference(terminalListEClass, TERMINAL_LIST__TERMINALS);
 	}
 
 	/**
@@ -236,13 +228,13 @@ public class TokensPackageImpl extends EPackageImpl implements TokensPackage {
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(tokenValueEClass, TokenValue.class, "TokenValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTokenValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, TokenValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTokenValue_Terminal(), theGrammarPackage.getTerminal(), null, "terminal", null, 0, 1, TokenValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(tokenEClass, Token.class, "Token", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getToken_Tail(), this.getToken(), null, "tail", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getToken_Value(), ecorePackage.getEString(), "value", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getToken_Terminal(), theGrammarPackage.getTerminal(), null, "terminal", null, 0, 1, Token.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(tokenListEClass, TokenList.class, "TokenList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTokenList_Head(), this.getTokenValue(), null, "head", null, 0, 1, TokenList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTokenList_Tail(), this.getTokenList(), null, "tail", null, 0, 1, TokenList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(terminalListEClass, TerminalList.class, "TerminalList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTerminalList_Terminals(), theGrammarPackage.getTerminal(), null, "terminals", null, 0, -1, TerminalList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

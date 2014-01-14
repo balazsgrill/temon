@@ -22,22 +22,22 @@ public interface TokensFactory extends EFactory {
 	TokensFactory eINSTANCE = hu.textualmodeler.tokens.impl.TokensFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Token Value</em>'.
+	 * Returns a new object of class '<em>Token</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Token Value</em>'.
+	 * @return a new object of class '<em>Token</em>'.
 	 * @generated
 	 */
-	TokenValue createTokenValue();
+	Token createToken();
 
 	/**
-	 * Returns a new object of class '<em>Token List</em>'.
+	 * Returns a new object of class '<em>Terminal List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Token List</em>'.
+	 * @return a new object of class '<em>Terminal List</em>'.
 	 * @generated
 	 */
-	TokenList createTokenList();
+	TerminalList createTerminalList();
 
 	/**
 	 * Returns the package supported by this factory.

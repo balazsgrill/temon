@@ -57,69 +57,14 @@ public interface TokensPackage extends EPackage {
 	TokensPackage eINSTANCE = hu.textualmodeler.tokens.impl.TokensPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link hu.textualmodeler.tokens.impl.TokenValueImpl <em>Token Value</em>}' class.
+	 * The meta object id for the '{@link hu.textualmodeler.tokens.impl.TokenImpl <em>Token</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see hu.textualmodeler.tokens.impl.TokenValueImpl
-	 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTokenValue()
+	 * @see hu.textualmodeler.tokens.impl.TokenImpl
+	 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getToken()
 	 * @generated
 	 */
-	int TOKEN_VALUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOKEN_VALUE__VALUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Terminal</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOKEN_VALUE__TERMINAL = 1;
-
-	/**
-	 * The number of structural features of the '<em>Token Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOKEN_VALUE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Token Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOKEN_VALUE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link hu.textualmodeler.tokens.impl.TokenListImpl <em>Token List</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see hu.textualmodeler.tokens.impl.TokenListImpl
-	 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTokenList()
-	 * @generated
-	 */
-	int TOKEN_LIST = 1;
-
-	/**
-	 * The feature id for the '<em><b>Head</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOKEN_LIST__HEAD = 0;
+	int TOKEN = 0;
 
 	/**
 	 * The feature id for the '<em><b>Tail</b></em>' containment reference.
@@ -128,90 +73,146 @@ public interface TokensPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN_LIST__TAIL = 1;
+	int TOKEN__TAIL = 0;
 
 	/**
-	 * The number of structural features of the '<em>Token List</em>' class.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN_LIST_FEATURE_COUNT = 2;
+	int TOKEN__VALUE = 1;
 
 	/**
-	 * The number of operations of the '<em>Token List</em>' class.
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TOKEN_LIST_OPERATION_COUNT = 0;
-
+	int TOKEN__TERMINAL = 2;
 
 	/**
-	 * Returns the meta object for class '{@link hu.textualmodeler.tokens.TokenValue <em>Token Value</em>}'.
+	 * The number of structural features of the '<em>Token</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Token Value</em>'.
-	 * @see hu.textualmodeler.tokens.TokenValue
 	 * @generated
+	 * @ordered
 	 */
-	EClass getTokenValue();
+	int TOKEN_FEATURE_COUNT = 3;
 
 	/**
-	 * Returns the meta object for the attribute '{@link hu.textualmodeler.tokens.TokenValue#getValue <em>Value</em>}'.
+	 * The number of operations of the '<em>Token</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see hu.textualmodeler.tokens.TokenValue#getValue()
-	 * @see #getTokenValue()
 	 * @generated
+	 * @ordered
 	 */
-	EAttribute getTokenValue_Value();
+	int TOKEN_OPERATION_COUNT = 0;
+
 
 	/**
-	 * Returns the meta object for the reference '{@link hu.textualmodeler.tokens.TokenValue#getTerminal <em>Terminal</em>}'.
+	 * The meta object id for the '{@link hu.textualmodeler.tokens.impl.TerminalListImpl <em>Terminal List</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Terminal</em>'.
-	 * @see hu.textualmodeler.tokens.TokenValue#getTerminal()
-	 * @see #getTokenValue()
+	 * @see hu.textualmodeler.tokens.impl.TerminalListImpl
+	 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTerminalList()
 	 * @generated
 	 */
-	EReference getTokenValue_Terminal();
+	int TERMINAL_LIST = 1;
 
 	/**
-	 * Returns the meta object for class '{@link hu.textualmodeler.tokens.TokenList <em>Token List</em>}'.
+	 * The feature id for the '<em><b>Terminals</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Token List</em>'.
-	 * @see hu.textualmodeler.tokens.TokenList
 	 * @generated
+	 * @ordered
 	 */
-	EClass getTokenList();
+	int TERMINAL_LIST__TERMINALS = 0;
 
 	/**
-	 * Returns the meta object for the containment reference '{@link hu.textualmodeler.tokens.TokenList#getHead <em>Head</em>}'.
+	 * The number of structural features of the '<em>Terminal List</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Head</em>'.
-	 * @see hu.textualmodeler.tokens.TokenList#getHead()
-	 * @see #getTokenList()
 	 * @generated
+	 * @ordered
 	 */
-	EReference getTokenList_Head();
+	int TERMINAL_LIST_FEATURE_COUNT = 1;
 
 	/**
-	 * Returns the meta object for the containment reference '{@link hu.textualmodeler.tokens.TokenList#getTail <em>Tail</em>}'.
+	 * The number of operations of the '<em>Terminal List</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_LIST_OPERATION_COUNT = 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.tokens.Token <em>Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Token</em>'.
+	 * @see hu.textualmodeler.tokens.Token
+	 * @generated
+	 */
+	EClass getToken();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link hu.textualmodeler.tokens.Token#getTail <em>Tail</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Tail</em>'.
-	 * @see hu.textualmodeler.tokens.TokenList#getTail()
-	 * @see #getTokenList()
+	 * @see hu.textualmodeler.tokens.Token#getTail()
+	 * @see #getToken()
 	 * @generated
 	 */
-	EReference getTokenList_Tail();
+	EReference getToken_Tail();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.textualmodeler.tokens.Token#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see hu.textualmodeler.tokens.Token#getValue()
+	 * @see #getToken()
+	 * @generated
+	 */
+	EAttribute getToken_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.textualmodeler.tokens.Token#getTerminal <em>Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Terminal</em>'.
+	 * @see hu.textualmodeler.tokens.Token#getTerminal()
+	 * @see #getToken()
+	 * @generated
+	 */
+	EReference getToken_Terminal();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.tokens.TerminalList <em>Terminal List</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Terminal List</em>'.
+	 * @see hu.textualmodeler.tokens.TerminalList
+	 * @generated
+	 */
+	EClass getTerminalList();
+
+	/**
+	 * Returns the meta object for the reference list '{@link hu.textualmodeler.tokens.TerminalList#getTerminals <em>Terminals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Terminals</em>'.
+	 * @see hu.textualmodeler.tokens.TerminalList#getTerminals()
+	 * @see #getTerminalList()
+	 * @generated
+	 */
+	EReference getTerminalList_Terminals();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -237,48 +238,14 @@ public interface TokensPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link hu.textualmodeler.tokens.impl.TokenValueImpl <em>Token Value</em>}' class.
+		 * The meta object literal for the '{@link hu.textualmodeler.tokens.impl.TokenImpl <em>Token</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see hu.textualmodeler.tokens.impl.TokenValueImpl
-		 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTokenValue()
+		 * @see hu.textualmodeler.tokens.impl.TokenImpl
+		 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getToken()
 		 * @generated
 		 */
-		EClass TOKEN_VALUE = eINSTANCE.getTokenValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TOKEN_VALUE__VALUE = eINSTANCE.getTokenValue_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Terminal</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TOKEN_VALUE__TERMINAL = eINSTANCE.getTokenValue_Terminal();
-
-		/**
-		 * The meta object literal for the '{@link hu.textualmodeler.tokens.impl.TokenListImpl <em>Token List</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see hu.textualmodeler.tokens.impl.TokenListImpl
-		 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTokenList()
-		 * @generated
-		 */
-		EClass TOKEN_LIST = eINSTANCE.getTokenList();
-
-		/**
-		 * The meta object literal for the '<em><b>Head</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TOKEN_LIST__HEAD = eINSTANCE.getTokenList_Head();
+		EClass TOKEN = eINSTANCE.getToken();
 
 		/**
 		 * The meta object literal for the '<em><b>Tail</b></em>' containment reference feature.
@@ -286,7 +253,41 @@ public interface TokensPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TOKEN_LIST__TAIL = eINSTANCE.getTokenList_Tail();
+		EReference TOKEN__TAIL = eINSTANCE.getToken_Tail();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TOKEN__VALUE = eINSTANCE.getToken_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOKEN__TERMINAL = eINSTANCE.getToken_Terminal();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.tokens.impl.TerminalListImpl <em>Terminal List</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.tokens.impl.TerminalListImpl
+		 * @see hu.textualmodeler.tokens.impl.TokensPackageImpl#getTerminalList()
+		 * @generated
+		 */
+		EClass TERMINAL_LIST = eINSTANCE.getTerminalList();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminals</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TERMINAL_LIST__TERMINALS = eINSTANCE.getTerminalList_Terminals();
 
 	}
 

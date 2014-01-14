@@ -40,7 +40,7 @@ public class RuleToPatternCompiler {
 		Variable var = PatternLanguageFactory.eINSTANCE.createVariable();
 		var.setName(name);
 		ClassType ct = EMFPatternLanguageFactory.eINSTANCE.createClassType();
-		ct.setClassname(TokensPackage.eINSTANCE.getTokenValue());
+		ct.setClassname(TokensPackage.eINSTANCE.getToken());
 		var.setType(ct);
 		
 		return var;

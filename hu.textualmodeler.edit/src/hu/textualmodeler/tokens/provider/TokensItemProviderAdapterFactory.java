@@ -72,49 +72,26 @@ public class TokensItemProviderAdapterFactory extends TokensAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.tokens.TokenValue} instances.
+	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.tokens.Token} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TokenValueItemProvider tokenValueItemProvider;
+	protected TokenItemProvider tokenItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link hu.textualmodeler.tokens.TokenValue}.
+	 * This creates an adapter for a {@link hu.textualmodeler.tokens.Token}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createTokenValueAdapter() {
-		if (tokenValueItemProvider == null) {
-			tokenValueItemProvider = new TokenValueItemProvider(this);
+	public Adapter createTokenAdapter() {
+		if (tokenItemProvider == null) {
+			tokenItemProvider = new TokenItemProvider(this);
 		}
 
-		return tokenValueItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.tokens.TokenList} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TokenListItemProvider tokenListItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link hu.textualmodeler.tokens.TokenList}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTokenListAdapter() {
-		if (tokenListItemProvider == null) {
-			tokenListItemProvider = new TokenListItemProvider(this);
-		}
-
-		return tokenListItemProvider;
+		return tokenItemProvider;
 	}
 
 	/**
@@ -216,8 +193,7 @@ public class TokensItemProviderAdapterFactory extends TokensAdapterFactory imple
 	 * @generated
 	 */
 	public void dispose() {
-		if (tokenValueItemProvider != null) tokenValueItemProvider.dispose();
-		if (tokenListItemProvider != null) tokenListItemProvider.dispose();
+		if (tokenItemProvider != null) tokenItemProvider.dispose();
 	}
 
 }

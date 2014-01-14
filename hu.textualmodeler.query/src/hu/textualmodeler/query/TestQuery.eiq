@@ -1,0 +1,76 @@
+package hu.textualmodeler.query
+
+import "http://textualmodeler.hu/grammar"
+import "http://textualmodeler.hu/tokens"
+
+pattern terminal(t : Token, s){
+	Token.terminal(t, terminal);
+	Terminal.name(terminal, s);
+}
+
+private pattern notEOF(t : Token){
+	Token.terminal(t, _terminal);
+}
+
+private pattern EOF(t : Token){
+	neg find notEOF(t);
+}
+
+pattern START(first : Token, eof : Token){
+	find People(first, eof);
+	find EOF(eof);
+}
+
+pattern Content(first : Token, next : Token){
+	find terminal(first, "QUALIFIEDID");
+	Token.tail(first, o1);
+	find Content_1(o1, o2);
+	find Content_2(o2, next);
+}
+
+pattern Content_1(first : Token, next : Token){
+	first == next;
+}or{
+	find terminal(first, "QUALIFIEDID");
+	Token.tail(first, next);
+}
+
+pattern Content_2(first : Token, next : Token){
+	first == next;
+}or{
+	find terminal(first, "QUALIFIEDID");
+	Token.tail(first, next);
+}
+
+pattern Human_1(first : Token, next : Token){
+	find terminal(first, "MAN");
+	Token.tail(first, o1);
+	find Content(o1, o2);
+	find terminal(o2, "OPERATOR_SEMICOLON");
+	Token.tail(o2, next);
+}
+
+pattern Human_2(first : Token, next : Token){
+	find terminal(first, "WOMAN");
+	Token.tail(first, o1);
+	find Content(o1, o2);
+	find terminal(o2, "OPERATOR_SEMICOLON");
+	Token.tail(o2, next);
+}
+
+pattern Human(first : Token, next : Token){
+	find Human_1(first, next);
+} or {
+	find Human_2(first, next);
+}
+
+pattern People(first : Token, next : Token){
+	find People_1(first, next);
+}
+
+pattern People_1(first : Token, next : Token){
+	first == next;
+} or {
+	find Human(first, o1);
+	find People_1(o1, next);
+}

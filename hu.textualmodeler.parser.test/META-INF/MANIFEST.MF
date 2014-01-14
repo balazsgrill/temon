@@ -8,4 +8,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.junit,
  hu.textualmodeler.editor;bundle-version="0.1.0",
  org.eclipse.ui;bundle-version="3.105.0",
- hu.textualmodeler.parser.test.model;bundle-version="0.1.0"
+ hu.textualmodeler.parser.test.model;bundle-version="0.1.0",
+ hu.textualmodeler.query;bundle-version="0.0.1",
+ org.eclipse.incquery.databinding.runtime;bundle-version="0.7.1",
+ org.eclipse.incquery.runtime;bundle-version="0.7.1"

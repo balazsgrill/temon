@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getRegex <em>Regex</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#isHide <em>Hide</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getReplace <em>Replace</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getPriority <em>Priority</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,6 +109,26 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	 * @ordered
 	 */
 	protected EList<Replace> replace;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +229,27 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriority(int newPriority) {
+		int oldPriority = priority;
+		priority = newPriority;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.TERMINAL__PRIORITY, oldPriority, priority));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +275,8 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return isHide();
 			case GrammarPackage.TERMINAL__REPLACE:
 				return getReplace();
+			case GrammarPackage.TERMINAL__PRIORITY:
+				return getPriority();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +303,9 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				getReplace().clear();
 				getReplace().addAll((Collection<? extends Replace>)newValue);
 				return;
+			case GrammarPackage.TERMINAL__PRIORITY:
+				setPriority((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -283,6 +330,9 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 			case GrammarPackage.TERMINAL__REPLACE:
 				getReplace().clear();
 				return;
+			case GrammarPackage.TERMINAL__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -303,6 +353,8 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return hide != HIDE_EDEFAULT;
 			case GrammarPackage.TERMINAL__REPLACE:
 				return replace != null && !replace.isEmpty();
+			case GrammarPackage.TERMINAL__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -323,6 +375,8 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 		result.append(regex);
 		result.append(", hide: ");
 		result.append(hide);
+		result.append(", priority: ");
+		result.append(priority);
 		result.append(')');
 		return result.toString();
 	}

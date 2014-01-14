@@ -56,6 +56,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="hide" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="replace" upperBound="-1"
           eType="#//grammar/Replace" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="0"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Replace">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="search" lowerBound="1"
@@ -98,15 +100,15 @@
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
   </eSubpackages>
   <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokens" nsPrefix="tokens">
-    <eClassifiers xsi:type="ecore:EClass" name="TokenValue">
+    <eClassifiers xsi:type="ecore:EClass" name="Token">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tail" eType="#//tokens/Token"
+          containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TokenList">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="head" eType="#//tokens/TokenValue"
-          containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="tail" eType="#//tokens/TokenList"
-          containment="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TerminalList">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminals" unique="false"
+          upperBound="-1" eType="#//grammar/Terminal"/>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

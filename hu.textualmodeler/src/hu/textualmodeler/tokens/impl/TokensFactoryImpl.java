@@ -56,8 +56,8 @@ public class TokensFactoryImpl extends EFactoryImpl implements TokensFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case TokensPackage.TOKEN_VALUE: return createTokenValue();
-			case TokensPackage.TOKEN_LIST: return createTokenList();
+			case TokensPackage.TOKEN: return createToken();
+			case TokensPackage.TERMINAL_LIST: return createTerminalList();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -68,9 +68,9 @@ public class TokensFactoryImpl extends EFactoryImpl implements TokensFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TokenValue createTokenValue() {
-		TokenValueImpl tokenValue = new TokenValueImpl();
-		return tokenValue;
+	public Token createToken() {
+		TokenImpl token = new TokenImpl();
+		return token;
 	}
 
 	/**
@@ -78,9 +78,9 @@ public class TokensFactoryImpl extends EFactoryImpl implements TokensFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TokenList createTokenList() {
-		TokenListImpl tokenList = new TokenListImpl();
-		return tokenList;
+	public TerminalList createTerminalList() {
+		TerminalListImpl terminalList = new TerminalListImpl();
+		return terminalList;
 	}
 
 	/**
