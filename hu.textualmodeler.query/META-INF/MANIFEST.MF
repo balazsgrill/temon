@@ -4,6 +4,8 @@ Bundle-Name: hu.textualmodeler.query
 Bundle-SymbolicName: hu.textualmodeler.query;singleton:=true
 Bundle-Version: 0.0.1.qualifier
 Export-Package: hu.textualmodeler.query,
+ hu.textualmodeler.query.infix,
+ hu.textualmodeler.query.infix.util,
  hu.textualmodeler.query.util
 Require-Bundle: hu.textualmodeler,
  org.eclipse.emf.ecore,

@@ -1,0 +1,62 @@
+package hu.textualmodeler.query.infix
+
+import "http://textualmodeler.hu/grammar"
+import "http://textualmodeler.hu/tokens"
+
+pattern terminal(t : Token, s){
+	Token.terminal(t, terminal);
+	Terminal.name(terminal, s);
+}
+
+private pattern notEOF(t : Token){
+	Token.terminal(t, _terminal);
+}
+
+private pattern EOF(t : Token){
+	neg find notEOF(t);
+}
+
+pattern START(first : Token, eof : Token){
+	find E(first, eof);
+	find EOF(eof);
+}
+
+pattern E(first : Token, next : Token){
+	find E1(first, next);
+}
+
+pattern E1(first : Token, next : Token){
+	find E2(first, next);
+}or{
+	find E2(first, o1);
+	find terminal(o1, "PLUS");
+	Token.tail(o1, o2);
+	find E1(o2, next);
+}or{
+	find E2(first, o1);
+	find terminal(o1, "MINUS");
+	Token.tail(o1, o2);
+	find E1(o2, next);
+}
+
+pattern E2(first : Token, next : Token){
+	find E3(first, next);
+}or{
+	find E3(first, o1);
+	find terminal(o1, "MULTI");
+	Token.tail(o1, o2);
+	find E2(o2, next);
+}or{
+	find E3(first, o1);
+	find terminal(o1, "DIVIDE");
+	Token.tail(o1, o2);
+	find E2(o2, next);
+}
+
+pattern E3(first : Token, next : Token){
+	find terminal(first, "QUALIFIEDID");
+	Token.tail(first, next);
+}or{
+	find terminal(first, "DECIMAL_NUMBER");
+	Token.tail(first, next);
+}

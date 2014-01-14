@@ -81,5 +81,53 @@
             id="hu.textualmodeler.query.People_1">
       </matcher>
    </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.terminal"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.TerminalQuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.terminal">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.START"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.STARTQuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.START">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.E"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.EQuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.E">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.E1"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.E1QuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.E1">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.E2"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.E2QuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.E2">
+      </matcher>
+   </extension>
+   <extension
+         id="hu.textualmodeler.query.infix.E3"
+         point="org.eclipse.incquery.runtime.queryspecification">
+      <matcher
+            querySpecificationProvider="hu.textualmodeler.query.infix.util.E3QuerySpecification$Provider"
+            id="hu.textualmodeler.query.infix.E3">
+      </matcher>
+   </extension>
 
 </plugin>

@@ -40,6 +40,9 @@ public class IncrementalParserTests {
 			+ "man Abel Adam Eve;\n"
 			+ "man Cain Adam Eve;;";
 	
+	private final String infixInput1 = "3+4*a+6*b";
+	private final String infixInput2 = "3+4*a+6*+b";
+	
 	@Test
 	public void validInput() throws IncQueryException{
 		GrammarModel peopleGrammar = GrammarRegistry.getInstance().getGrammar("people");
@@ -141,7 +144,53 @@ public class IncrementalParserTests {
 		org.junit.Assert.assertTrue(ok);
 	}
 	
+	@Test
+	public void testInfix() throws IncQueryException{
+		GrammarModel peopleGrammar = GrammarRegistry.getInstance().getGrammar("infix");
+		IGrammar grammar = new Grammar(peopleGrammar);
+		
+		IParserContext context = new StdErrContext();
+		
+		SimpleTokenizer tokenizer = new SimpleTokenizer(context, grammar);
+		
+		Token token = tokenizer.update(infixInput2);
+		
+		ResourceSet rs = peopleGrammar.eResource().getResourceSet();
+		Resource r = rs.createResource(URI.createURI("http://inmemory.test.xmi"));
+		
+		r.getContents().add(token);
+		
+		IObservableList list = IncQueryObservables.observeMatchesAsList(hu.textualmodeler.query.infix.STARTMatcher.on(IncQueryEngine.on(rs)));
+		
+		boolean ok = false;
+		for(Object match : list){
+			if (checkMatch(match, token)){
+				ok = true;
+			}
+		}
+		
+		org.junit.Assert.assertFalse(ok);
+		
+		token = tokenizer.update(infixInput1);
+		if (!r.getContents().get(0).equals(token)){
+			r.getContents().clear();
+			r.getContents().add(token);
+		}
+		
+		ok = false;
+		for(Object match : list){
+			if (checkMatch(match, token)){
+				ok = true;
+			}
+		}
+		
+		org.junit.Assert.assertTrue(ok);
+	}
+	
 	private boolean checkMatch(Object match, Token first){
+		if (match instanceof hu.textualmodeler.query.infix.STARTMatch){
+			return (first.equals(((hu.textualmodeler.query.infix.STARTMatch) match).getFirst()));
+		}
 		if (match instanceof STARTMatch){
 			return (first.equals(((STARTMatch) match).getFirst()));
 		}
