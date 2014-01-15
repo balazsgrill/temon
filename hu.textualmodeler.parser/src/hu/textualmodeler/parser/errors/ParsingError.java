@@ -43,6 +43,10 @@ public class ParsingError implements Diagnostic {
 		node = null;
 	}
 
+	public String getID(){
+		return message+"||"+line+"||"+column;
+	}
+	
 	public VisibleNode getNode() {
 		return node;
 	}

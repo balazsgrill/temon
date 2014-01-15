@@ -8,9 +8,9 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.editor.impl.DelayedExecutor;
+import hu.textualmodeler.editor.impl.MarkerManager;
 import hu.textualmodeler.editor.impl.TextualModelContentOutlinePage;
 import hu.textualmodeler.parser.AbstractTextualResource;
-import hu.textualmodeler.parser.errors.ParsingError;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -18,9 +18,6 @@ import java.io.InputStream;
 import java.util.LinkedList;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -28,7 +25,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -50,8 +46,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
  *
  */
 public class TextualModelEditor extends TextEditor {
-
-	private static final String markerId = "hu.textualmodeler.editor.syntaxerrormarker";
 	
 	private EditingDomain edomain;
 	private Resource resource = null;
@@ -103,6 +97,7 @@ public class TextualModelEditor extends TextEditor {
 		});
 		
 		if (oldText.equals(text[0])) return;
+		oldText = text[0];
 		
 		final InputStream is = new ByteArrayInputStream(text[0].getBytes());
 		
@@ -121,49 +116,55 @@ public class TextualModelEditor extends TextEditor {
 			}
 		}
 		
-		if (resource instanceof AbstractTextualResource){
+		if (resource instanceof AbstractTextualResource){			
 			final Node node = ((AbstractTextualResource) resource).getAST();
 			if (node != null){
-				getSourceViewer().getTextWidget().getDisplay().asyncExec(new Runnable(){
+				getSourceViewer().getTextWidget().getDisplay().syncExec(new Runnable(){
 					public void run() {
 						setStyles(node);
-						setErrors();
 					};
 				});
 			}
 		}
+		
+		setErrors();
 		
 		if (contentOutlinePage != null){
 			contentOutlinePage.update();
 		}
 	}
 	
+	private MarkerManager markerManager = null;
+	
 	private void setErrors(){
 		IFile file = getFile();
 		if (file != null){
-			try {
-				file.deleteMarkers(markerId, true, IResource.DEPTH_ZERO);
-			} catch (CoreException e1) {
-				EditorPlugin.getDefault().getLog().log(e1.getStatus());
-			}
-			for (Diagnostic problem : resource.getErrors()){
-				if (problem instanceof ParsingError){
-					try{
-						IMarker marker = file.createMarker(markerId);
-						marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-						marker.setAttribute(IMarker.MESSAGE, problem.getMessage());
-						marker.setAttribute(IMarker.LINE_NUMBER, problem.getLine());
-						VisibleNode node = ((ParsingError) problem).getNode();
-						if (node != null) {
-							marker.setAttribute(IMarker.CHAR_START,node.getStart());
-							marker.setAttribute(IMarker.CHAR_END,node.getStart()+node.getLength());
-						}
-					}catch(CoreException e){
-						EditorPlugin.getDefault().getLog().log(e.getStatus());
-					}
+			
+			if (markerManager!= null){
+				if (!markerManager.getResource().equals(file)){
+					markerManager.dispose();
+					markerManager = new MarkerManager(file);
 				}
+			}else{
+				markerManager = new MarkerManager(file);
+			}
+			
+			markerManager.update(resource.getErrors());
+		}else{
+			if (markerManager != null){
+				markerManager.dispose();
+				markerManager = null;
 			}
 		}
+	}
+	
+	@Override
+	public void dispose() {
+		if (markerManager != null){
+			markerManager.dispose();
+			markerManager = null;
+		}
+		super.dispose();
 	}
 	
 	private IFile getFile(){
