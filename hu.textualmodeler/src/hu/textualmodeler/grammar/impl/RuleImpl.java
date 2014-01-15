@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link hu.textualmodeler.grammar.impl.RuleImpl#getNonTerminal <em>Non Terminal</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.RuleImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.RuleImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -56,6 +58,16 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 	 * @ordered
 	 */
 	protected String nonTerminal = NON_TERMINAL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getCondition() <em>Condition</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<String> condition;
 
 	/**
 	 * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference list.
@@ -112,6 +124,18 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<String> getCondition() {
+		if (condition == null) {
+			condition = new EDataTypeUniqueEList<String>(String.class, this, GrammarPackage.RULE__CONDITION);
+		}
+		return condition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList<RuleItem> getBody() {
 		if (body == null) {
 			body = new EObjectContainmentEList<RuleItem>(RuleItem.class, this, GrammarPackage.RULE__BODY);
@@ -143,6 +167,8 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 		switch (featureID) {
 			case GrammarPackage.RULE__NON_TERMINAL:
 				return getNonTerminal();
+			case GrammarPackage.RULE__CONDITION:
+				return getCondition();
 			case GrammarPackage.RULE__BODY:
 				return getBody();
 		}
@@ -160,6 +186,10 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 		switch (featureID) {
 			case GrammarPackage.RULE__NON_TERMINAL:
 				setNonTerminal((String)newValue);
+				return;
+			case GrammarPackage.RULE__CONDITION:
+				getCondition().clear();
+				getCondition().addAll((Collection<? extends String>)newValue);
 				return;
 			case GrammarPackage.RULE__BODY:
 				getBody().clear();
@@ -180,6 +210,9 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 			case GrammarPackage.RULE__NON_TERMINAL:
 				setNonTerminal(NON_TERMINAL_EDEFAULT);
 				return;
+			case GrammarPackage.RULE__CONDITION:
+				getCondition().clear();
+				return;
 			case GrammarPackage.RULE__BODY:
 				getBody().clear();
 				return;
@@ -197,6 +230,8 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 		switch (featureID) {
 			case GrammarPackage.RULE__NON_TERMINAL:
 				return NON_TERMINAL_EDEFAULT == null ? nonTerminal != null : !NON_TERMINAL_EDEFAULT.equals(nonTerminal);
+			case GrammarPackage.RULE__CONDITION:
+				return condition != null && !condition.isEmpty();
 			case GrammarPackage.RULE__BODY:
 				return body != null && !body.isEmpty();
 		}
@@ -215,6 +250,8 @@ public class RuleImpl extends MinimalEObjectImpl.Container implements Rule {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (nonTerminal: ");
 		result.append(nonTerminal);
+		result.append(", condition: ");
+		result.append(condition);
 		result.append(')');
 		return result.toString();
 	}

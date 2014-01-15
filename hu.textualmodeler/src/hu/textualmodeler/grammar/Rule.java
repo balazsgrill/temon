@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link hu.textualmodeler.grammar.Rule#getNonTerminal <em>Non Terminal</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.Rule#getCondition <em>Condition</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.Rule#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
@@ -49,6 +50,22 @@ public interface Rule extends EObject {
 	 * @generated
 	 */
 	void setNonTerminal(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Condition</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Condition</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Condition</em>' attribute list.
+	 * @see hu.textualmodeler.grammar.GrammarPackage#getRule_Condition()
+	 * @model
+	 * @generated
+	 */
+	EList<String> getCondition();
 
 	/**
 	 * Returns the value of the '<em><b>Body</b></em>' containment reference list.

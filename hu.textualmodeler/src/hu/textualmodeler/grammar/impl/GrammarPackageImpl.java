@@ -322,8 +322,17 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getRule_Condition() {
+		return (EAttribute)ruleEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getRule_Body() {
-		return (EReference)ruleEClass.getEStructuralFeatures().get(1);
+		return (EReference)ruleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -526,6 +535,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		ruleEClass = createEClass(RULE);
 		createEAttribute(ruleEClass, RULE__NON_TERMINAL);
+		createEAttribute(ruleEClass, RULE__CONDITION);
 		createEReference(ruleEClass, RULE__BODY);
 
 		ruleItemEClass = createEClass(RULE_ITEM);
@@ -608,6 +618,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		initEClass(ruleEClass, Rule.class, "Rule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRule_NonTerminal(), ecorePackage.getEString(), "nonTerminal", null, 1, 1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRule_Condition(), ecorePackage.getEString(), "condition", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRule_Body(), this.getRuleItem(), null, "body", null, 0, -1, Rule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ruleItemEClass, RuleItem.class, "RuleItem", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

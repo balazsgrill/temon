@@ -66,6 +66,7 @@ public class RuleItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNonTerminalPropertyDescriptor(object);
+			addConditionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,6 +85,28 @@ public class RuleItemProvider
 				 getString("_UI_Rule_nonTerminal_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Rule_nonTerminal_feature", "_UI_Rule_type"),
 				 GrammarPackage.Literals.RULE__NON_TERMINAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Condition feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConditionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Rule_condition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Rule_condition_feature", "_UI_Rule_type"),
+				 GrammarPackage.Literals.RULE__CONDITION,
 				 true,
 				 false,
 				 false,
@@ -160,6 +183,7 @@ public class RuleItemProvider
 
 		switch (notification.getFeatureID(Rule.class)) {
 			case GrammarPackage.RULE__NON_TERMINAL:
+			case GrammarPackage.RULE__CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case GrammarPackage.RULE__BODY:

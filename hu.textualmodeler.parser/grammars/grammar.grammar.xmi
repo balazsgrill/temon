@@ -13,6 +13,7 @@
   <terminals xmi:id="_Zjqs4LZLEeKDArD2cbZQHA" name="OPERATOR_MULTI" regex="\+"/>
   <terminals xmi:id="_eFcO8LZLEeKDArD2cbZQHA" name="OPERATOR_OPTIONAL" regex="\?"/>
   <terminals name="OPERATOR_OPT_MULTI" regex="\*"/>
+  <terminals name="OPERATOR_CONDITION" regex="\|"/>
   <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
     <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
     <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
@@ -61,6 +62,7 @@
     <body xsi:type="grammar:TerminalItem" xmi:id="_z1sgULGXEeK1ScU5DNcoWg" featureName="nonTerminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
+    <body xsi:type="grammar:NonTerminalItem" optional="true" many="true" nonTerminal="RuleCondition"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_hXVcsLGZEeK1ScU5DNcoWg" terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_7TtKALGXEeK1ScU5DNcoWg" terminal="_gwqJILGXEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_Eu-KkLGYEeK1ScU5DNcoWg" many="true" nonTerminal="RuleItem"/>
@@ -77,6 +79,12 @@
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
     <body xsi:type="grammar:Pop" xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
+  </rules>
+  <rules nonTerminal="RuleCondition">
+    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.13"/>
+    <body xsi:type="grammar:TerminalItem" featureName="condition">
+      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    </body>
   </rules>
   <rules xmi:id="_xGQCELGYEeK1ScU5DNcoWg" nonTerminal="TerminalItemFeatureName">
     <body xsi:type="grammar:TerminalItem" xmi:id="_6TUOkLGYEeK1ScU5DNcoWg" featureName="featureName">

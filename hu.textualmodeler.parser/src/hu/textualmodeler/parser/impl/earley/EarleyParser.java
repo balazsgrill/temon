@@ -89,7 +89,7 @@ public class EarleyParser implements IParser {
 					}
 				}else
 				if (state.prediction()){
-					for(EarleyState s : state.predict(currentLevel, grammar)){
+					for(EarleyState s : state.predict(currentLevel, table, grammar)){
 						table.get(currentLevel).add(s);
 					}
 				}else

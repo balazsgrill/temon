@@ -259,13 +259,22 @@ public interface GrammarPackage extends EPackage {
 	int RULE__NON_TERMINAL = 0;
 
 	/**
+	 * The feature id for the '<em><b>Condition</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RULE__CONDITION = 1;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RULE__BODY = 1;
+	int RULE__BODY = 2;
 
 	/**
 	 * The number of structural features of the '<em>Rule</em>' class.
@@ -274,7 +283,7 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RULE_FEATURE_COUNT = 2;
+	int RULE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Rule</em>' class.
@@ -781,6 +790,17 @@ public interface GrammarPackage extends EPackage {
 	EAttribute getRule_NonTerminal();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link hu.textualmodeler.grammar.Rule#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Condition</em>'.
+	 * @see hu.textualmodeler.grammar.Rule#getCondition()
+	 * @see #getRule()
+	 * @generated
+	 */
+	EAttribute getRule_Condition();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link hu.textualmodeler.grammar.Rule#getBody <em>Body</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1129,6 +1149,14 @@ public interface GrammarPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RULE__NON_TERMINAL = eINSTANCE.getRule_NonTerminal();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RULE__CONDITION = eINSTANCE.getRule_Condition();
 
 		/**
 		 * The meta object literal for the '<em><b>Body</b></em>' containment reference list feature.
