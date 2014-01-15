@@ -12,4 +12,5 @@ Export-Package: hu.textualmodeler.parser,
  hu.textualmodeler.parser.errors,
  hu.textualmodeler.parser.grammar,
  hu.textualmodeler.parser.impl,
- hu.textualmodeler.parser.impl.earley
+ hu.textualmodeler.parser.impl.earley,
+ hu.textualmodeler.parser.scope
