@@ -10,6 +10,7 @@ import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.editor.impl.DelayedExecutor;
 import hu.textualmodeler.editor.impl.TextualModelContentOutlinePage;
 import hu.textualmodeler.parser.AbstractTextualResource;
+import hu.textualmodeler.parser.errors.ParsingError;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -17,6 +18,9 @@ import java.io.InputStream;
 import java.util.LinkedList;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -24,6 +28,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -46,6 +51,8 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
  */
 public class TextualModelEditor extends TextEditor {
 
+	private static final String markerId = "hu.textualmodeler.editor.syntaxerrormarker";
+	
 	private EditingDomain edomain;
 	private Resource resource = null;
 	
@@ -120,6 +127,7 @@ public class TextualModelEditor extends TextEditor {
 				getSourceViewer().getTextWidget().getDisplay().asyncExec(new Runnable(){
 					public void run() {
 						setStyles(node);
+						setErrors();
 					};
 				});
 			}
@@ -128,6 +136,42 @@ public class TextualModelEditor extends TextEditor {
 		if (contentOutlinePage != null){
 			contentOutlinePage.update();
 		}
+	}
+	
+	private void setErrors(){
+		IFile file = getFile();
+		if (file != null){
+			try {
+				file.deleteMarkers(markerId, true, IResource.DEPTH_ZERO);
+			} catch (CoreException e1) {
+				EditorPlugin.getDefault().getLog().log(e1.getStatus());
+			}
+			for (Diagnostic problem : resource.getErrors()){
+				if (problem instanceof ParsingError){
+					try{
+						IMarker marker = file.createMarker(markerId);
+						marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+						marker.setAttribute(IMarker.MESSAGE, problem.getMessage());
+						marker.setAttribute(IMarker.LINE_NUMBER, problem.getLine());
+						VisibleNode node = ((ParsingError) problem).getNode();
+						if (node != null) {
+							marker.setAttribute(IMarker.CHAR_START,node.getStart());
+							marker.setAttribute(IMarker.CHAR_END,node.getStart()+node.getLength());
+						}
+					}catch(CoreException e){
+						EditorPlugin.getDefault().getLog().log(e.getStatus());
+					}
+				}
+			}
+		}
+	}
+	
+	private IFile getFile(){
+		IEditorInput input = getEditorInput();
+		if (input instanceof IFileEditorInput){
+			return ((IFileEditorInput) input).getFile();
+		}
+		return null;
 	}
 	
 	private void setStyles(Node root){
