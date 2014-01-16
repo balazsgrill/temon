@@ -8,7 +8,6 @@ import hu.textualmodeler.grammar.GrammarFactory;
 import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.grammar.NonTerminalItem;
 import hu.textualmodeler.grammar.Rule;
-import hu.textualmodeler.grammar.TerminalItem;
 import hu.textualmodeler.parser.IGrammar;
 import hu.textualmodeler.parser.IParser;
 import hu.textualmodeler.parser.IParserContext;
@@ -62,7 +61,6 @@ public class EarleyParser implements IParser {
 		
 		boolean done = false;
 		List<EarleyState> finished = new LinkedList<EarleyState>();
-		EarleyState best = null;
 		
 		List<EarleyState> failed = new LinkedList<>();
 		
@@ -101,15 +99,7 @@ public class EarleyParser implements IParser {
 						table.get(currentLevel).add(s);
 					}
 				}else
-				if (state.scanning()){
-					if (best == null){
-						best = state;
-					}else{
-						if (best.getPosition() < state.getPosition()){
-							best = state;
-						}
-					}
-					
+				if (state.scanning()){			
 					EarleyState prescannedState = state.scanHidden(input);
 					for(EarleyState s : prescannedState.scan(input, grammar)){
 						if (s.lastScanFailed()){
@@ -123,11 +113,7 @@ public class EarleyParser implements IParser {
 				}else
 				if (state.completion()){
 					for(EarleyState s : state.complete(table)){
-						if (!table.get(currentLevel).add(s)){
-							// TODO how to handle ambiguousity?
-//							int[] lc = input.getLineAndColumn(state.getPosition());
-//							context.logError(new ParsingError("Ambiguous syntax path detected: "+state+" -> "+s, "", lc[0], lc[1]));
-						}
+						table.get(currentLevel).add(s);
 					}
 				}else
 				if (state.silent()){
@@ -144,14 +130,12 @@ public class EarleyParser implements IParser {
 		}
 		
 		if (finished.isEmpty()){
-			if (best != null){
-				int[] lc = input.getLineAndColumn(best.getPosition());
-				TerminalItem ti = (TerminalItem)best.getNextItem();
-				context.logError(new ParsingError(ti.getTerminal().getName()+" is expected at "+lc[0]+":"+lc[1], "", lc[0], lc[1]));
-				return best.getSteps();
-			}
+			context.logError(new ParsingError("No valid syntax path could be found.", "", 0, 0));
 			return null;
 		}else{
+			if (finished.size() > 1){
+				context.logError(new ParsingError("Input has multiple possible syntax trees (possibly the grammar is ambiguous)", "", 0, 0));
+			}
 			return finished.get(0).getSteps();
 		}
 	}
