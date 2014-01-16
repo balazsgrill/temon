@@ -212,7 +212,7 @@ public class EarleyState {
 		return getNextItem() instanceof TerminalItem;
 	}
 	
-	public List<EarleyState> predict(int level, ParserTable table, IGrammar grammar){
+	public List<EarleyState> predict(int level, IGrammar grammar){
 		RuleItem next = getNextItem();
 		if (next instanceof NonTerminalItem){
 			NonTerminalItem nonterm = (NonTerminalItem)next;
@@ -227,40 +227,13 @@ public class EarleyState {
 			Collection<Rule> rules = grammar.getRule(((NonTerminalItem) next).getNonTerminal());
 			
 			for(Rule rule : rules){
-				boolean ok = true;
-				for (String condition : rule.getCondition()){
-					ok = ok && checkRuleCondition(table, condition); 
-				}
-				if (ok){
-					CompositeNode steps = AstFactory.eINSTANCE.createCompositeNode();
-					steps.setNonterminal(rule);
-					predicted.add(new EarleyState(rule, 0, position, steps, level));
-				}
+				CompositeNode steps = AstFactory.eINSTANCE.createCompositeNode();
+				steps.setNonterminal(rule);
+				predicted.add(new EarleyState(rule, 0, position, steps, level));
 			}
 			return predicted;
 		}
 		return Collections.emptyList();
-	}
-	
-	private boolean checkRuleCondition(ParserTable table, String condition){
-		if (condition.equals(currentRule.getNonTerminal())) return true;
-		if (origin != -1){
-			ParserLevel originLevel = table.get(origin);
-
-			boolean ok = false;
-			for(EarleyState p : originLevel.getStates()){
-				if (p.prediction()){
-					NonTerminalItem nonterm = ((NonTerminalItem)p.getNextItem());
-					if ((nonterm.getNonTerminal().equals(currentRule.getNonTerminal()))){
-						ok = ok | p.checkRuleCondition(table, condition);
-					}
-				}
-				
-			}
-			
-			return ok;
-		}
-		return false;
 	}
 	
 	public List<EarleyState> complete(ParserTable table){

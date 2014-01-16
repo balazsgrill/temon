@@ -38,7 +38,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 		return parser.getGrammar();
 	}
 	
-	private static String inputStreamToString(InputStream inputStream) throws IOException{
+	protected static String inputStreamToString(InputStream inputStream) throws IOException{
 		byte[] data = new byte[inputStream.available()];
 		inputStream.read(data);
 		

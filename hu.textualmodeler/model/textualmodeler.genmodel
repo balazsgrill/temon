@@ -63,7 +63,6 @@
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Rule">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Rule/nonTerminal"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Rule/condition"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/Rule/body"/>
       </genClasses>
       <genClasses image="false" ecoreClass="textualmodeler.ecore#//grammar/RuleItem"/>

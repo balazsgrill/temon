@@ -77,7 +77,6 @@ package grammar{
 
 	class Rule{
 		attr String[1] nonTerminal;
-		attr String[*] condition;
 		val RuleItem[*] body;
 	}
 	
