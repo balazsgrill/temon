@@ -4,7 +4,7 @@ package hu.textualmodeler.ast.impl;
 
 import hu.textualmodeler.ast.AstPackage;
 import hu.textualmodeler.ast.TerminalNode;
-import hu.textualmodeler.grammar.TerminalItem;
+import hu.textualmodeler.grammar.Terminal;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -33,7 +33,7 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	 * @generated
 	 * @ordered
 	 */
-	protected TerminalItem terminal;
+	protected Terminal terminal;
 
 	/**
 	 * The default value of the '{@link #getContent() <em>Content</em>}' attribute.
@@ -79,10 +79,10 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TerminalItem getTerminal() {
+	public Terminal getTerminal() {
 		if (terminal != null && terminal.eIsProxy()) {
 			InternalEObject oldTerminal = (InternalEObject)terminal;
-			terminal = (TerminalItem)eResolveProxy(oldTerminal);
+			terminal = (Terminal)eResolveProxy(oldTerminal);
 			if (terminal != oldTerminal) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstPackage.TERMINAL_NODE__TERMINAL, oldTerminal, terminal));
@@ -96,7 +96,7 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TerminalItem basicGetTerminal() {
+	public Terminal basicGetTerminal() {
 		return terminal;
 	}
 
@@ -105,8 +105,8 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTerminal(TerminalItem newTerminal) {
-		TerminalItem oldTerminal = terminal;
+	public void setTerminal(Terminal newTerminal) {
+		Terminal oldTerminal = terminal;
 		terminal = newTerminal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.TERMINAL_NODE__TERMINAL, oldTerminal, terminal));
@@ -159,7 +159,7 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case AstPackage.TERMINAL_NODE__TERMINAL:
-				setTerminal((TerminalItem)newValue);
+				setTerminal((Terminal)newValue);
 				return;
 			case AstPackage.TERMINAL_NODE__CONTENT:
 				setContent((String)newValue);
@@ -177,7 +177,7 @@ public class TerminalNodeImpl extends VisibleNodeImpl implements TerminalNode {
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case AstPackage.TERMINAL_NODE__TERMINAL:
-				setTerminal((TerminalItem)null);
+				setTerminal((Terminal)null);
 				return;
 			case AstPackage.TERMINAL_NODE__CONTENT:
 				setContent(CONTENT_EDEFAULT);

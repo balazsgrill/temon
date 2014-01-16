@@ -53,7 +53,7 @@ public class ModelBuilder {
 		public void resolve() throws ReferencedElementNotFoundException{
 			Terminal term = null;
 			if (terminal != null && terminal.getTerminal() != null){
-				term = terminal.getTerminal().getTerminal();
+				term = terminal.getTerminal();
 			}
 			Object o = featureResolver.resolve(context, feature, term, value);
 			if (o != null){
@@ -84,9 +84,9 @@ public class ModelBuilder {
 						process(n);
 					}
 				}else if (node instanceof RemovedTerminalNode){
-					pcontext.logError("Unexpected terminal: "+((RemovedTerminalNode) node).getTerminal().getTerminal().getName(), (RemovedTerminalNode)node);
+					pcontext.logError("Unexpected terminal: "+((RemovedTerminalNode) node).getTerminal().getName(), (RemovedTerminalNode)node);
 				}else if (node instanceof InsertedTerminalNode){
-					pcontext.logError("Missing terminal: "+((InsertedTerminalNode) node).getTerminal().getTerminal().getName(), (InsertedTerminalNode)node);
+					pcontext.logError("Missing terminal: "+((InsertedTerminalNode) node).getTerminal().getName(), (InsertedTerminalNode)node);
 				}else if (node instanceof FeatureSetValue){
 					FeatureValue fv = new FeatureValue(modelStack.peek(), 
 							getFeature(((FeatureSetValue) node).getFeatureName()), null, 

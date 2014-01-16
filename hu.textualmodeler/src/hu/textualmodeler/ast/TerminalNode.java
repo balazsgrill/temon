@@ -2,7 +2,7 @@
  */
 package hu.textualmodeler.ast;
 
-import hu.textualmodeler.grammar.TerminalItem;
+import hu.textualmodeler.grammar.Terminal;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +31,12 @@ public interface TerminalNode extends VisibleNode {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Terminal</em>' reference.
-	 * @see #setTerminal(TerminalItem)
+	 * @see #setTerminal(Terminal)
 	 * @see hu.textualmodeler.ast.AstPackage#getTerminalNode_Terminal()
 	 * @model
 	 * @generated
 	 */
-	TerminalItem getTerminal();
+	Terminal getTerminal();
 
 	/**
 	 * Sets the value of the '{@link hu.textualmodeler.ast.TerminalNode#getTerminal <em>Terminal</em>}' reference.
@@ -46,7 +46,7 @@ public interface TerminalNode extends VisibleNode {
 	 * @see #getTerminal()
 	 * @generated
 	 */
-	void setTerminal(TerminalItem value);
+	void setTerminal(Terminal value);
 
 	/**
 	 * Returns the value of the '<em><b>Content</b></em>' attribute.

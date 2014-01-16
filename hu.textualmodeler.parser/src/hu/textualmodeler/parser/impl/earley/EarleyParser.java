@@ -74,16 +74,11 @@ public class EarleyParser implements IParser {
 			}
 			
 			done = queue.isEmpty();
-//			System.out.println("---StartLevel "+currentLevel +" ("+input.length()+")");
-			
+
 			while(!queue.isEmpty()){
 				
 				EarleyState state = queue.poll();
-//				System.out.println("Considering: "+ state);
-				
-//				if (state.hasHidden(input)){
-//					table.get(currentLevel).add(state.scanHidden(input));
-//				}else
+
 				if (state.isCompleted()){
 					int consumed = state.getPosition();
 					
@@ -91,7 +86,8 @@ public class EarleyParser implements IParser {
 					if (consumed == input.length()){
 						finished.add(state);
 					}else{
-//						System.out.println("Early finish, dropped: "+consumed);
+						/* Try to recover by consuming terminals after finished AST */
+						failed.addAll(state.scanAfterFinish(input, grammar));
 					}
 				}else
 				if (state.prediction()){
@@ -103,6 +99,7 @@ public class EarleyParser implements IParser {
 					EarleyState prescannedState = state.scanHidden(input);
 					for(EarleyState s : prescannedState.scan(input, grammar)){
 						if (s.lastScanFailed()){
+							/* Failed scan. Parsing can recover from here when no other options left */
 							failed.add(s);
 						}else{
 							s = s.scanHidden(input);

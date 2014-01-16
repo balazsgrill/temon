@@ -323,7 +323,7 @@ public class EarleyState {
 						node = AstFactory.eINSTANCE.createTerminalNode();
 					}
 					node.setContent(match.getProcessedValue());
-					node.setTerminal(terminal);
+					node.setTerminal(match.terminal);
 					node.setStart(position);
 					node.setLength(match.size);
 					
@@ -355,7 +355,7 @@ public class EarleyState {
 							CompositeNode steps = EcoreUtil.copy(this.steps);
 							RemovedTerminalNode node = AstFactory.eINSTANCE.createRemovedTerminalNode();
 							node.setContent(wrongMatch.getProcessedValue());
-							node.setTerminal(terminal);
+							node.setTerminal(wrongMatch.terminal);
 							node.setStart(position);
 							node.setLength(wrongMatch.size);
 							steps.getChildren().add(node);
@@ -372,7 +372,7 @@ public class EarleyState {
 							node = AstFactory.eINSTANCE.createInsertedTerminalNode();
 						}
 								
-						node.setTerminal(terminal);
+						node.setTerminal(terminal.getTerminal());
 						node.setStart(position);
 						node.setLength(0);
 						
@@ -386,6 +386,32 @@ public class EarleyState {
 			}
 		}
 		return Collections.emptyList();
+	}
+	
+	public List<EarleyState> scanAfterFinish(IParserInput input, IGrammar grammar){
+		// Correction attempt: Remove unexpected terminal
+		List<EarleyState> states = new LinkedList<>();
+		
+		TerminalMatch wrongMatch = null;
+		for(Terminal wrongTerminal: grammar.terminals()) if(!wrongTerminal.isHide()){
+			TerminalMatch tm = input.match(wrongTerminal, position);
+			if (tm != null){
+				wrongMatch = tm;
+			}
+		}
+		if (wrongMatch != null){
+			CompositeNode steps = EcoreUtil.copy(this.steps);
+			RemovedTerminalNode node = AstFactory.eINSTANCE.createRemovedTerminalNode();
+			node.setContent(wrongMatch.getProcessedValue());
+			node.setTerminal(wrongMatch.terminal);
+			node.setStart(position);
+			node.setLength(wrongMatch.size);
+			steps.getChildren().add(node);
+			
+			states.add(new EarleyState(currentRule, index, position+wrongMatch.size, steps, origin));
+		}
+		
+		return states;
 	}
 	
 	public boolean lastScanFailed(){

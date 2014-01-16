@@ -18,7 +18,7 @@ package ast{
 	}
 	
 	class TerminalNode extends VisibleNode{
-		ref grammar.TerminalItem terminal;
+		ref grammar.Terminal terminal;
 		attr String content;
 	}
 	

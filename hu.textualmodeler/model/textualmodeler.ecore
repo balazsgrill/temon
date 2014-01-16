@@ -13,7 +13,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TerminalNode" eSuperTypes="#//ast/VisibleNode">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/TerminalItem"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RemovedTerminalNode" eSuperTypes="#//ast/TerminalNode"/>
