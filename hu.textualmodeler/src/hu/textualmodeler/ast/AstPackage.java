@@ -250,6 +250,207 @@ public interface AstPackage extends EPackage {
 	int TERMINAL_NODE_OPERATION_COUNT = VISIBLE_NODE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+	 * @generated
+	 */
+	int REMOVED_TERMINAL_NODE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_TERMINAL_NODE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__START = INSERTED_TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__LENGTH = INSERTED_TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__TERMINAL = INSERTED_TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__CONTENT = INSERTED_TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__FEATURE_NAME = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_FEATURE_COUNT = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_OPERATION_COUNT = INSERTED_TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,7 +458,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSet()
 	 * @generated
 	 */
-	int FEATURE_SET = 4;
+	int FEATURE_SET = 7;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -294,7 +495,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetValue()
 	 * @generated
 	 */
-	int FEATURE_SET_VALUE = 5;
+	int FEATURE_SET_VALUE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -340,7 +541,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetTerminalNode()
 	 * @generated
 	 */
-	int FEATURE_SET_TERMINAL_NODE = 6;
+	int FEATURE_SET_TERMINAL_NODE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -413,7 +614,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getCompositeNode()
 	 * @generated
 	 */
-	int COMPOSITE_NODE = 7;
+	int COMPOSITE_NODE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
@@ -459,7 +660,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
 	 * @generated
 	 */
-	int SET_CONTAINMENT_FEATURE = 8;
+	int SET_CONTAINMENT_FEATURE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -496,7 +697,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPushElement()
 	 * @generated
 	 */
-	int PUSH_ELEMENT = 9;
+	int PUSH_ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
@@ -533,7 +734,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPopElement()
 	 * @generated
 	 */
-	int POP_ELEMENT = 10;
+	int POP_ELEMENT = 13;
 
 	/**
 	 * The number of structural features of the '<em>Pop Element</em>' class.
@@ -648,6 +849,36 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTerminalNode_Content();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.RemovedTerminalNode <em>Removed Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Removed Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.RemovedTerminalNode
+	 * @generated
+	 */
+	EClass getRemovedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.InsertedTerminalNode <em>Inserted Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.InsertedTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.InsertedFeatureSetTerminalNode <em>Inserted Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.InsertedFeatureSetTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedFeatureSetTerminalNode();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}'.
@@ -876,6 +1107,36 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TERMINAL_NODE__CONTENT = eINSTANCE.getTerminalNode_Content();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+		 * @generated
+		 */
+		EClass REMOVED_TERMINAL_NODE = eINSTANCE.getRemovedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_TERMINAL_NODE = eINSTANCE.getInsertedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_FEATURE_SET_TERMINAL_NODE = eINSTANCE.getInsertedFeatureSetTerminalNode();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}' class.

@@ -23,6 +23,9 @@
             ecoreFeature="ecore:EReference textualmodeler.ecore#//ast/TerminalNode/terminal"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//ast/TerminalNode/content"/>
       </genClasses>
+      <genClasses ecoreClass="textualmodeler.ecore#//ast/RemovedTerminalNode"/>
+      <genClasses ecoreClass="textualmodeler.ecore#//ast/InsertedTerminalNode"/>
+      <genClasses ecoreClass="textualmodeler.ecore#//ast/InsertedFeatureSetTerminalNode"/>
       <genClasses image="false" ecoreClass="textualmodeler.ecore#//ast/FeatureSet">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//ast/FeatureSet/featureName"/>
       </genClasses>

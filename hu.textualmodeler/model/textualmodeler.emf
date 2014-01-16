@@ -22,6 +22,18 @@ package ast{
 		attr String content;
 	}
 	
+	class RemovedTerminalNode extends TerminalNode{
+		
+	}
+	
+	class InsertedTerminalNode extends TerminalNode{
+		
+	}
+	
+	class InsertedFeatureSetTerminalNode extends InsertedTerminalNode, FeatureSetTerminalNode{
+		
+	}
+	
 	abstract interface FeatureSet{
 		attr String featureName;
 	}

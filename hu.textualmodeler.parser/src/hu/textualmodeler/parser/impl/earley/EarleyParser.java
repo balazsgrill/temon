@@ -64,9 +64,17 @@ public class EarleyParser implements IParser {
 		List<EarleyState> finished = new LinkedList<EarleyState>();
 		EarleyState best = null;
 		
+		List<EarleyState> failed = new LinkedList<>();
+		
 		while(!done){
 			
 			Queue<EarleyState> queue = table.get(currentLevel).getQueue();
+			
+			if (queue.isEmpty() && finished.isEmpty()){
+				queue.addAll(failed);
+				failed.clear();
+			}
+			
 			done = queue.isEmpty();
 //			System.out.println("---StartLevel "+currentLevel +" ("+input.length()+")");
 			
@@ -104,9 +112,13 @@ public class EarleyParser implements IParser {
 					
 					EarleyState prescannedState = state.scanHidden(input);
 					for(EarleyState s : prescannedState.scan(input, grammar)){
-						s = s.scanHidden(input);
-						int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
-						table.get(currentLevel+level).add(s);
+						if (s.lastScanFailed()){
+							failed.add(s);
+						}else{
+							s = s.scanHidden(input);
+							int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
+							table.get(currentLevel+level).add(s);
+						}
 					}
 				}else
 				if (state.completion()){

@@ -7,8 +7,12 @@ import hu.textualmodeler.ast.AstFactory;
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
+import hu.textualmodeler.ast.InsertedFeatureSetTerminalNode;
+import hu.textualmodeler.ast.InsertedTerminalNode;
+import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
+import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.WhitespaceNode;
@@ -336,6 +340,45 @@ public class EarleyState {
 				}else{
 					if (terminal.isOptional()){
 						states.add(new EarleyState(currentRule, index+1, position, steps, origin));
+					}else{
+						String feature = terminal.getFeatureName();
+						
+						// Correction attempt: Remove unexpected terminal
+						TerminalMatch wrongMatch = null;
+						for(Terminal wrongTerminal: grammar.terminals()) if(!wrongTerminal.isHide()){
+							TerminalMatch tm = input.match(wrongTerminal, position);
+							if (tm != null){
+								wrongMatch = tm;
+							}
+						}
+						if (wrongMatch != null){
+							CompositeNode steps = EcoreUtil.copy(this.steps);
+							RemovedTerminalNode node = AstFactory.eINSTANCE.createRemovedTerminalNode();
+							node.setContent(wrongMatch.getProcessedValue());
+							node.setTerminal(terminal);
+							node.setStart(position);
+							node.setLength(wrongMatch.size);
+							steps.getChildren().add(node);
+							
+							states.add(new EarleyState(currentRule, index, position+wrongMatch.size, steps, origin));
+						}
+						
+						// Correction attempt: Insert expected terminal
+						InsertedTerminalNode node = null;
+						if (feature != null){
+							node = AstFactory.eINSTANCE.createInsertedFeatureSetTerminalNode();
+							((InsertedFeatureSetTerminalNode)node).setFeatureName(feature);
+						}else{
+							node = AstFactory.eINSTANCE.createInsertedTerminalNode();
+						}
+								
+						node.setTerminal(terminal);
+						node.setStart(position);
+						node.setLength(0);
+						
+						CompositeNode steps = EcoreUtil.copy(this.steps);
+						steps.getChildren().add(node);
+						states.add(new EarleyState(currentRule, index+1, position, steps, origin));
 					}
 				}
 				
@@ -343,6 +386,14 @@ public class EarleyState {
 			}
 		}
 		return Collections.emptyList();
+	}
+	
+	public boolean lastScanFailed(){
+		if (!steps.getChildren().isEmpty()){
+			Node lastNode = steps.getChildren().get(steps.getChildren().size()-1); 
+			return (lastNode instanceof InsertedTerminalNode) || (lastNode instanceof RemovedTerminalNode);
+		}
+		return false;
 	}
 	
 }

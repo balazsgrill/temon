@@ -84,6 +84,18 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 				return createTerminalNodeAdapter();
 			}
 			@Override
+			public Adapter caseRemovedTerminalNode(RemovedTerminalNode object) {
+				return createRemovedTerminalNodeAdapter();
+			}
+			@Override
+			public Adapter caseInsertedTerminalNode(InsertedTerminalNode object) {
+				return createInsertedTerminalNodeAdapter();
+			}
+			@Override
+			public Adapter caseInsertedFeatureSetTerminalNode(InsertedFeatureSetTerminalNode object) {
+				return createInsertedFeatureSetTerminalNodeAdapter();
+			}
+			@Override
 			public Adapter caseFeatureSet(FeatureSet object) {
 				return createFeatureSetAdapter();
 			}
@@ -184,6 +196,48 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.RemovedTerminalNode <em>Removed Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.RemovedTerminalNode
+	 * @generated
+	 */
+	public Adapter createRemovedTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.InsertedTerminalNode <em>Inserted Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.InsertedTerminalNode
+	 * @generated
+	 */
+	public Adapter createInsertedTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.InsertedFeatureSetTerminalNode <em>Inserted Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.InsertedFeatureSetTerminalNode
+	 * @generated
+	 */
+	public Adapter createInsertedFeatureSetTerminalNodeAdapter() {
 		return null;
 	}
 

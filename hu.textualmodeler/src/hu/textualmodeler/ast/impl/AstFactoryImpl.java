@@ -58,6 +58,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 		switch (eClass.getClassifierID()) {
 			case AstPackage.WHITESPACE_NODE: return createWhitespaceNode();
 			case AstPackage.TERMINAL_NODE: return createTerminalNode();
+			case AstPackage.REMOVED_TERMINAL_NODE: return createRemovedTerminalNode();
+			case AstPackage.INSERTED_TERMINAL_NODE: return createInsertedTerminalNode();
+			case AstPackage.INSERTED_FEATURE_SET_TERMINAL_NODE: return createInsertedFeatureSetTerminalNode();
 			case AstPackage.FEATURE_SET_VALUE: return createFeatureSetValue();
 			case AstPackage.FEATURE_SET_TERMINAL_NODE: return createFeatureSetTerminalNode();
 			case AstPackage.COMPOSITE_NODE: return createCompositeNode();
@@ -87,6 +90,36 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	public TerminalNode createTerminalNode() {
 		TerminalNodeImpl terminalNode = new TerminalNodeImpl();
 		return terminalNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RemovedTerminalNode createRemovedTerminalNode() {
+		RemovedTerminalNodeImpl removedTerminalNode = new RemovedTerminalNodeImpl();
+		return removedTerminalNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InsertedTerminalNode createInsertedTerminalNode() {
+		InsertedTerminalNodeImpl insertedTerminalNode = new InsertedTerminalNodeImpl();
+		return insertedTerminalNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InsertedFeatureSetTerminalNode createInsertedFeatureSetTerminalNode() {
+		InsertedFeatureSetTerminalNodeImpl insertedFeatureSetTerminalNode = new InsertedFeatureSetTerminalNodeImpl();
+		return insertedFeatureSetTerminalNode;
 	}
 
 	/**

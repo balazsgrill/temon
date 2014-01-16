@@ -8,9 +8,12 @@ import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSet;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
+import hu.textualmodeler.ast.InsertedFeatureSetTerminalNode;
+import hu.textualmodeler.ast.InsertedTerminalNode;
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
+import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
@@ -57,6 +60,27 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * @generated
 	 */
 	private EClass terminalNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass removedTerminalNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass insertedTerminalNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass insertedFeatureSetTerminalNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -259,6 +283,33 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getRemovedTerminalNode() {
+		return removedTerminalNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInsertedTerminalNode() {
+		return insertedTerminalNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInsertedFeatureSetTerminalNode() {
+		return insertedFeatureSetTerminalNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getFeatureSet() {
 		return featureSetEClass;
 	}
@@ -403,6 +454,12 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		createEReference(terminalNodeEClass, TERMINAL_NODE__TERMINAL);
 		createEAttribute(terminalNodeEClass, TERMINAL_NODE__CONTENT);
 
+		removedTerminalNodeEClass = createEClass(REMOVED_TERMINAL_NODE);
+
+		insertedTerminalNodeEClass = createEClass(INSERTED_TERMINAL_NODE);
+
+		insertedFeatureSetTerminalNodeEClass = createEClass(INSERTED_FEATURE_SET_TERMINAL_NODE);
+
 		featureSetEClass = createEClass(FEATURE_SET);
 		createEAttribute(featureSetEClass, FEATURE_SET__FEATURE_NAME);
 
@@ -457,6 +514,10 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		visibleNodeEClass.getESuperTypes().add(this.getNode());
 		whitespaceNodeEClass.getESuperTypes().add(this.getVisibleNode());
 		terminalNodeEClass.getESuperTypes().add(this.getVisibleNode());
+		removedTerminalNodeEClass.getESuperTypes().add(this.getTerminalNode());
+		insertedTerminalNodeEClass.getESuperTypes().add(this.getTerminalNode());
+		insertedFeatureSetTerminalNodeEClass.getESuperTypes().add(this.getInsertedTerminalNode());
+		insertedFeatureSetTerminalNodeEClass.getESuperTypes().add(this.getFeatureSetTerminalNode());
 		featureSetValueEClass.getESuperTypes().add(this.getNode());
 		featureSetValueEClass.getESuperTypes().add(this.getFeatureSet());
 		featureSetTerminalNodeEClass.getESuperTypes().add(this.getTerminalNode());
@@ -480,6 +541,12 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEClass(terminalNodeEClass, TerminalNode.class, "TerminalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTerminalNode_Terminal(), theGrammarPackage.getTerminalItem(), null, "terminal", null, 0, 1, TerminalNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTerminalNode_Content(), ecorePackage.getEString(), "content", null, 0, 1, TerminalNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(removedTerminalNodeEClass, RemovedTerminalNode.class, "RemovedTerminalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(insertedTerminalNodeEClass, InsertedTerminalNode.class, "InsertedTerminalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(insertedFeatureSetTerminalNodeEClass, InsertedFeatureSetTerminalNode.class, "InsertedFeatureSetTerminalNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(featureSetEClass, FeatureSet.class, "FeatureSet", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFeatureSet_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, FeatureSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -40,6 +40,33 @@ public interface AstFactory extends EFactory {
 	TerminalNode createTerminalNode();
 
 	/**
+	 * Returns a new object of class '<em>Removed Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Removed Terminal Node</em>'.
+	 * @generated
+	 */
+	RemovedTerminalNode createRemovedTerminalNode();
+
+	/**
+	 * Returns a new object of class '<em>Inserted Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inserted Terminal Node</em>'.
+	 * @generated
+	 */
+	InsertedTerminalNode createInsertedTerminalNode();
+
+	/**
+	 * Returns a new object of class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @generated
+	 */
+	InsertedFeatureSetTerminalNode createInsertedFeatureSetTerminalNode();
+
+	/**
 	 * Returns a new object of class '<em>Feature Set Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -6,9 +6,11 @@ package hu.textualmodeler.parser;
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
+import hu.textualmodeler.ast.InsertedTerminalNode;
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
+import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
@@ -81,6 +83,10 @@ public class ModelBuilder {
 					for(Node n : ((CompositeNode) node).getChildren()){
 						process(n);
 					}
+				}else if (node instanceof RemovedTerminalNode){
+					pcontext.logError("Unexpected terminal: "+((RemovedTerminalNode) node).getTerminal().getTerminal().getName(), (RemovedTerminalNode)node);
+				}else if (node instanceof InsertedTerminalNode){
+					pcontext.logError("Missing terminal: "+((InsertedTerminalNode) node).getTerminal().getTerminal().getName(), (InsertedTerminalNode)node);
 				}else if (node instanceof FeatureSetValue){
 					FeatureValue fv = new FeatureValue(modelStack.peek(), 
 							getFeature(((FeatureSetValue) node).getFeatureName()), null, 
