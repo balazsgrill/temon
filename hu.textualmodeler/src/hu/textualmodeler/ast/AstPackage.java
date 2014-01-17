@@ -653,14 +653,32 @@ public interface AstPackage extends EPackage {
 	int COMPOSITE_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.SetContainmentFeatureImpl <em>Set Containment Feature</em>}' class.
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see hu.textualmodeler.ast.impl.SetContainmentFeatureImpl
-	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
+	 * @see hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
 	 * @generated
 	 */
-	int SET_CONTAINMENT_FEATURE = 11;
+	int FEATURE_SET_COMPOSITE_NODE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__NONTERMINAL = COMPOSITE_NODE__NONTERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__CHILDREN = COMPOSITE_NODE__CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -669,25 +687,25 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE__FEATURE_NAME = NODE_FEATURE_COUNT + 0;
+	int FEATURE_SET_COMPOSITE_NODE__FEATURE_NAME = COMPOSITE_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Set Containment Feature</em>' class.
+	 * The number of structural features of the '<em>Feature Set Composite Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
+	int FEATURE_SET_COMPOSITE_NODE_FEATURE_COUNT = COMPOSITE_NODE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Set Containment Feature</em>' class.
+	 * The number of operations of the '<em>Feature Set Composite Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+	int FEATURE_SET_COMPOSITE_NODE_OPERATION_COUNT = COMPOSITE_NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.PushElementImpl <em>Push Element</em>}' class.
@@ -727,6 +745,52 @@ public interface AstPackage extends EPackage {
 	int PUSH_ELEMENT_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.FeatureSetPushElementImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+	 * @generated
+	 */
+	int FEATURE_SET_PUSH_ELEMENT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__ECLASS_URI = PUSH_ELEMENT__ECLASS_URI;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME = PUSH_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_FEATURE_COUNT = PUSH_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_OPERATION_COUNT = PUSH_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.PopElementImpl <em>Pop Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -734,7 +798,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPopElement()
 	 * @generated
 	 */
-	int POP_ELEMENT = 13;
+	int POP_ELEMENT = 14;
 
 	/**
 	 * The number of structural features of the '<em>Pop Element</em>' class.
@@ -965,14 +1029,14 @@ public interface AstPackage extends EPackage {
 	EReference getCompositeNode_Children();
 
 	/**
-	 * Returns the meta object for class '{@link hu.textualmodeler.ast.SetContainmentFeature <em>Set Containment Feature</em>}'.
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSetCompositeNode <em>Feature Set Composite Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Set Containment Feature</em>'.
-	 * @see hu.textualmodeler.ast.SetContainmentFeature
+	 * @return the meta object for class '<em>Feature Set Composite Node</em>'.
+	 * @see hu.textualmodeler.ast.FeatureSetCompositeNode
 	 * @generated
 	 */
-	EClass getSetContainmentFeature();
+	EClass getFeatureSetCompositeNode();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.PushElement <em>Push Element</em>}'.
@@ -994,6 +1058,16 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPushElement_EclassURI();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSetPushElement <em>Feature Set Push Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Push Element</em>'.
+	 * @see hu.textualmodeler.ast.FeatureSetPushElement
+	 * @generated
+	 */
+	EClass getFeatureSetPushElement();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.PopElement <em>Pop Element</em>}'.
@@ -1211,14 +1285,14 @@ public interface AstPackage extends EPackage {
 		EReference COMPOSITE_NODE__CHILDREN = eINSTANCE.getCompositeNode_Children();
 
 		/**
-		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.SetContainmentFeatureImpl <em>Set Containment Feature</em>}' class.
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see hu.textualmodeler.ast.impl.SetContainmentFeatureImpl
-		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
+		 * @see hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
 		 * @generated
 		 */
-		EClass SET_CONTAINMENT_FEATURE = eINSTANCE.getSetContainmentFeature();
+		EClass FEATURE_SET_COMPOSITE_NODE = eINSTANCE.getFeatureSetCompositeNode();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.PushElementImpl <em>Push Element</em>}' class.
@@ -1237,6 +1311,16 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PUSH_ELEMENT__ECLASS_URI = eINSTANCE.getPushElement_EclassURI();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.FeatureSetPushElementImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+		 * @generated
+		 */
+		EClass FEATURE_SET_PUSH_ELEMENT = eINSTANCE.getFeatureSetPushElement();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.PopElementImpl <em>Pop Element</em>}' class.

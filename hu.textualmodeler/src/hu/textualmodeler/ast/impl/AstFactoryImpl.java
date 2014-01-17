@@ -64,8 +64,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 			case AstPackage.FEATURE_SET_VALUE: return createFeatureSetValue();
 			case AstPackage.FEATURE_SET_TERMINAL_NODE: return createFeatureSetTerminalNode();
 			case AstPackage.COMPOSITE_NODE: return createCompositeNode();
-			case AstPackage.SET_CONTAINMENT_FEATURE: return createSetContainmentFeature();
+			case AstPackage.FEATURE_SET_COMPOSITE_NODE: return createFeatureSetCompositeNode();
 			case AstPackage.PUSH_ELEMENT: return createPushElement();
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT: return createFeatureSetPushElement();
 			case AstPackage.POP_ELEMENT: return createPopElement();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -157,9 +158,9 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SetContainmentFeature createSetContainmentFeature() {
-		SetContainmentFeatureImpl setContainmentFeature = new SetContainmentFeatureImpl();
-		return setContainmentFeature;
+	public FeatureSetCompositeNode createFeatureSetCompositeNode() {
+		FeatureSetCompositeNodeImpl featureSetCompositeNode = new FeatureSetCompositeNodeImpl();
+		return featureSetCompositeNode;
 	}
 
 	/**
@@ -170,6 +171,16 @@ public class AstFactoryImpl extends EFactoryImpl implements AstFactory {
 	public PushElement createPushElement() {
 		PushElementImpl pushElement = new PushElementImpl();
 		return pushElement;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FeatureSetPushElement createFeatureSetPushElement() {
+		FeatureSetPushElementImpl featureSetPushElement = new FeatureSetPushElementImpl();
+		return featureSetPushElement;
 	}
 
 	/**

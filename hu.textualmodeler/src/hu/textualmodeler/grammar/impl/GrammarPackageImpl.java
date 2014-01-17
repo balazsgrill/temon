@@ -17,6 +17,8 @@ import hu.textualmodeler.grammar.SetValue;
 import hu.textualmodeler.grammar.SyntaxItem;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.grammar.TerminalItem;
+import hu.textualmodeler.tokens.TokensPackage;
+import hu.textualmodeler.tokens.impl.TokensPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -155,14 +157,17 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 
 		// Obtain or create and register interdependencies
 		AstPackageImpl theAstPackage = (AstPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(AstPackage.eNS_URI) instanceof AstPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(AstPackage.eNS_URI) : AstPackage.eINSTANCE);
+		TokensPackageImpl theTokensPackage = (TokensPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) instanceof TokensPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) : TokensPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theGrammarPackage.createPackageContents();
 		theAstPackage.createPackageContents();
+		theTokensPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theGrammarPackage.initializePackageContents();
 		theAstPackage.initializePackageContents();
+		theTokensPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theGrammarPackage.freeze();
@@ -270,6 +275,15 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 */
 	public EReference getTerminal_Replace() {
 		return (EReference)terminalEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTerminal_Priority() {
+		return (EAttribute)terminalEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -519,6 +533,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		createEAttribute(terminalEClass, TERMINAL__REGEX);
 		createEAttribute(terminalEClass, TERMINAL__HIDE);
 		createEReference(terminalEClass, TERMINAL__REPLACE);
+		createEAttribute(terminalEClass, TERMINAL__PRIORITY);
 
 		replaceEClass = createEClass(REPLACE);
 		createEAttribute(replaceEClass, REPLACE__SEARCH);
@@ -601,6 +616,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEAttribute(getTerminal_Regex(), ecorePackage.getEString(), "regex", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTerminal_Hide(), ecorePackage.getEBoolean(), "hide", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTerminal_Replace(), this.getReplace(), null, "replace", null, 0, -1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTerminal_Priority(), ecorePackage.getEInt(), "priority", "1", 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(replaceEClass, Replace.class, "Replace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReplace_Search(), ecorePackage.getEString(), "search", null, 1, 1, Replace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

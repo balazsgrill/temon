@@ -51,11 +51,16 @@ package ast{
 		val Node[*] children;
 	}
 	
-	class SetContainmentFeature extends Node, FeatureSet{
+	class FeatureSetCompositeNode extends CompositeNode, FeatureSet{
+		
 	}
 	
 	class PushElement extends Node{
 		attr String[1] eclassURI;
+	}
+	
+	class FeatureSetPushElement extends PushElement, FeatureSet{
+		
 	}
 	
 	class PopElement extends Node{
@@ -80,6 +85,7 @@ package grammar{
 		attr String[1] regex;
 		attr boolean hide;
 		val Replace[*] replace;
+		attr int priority = 1;
 	}
 
 	class Replace{
@@ -123,4 +129,20 @@ package grammar{
 	class Pop extends RuleItem{		
 	}
 
+}
+
+@namespace(uri="http://textualmodeler.hu/tokensr", prefix="tokens")
+package tokens{
+	
+	class Token{
+		ref grammar.Terminal terminal;
+		attr String value;
+		attr int start;
+		attr int length;
+	}
+	
+	class TokenList{
+		val Token[*] tokens;
+	}
+	
 }

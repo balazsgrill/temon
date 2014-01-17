@@ -1,10 +1,13 @@
 /**
  */
-package hu.textualmodeler.ast.provider;
+package hu.textualmodeler.tokens.provider;
 
 
-import hu.textualmodeler.ast.AstPackage;
-import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.provider.TextualmodelerEditPlugin;
+
+import hu.textualmodeler.tokens.TokenList;
+import hu.textualmodeler.tokens.TokensFactory;
+import hu.textualmodeler.tokens.TokensPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -12,24 +15,27 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.ast.SetContainmentFeature} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.tokens.TokenList} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SetContainmentFeatureItemProvider
-	extends NodeItemProvider
+public class TokenListItemProvider
+	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -42,7 +48,7 @@ public class SetContainmentFeatureItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SetContainmentFeatureItemProvider(AdapterFactory adapterFactory) {
+	public TokenListItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -57,53 +63,60 @@ public class SetContainmentFeatureItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addFeatureNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Feature Name feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFeatureNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_FeatureSet_featureName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FeatureSet_featureName_feature", "_UI_FeatureSet_type"),
-				 AstPackage.Literals.FEATURE_SET__FEATURE_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(TokensPackage.Literals.TOKEN_LIST__TOKENS);
+		}
+		return childrenFeatures;
 	}
 
 	/**
-	 * This returns SetContainmentFeature.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns TokenList.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SetContainmentFeature"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TokenList"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SetContainmentFeature)object).getFeatureName();
-		return label + "->";
+		return getString("_UI_TokenList_type");
 	}
 
 	/**
@@ -117,9 +130,9 @@ public class SetContainmentFeatureItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SetContainmentFeature.class)) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+		switch (notification.getFeatureID(TokenList.class)) {
+			case TokensPackage.TOKEN_LIST__TOKENS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -135,6 +148,22 @@ public class SetContainmentFeatureItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(TokensPackage.Literals.TOKEN_LIST__TOKENS,
+				 TokensFactory.eINSTANCE.createToken()));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator() {
+		return TextualmodelerEditPlugin.INSTANCE;
 	}
 
 }

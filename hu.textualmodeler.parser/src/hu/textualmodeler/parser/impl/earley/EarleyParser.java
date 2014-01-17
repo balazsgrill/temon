@@ -11,10 +11,11 @@ import hu.textualmodeler.grammar.Rule;
 import hu.textualmodeler.parser.IGrammar;
 import hu.textualmodeler.parser.IParser;
 import hu.textualmodeler.parser.IParserContext;
-import hu.textualmodeler.parser.IParserInput;
 import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.Grammar;
+import hu.textualmodeler.tokens.TokenList;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -52,7 +53,7 @@ public class EarleyParser implements IParser {
 	 * @see hu.modembed.syntax.persistence.IParser#parse(hu.modembed.syntax.persistence.IParserInput, hu.modembed.syntax.persistence.IParserContext, int)
 	 */
 	@Override
-	public Node parse(IParserInput input,
+	public Node parse(TokenList input,
 			IParserContext context, int start) {
 
 		ParserTable table = new ParserTable();
@@ -69,7 +70,8 @@ public class EarleyParser implements IParser {
 			Queue<EarleyState> queue = table.get(currentLevel).getQueue();
 			
 			if (queue.isEmpty() && finished.isEmpty()){
-				queue.addAll(failed);
+				Collections.reverse(failed);
+				//queue.addAll(failed);
 				failed.clear();
 			}
 			
@@ -79,11 +81,12 @@ public class EarleyParser implements IParser {
 				
 				EarleyState state = queue.poll();
 
+				System.out.println(state);
+				
 				if (state.isCompleted()){
 					int consumed = state.getPosition();
 					
-					//consumed = input.bypassHidden(consumed);
-					if (consumed == input.length()){
+					if (consumed == input.getTokens().size()){
 						finished.add(state);
 					}else{
 						/* Try to recover by consuming terminals after finished AST */

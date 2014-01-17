@@ -9,7 +9,6 @@ import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.IParserInput;
 import hu.textualmodeler.parser.TerminalMatch;
-import hu.textualmodeler.parser.errors.ParsingError;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,6 +25,7 @@ import java.util.regex.Pattern;
  * @author balazs.grill
  *
  */
+@Deprecated
 public class StringInput implements IParserInput {
 
 	private final Map<Terminal, Pattern> terminals = new LinkedHashMap<Terminal, Pattern>();
@@ -41,7 +41,7 @@ public class StringInput implements IParserInput {
 			try{
 				this.terminals.put(terminal, Pattern.compile(terminal.getRegex()));
 			}catch(Exception e){
-				context.logError(new ParsingError(e.getMessage(), this, null));
+				//context.logError(new ParsingError(e.getMessage(), this, null));
 			}
 		}
 		for(Terminal terminal : terminals){
@@ -60,18 +60,7 @@ public class StringInput implements IParserInput {
 				overrides.put(terminal, list);
 			}
 		}
-//		System.out.println("-------------------------");
-//		for(Entry<Terminal, Set<Terminal>> o : overrides.entrySet()){
-//			StringBuilder sb = new StringBuilder();
-//			sb.append(o.getKey().getName());
-//			sb.append(" -> ");
-//			for(Terminal t : o.getValue()){
-//				sb.append(t.getName());
-//				sb.append(" ");
-//			}
-//			System.out.println(sb.toString());
-//		}
-//		System.out.println();
+
 	}
 
 	/* (non-Javadoc)

@@ -31,11 +31,12 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
           eType="#//ast/Node" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="SetContainmentFeature" eSuperTypes="#//ast/Node #//ast/FeatureSet"/>
+    <eClassifiers xsi:type="ecore:EClass" name="FeatureSetCompositeNode" eSuperTypes="#//ast/CompositeNode #//ast/FeatureSet"/>
     <eClassifiers xsi:type="ecore:EClass" name="PushElement" eSuperTypes="#//ast/Node">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclassURI" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FeatureSetPushElement" eSuperTypes="#//ast/PushElement #//ast/FeatureSet"/>
     <eClassifiers xsi:type="ecore:EClass" name="PopElement" eSuperTypes="#//ast/Node"/>
   </eSubpackages>
   <eSubpackages name="grammar" nsURI="http://textualmodeler.hu/grammar" nsPrefix="grammar">
@@ -59,6 +60,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="hide" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="replace" upperBound="-1"
           eType="#//grammar/Replace" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+          defaultValueLiteral="1"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Replace">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="search" lowerBound="1"
@@ -99,5 +102,17 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
+  </eSubpackages>
+  <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokensr" nsPrefix="tokens">
+    <eClassifiers xsi:type="ecore:EClass" name="Token">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TokenList">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tokens" upperBound="-1"
+          eType="#//tokens/Token" containment="true"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

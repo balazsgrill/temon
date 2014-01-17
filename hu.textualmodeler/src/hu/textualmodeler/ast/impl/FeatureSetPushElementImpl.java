@@ -4,7 +4,7 @@ package hu.textualmodeler.ast.impl;
 
 import hu.textualmodeler.ast.AstPackage;
 import hu.textualmodeler.ast.FeatureSet;
-import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.FeatureSetPushElement;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,18 +14,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Set Containment Feature</b></em>'.
+ * An implementation of the model object '<em><b>Feature Set Push Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link hu.textualmodeler.ast.impl.SetContainmentFeatureImpl#getFeatureName <em>Feature Name</em>}</li>
+ *   <li>{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl#getFeatureName <em>Feature Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmentFeature {
+public class FeatureSetPushElementImpl extends PushElementImpl implements FeatureSetPushElement {
 	/**
 	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SetContainmentFeatureImpl() {
+	protected FeatureSetPushElementImpl() {
 		super();
 	}
 
@@ -62,7 +62,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AstPackage.Literals.SET_CONTAINMENT_FEATURE;
+		return AstPackage.Literals.FEATURE_SET_PUSH_ELEMENT;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 		String oldFeatureName = featureName;
 		featureName = newFeatureName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME, oldFeatureName, featureName));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME, oldFeatureName, featureName));
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME:
 				return getFeatureName();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -108,7 +108,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME:
 				setFeatureName((String)newValue);
 				return;
 		}
@@ -123,7 +123,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME:
 				setFeatureName(FEATURE_NAME_EDEFAULT);
 				return;
 		}
@@ -138,7 +138,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME:
 				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
 		}
 		return super.eIsSet(featureID);
@@ -153,7 +153,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == FeatureSet.class) {
 			switch (derivedFeatureID) {
-				case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME: return AstPackage.FEATURE_SET__FEATURE_NAME;
+				case AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME: return AstPackage.FEATURE_SET__FEATURE_NAME;
 				default: return -1;
 			}
 		}
@@ -169,7 +169,7 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == FeatureSet.class) {
 			switch (baseFeatureID) {
-				case AstPackage.FEATURE_SET__FEATURE_NAME: return AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME;
+				case AstPackage.FEATURE_SET__FEATURE_NAME: return AstPackage.FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME;
 				default: return -1;
 			}
 		}
@@ -192,4 +192,4 @@ public class SetContainmentFeatureImpl extends NodeImpl implements SetContainmen
 		return result.toString();
 	}
 
-} //SetContainmentFeatureImpl
+} //FeatureSetPushElementImpl

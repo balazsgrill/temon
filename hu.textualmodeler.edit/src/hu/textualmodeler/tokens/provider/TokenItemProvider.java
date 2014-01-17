@@ -1,13 +1,12 @@
 /**
  */
-package hu.textualmodeler.grammar.provider;
+package hu.textualmodeler.tokens.provider;
 
 
 import hu.textualmodeler.ast.provider.TextualmodelerEditPlugin;
 
-import hu.textualmodeler.grammar.GrammarFactory;
-import hu.textualmodeler.grammar.GrammarPackage;
-import hu.textualmodeler.grammar.Terminal;
+import hu.textualmodeler.tokens.Token;
+import hu.textualmodeler.tokens.TokensPackage;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,8 +15,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -31,12 +28,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.grammar.Terminal} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.tokens.Token} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TerminalItemProvider
+public class TokenItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -50,7 +47,7 @@ public class TerminalItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TerminalItemProvider(AdapterFactory adapterFactory) {
+	public TokenItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -65,28 +62,50 @@ public class TerminalItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
-			addRegexPropertyDescriptor(object);
-			addHidePropertyDescriptor(object);
-			addPriorityPropertyDescriptor(object);
+			addTerminalPropertyDescriptor(object);
+			addValuePropertyDescriptor(object);
+			addStartPropertyDescriptor(object);
+			addLengthPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Terminal feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object) {
+	protected void addTerminalPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Terminal_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_name_feature", "_UI_Terminal_type"),
-				 GrammarPackage.Literals.TERMINAL__NAME,
+				 getString("_UI_Token_terminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_terminal_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__TERMINAL,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Value feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addValuePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Token_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_value_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__VALUE,
 				 true,
 				 false,
 				 false,
@@ -96,63 +115,19 @@ public class TerminalItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Regex feature.
+	 * This adds a property descriptor for the Start feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addRegexPropertyDescriptor(Object object) {
+	protected void addStartPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Terminal_regex_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_regex_feature", "_UI_Terminal_type"),
-				 GrammarPackage.Literals.TERMINAL__REGEX,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Hide feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHidePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Terminal_hide_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_hide_feature", "_UI_Terminal_type"),
-				 GrammarPackage.Literals.TERMINAL__HIDE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Priority feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPriorityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Terminal_priority_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_priority_feature", "_UI_Terminal_type"),
-				 GrammarPackage.Literals.TERMINAL__PRIORITY,
+				 getString("_UI_Token_start_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_start_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__START,
 				 true,
 				 false,
 				 false,
@@ -162,44 +137,36 @@ public class TerminalItemProvider
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Length feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(GrammarPackage.Literals.TERMINAL__REPLACE);
-		}
-		return childrenFeatures;
+	protected void addLengthPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Token_length_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Token_length_feature", "_UI_Token_type"),
+				 TokensPackage.Literals.TOKEN__LENGTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns Terminal.gif.
+	 * This returns Token.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Terminal"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Token"));
 	}
 
 	/**
@@ -210,10 +177,10 @@ public class TerminalItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Terminal)object).getName();
+		String label = ((Token)object).getValue();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Terminal_type") :
-			getString("_UI_Terminal_type") + " " + label;
+			getString("_UI_Token_type") :
+			getString("_UI_Token_type") + " " + label;
 	}
 
 	/**
@@ -227,15 +194,11 @@ public class TerminalItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Terminal.class)) {
-			case GrammarPackage.TERMINAL__NAME:
-			case GrammarPackage.TERMINAL__REGEX:
-			case GrammarPackage.TERMINAL__HIDE:
-			case GrammarPackage.TERMINAL__PRIORITY:
+		switch (notification.getFeatureID(Token.class)) {
+			case TokensPackage.TOKEN__VALUE:
+			case TokensPackage.TOKEN__START:
+			case TokensPackage.TOKEN__LENGTH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case GrammarPackage.TERMINAL__REPLACE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -251,11 +214,6 @@ public class TerminalItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(GrammarPackage.Literals.TERMINAL__REPLACE,
-				 GrammarFactory.eINSTANCE.createReplace()));
 	}
 
 	/**

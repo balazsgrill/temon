@@ -81,8 +81,11 @@ public class GrammarResource extends AbstractTextualResource {
 				
 				if (GrammarPackage.eINSTANCE.getTerminalItem_Terminal().equals(feature)){
 					if (context instanceof TerminalItem){
-						GrammarModel g = (GrammarModel) context.eContainer().eContainer();
-						return getTerminal(g, value);
+						EObject rule = context.eContainer();
+						if (rule != null){
+							GrammarModel g = (GrammarModel) rule.eContainer();
+							return getTerminal(g, value);
+						}
 					}
 				}
 				

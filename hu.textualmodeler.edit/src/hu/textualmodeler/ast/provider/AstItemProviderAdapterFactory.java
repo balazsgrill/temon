@@ -256,26 +256,26 @@ public class AstItemProviderAdapterFactory extends AstAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.ast.SetContainmentFeature} instances.
+	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.ast.FeatureSetCompositeNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SetContainmentFeatureItemProvider setContainmentFeatureItemProvider;
+	protected FeatureSetCompositeNodeItemProvider featureSetCompositeNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link hu.textualmodeler.ast.SetContainmentFeature}.
+	 * This creates an adapter for a {@link hu.textualmodeler.ast.FeatureSetCompositeNode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSetContainmentFeatureAdapter() {
-		if (setContainmentFeatureItemProvider == null) {
-			setContainmentFeatureItemProvider = new SetContainmentFeatureItemProvider(this);
+	public Adapter createFeatureSetCompositeNodeAdapter() {
+		if (featureSetCompositeNodeItemProvider == null) {
+			featureSetCompositeNodeItemProvider = new FeatureSetCompositeNodeItemProvider(this);
 		}
 
-		return setContainmentFeatureItemProvider;
+		return featureSetCompositeNodeItemProvider;
 	}
 
 	/**
@@ -299,6 +299,29 @@ public class AstItemProviderAdapterFactory extends AstAdapterFactory implements 
 		}
 
 		return pushElementItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link hu.textualmodeler.ast.FeatureSetPushElement} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FeatureSetPushElementItemProvider featureSetPushElementItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link hu.textualmodeler.ast.FeatureSetPushElement}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFeatureSetPushElementAdapter() {
+		if (featureSetPushElementItemProvider == null) {
+			featureSetPushElementItemProvider = new FeatureSetPushElementItemProvider(this);
+		}
+
+		return featureSetPushElementItemProvider;
 	}
 
 	/**
@@ -431,8 +454,9 @@ public class AstItemProviderAdapterFactory extends AstAdapterFactory implements 
 		if (featureSetValueItemProvider != null) featureSetValueItemProvider.dispose();
 		if (featureSetTerminalNodeItemProvider != null) featureSetTerminalNodeItemProvider.dispose();
 		if (compositeNodeItemProvider != null) compositeNodeItemProvider.dispose();
-		if (setContainmentFeatureItemProvider != null) setContainmentFeatureItemProvider.dispose();
+		if (featureSetCompositeNodeItemProvider != null) featureSetCompositeNodeItemProvider.dispose();
 		if (pushElementItemProvider != null) pushElementItemProvider.dispose();
+		if (featureSetPushElementItemProvider != null) featureSetPushElementItemProvider.dispose();
 		if (popElementItemProvider != null) popElementItemProvider.dispose();
 	}
 

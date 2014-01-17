@@ -156,11 +156,12 @@ public class AstSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AstPackage.SET_CONTAINMENT_FEATURE: {
-				SetContainmentFeature setContainmentFeature = (SetContainmentFeature)theEObject;
-				T result = caseSetContainmentFeature(setContainmentFeature);
-				if (result == null) result = caseNode(setContainmentFeature);
-				if (result == null) result = caseFeatureSet(setContainmentFeature);
+			case AstPackage.FEATURE_SET_COMPOSITE_NODE: {
+				FeatureSetCompositeNode featureSetCompositeNode = (FeatureSetCompositeNode)theEObject;
+				T result = caseFeatureSetCompositeNode(featureSetCompositeNode);
+				if (result == null) result = caseCompositeNode(featureSetCompositeNode);
+				if (result == null) result = caseFeatureSet(featureSetCompositeNode);
+				if (result == null) result = caseNode(featureSetCompositeNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -168,6 +169,15 @@ public class AstSwitch<T> extends Switch<T> {
 				PushElement pushElement = (PushElement)theEObject;
 				T result = casePushElement(pushElement);
 				if (result == null) result = caseNode(pushElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT: {
+				FeatureSetPushElement featureSetPushElement = (FeatureSetPushElement)theEObject;
+				T result = caseFeatureSetPushElement(featureSetPushElement);
+				if (result == null) result = casePushElement(featureSetPushElement);
+				if (result == null) result = caseFeatureSet(featureSetPushElement);
+				if (result == null) result = caseNode(featureSetPushElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -348,17 +358,17 @@ public class AstSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set Containment Feature</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Set Composite Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set Containment Feature</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Set Composite Node</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSetContainmentFeature(SetContainmentFeature object) {
+	public T caseFeatureSetCompositeNode(FeatureSetCompositeNode object) {
 		return null;
 	}
 
@@ -374,6 +384,21 @@ public class AstSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePushElement(PushElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Set Push Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Set Push Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureSetPushElement(FeatureSetPushElement object) {
 		return null;
 	}
 

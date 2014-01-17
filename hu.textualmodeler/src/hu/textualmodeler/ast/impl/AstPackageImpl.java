@@ -6,6 +6,8 @@ import hu.textualmodeler.ast.AstFactory;
 import hu.textualmodeler.ast.AstPackage;
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSet;
+import hu.textualmodeler.ast.FeatureSetCompositeNode;
+import hu.textualmodeler.ast.FeatureSetPushElement;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
 import hu.textualmodeler.ast.InsertedFeatureSetTerminalNode;
@@ -14,12 +16,13 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
 import hu.textualmodeler.ast.RemovedTerminalNode;
-import hu.textualmodeler.ast.SetContainmentFeature;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.GrammarPackage;
 import hu.textualmodeler.grammar.impl.GrammarPackageImpl;
+import hu.textualmodeler.tokens.TokensPackage;
+import hu.textualmodeler.tokens.impl.TokensPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -115,7 +118,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass setContainmentFeatureEClass = null;
+	private EClass featureSetCompositeNodeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -123,6 +126,13 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * @generated
 	 */
 	private EClass pushElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass featureSetPushElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -179,14 +189,17 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 
 		// Obtain or create and register interdependencies
 		GrammarPackageImpl theGrammarPackage = (GrammarPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) instanceof GrammarPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(GrammarPackage.eNS_URI) : GrammarPackage.eINSTANCE);
+		TokensPackageImpl theTokensPackage = (TokensPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) instanceof TokensPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(TokensPackage.eNS_URI) : TokensPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theAstPackage.createPackageContents();
 		theGrammarPackage.createPackageContents();
+		theTokensPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theAstPackage.initializePackageContents();
 		theGrammarPackage.initializePackageContents();
+		theTokensPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theAstPackage.freeze();
@@ -382,8 +395,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSetContainmentFeature() {
-		return setContainmentFeatureEClass;
+	public EClass getFeatureSetCompositeNode() {
+		return featureSetCompositeNodeEClass;
 	}
 
 	/**
@@ -402,6 +415,15 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 */
 	public EAttribute getPushElement_EclassURI() {
 		return (EAttribute)pushElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getFeatureSetPushElement() {
+		return featureSetPushElementEClass;
 	}
 
 	/**
@@ -472,10 +494,12 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		createEReference(compositeNodeEClass, COMPOSITE_NODE__NONTERMINAL);
 		createEReference(compositeNodeEClass, COMPOSITE_NODE__CHILDREN);
 
-		setContainmentFeatureEClass = createEClass(SET_CONTAINMENT_FEATURE);
+		featureSetCompositeNodeEClass = createEClass(FEATURE_SET_COMPOSITE_NODE);
 
 		pushElementEClass = createEClass(PUSH_ELEMENT);
 		createEAttribute(pushElementEClass, PUSH_ELEMENT__ECLASS_URI);
+
+		featureSetPushElementEClass = createEClass(FEATURE_SET_PUSH_ELEMENT);
 
 		popElementEClass = createEClass(POP_ELEMENT);
 	}
@@ -523,9 +547,11 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		featureSetTerminalNodeEClass.getESuperTypes().add(this.getTerminalNode());
 		featureSetTerminalNodeEClass.getESuperTypes().add(this.getFeatureSet());
 		compositeNodeEClass.getESuperTypes().add(this.getNode());
-		setContainmentFeatureEClass.getESuperTypes().add(this.getNode());
-		setContainmentFeatureEClass.getESuperTypes().add(this.getFeatureSet());
+		featureSetCompositeNodeEClass.getESuperTypes().add(this.getCompositeNode());
+		featureSetCompositeNodeEClass.getESuperTypes().add(this.getFeatureSet());
 		pushElementEClass.getESuperTypes().add(this.getNode());
+		featureSetPushElementEClass.getESuperTypes().add(this.getPushElement());
+		featureSetPushElementEClass.getESuperTypes().add(this.getFeatureSet());
 		popElementEClass.getESuperTypes().add(this.getNode());
 
 		// Initialize classes, features, and operations; add parameters
@@ -560,10 +586,12 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEReference(getCompositeNode_Nonterminal(), theGrammarPackage.getRule(), null, "nonterminal", null, 0, 1, CompositeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeNode_Children(), this.getNode(), null, "children", null, 0, -1, CompositeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(setContainmentFeatureEClass, SetContainmentFeature.class, "SetContainmentFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(featureSetCompositeNodeEClass, FeatureSetCompositeNode.class, "FeatureSetCompositeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pushElementEClass, PushElement.class, "PushElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPushElement_EclassURI(), ecorePackage.getEString(), "eclassURI", null, 1, 1, PushElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(featureSetPushElementEClass, FeatureSetPushElement.class, "FeatureSetPushElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(popElementEClass, PopElement.class, "PopElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
