@@ -81,7 +81,7 @@ public class EarleyParser implements IParser {
 				
 				EarleyState state = queue.poll();
 
-				System.out.println(state);
+				//System.out.println(state);
 				
 				if (state.isCompleted()){
 					int consumed = state.getPosition();

@@ -235,7 +235,7 @@ public class EarleyState {
 			
 			for(Rule rule : rules){
 				CompositeNode steps = null;
-				if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
+				if (nonterm.getFeatureName() != null){
 					steps = AstFactory.eINSTANCE.createFeatureSetCompositeNode();
 					((FeatureSetCompositeNode)steps).setFeatureName(nonterm.getFeatureName());
 				}else{
@@ -260,7 +260,16 @@ public class EarleyState {
 					NonTerminalItem nonterm = ((NonTerminalItem)p.getNextItem());
 					if ((nonterm.getNonTerminal().equals(currentRule.getNonTerminal()))){
 						CompositeNode parentSteps = EcoreUtil.copy(p.steps);
-						CompositeNode childSteps = EcoreUtil.copy(steps);
+						CompositeNode childSteps = null;
+						if (nonterm.getFeatureName() != null && !(steps instanceof FeatureSetCompositeNode)){
+							FeatureSetCompositeNode nchild = AstFactory.eINSTANCE.createFeatureSetCompositeNode();
+							nchild.setFeatureName(nonterm.getFeatureName());
+							childSteps = nchild;
+							childSteps.setNonterminal(steps.getNonterminal());
+							childSteps.getChildren().addAll(EcoreUtil.copyAll(steps.getChildren()));
+						}else{
+							childSteps = EcoreUtil.copy(steps);
+						}
 						
 //						if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
 //							SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
