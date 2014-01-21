@@ -317,6 +317,15 @@ public class EarleyState {
 		return this;
 	}
 	
+	private static boolean isMatch(Terminal match, Terminal next){
+		if (match.equals(next)) return true;
+		Terminal sup = match.getSuperTerminal();
+		if (sup != null){
+			return isMatch(sup, next);
+		}
+		return false;
+	}
+	
 	public List<EarleyState> scan(TokenList input, IGrammar grammar){
 		if (scanning()){
 			RuleItem item = getNextItem();
@@ -331,7 +340,7 @@ public class EarleyState {
 
 				Token match = input.getTokens().size() > position ? input.getTokens().get(position) : null;
 				if (match != null){
-					if (match.getTerminal().equals(terminal.getTerminal())){
+					if (isMatch(match.getTerminal(), terminal.getTerminal())){
 
 						CompositeNode steps = EcoreUtil.copy(this.steps);
 						String feature = terminal.getFeatureName();

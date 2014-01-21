@@ -86,6 +86,7 @@ package grammar{
 		attr boolean hide;
 		val Replace[*] replace;
 		attr int priority = 1;
+		ref Terminal superTerminal;
 	}
 
 	class Replace{

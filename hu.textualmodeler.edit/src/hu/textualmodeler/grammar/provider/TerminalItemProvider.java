@@ -69,6 +69,7 @@ public class TerminalItemProvider
 			addRegexPropertyDescriptor(object);
 			addHidePropertyDescriptor(object);
 			addPriorityPropertyDescriptor(object);
+			addSuperTerminalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -157,6 +158,28 @@ public class TerminalItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Super Terminal feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuperTerminalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Terminal_superTerminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_superTerminal_feature", "_UI_Terminal_type"),
+				 GrammarPackage.Literals.TERMINAL__SUPER_TERMINAL,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

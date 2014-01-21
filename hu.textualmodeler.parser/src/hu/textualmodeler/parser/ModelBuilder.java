@@ -90,11 +90,16 @@ public class ModelBuilder {
 	
 	private class Context{
 		
-		private final Stack<EObject> modelStack = new Stack<>();
+		EObject result = null;
 		
-		//private String currentContainerFeature = null;
+		public Context(Context parent) {
+			modelStack = (parent == null) ? new Stack<EObject>() : parent.modelStack;
+			featureValues = (parent == null) ? new LinkedList<FeatureValue>() : parent.featureValues;
+		}
 		
-		private List<FeatureValue> featureValues = new LinkedList<>();
+		private final Stack<EObject> modelStack;
+		
+		private List<FeatureValue> featureValues;
 		
 		public EObject process(Node node){
 			try{
@@ -108,16 +113,20 @@ public class ModelBuilder {
 				
 				
 				if (node instanceof CompositeNode){
+					Context subContext = new Context(this);
 					for(Node n : ((CompositeNode) node).getChildren()){
-						process(n);
+						EObject subresult = subContext.process(n);
+						if (result == null){
+							result = subresult;
+						}
 					}
 					
 					if (feature != null){
 						EObject context = modelStack.peek();
 						if (feature instanceof EReference){
 
-							if (((EReference) feature).isContainer()){
-								EObject element = modelStack.peek();
+							if (((EReference) feature).isContainment()){
+								EObject element = subContext.result;
 								eSetOrAdd(context, feature, element);
 							}else{
 								String value = contentOf(node);
@@ -164,6 +173,9 @@ public class ModelBuilder {
 						eSetOrAdd(parent, feature, element);
 					}
 					modelStack.push(element);
+					if (result == null){
+						result = element;
+					}
 				}else if (node instanceof FeatureSetTerminalNode){
 					if (!modelStack.isEmpty()){
 						
@@ -187,7 +199,7 @@ public class ModelBuilder {
 					
 			}
 			
-			return modelStack.isEmpty() ? null : modelStack.peek(); 
+			return result;
 		}
 		
 		public void resolve(){
@@ -199,12 +211,6 @@ public class ModelBuilder {
 				}
 			}
 			featureValues.clear();
-		}
-		
-		public EStructuralFeature getFeature(String name){
-			if (modelStack.isEmpty()) return null;
-			EObject current = modelStack.peek();
-			return findFeature(current.eClass(), name);
 		}
 		
 	}
@@ -223,7 +229,7 @@ public class ModelBuilder {
 	}
 	
 	public EObject build(CompositeNode root){
-		Context context = new Context();
+		Context context = new Context(null);
 		try{
 			Object o = context.process(root);
 			context.resolve();

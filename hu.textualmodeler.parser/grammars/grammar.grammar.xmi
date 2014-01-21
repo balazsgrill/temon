@@ -13,6 +13,7 @@
   <terminals xmi:id="_Zjqs4LZLEeKDArD2cbZQHA" name="OPERATOR_MULTI" regex="\+" priority="10"/>
   <terminals xmi:id="_eFcO8LZLEeKDArD2cbZQHA" name="OPERATOR_OPTIONAL" regex="\?" priority="10"/>
   <terminals name="OPERATOR_OPT_MULTI" regex="\*" priority="10"/>
+  <terminals name="OPERATOR_SUPERTERM" regex="\:" priority="10"/>
   <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
     <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
     <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
@@ -43,6 +44,7 @@
     <body xsi:type="grammar:TerminalItem" xmi:id="_HsyRcLGWEeK1ScU5DNcoWg" featureName="name">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
+    <body xsi:type="grammar:NonTerminalItem" optional="true" nonTerminal="SuperTerminal"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_cCHy4LGWEeK1ScU5DNcoWg" featureName="regex">
       <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
@@ -53,6 +55,12 @@
       <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
     </body>
     <body xsi:type="grammar:Pop" xmi:id="_onRVgLGWEeK1ScU5DNcoWg"/>
+  </rules>
+  <rules nonTerminal="SuperTerminal">
+    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.13"/>
+    <body xsi:type="grammar:TerminalItem" featureName="superTerminal">
+      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    </body>
   </rules>
   <rules xmi:id="_o60uMLGXEeK1ScU5DNcoWg" nonTerminal="Rule">
     <body xsi:type="grammar:TerminalItem" xmi:id="_rEcGELGXEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>

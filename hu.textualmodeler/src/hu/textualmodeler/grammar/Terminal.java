@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.textualmodeler.grammar.Terminal#isHide <em>Hide</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.Terminal#getReplace <em>Replace</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.Terminal#getPriority <em>Priority</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.Terminal#getSuperTerminal <em>Super Terminal</em>}</li>
  * </ul>
  * </p>
  *
@@ -147,5 +148,31 @@ public interface Terminal extends EObject {
 	 * @generated
 	 */
 	void setPriority(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Super Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Super Terminal</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Super Terminal</em>' reference.
+	 * @see #setSuperTerminal(Terminal)
+	 * @see hu.textualmodeler.grammar.GrammarPackage#getTerminal_SuperTerminal()
+	 * @model
+	 * @generated
+	 */
+	Terminal getSuperTerminal();
+
+	/**
+	 * Sets the value of the '{@link hu.textualmodeler.grammar.Terminal#getSuperTerminal <em>Super Terminal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Super Terminal</em>' reference.
+	 * @see #getSuperTerminal()
+	 * @generated
+	 */
+	void setSuperTerminal(Terminal value);
 
 } // Terminal

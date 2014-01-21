@@ -61,6 +61,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/hide"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/Terminal/replace"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/priority"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/Terminal/superTerminal"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Replace">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Replace/search"/>

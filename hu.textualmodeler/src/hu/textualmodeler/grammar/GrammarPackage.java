@@ -185,13 +185,22 @@ public interface GrammarPackage extends EPackage {
 	int TERMINAL__PRIORITY = 4;
 
 	/**
+	 * The feature id for the '<em><b>Super Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__SUPER_TERMINAL = 5;
+
+	/**
 	 * The number of structural features of the '<em>Terminal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_FEATURE_COUNT = 5;
+	int TERMINAL_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Terminal</em>' class.
@@ -748,6 +757,17 @@ public interface GrammarPackage extends EPackage {
 	EAttribute getTerminal_Priority();
 
 	/**
+	 * Returns the meta object for the reference '{@link hu.textualmodeler.grammar.Terminal#getSuperTerminal <em>Super Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Super Terminal</em>'.
+	 * @see hu.textualmodeler.grammar.Terminal#getSuperTerminal()
+	 * @see #getTerminal()
+	 * @generated
+	 */
+	EReference getTerminal_SuperTerminal();
+
+	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.Replace <em>Replace</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1113,6 +1133,14 @@ public interface GrammarPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TERMINAL__PRIORITY = eINSTANCE.getTerminal_Priority();
+
+		/**
+		 * The meta object literal for the '<em><b>Super Terminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TERMINAL__SUPER_TERMINAL = eINSTANCE.getTerminal_SuperTerminal();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.grammar.impl.ReplaceImpl <em>Replace</em>}' class.
