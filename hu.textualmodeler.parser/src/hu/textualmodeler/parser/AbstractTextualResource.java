@@ -10,7 +10,6 @@ import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.Tokenizer;
 import hu.textualmodeler.parser.impl.earley.EarleyParser;
-import hu.textualmodeler.tokens.Token;
 import hu.textualmodeler.tokens.TokenList;
 
 import java.io.IOException;
@@ -69,9 +68,9 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 		tokenizer = new Tokenizer(parser.getGrammar().terminals(), this);
 		
 		input = tokenizer.tokenize(data);
-		for(Token t : input.getTokens()){
-			System.out.println(t.getTerminal().getName() +" = "+t.getValue());
-		}
+//		for(Token t : input.getTokens()){
+//			System.out.println(t.getTerminal().getName() +" = "+t.getValue());
+//		}
 		
 		this.ast = parser.parse(input, this, 0);
 		

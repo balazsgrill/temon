@@ -235,12 +235,14 @@ public class EarleyState {
 			
 			for(Rule rule : rules){
 				CompositeNode steps = null;
-				if (nonterm.getFeatureName() != null){
-					steps = AstFactory.eINSTANCE.createFeatureSetCompositeNode();
-					((FeatureSetCompositeNode)steps).setFeatureName(nonterm.getFeatureName());
-				}else{
+				/* Do not put feature here, it will be processed at completion 
+				 * (processing it here breaks context-free assumption) */
+//				if (nonterm.getFeatureName() != null){
+//					steps = AstFactory.eINSTANCE.createFeatureSetCompositeNode();
+//					((FeatureSetCompositeNode)steps).setFeatureName(nonterm.getFeatureName());
+//				}else{
 					steps = AstFactory.eINSTANCE.createCompositeNode();
-				}
+//				}
 				
 				steps.setNonterminal(rule);
 				predicted.add(new EarleyState(rule, 0, position, steps, level));
