@@ -54,6 +54,10 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	
 	private Node ast;
 	
+	public TokenList getTokenList() {
+		return input;
+	}
+	
 	public Node getAST() {
 		return ast;
 	}

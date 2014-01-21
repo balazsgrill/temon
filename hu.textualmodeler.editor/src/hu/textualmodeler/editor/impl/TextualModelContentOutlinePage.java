@@ -5,6 +5,7 @@ package hu.textualmodeler.editor.impl;
 
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.parser.AbstractTextualResource;
+import hu.textualmodeler.tokens.TokenList;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -99,6 +100,10 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 			Node ast = ((AbstractTextualResource) inputElement).getAST();
 			if (ast != null){
 				result.add(ast);
+			}
+			TokenList tl = ((AbstractTextualResource) inputElement).getTokenList();
+			if (tl != null){
+				result.add(tl);
 			}
 			return result.toArray();
 		}
