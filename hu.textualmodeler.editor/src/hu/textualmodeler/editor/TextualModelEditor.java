@@ -196,6 +196,7 @@ public class TextualModelEditor extends TextEditor {
 			ranges[i*2] = node.getStart();
 			ranges[i*2+1] = node.getLength();
 			
+			styles[i] = this.styles[1];
 			if (node instanceof FeatureSetTerminalNode){
 //				if (((FeatureSetTerminalNode) node).getTerminal().getScope() != null){
 //					styles[i] = this.styles[4];
@@ -205,8 +206,6 @@ public class TextualModelEditor extends TextEditor {
 			}else{
 				if (node instanceof WhitespaceNode){
 					styles[i] = this.styles[3];
-				}else{
-					styles[i] = this.styles[1];
 				}
 			}
 			 

@@ -5,11 +5,16 @@ package hu.textualmodeler.parser.impl.earley;
 
 import hu.textualmodeler.ast.AstFactory;
 import hu.textualmodeler.ast.CompositeNode;
+import hu.textualmodeler.ast.FeatureSetCompositeNode;
+import hu.textualmodeler.ast.FeatureSetPushElement;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
+import hu.textualmodeler.ast.InsertedFeatureSetTerminalNode;
+import hu.textualmodeler.ast.InsertedTerminalNode;
+import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
-import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.NonTerminalItem;
@@ -23,7 +28,8 @@ import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.grammar.TerminalItem;
 import hu.textualmodeler.parser.IGrammar;
 import hu.textualmodeler.parser.IParserInput;
-import hu.textualmodeler.parser.TerminalMatch;
+import hu.textualmodeler.tokens.Token;
+import hu.textualmodeler.tokens.TokenList;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -141,12 +147,13 @@ public class EarleyState {
 			}else
 			if (item instanceof Push){
 				Push push = (Push)item;
+				PushElement n = null;
 				if (push.getFeatureName() != null && !push.getFeatureName().trim().isEmpty()){
-					SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
-					scf.setFeatureName(push.getFeatureName());
-					steps.getChildren().add(scf);
+					n = AstFactory.eINSTANCE.createFeatureSetPushElement();
+					((FeatureSetPushElement)n).setFeatureName(push.getFeatureName());
+				}else{
+					n = AstFactory.eINSTANCE.createPushElement();
 				}
-				PushElement n = AstFactory.eINSTANCE.createPushElement();
 				n.setEclassURI(push.getEclassURI());
 				steps.getChildren().add(n);
 			}else
@@ -227,7 +234,14 @@ public class EarleyState {
 			Collection<Rule> rules = grammar.getRule(((NonTerminalItem) next).getNonTerminal());
 			
 			for(Rule rule : rules){
-				CompositeNode steps = AstFactory.eINSTANCE.createCompositeNode();
+				CompositeNode steps = null;
+				if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
+					steps = AstFactory.eINSTANCE.createFeatureSetCompositeNode();
+					((FeatureSetCompositeNode)steps).setFeatureName(nonterm.getFeatureName());
+				}else{
+					steps = AstFactory.eINSTANCE.createCompositeNode();
+				}
+				
 				steps.setNonterminal(rule);
 				predicted.add(new EarleyState(rule, 0, position, steps, level));
 			}
@@ -248,12 +262,12 @@ public class EarleyState {
 						CompositeNode parentSteps = EcoreUtil.copy(p.steps);
 						CompositeNode childSteps = EcoreUtil.copy(steps);
 						
-						if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
-							SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
-							scf.setFeatureName(nonterm.getFeatureName());
-							 
-							parentSteps.getChildren().add(scf);
-						}
+//						if (nonterm.getFeatureName() != null && !nonterm.getFeatureName().trim().isEmpty()){
+//							SetContainmentFeature scf = AstFactory.eINSTANCE.createSetContainmentFeature();
+//							scf.setFeatureName(nonterm.getFeatureName());
+//							 
+//							parentSteps.getChildren().add(scf);
+//						}
 						
 						parentSteps.getChildren().add(childSteps);
 						
@@ -279,22 +293,40 @@ public class EarleyState {
 		return !input.bypassHidden(position).isEmpty();
 	}
 	
-	public EarleyState scanHidden(IParserInput input){
-		List<WhitespaceNode> hiddenNodes = input.bypassHidden(this.position);
+	public EarleyState scanHidden(TokenList input){
+		List<WhitespaceNode> hiddenNodes = new LinkedList<>();
+		int i = position;
+		while(input.getTokens().size() > i && input.getTokens().get(i).getTerminal().isHide()){
+			Token t = input.getTokens().get(i);
+			WhitespaceNode wsn = AstFactory.eINSTANCE.createWhitespaceNode();
+			wsn.setStart(t.getStart());
+			wsn.setLength(t.getLength());
+			wsn.setTerminal(t.getTerminal());
+			hiddenNodes.add(wsn);
+			i++;
+		}
 		if (!hiddenNodes.isEmpty()){
 			CompositeNode steps = EcoreUtil.copy(this.steps);
 			
 			steps.getChildren().addAll(hiddenNodes);
 			
-			WhitespaceNode last = hiddenNodes.get(hiddenNodes.size()-1);
-			int position = last.getStart()+last.getLength();
+			int position = this.position + hiddenNodes.size();
 			return new EarleyState(currentRule, index, position, steps, origin);
 		}
 		
 		return this;
 	}
 	
-	public List<EarleyState> scan(IParserInput input, IGrammar grammar){
+	private static boolean isMatch(Terminal match, Terminal next){
+		if (match.equals(next)) return true;
+		Terminal sup = match.getSuperTerminal();
+		if (sup != null){
+			return isMatch(sup, next);
+		}
+		return false;
+	}
+	
+	public List<EarleyState> scan(TokenList input, IGrammar grammar){
 		if (scanning()){
 			RuleItem item = getNextItem();
 			
@@ -305,44 +337,105 @@ public class EarleyState {
 				
 						
 				List<EarleyState> states = new LinkedList<EarleyState>();
-				
-				TerminalMatch match = input.match(terminal.getTerminal(), position);
+
+				Token match = input.getTokens().size() > position ? input.getTokens().get(position) : null;
 				if (match != null){
-				
-					CompositeNode steps = EcoreUtil.copy(this.steps);
-					String feature = terminal.getFeatureName();
-					TerminalNode node = null;
-					if (feature != null){
-						node = AstFactory.eINSTANCE.createFeatureSetTerminalNode();
-						((FeatureSetTerminalNode)node).setFeatureName(feature);
+					if (isMatch(match.getTerminal(), terminal.getTerminal())){
+
+						CompositeNode steps = EcoreUtil.copy(this.steps);
+						String feature = terminal.getFeatureName();
+						TerminalNode node = null;
+						if (feature != null){
+							node = AstFactory.eINSTANCE.createFeatureSetTerminalNode();
+							((FeatureSetTerminalNode)node).setFeatureName(feature);
+						}else{
+							node = AstFactory.eINSTANCE.createTerminalNode();
+						}
+						node.setContent(match.getValue());
+						node.setTerminal(match.getTerminal());
+						node.setStart(match.getStart());
+						node.setLength(match.getLength());
+
+						//steps.getChildren().addAll(EcoreUtil.copyAll(hiddenNodes));
+
+						steps.getChildren().add(node);
+
+						states.add(new EarleyState(currentRule, index+1, position+1, steps, origin));
+						if (terminal.isMany()){
+							states.add(new EarleyState(currentRule, index, position+1, steps, origin));
+						}
+
 					}else{
-						node = AstFactory.eINSTANCE.createTerminalNode();
-					}
-					node.setContent(match.getProcessedValue());
-					node.setTerminal(terminal);
-					node.setStart(position);
-					node.setLength(match.size);
-					
-					//steps.getChildren().addAll(EcoreUtil.copyAll(hiddenNodes));
-					
-					steps.getChildren().add(node);
-					
-					int length = match.size;
-					states.add(new EarleyState(currentRule, index+1, position+length, steps, origin));
-					if (terminal.isMany()){
-						states.add(new EarleyState(currentRule, index, position+length, steps, origin));
-					}
-					
-				}else{
-					if (terminal.isOptional()){
-						states.add(new EarleyState(currentRule, index+1, position, steps, origin));
+						if (terminal.isOptional()){
+							states.add(new EarleyState(currentRule, index+1, position, steps, origin));
+						}else{
+							String feature = terminal.getFeatureName();
+
+							// Correction attempt: Remove unexpected terminal
+							Token wrongMatch = match;
+							if (wrongMatch != null){
+								CompositeNode steps = EcoreUtil.copy(this.steps);
+								RemovedTerminalNode node = AstFactory.eINSTANCE.createRemovedTerminalNode();
+								node.setContent(wrongMatch.getValue());
+								node.setTerminal(wrongMatch.getTerminal());
+								node.setStart(wrongMatch.getStart());
+								node.setLength(wrongMatch.getLength());
+								steps.getChildren().add(node);
+
+								states.add(new EarleyState(currentRule, index, position+1, steps, origin));
+							}
+
+							// Correction attempt: Insert expected terminal
+							InsertedTerminalNode node = null;
+							if (feature != null){
+								node = AstFactory.eINSTANCE.createInsertedFeatureSetTerminalNode();
+								((InsertedFeatureSetTerminalNode)node).setFeatureName(feature);
+							}else{
+								node = AstFactory.eINSTANCE.createInsertedTerminalNode();
+							}
+
+							node.setTerminal(terminal.getTerminal());
+							node.setStart(position);
+							node.setLength(0);
+
+							CompositeNode steps = EcoreUtil.copy(this.steps);
+							steps.getChildren().add(node);
+							states.add(new EarleyState(currentRule, index+1, position, steps, origin));
+						}
 					}
 				}
-				
 				return states;
 			}
 		}
 		return Collections.emptyList();
+	}
+	
+	public List<EarleyState> scanAfterFinish(TokenList input, IGrammar grammar){
+		// Correction attempt: Remove unexpected terminal
+		List<EarleyState> states = new LinkedList<>();
+		
+		Token wrongMatch = input.getTokens().get(position);
+		if (wrongMatch != null){
+			CompositeNode steps = EcoreUtil.copy(this.steps);
+			RemovedTerminalNode node = AstFactory.eINSTANCE.createRemovedTerminalNode();
+			node.setContent(wrongMatch.getValue());
+			node.setTerminal(wrongMatch.getTerminal());
+			node.setStart(wrongMatch.getStart());
+			node.setLength(wrongMatch.getLength());
+			steps.getChildren().add(node);
+			
+			states.add(new EarleyState(currentRule, index, position+1, steps, origin));
+		}
+		
+		return states;
+	}
+	
+	public boolean lastScanFailed(){
+		if (!steps.getChildren().isEmpty()){
+			Node lastNode = steps.getChildren().get(steps.getChildren().size()-1); 
+			return (lastNode instanceof InsertedTerminalNode) || (lastNode instanceof RemovedTerminalNode);
+		}
+		return false;
 	}
 	
 }

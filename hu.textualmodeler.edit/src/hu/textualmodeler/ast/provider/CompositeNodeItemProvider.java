@@ -185,6 +185,21 @@ public class CompositeNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
+				 AstFactory.eINSTANCE.createRemovedTerminalNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
+				 AstFactory.eINSTANCE.createInsertedTerminalNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
+				 AstFactory.eINSTANCE.createInsertedFeatureSetTerminalNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
 				 AstFactory.eINSTANCE.createFeatureSetValue()));
 
 		newChildDescriptors.add
@@ -200,12 +215,17 @@ public class CompositeNodeItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
-				 AstFactory.eINSTANCE.createSetContainmentFeature()));
+				 AstFactory.eINSTANCE.createFeatureSetCompositeNode()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
 				 AstFactory.eINSTANCE.createPushElement()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(AstPackage.Literals.COMPOSITE_NODE__CHILDREN,
+				 AstFactory.eINSTANCE.createFeatureSetPushElement()));
 
 		newChildDescriptors.add
 			(createChildParameter

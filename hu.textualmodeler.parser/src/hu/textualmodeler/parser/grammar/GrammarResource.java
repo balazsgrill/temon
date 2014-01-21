@@ -79,10 +79,20 @@ public class GrammarResource extends AbstractTextualResource {
 					return GrammarRegistry.getInstance().getGrammar(value);
 				}
 				
+				if (GrammarPackage.eINSTANCE.getTerminal_SuperTerminal().equals(feature)){
+					if (context instanceof Terminal){
+						GrammarModel g = (GrammarModel) context.eContainer();
+						return getTerminal(g, value);
+					}
+				}
+				
 				if (GrammarPackage.eINSTANCE.getTerminalItem_Terminal().equals(feature)){
 					if (context instanceof TerminalItem){
-						GrammarModel g = (GrammarModel) context.eContainer().eContainer();
-						return getTerminal(g, value);
+						EObject rule = context.eContainer();
+						if (rule != null){
+							GrammarModel g = (GrammarModel) rule.eContainer();
+							return getTerminal(g, value);
+						}
 					}
 				}
 				

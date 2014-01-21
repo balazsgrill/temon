@@ -68,6 +68,8 @@ public class TerminalItemProvider
 			addNamePropertyDescriptor(object);
 			addRegexPropertyDescriptor(object);
 			addHidePropertyDescriptor(object);
+			addPriorityPropertyDescriptor(object);
+			addSuperTerminalPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -134,6 +136,50 @@ public class TerminalItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Priority feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPriorityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Terminal_priority_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_priority_feature", "_UI_Terminal_type"),
+				 GrammarPackage.Literals.TERMINAL__PRIORITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Super Terminal feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuperTerminalPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Terminal_superTerminal_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Terminal_superTerminal_feature", "_UI_Terminal_type"),
+				 GrammarPackage.Literals.TERMINAL__SUPER_TERMINAL,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -208,6 +254,7 @@ public class TerminalItemProvider
 			case GrammarPackage.TERMINAL__NAME:
 			case GrammarPackage.TERMINAL__REGEX:
 			case GrammarPackage.TERMINAL__HIDE:
+			case GrammarPackage.TERMINAL__PRIORITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case GrammarPackage.TERMINAL__REPLACE:

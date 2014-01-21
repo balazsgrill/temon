@@ -12,7 +12,10 @@ Export-Package: hu.textualmodeler.ast,
  hu.textualmodeler.ast.util,
  hu.textualmodeler.grammar,
  hu.textualmodeler.grammar.impl,
- hu.textualmodeler.grammar.util
+ hu.textualmodeler.grammar.util,
+ hu.textualmodeler.tokens,
+ hu.textualmodeler.tokens.impl,
+ hu.textualmodeler.tokens.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore
 Bundle-ActivationPolicy: lazy

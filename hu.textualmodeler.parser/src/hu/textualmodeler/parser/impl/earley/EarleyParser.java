@@ -8,14 +8,14 @@ import hu.textualmodeler.grammar.GrammarFactory;
 import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.grammar.NonTerminalItem;
 import hu.textualmodeler.grammar.Rule;
-import hu.textualmodeler.grammar.TerminalItem;
 import hu.textualmodeler.parser.IGrammar;
 import hu.textualmodeler.parser.IParser;
 import hu.textualmodeler.parser.IParserContext;
-import hu.textualmodeler.parser.IParserInput;
 import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.Grammar;
+import hu.textualmodeler.tokens.TokenList;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -53,7 +53,7 @@ public class EarleyParser implements IParser {
 	 * @see hu.modembed.syntax.persistence.IParser#parse(hu.modembed.syntax.persistence.IParserInput, hu.modembed.syntax.persistence.IParserContext, int)
 	 */
 	@Override
-	public Node parse(IParserInput input,
+	public Node parse(TokenList input,
 			IParserContext context, int start) {
 
 		ParserTable table = new ParserTable();
@@ -62,30 +62,35 @@ public class EarleyParser implements IParser {
 		
 		boolean done = false;
 		List<EarleyState> finished = new LinkedList<EarleyState>();
-		EarleyState best = null;
+		
+		List<EarleyState> failed = new LinkedList<>();
 		
 		while(!done){
 			
 			Queue<EarleyState> queue = table.get(currentLevel).getQueue();
-			done = queue.isEmpty();
-//			System.out.println("---StartLevel "+currentLevel +" ("+input.length()+")");
 			
+			if (queue.isEmpty() && finished.isEmpty()){
+				Collections.reverse(failed);
+				//queue.addAll(failed);
+				failed.clear();
+			}
+			
+			done = queue.isEmpty();
+
 			while(!queue.isEmpty()){
 				
 				EarleyState state = queue.poll();
-//				System.out.println("Considering: "+ state);
+
+				System.out.println(state);
 				
-//				if (state.hasHidden(input)){
-//					table.get(currentLevel).add(state.scanHidden(input));
-//				}else
 				if (state.isCompleted()){
 					int consumed = state.getPosition();
 					
-					//consumed = input.bypassHidden(consumed);
-					if (consumed == input.length()){
+					if (consumed == input.getTokens().size()){
 						finished.add(state);
 					}else{
-//						System.out.println("Early finish, dropped: "+consumed);
+						/* Try to recover by consuming terminals after finished AST */
+						failed.addAll(state.scanAfterFinish(input, grammar));
 					}
 				}else
 				if (state.prediction()){
@@ -93,28 +98,22 @@ public class EarleyParser implements IParser {
 						table.get(currentLevel).add(s);
 					}
 				}else
-				if (state.scanning()){
-					if (best == null){
-						best = state;
-					}else{
-						if (best.getPosition() < state.getPosition()){
-							best = state;
-						}
-					}
-					
+				if (state.scanning()){			
 					EarleyState prescannedState = state.scanHidden(input);
 					for(EarleyState s : prescannedState.scan(input, grammar)){
-						s = s.scanHidden(input);
-						int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
-						table.get(currentLevel+level).add(s);
+						if (s.lastScanFailed()){
+							/* Failed scan. Parsing can recover from here when no other options left */
+							failed.add(s);
+						}else{
+							s = s.scanHidden(input);
+							int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
+							table.get(currentLevel+level).add(s);
+						}
 					}
 				}else
 				if (state.completion()){
 					for(EarleyState s : state.complete(table)){
-						if (!table.get(currentLevel).add(s)){
-							int[] lc = input.getLineAndColumn(state.getPosition());
-							context.logError(new ParsingError("Ambigous syntax path detected: "+state+" -> "+s, "", lc[0], lc[1]));
-						}
+						table.get(currentLevel).add(s);
 					}
 				}else
 				if (state.silent()){
@@ -131,14 +130,12 @@ public class EarleyParser implements IParser {
 		}
 		
 		if (finished.isEmpty()){
-			if (best != null){
-				int[] lc = input.getLineAndColumn(best.getPosition());
-				TerminalItem ti = (TerminalItem)best.getNextItem();
-				context.logError(new ParsingError(ti.getTerminal().getName()+" is expected at "+lc[0]+":"+lc[1], "", lc[0], lc[1]));
-				return best.getSteps();
-			}
+			context.logError(new ParsingError("No valid syntax path could be found.", "", 0, 0));
 			return null;
 		}else{
+			if (finished.size() > 1){
+				context.logError(new ParsingError("Input has multiple possible syntax trees (possibly the grammar is ambiguous)", "", 0, 0));
+			}
 			return finished.get(0).getSteps();
 		}
 	}

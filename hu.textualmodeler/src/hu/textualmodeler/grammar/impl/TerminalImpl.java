@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getRegex <em>Regex</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#isHide <em>Hide</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getReplace <em>Replace</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.TerminalImpl#getSuperTerminal <em>Super Terminal</em>}</li>
  * </ul>
  * </p>
  *
@@ -108,6 +110,36 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	 * @ordered
 	 */
 	protected EList<Replace> replace;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 1;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSuperTerminal() <em>Super Terminal</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSuperTerminal()
+	 * @generated
+	 * @ordered
+	 */
+	protected Terminal superTerminal;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -208,6 +240,65 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getPriority() {
+		return priority;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPriority(int newPriority) {
+		int oldPriority = priority;
+		priority = newPriority;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.TERMINAL__PRIORITY, oldPriority, priority));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Terminal getSuperTerminal() {
+		if (superTerminal != null && superTerminal.eIsProxy()) {
+			InternalEObject oldSuperTerminal = (InternalEObject)superTerminal;
+			superTerminal = (Terminal)eResolveProxy(oldSuperTerminal);
+			if (superTerminal != oldSuperTerminal) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GrammarPackage.TERMINAL__SUPER_TERMINAL, oldSuperTerminal, superTerminal));
+			}
+		}
+		return superTerminal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Terminal basicGetSuperTerminal() {
+		return superTerminal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSuperTerminal(Terminal newSuperTerminal) {
+		Terminal oldSuperTerminal = superTerminal;
+		superTerminal = newSuperTerminal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.TERMINAL__SUPER_TERMINAL, oldSuperTerminal, superTerminal));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +324,11 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return isHide();
 			case GrammarPackage.TERMINAL__REPLACE:
 				return getReplace();
+			case GrammarPackage.TERMINAL__PRIORITY:
+				return getPriority();
+			case GrammarPackage.TERMINAL__SUPER_TERMINAL:
+				if (resolve) return getSuperTerminal();
+				return basicGetSuperTerminal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -259,6 +355,12 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				getReplace().clear();
 				getReplace().addAll((Collection<? extends Replace>)newValue);
 				return;
+			case GrammarPackage.TERMINAL__PRIORITY:
+				setPriority((Integer)newValue);
+				return;
+			case GrammarPackage.TERMINAL__SUPER_TERMINAL:
+				setSuperTerminal((Terminal)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -283,6 +385,12 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 			case GrammarPackage.TERMINAL__REPLACE:
 				getReplace().clear();
 				return;
+			case GrammarPackage.TERMINAL__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
+				return;
+			case GrammarPackage.TERMINAL__SUPER_TERMINAL:
+				setSuperTerminal((Terminal)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -303,6 +411,10 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return hide != HIDE_EDEFAULT;
 			case GrammarPackage.TERMINAL__REPLACE:
 				return replace != null && !replace.isEmpty();
+			case GrammarPackage.TERMINAL__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
+			case GrammarPackage.TERMINAL__SUPER_TERMINAL:
+				return superTerminal != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -323,6 +435,8 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 		result.append(regex);
 		result.append(", hide: ");
 		result.append(hide);
+		result.append(", priority: ");
+		result.append(priority);
 		result.append(')');
 		return result.toString();
 	}

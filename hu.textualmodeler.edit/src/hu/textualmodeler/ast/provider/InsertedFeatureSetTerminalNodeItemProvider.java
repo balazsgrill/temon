@@ -4,7 +4,7 @@ package hu.textualmodeler.ast.provider;
 
 
 import hu.textualmodeler.ast.AstPackage;
-import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.InsertedFeatureSetTerminalNode;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,13 +23,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link hu.textualmodeler.ast.SetContainmentFeature} object.
+ * This is the item provider adapter for a {@link hu.textualmodeler.ast.InsertedFeatureSetTerminalNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SetContainmentFeatureItemProvider
-	extends NodeItemProvider
+public class InsertedFeatureSetTerminalNodeItemProvider
+	extends InsertedTerminalNodeItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
@@ -42,7 +42,7 @@ public class SetContainmentFeatureItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SetContainmentFeatureItemProvider(AdapterFactory adapterFactory) {
+	public InsertedFeatureSetTerminalNodeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -85,25 +85,28 @@ public class SetContainmentFeatureItemProvider
 	}
 
 	/**
-	 * This returns SetContainmentFeature.gif.
+	 * This returns InsertedFeatureSetTerminalNode.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SetContainmentFeature"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/InsertedFeatureSetTerminalNode"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((SetContainmentFeature)object).getFeatureName();
-		return label + "->";
+		String label = ((InsertedFeatureSetTerminalNode)object).getFeatureName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_InsertedFeatureSetTerminalNode_type") :
+			getString("_UI_InsertedFeatureSetTerminalNode_type") + " " + label;
 	}
 
 	/**
@@ -117,8 +120,8 @@ public class SetContainmentFeatureItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SetContainmentFeature.class)) {
-			case AstPackage.SET_CONTAINMENT_FEATURE__FEATURE_NAME:
+		switch (notification.getFeatureID(InsertedFeatureSetTerminalNode.class)) {
+			case AstPackage.INSERTED_FEATURE_SET_TERMINAL_NODE__FEATURE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -4,12 +4,14 @@
 package hu.textualmodeler.parser;
 
 import hu.textualmodeler.ast.CompositeNode;
+import hu.textualmodeler.ast.FeatureSet;
 import hu.textualmodeler.ast.FeatureSetTerminalNode;
 import hu.textualmodeler.ast.FeatureSetValue;
+import hu.textualmodeler.ast.InsertedTerminalNode;
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.PopElement;
 import hu.textualmodeler.ast.PushElement;
-import hu.textualmodeler.ast.SetContainmentFeature;
+import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.Terminal;
@@ -19,10 +21,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
@@ -42,6 +46,7 @@ public class ModelBuilder {
 		public FeatureValue(EObject context, EStructuralFeature feature,
 				TerminalNode terminal, String value) {
 			super();
+			Assert.isNotNull(feature);
 			this.context = context;
 			this.feature = feature;
 			this.terminal = terminal;
@@ -51,7 +56,7 @@ public class ModelBuilder {
 		public void resolve() throws ReferencedElementNotFoundException{
 			Terminal term = null;
 			if (terminal != null && terminal.getTerminal() != null){
-				term = terminal.getTerminal().getTerminal();
+				term = terminal.getTerminal();
 			}
 			Object o = featureResolver.resolve(context, feature, term, value);
 			if (o != null){
@@ -67,23 +72,83 @@ public class ModelBuilder {
 		
 	}
 	
+	private static String contentOf(Node node){
+		if (node instanceof CompositeNode){
+			StringBuilder sb = new StringBuilder();
+			for(Node n : ((CompositeNode) node).getChildren()){
+				sb.append(contentOf(n));
+			}
+			return sb.toString();
+		}
+		if (node instanceof TerminalNode && !(node instanceof InsertedTerminalNode) && !(node instanceof RemovedTerminalNode)){
+			TerminalNode tn = (TerminalNode)node;
+			return tn.getContent();
+		}
+		
+		return "";
+	}
+	
 	private class Context{
 		
-		private final Stack<EObject> modelStack = new Stack<>();
+		EObject result = null;
 		
-		private String currentContainerFeature = null;
+		public Context(Context parent) {
+			modelStack = (parent == null) ? new Stack<EObject>() : parent.modelStack;
+			featureValues = (parent == null) ? new LinkedList<FeatureValue>() : parent.featureValues;
+		}
 		
-		private List<FeatureValue> featureValues = new LinkedList<>();
+		private final Stack<EObject> modelStack;
 		
-		public void process(Node node){
+		private List<FeatureValue> featureValues;
+		
+		public EObject process(Node node){
 			try{
+				
+				EStructuralFeature feature = null;
+				String featurename = null;
+				if (node instanceof FeatureSet){
+					featurename = ((FeatureSet) node).getFeatureName();
+					feature = findFeature(modelStack.peek().eClass(), featurename);
+				}
+				
+				
 				if (node instanceof CompositeNode){
+					Context subContext = new Context(this);
 					for(Node n : ((CompositeNode) node).getChildren()){
-						process(n);
+						EObject subresult = subContext.process(n);
+						if (result == null){
+							result = subresult;
+						}
 					}
+					
+					if (feature != null){
+						EObject context = modelStack.peek();
+						if (feature instanceof EReference){
+
+							if (((EReference) feature).isContainment()){
+								EObject element = subContext.result;
+								eSetOrAdd(context, feature, element);
+							}else{
+								String value = contentOf(node);
+								FeatureValue fv = new FeatureValue(context, feature, null, value);
+								featureValues.add(fv);
+							}
+
+						}
+						if (feature instanceof EAttribute){
+							String value = contentOf(node);
+							FeatureValue fv = new FeatureValue(context, feature, null, value);
+							fv.resolve();
+						}
+					}
+					
+				}else if (node instanceof RemovedTerminalNode){
+					pcontext.logError("Unexpected terminal: "+((RemovedTerminalNode) node).getTerminal().getName(), (RemovedTerminalNode)node);
+				}else if (node instanceof InsertedTerminalNode){
+					pcontext.logError("Missing terminal: "+((InsertedTerminalNode) node).getTerminal().getName(), (InsertedTerminalNode)node);
 				}else if (node instanceof FeatureSetValue){
 					FeatureValue fv = new FeatureValue(modelStack.peek(), 
-							getFeature(((FeatureSetValue) node).getFeatureName()), null, 
+							feature, null, 
 							((FeatureSetValue) node).getValue());
 					if (fv.unconditional()) {
 						fv.resolve();
@@ -103,29 +168,27 @@ public class ModelBuilder {
 						throw new IllegalArgumentException("Could not find EClass "+eclassURI);
 					}
 					EObject element = eclass.getEPackage().getEFactoryInstance().create(eclass);
-					if (currentContainerFeature != null){
-						EStructuralFeature feature = getFeature(currentContainerFeature);
-						if (feature == null) throw new IllegalArgumentException("Could not find feature: "+currentContainerFeature);
+					if (feature != null){
 						EObject parent = modelStack.peek();
 						eSetOrAdd(parent, feature, element);
-						currentContainerFeature = null;
 					}
 					modelStack.push(element);
-				}else if (node instanceof SetContainmentFeature){
-					
-					this.currentContainerFeature = ((SetContainmentFeature) node).getFeatureName();
-					if (this.currentContainerFeature.trim().isEmpty()) {
-						throw new IllegalArgumentException("Grammar error: Invalid container feature!");
+					if (result == null){
+						result = element;
 					}
-					
 				}else if (node instanceof FeatureSetTerminalNode){
 					if (!modelStack.isEmpty()){
-						FeatureValue fv = new FeatureValue(modelStack.peek(), getFeature(((FeatureSetTerminalNode) node).getFeatureName()),
-								((FeatureSetTerminalNode) node), ((FeatureSetTerminalNode) node).getContent());
-						if (fv.unconditional()){
-							fv.resolve();
+						
+						if (feature != null){
+							FeatureValue fv = new FeatureValue(modelStack.peek(), feature,
+									((FeatureSetTerminalNode) node), ((FeatureSetTerminalNode) node).getContent());
+							if (fv.unconditional()){
+								fv.resolve();
+							}else{
+								featureValues.add(fv);
+							}
 						}else{
-							featureValues.add(fv);
+							pcontext.logError("GRAMMAR ERROR: Could not find "+modelStack.peek().eClass().getName()+"."+featurename, (FeatureSetTerminalNode)node);
 						}
 					}
 				}
@@ -135,6 +198,8 @@ public class ModelBuilder {
 						(node instanceof VisibleNode) ? (VisibleNode)node : null);
 					
 			}
+			
+			return result;
 		}
 		
 		public void resolve(){
@@ -146,12 +211,6 @@ public class ModelBuilder {
 				}
 			}
 			featureValues.clear();
-		}
-		
-		public EStructuralFeature getFeature(String name){
-			if (modelStack.isEmpty()) return null;
-			EObject current = modelStack.peek();
-			return findFeature(current.eClass(), name);
 		}
 		
 	}
@@ -170,11 +229,16 @@ public class ModelBuilder {
 	}
 	
 	public EObject build(CompositeNode root){
-		Context context = new Context();
-		context.process(root);
-		context.resolve();
-		if (!context.modelStack.isEmpty()) return context.modelStack.get(0);
-		return null;
+		Context context = new Context(null);
+		try{
+			Object o = context.process(root);
+			context.resolve();
+			return o instanceof EObject ? (EObject)o : null;
+		}catch(Exception e){
+			e.printStackTrace();
+			pcontext.logError(e);
+			return null;
+		}
 	}
 	
 	public static EStructuralFeature findFeature(EClass eclass, String name){

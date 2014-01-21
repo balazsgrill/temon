@@ -8,8 +8,10 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.parser.errors.ParsingError;
-import hu.textualmodeler.parser.impl.StringInput;
+import hu.textualmodeler.parser.impl.Tokenizer;
 import hu.textualmodeler.parser.impl.earley.EarleyParser;
+import hu.textualmodeler.tokens.Token;
+import hu.textualmodeler.tokens.TokenList;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,8 +29,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  */
 public abstract class AbstractTextualResource extends ResourceImpl implements IParserContext{
 
-	private IParserInput input;
+	private TokenList input;
 	private IParser parser;
+	private Tokenizer tokenizer;
+	private String data;
 	
 	public AbstractTextualResource(URI uri) {
 		super(uri);
@@ -59,10 +63,15 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	protected void doLoad(InputStream inputStream, Map<?, ?> options)
 			throws IOException {
 		
-		String data = inputStreamToString(inputStream);
+		data = inputStreamToString(inputStream);
 		
 		parser = new EarleyParser(loadGrammar());
-		input = new StringInput(data, parser.getGrammar().terminals(), this);
+		tokenizer = new Tokenizer(parser.getGrammar().terminals(), this);
+		
+		input = tokenizer.tokenize(data);
+		for(Token t : input.getTokens()){
+			System.out.println(t.getTerminal().getName() +" = "+t.getValue());
+		}
 		
 		this.ast = parser.parse(input, this, 0);
 		
@@ -88,7 +97,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	
 	@Override
 	public void logError(Exception e) {
-		getErrors().add(new ParsingError(e.getMessage(), input, null));
+		getErrors().add(new ParsingError(e.getClass().getCanonicalName()+": "+e.getMessage(), data, null));
 	}
 	
 	@Override
@@ -98,7 +107,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 
 	@Override
 	public void logError(String message, VisibleNode node) {
-		getErrors().add(new ParsingError(message, input, node));
+		getErrors().add(new ParsingError(message, data, node));
 	}
 	
 }

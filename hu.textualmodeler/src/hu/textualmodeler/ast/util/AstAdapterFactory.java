@@ -84,6 +84,18 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 				return createTerminalNodeAdapter();
 			}
 			@Override
+			public Adapter caseRemovedTerminalNode(RemovedTerminalNode object) {
+				return createRemovedTerminalNodeAdapter();
+			}
+			@Override
+			public Adapter caseInsertedTerminalNode(InsertedTerminalNode object) {
+				return createInsertedTerminalNodeAdapter();
+			}
+			@Override
+			public Adapter caseInsertedFeatureSetTerminalNode(InsertedFeatureSetTerminalNode object) {
+				return createInsertedFeatureSetTerminalNodeAdapter();
+			}
+			@Override
 			public Adapter caseFeatureSet(FeatureSet object) {
 				return createFeatureSetAdapter();
 			}
@@ -100,12 +112,16 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 				return createCompositeNodeAdapter();
 			}
 			@Override
-			public Adapter caseSetContainmentFeature(SetContainmentFeature object) {
-				return createSetContainmentFeatureAdapter();
+			public Adapter caseFeatureSetCompositeNode(FeatureSetCompositeNode object) {
+				return createFeatureSetCompositeNodeAdapter();
 			}
 			@Override
 			public Adapter casePushElement(PushElement object) {
 				return createPushElementAdapter();
+			}
+			@Override
+			public Adapter caseFeatureSetPushElement(FeatureSetPushElement object) {
+				return createFeatureSetPushElementAdapter();
 			}
 			@Override
 			public Adapter casePopElement(PopElement object) {
@@ -188,6 +204,48 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.RemovedTerminalNode <em>Removed Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.RemovedTerminalNode
+	 * @generated
+	 */
+	public Adapter createRemovedTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.InsertedTerminalNode <em>Inserted Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.InsertedTerminalNode
+	 * @generated
+	 */
+	public Adapter createInsertedTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.InsertedFeatureSetTerminalNode <em>Inserted Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.InsertedFeatureSetTerminalNode
+	 * @generated
+	 */
+	public Adapter createInsertedFeatureSetTerminalNodeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -244,16 +302,16 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.SetContainmentFeature <em>Set Containment Feature</em>}'.
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.FeatureSetCompositeNode <em>Feature Set Composite Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see hu.textualmodeler.ast.SetContainmentFeature
+	 * @see hu.textualmodeler.ast.FeatureSetCompositeNode
 	 * @generated
 	 */
-	public Adapter createSetContainmentFeatureAdapter() {
+	public Adapter createFeatureSetCompositeNodeAdapter() {
 		return null;
 	}
 
@@ -268,6 +326,20 @@ public class AstAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPushElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link hu.textualmodeler.ast.FeatureSetPushElement <em>Feature Set Push Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see hu.textualmodeler.ast.FeatureSetPushElement
+	 * @generated
+	 */
+	public Adapter createFeatureSetPushElementAdapter() {
 		return null;
 	}
 

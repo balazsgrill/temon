@@ -95,6 +95,36 @@ public class AstSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AstPackage.REMOVED_TERMINAL_NODE: {
+				RemovedTerminalNode removedTerminalNode = (RemovedTerminalNode)theEObject;
+				T result = caseRemovedTerminalNode(removedTerminalNode);
+				if (result == null) result = caseTerminalNode(removedTerminalNode);
+				if (result == null) result = caseVisibleNode(removedTerminalNode);
+				if (result == null) result = caseNode(removedTerminalNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstPackage.INSERTED_TERMINAL_NODE: {
+				InsertedTerminalNode insertedTerminalNode = (InsertedTerminalNode)theEObject;
+				T result = caseInsertedTerminalNode(insertedTerminalNode);
+				if (result == null) result = caseTerminalNode(insertedTerminalNode);
+				if (result == null) result = caseVisibleNode(insertedTerminalNode);
+				if (result == null) result = caseNode(insertedTerminalNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstPackage.INSERTED_FEATURE_SET_TERMINAL_NODE: {
+				InsertedFeatureSetTerminalNode insertedFeatureSetTerminalNode = (InsertedFeatureSetTerminalNode)theEObject;
+				T result = caseInsertedFeatureSetTerminalNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseInsertedTerminalNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseFeatureSetTerminalNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseTerminalNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseFeatureSet(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseVisibleNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = caseNode(insertedFeatureSetTerminalNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AstPackage.FEATURE_SET: {
 				FeatureSet featureSet = (FeatureSet)theEObject;
 				T result = caseFeatureSet(featureSet);
@@ -126,11 +156,12 @@ public class AstSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AstPackage.SET_CONTAINMENT_FEATURE: {
-				SetContainmentFeature setContainmentFeature = (SetContainmentFeature)theEObject;
-				T result = caseSetContainmentFeature(setContainmentFeature);
-				if (result == null) result = caseNode(setContainmentFeature);
-				if (result == null) result = caseFeatureSet(setContainmentFeature);
+			case AstPackage.FEATURE_SET_COMPOSITE_NODE: {
+				FeatureSetCompositeNode featureSetCompositeNode = (FeatureSetCompositeNode)theEObject;
+				T result = caseFeatureSetCompositeNode(featureSetCompositeNode);
+				if (result == null) result = caseCompositeNode(featureSetCompositeNode);
+				if (result == null) result = caseFeatureSet(featureSetCompositeNode);
+				if (result == null) result = caseNode(featureSetCompositeNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,6 +169,15 @@ public class AstSwitch<T> extends Switch<T> {
 				PushElement pushElement = (PushElement)theEObject;
 				T result = casePushElement(pushElement);
 				if (result == null) result = caseNode(pushElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstPackage.FEATURE_SET_PUSH_ELEMENT: {
+				FeatureSetPushElement featureSetPushElement = (FeatureSetPushElement)theEObject;
+				T result = caseFeatureSetPushElement(featureSetPushElement);
+				if (result == null) result = casePushElement(featureSetPushElement);
+				if (result == null) result = caseFeatureSet(featureSetPushElement);
+				if (result == null) result = caseNode(featureSetPushElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -213,6 +253,51 @@ public class AstSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Removed Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Removed Terminal Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRemovedTerminalNode(RemovedTerminalNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inserted Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inserted Terminal Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInsertedTerminalNode(InsertedTerminalNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Inserted Feature Set Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInsertedFeatureSetTerminalNode(InsertedFeatureSetTerminalNode object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Feature Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -273,17 +358,17 @@ public class AstSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set Containment Feature</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Set Composite Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set Containment Feature</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Set Composite Node</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSetContainmentFeature(SetContainmentFeature object) {
+	public T caseFeatureSetCompositeNode(FeatureSetCompositeNode object) {
 		return null;
 	}
 
@@ -299,6 +384,21 @@ public class AstSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePushElement(PushElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature Set Push Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature Set Push Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeatureSetPushElement(FeatureSetPushElement object) {
 		return null;
 	}
 

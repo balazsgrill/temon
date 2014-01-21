@@ -250,6 +250,207 @@ public interface AstPackage extends EPackage {
 	int TERMINAL_NODE_OPERATION_COUNT = VISIBLE_NODE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+	 * @generated
+	 */
+	int REMOVED_TERMINAL_NODE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_TERMINAL_NODE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__START = INSERTED_TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__LENGTH = INSERTED_TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__TERMINAL = INSERTED_TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__CONTENT = INSERTED_TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__FEATURE_NAME = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_FEATURE_COUNT = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_OPERATION_COUNT = INSERTED_TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -257,7 +458,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSet()
 	 * @generated
 	 */
-	int FEATURE_SET = 4;
+	int FEATURE_SET = 7;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -294,7 +495,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetValue()
 	 * @generated
 	 */
-	int FEATURE_SET_VALUE = 5;
+	int FEATURE_SET_VALUE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -340,7 +541,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetTerminalNode()
 	 * @generated
 	 */
-	int FEATURE_SET_TERMINAL_NODE = 6;
+	int FEATURE_SET_TERMINAL_NODE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
@@ -413,7 +614,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getCompositeNode()
 	 * @generated
 	 */
-	int COMPOSITE_NODE = 7;
+	int COMPOSITE_NODE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
@@ -452,14 +653,32 @@ public interface AstPackage extends EPackage {
 	int COMPOSITE_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.SetContainmentFeatureImpl <em>Set Containment Feature</em>}' class.
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see hu.textualmodeler.ast.impl.SetContainmentFeatureImpl
-	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
+	 * @see hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
 	 * @generated
 	 */
-	int SET_CONTAINMENT_FEATURE = 8;
+	int FEATURE_SET_COMPOSITE_NODE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__NONTERMINAL = COMPOSITE_NODE__NONTERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__CHILDREN = COMPOSITE_NODE__CHILDREN;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -468,25 +687,25 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE__FEATURE_NAME = NODE_FEATURE_COUNT + 0;
+	int FEATURE_SET_COMPOSITE_NODE__FEATURE_NAME = COMPOSITE_NODE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Set Containment Feature</em>' class.
+	 * The number of structural features of the '<em>Feature Set Composite Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
+	int FEATURE_SET_COMPOSITE_NODE_FEATURE_COUNT = COMPOSITE_NODE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Set Containment Feature</em>' class.
+	 * The number of operations of the '<em>Feature Set Composite Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_CONTAINMENT_FEATURE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+	int FEATURE_SET_COMPOSITE_NODE_OPERATION_COUNT = COMPOSITE_NODE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.PushElementImpl <em>Push Element</em>}' class.
@@ -496,7 +715,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPushElement()
 	 * @generated
 	 */
-	int PUSH_ELEMENT = 9;
+	int PUSH_ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
@@ -526,6 +745,52 @@ public interface AstPackage extends EPackage {
 	int PUSH_ELEMENT_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.textualmodeler.ast.impl.FeatureSetPushElementImpl
+	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+	 * @generated
+	 */
+	int FEATURE_SET_PUSH_ELEMENT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__ECLASS_URI = PUSH_ELEMENT__ECLASS_URI;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME = PUSH_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_FEATURE_COUNT = PUSH_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_OPERATION_COUNT = PUSH_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link hu.textualmodeler.ast.impl.PopElementImpl <em>Pop Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -533,7 +798,7 @@ public interface AstPackage extends EPackage {
 	 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getPopElement()
 	 * @generated
 	 */
-	int POP_ELEMENT = 10;
+	int POP_ELEMENT = 14;
 
 	/**
 	 * The number of structural features of the '<em>Pop Element</em>' class.
@@ -650,6 +915,36 @@ public interface AstPackage extends EPackage {
 	EAttribute getTerminalNode_Content();
 
 	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.RemovedTerminalNode <em>Removed Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Removed Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.RemovedTerminalNode
+	 * @generated
+	 */
+	EClass getRemovedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.InsertedTerminalNode <em>Inserted Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.InsertedTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.InsertedFeatureSetTerminalNode <em>Inserted Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @see hu.textualmodeler.ast.InsertedFeatureSetTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedFeatureSetTerminalNode();
+
+	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -734,14 +1029,14 @@ public interface AstPackage extends EPackage {
 	EReference getCompositeNode_Children();
 
 	/**
-	 * Returns the meta object for class '{@link hu.textualmodeler.ast.SetContainmentFeature <em>Set Containment Feature</em>}'.
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSetCompositeNode <em>Feature Set Composite Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Set Containment Feature</em>'.
-	 * @see hu.textualmodeler.ast.SetContainmentFeature
+	 * @return the meta object for class '<em>Feature Set Composite Node</em>'.
+	 * @see hu.textualmodeler.ast.FeatureSetCompositeNode
 	 * @generated
 	 */
-	EClass getSetContainmentFeature();
+	EClass getFeatureSetCompositeNode();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.PushElement <em>Push Element</em>}'.
@@ -763,6 +1058,16 @@ public interface AstPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getPushElement_EclassURI();
+
+	/**
+	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSetPushElement <em>Feature Set Push Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Push Element</em>'.
+	 * @see hu.textualmodeler.ast.FeatureSetPushElement
+	 * @generated
+	 */
+	EClass getFeatureSetPushElement();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.PopElement <em>Pop Element</em>}'.
@@ -878,6 +1183,36 @@ public interface AstPackage extends EPackage {
 		EAttribute TERMINAL_NODE__CONTENT = eINSTANCE.getTerminalNode_Content();
 
 		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.RemovedTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+		 * @generated
+		 */
+		EClass REMOVED_TERMINAL_NODE = eINSTANCE.getRemovedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.InsertedTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_TERMINAL_NODE = eINSTANCE.getInsertedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.InsertedFeatureSetTerminalNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_FEATURE_SET_TERMINAL_NODE = eINSTANCE.getInsertedFeatureSetTerminalNode();
+
+		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.FeatureSet <em>Feature Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -950,14 +1285,14 @@ public interface AstPackage extends EPackage {
 		EReference COMPOSITE_NODE__CHILDREN = eINSTANCE.getCompositeNode_Children();
 
 		/**
-		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.SetContainmentFeatureImpl <em>Set Containment Feature</em>}' class.
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see hu.textualmodeler.ast.impl.SetContainmentFeatureImpl
-		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getSetContainmentFeature()
+		 * @see hu.textualmodeler.ast.impl.FeatureSetCompositeNodeImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
 		 * @generated
 		 */
-		EClass SET_CONTAINMENT_FEATURE = eINSTANCE.getSetContainmentFeature();
+		EClass FEATURE_SET_COMPOSITE_NODE = eINSTANCE.getFeatureSetCompositeNode();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.PushElementImpl <em>Push Element</em>}' class.
@@ -976,6 +1311,16 @@ public interface AstPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PUSH_ELEMENT__ECLASS_URI = eINSTANCE.getPushElement_EclassURI();
+
+		/**
+		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.textualmodeler.ast.impl.FeatureSetPushElementImpl
+		 * @see hu.textualmodeler.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+		 * @generated
+		 */
+		EClass FEATURE_SET_PUSH_ELEMENT = eINSTANCE.getFeatureSetPushElement();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.PopElementImpl <em>Pop Element</em>}' class.

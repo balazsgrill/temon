@@ -4,7 +4,9 @@
 package hu.textualmodeler.parser.errors;
 
 import hu.textualmodeler.ast.VisibleNode;
-import hu.textualmodeler.parser.IParserInput;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 
@@ -21,12 +23,28 @@ public class ParsingError implements Diagnostic {
 	
 	private final VisibleNode node;
 	
-	public ParsingError(String message, IParserInput input, VisibleNode node) {
+	public static int[] getLineAndColumn(String data, int index) {
+		int line = 1;
+		int last = 0;
+		Pattern p = Pattern.compile("\n");
+		Matcher m = p.matcher(data);
+		while(m.find()){
+			int pos = m.end();
+			if (pos <= index){
+				line++;
+				last = pos;
+			}
+		}
+		int column = index-last;
+		return new int[]{line, column};
+	}
+	
+	public ParsingError(String message, String input, VisibleNode node) {
 		this.message = message;
 		this.node = node;
 		location = input.toString();
 		if (node != null){
-			int[] lc = input.getLineAndColumn(node.getStart());
+			int[] lc = getLineAndColumn(input, node.getStart());
 			line = lc[0];
 			column = lc[1];
 		}else{

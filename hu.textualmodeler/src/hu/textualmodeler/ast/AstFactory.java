@@ -40,6 +40,33 @@ public interface AstFactory extends EFactory {
 	TerminalNode createTerminalNode();
 
 	/**
+	 * Returns a new object of class '<em>Removed Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Removed Terminal Node</em>'.
+	 * @generated
+	 */
+	RemovedTerminalNode createRemovedTerminalNode();
+
+	/**
+	 * Returns a new object of class '<em>Inserted Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inserted Terminal Node</em>'.
+	 * @generated
+	 */
+	InsertedTerminalNode createInsertedTerminalNode();
+
+	/**
+	 * Returns a new object of class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @generated
+	 */
+	InsertedFeatureSetTerminalNode createInsertedFeatureSetTerminalNode();
+
+	/**
 	 * Returns a new object of class '<em>Feature Set Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,13 +94,13 @@ public interface AstFactory extends EFactory {
 	CompositeNode createCompositeNode();
 
 	/**
-	 * Returns a new object of class '<em>Set Containment Feature</em>'.
+	 * Returns a new object of class '<em>Feature Set Composite Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Containment Feature</em>'.
+	 * @return a new object of class '<em>Feature Set Composite Node</em>'.
 	 * @generated
 	 */
-	SetContainmentFeature createSetContainmentFeature();
+	FeatureSetCompositeNode createFeatureSetCompositeNode();
 
 	/**
 	 * Returns a new object of class '<em>Push Element</em>'.
@@ -83,6 +110,15 @@ public interface AstFactory extends EFactory {
 	 * @generated
 	 */
 	PushElement createPushElement();
+
+	/**
+	 * Returns a new object of class '<em>Feature Set Push Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Set Push Element</em>'.
+	 * @generated
+	 */
+	FeatureSetPushElement createFeatureSetPushElement();
 
 	/**
 	 * Returns a new object of class '<em>Pop Element</em>'.
