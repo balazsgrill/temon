@@ -15,7 +15,9 @@ import hu.textualmodeler.parser.errors.ParsingError;
 import hu.textualmodeler.parser.impl.Grammar;
 import hu.textualmodeler.tokens.TokenList;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -70,8 +72,23 @@ public class EarleyParser implements IParser {
 			Queue<EarleyState> queue = table.get(currentLevel).getQueue();
 			
 			if (queue.isEmpty() && finished.isEmpty()){
-				Collections.reverse(failed);
-				//queue.addAll(failed);
+				
+				System.out.println(failed.size()+" failed states available.");
+				table.removeVisitedStates(failed);
+				
+				List<EarleyState> statesToRetry = new ArrayList<>(failed);
+				// Sort by position, descending
+				Collections.sort(statesToRetry, new Comparator<EarleyState>() {
+
+					@Override
+					public int compare(EarleyState arg0, EarleyState arg1) {
+						return -Integer.compare(arg0.getPosition(), arg1.getPosition());
+					}
+				});
+				//Retry with at most 100 states
+				queue.addAll(statesToRetry.subList(0, Math.min(100, statesToRetry.size())));
+				
+				System.out.println("Failure. Retrying "+failed.size()+" token list modifications.");
 				failed.clear();
 			}
 			

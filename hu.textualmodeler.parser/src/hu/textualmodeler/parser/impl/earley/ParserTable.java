@@ -3,6 +3,8 @@
  */
 package hu.textualmodeler.parser.impl.earley;
 
+import java.util.Collection;
+
 
 /**
  * @author balazs.grill
@@ -26,4 +28,10 @@ public class ParserTable {
 		return table[level];
 	}
 
+	public void removeVisitedStates(Collection<EarleyState> from){
+		for(ParserLevel pl : table){
+			from.removeAll(pl.getStates());
+		}
+	}
+	
 }
