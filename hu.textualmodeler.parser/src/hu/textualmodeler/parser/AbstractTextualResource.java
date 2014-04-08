@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 
 /**
@@ -60,6 +61,11 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	
 	public Node getAST() {
 		return ast;
+	}
+	
+	@Override
+	public Resource getResourceContext() {
+		return this;
 	}
 	
 	@Override

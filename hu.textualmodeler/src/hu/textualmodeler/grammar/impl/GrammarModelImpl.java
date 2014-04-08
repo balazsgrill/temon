@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -36,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getStartItem <em>Start Item</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getImport <em>Import</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.GrammarModelImpl#getEimport <em>Eimport</em>}</li>
  * </ul>
  * </p>
  *
@@ -111,6 +113,16 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getEimport() <em>Eimport</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEimport()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EPackage> eimport;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +226,18 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<EPackage> getEimport() {
+		if (eimport == null) {
+			eimport = new EObjectResolvingEList<EPackage>(EPackage.class, this, GrammarPackage.GRAMMAR_MODEL__EIMPORT);
+		}
+		return eimport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -243,6 +267,8 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 				return getImport();
 			case GrammarPackage.GRAMMAR_MODEL__NAME:
 				return getName();
+			case GrammarPackage.GRAMMAR_MODEL__EIMPORT:
+				return getEimport();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -274,6 +300,10 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 			case GrammarPackage.GRAMMAR_MODEL__NAME:
 				setName((String)newValue);
 				return;
+			case GrammarPackage.GRAMMAR_MODEL__EIMPORT:
+				getEimport().clear();
+				getEimport().addAll((Collection<? extends EPackage>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -301,6 +331,9 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 			case GrammarPackage.GRAMMAR_MODEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case GrammarPackage.GRAMMAR_MODEL__EIMPORT:
+				getEimport().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -323,6 +356,8 @@ public class GrammarModelImpl extends MinimalEObjectImpl.Container implements Gr
 				return import_ != null && !import_.isEmpty();
 			case GrammarPackage.GRAMMAR_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case GrammarPackage.GRAMMAR_MODEL__EIMPORT:
+				return eimport != null && !eimport.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

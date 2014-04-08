@@ -57,30 +57,30 @@ public class PushItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addEclassURIPropertyDescriptor(object);
+			addEclassPropertyDescriptor(object);
 			addFeatureNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Eclass URI feature.
+	 * This adds a property descriptor for the Eclass feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEclassURIPropertyDescriptor(Object object) {
+	protected void addEclassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Push_eclassURI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Push_eclassURI_feature", "_UI_Push_type"),
-				 GrammarPackage.Literals.PUSH__ECLASS_URI,
+				 getString("_UI_Push_eclass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Push_eclass_feature", "_UI_Push_type"),
+				 GrammarPackage.Literals.PUSH__ECLASS,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -144,7 +144,6 @@ public class PushItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Push.class)) {
-			case GrammarPackage.PUSH__ECLASS_URI:
 			case GrammarPackage.PUSH__FEATURE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

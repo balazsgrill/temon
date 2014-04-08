@@ -5,6 +5,7 @@ package hu.textualmodeler.grammar;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.textualmodeler.grammar.GrammarModel#getStartItem <em>Start Item</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.GrammarModel#getImport <em>Import</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.GrammarModel#getName <em>Name</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.GrammarModel#getEimport <em>Eimport</em>}</li>
  * </ul>
  * </p>
  *
@@ -126,5 +128,21 @@ public interface GrammarModel extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Eimport</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.EPackage}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Eimport</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Eimport</em>' reference list.
+	 * @see hu.textualmodeler.grammar.GrammarPackage#getGrammarModel_Eimport()
+	 * @model
+	 * @generated
+	 */
+	EList<EPackage> getEimport();
 
 } // GrammarModel

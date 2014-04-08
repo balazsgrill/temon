@@ -44,6 +44,7 @@ public class TokenMapping extends ParseMapping<TerminalItem> {
 			node = AstFactory.eINSTANCE.createTerminalNode();
 		}
 		
+		node.setTerminal(token.getTerminal());
 		node.setContent(token.getValue());
 		node.setStart(token.getStart());
 		node.setLength(token.getLength());

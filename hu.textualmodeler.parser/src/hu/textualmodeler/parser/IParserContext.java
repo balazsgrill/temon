@@ -6,6 +6,7 @@ package hu.textualmodeler.parser;
 import hu.textualmodeler.ast.VisibleNode;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 
 /**
@@ -21,4 +22,6 @@ public interface IParserContext {
 	public IProgressMonitor getMonitor();
 	
 	public void logError(String message, VisibleNode node);
+	
+	public Resource getResourceContext();
 }

@@ -5,13 +5,10 @@ package hu.textualmodeler.ast.provider;
 
 import hu.textualmodeler.ast.AstPackage;
 import hu.textualmodeler.ast.PushElement;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -19,8 +16,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link hu.textualmodeler.ast.PushElement} object.
@@ -57,29 +52,29 @@ public class PushElementItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addEclassURIPropertyDescriptor(object);
+			addEclassPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Eclass URI feature.
+	 * This adds a property descriptor for the Eclass feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEclassURIPropertyDescriptor(Object object) {
+	protected void addEclassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_PushElement_eclassURI_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_PushElement_eclassURI_feature", "_UI_PushElement_type"),
-				 AstPackage.Literals.PUSH_ELEMENT__ECLASS_URI,
+				 getString("_UI_PushElement_eclass_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_PushElement_eclass_feature", "_UI_PushElement_type"),
+				 AstPackage.Literals.PUSH_ELEMENT__ECLASS,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -102,7 +97,7 @@ public class PushElementItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((PushElement)object).getEclassURI();
+		String label = ((PushElement)object).getEclass().getInstanceClassName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_PushElement_type") :
 			getString("_UI_PushElement_type") + " \"" + label + "\"";
@@ -118,12 +113,6 @@ public class PushElementItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(PushElement.class)) {
-			case AstPackage.PUSH_ELEMENT__ECLASS_URI:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

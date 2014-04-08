@@ -30,6 +30,8 @@ public class GrammarLoadingTests {
 		
 		Assert.assertTrue(peopleGrammar.getImport().size() == 1);
 		Assert.assertEquals("basics", peopleGrammar.getImport().get(0).getName());
+		
+		Assert.assertEquals(0, peopleGrammar.eResource().getErrors().size());
 	}
 	
 	@Test

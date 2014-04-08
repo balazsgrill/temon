@@ -2,6 +2,8 @@
  */
 package hu.textualmodeler.grammar;
 
+import org.eclipse.emf.ecore.EClass;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +13,7 @@ package hu.textualmodeler.grammar;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link hu.textualmodeler.grammar.Push#getEclassURI <em>Eclass URI</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.Push#getEclass <em>Eclass</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.Push#getFeatureName <em>Feature Name</em>}</li>
  * </ul>
  * </p>
@@ -22,30 +24,30 @@ package hu.textualmodeler.grammar;
  */
 public interface Push extends RuleItem {
 	/**
-	 * Returns the value of the '<em><b>Eclass URI</b></em>' attribute.
+	 * Returns the value of the '<em><b>Eclass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Eclass URI</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Eclass</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Eclass URI</em>' attribute.
-	 * @see #setEclassURI(String)
-	 * @see hu.textualmodeler.grammar.GrammarPackage#getPush_EclassURI()
+	 * @return the value of the '<em>Eclass</em>' reference.
+	 * @see #setEclass(EClass)
+	 * @see hu.textualmodeler.grammar.GrammarPackage#getPush_Eclass()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getEclassURI();
+	EClass getEclass();
 
 	/**
-	 * Sets the value of the '{@link hu.textualmodeler.grammar.Push#getEclassURI <em>Eclass URI</em>}' attribute.
+	 * Sets the value of the '{@link hu.textualmodeler.grammar.Push#getEclass <em>Eclass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Eclass URI</em>' attribute.
-	 * @see #getEclassURI()
+	 * @param value the new value of the '<em>Eclass</em>' reference.
+	 * @see #getEclass()
 	 * @generated
 	 */
-	void setEclassURI(String value);
+	void setEclass(EClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Feature Name</b></em>' attribute.

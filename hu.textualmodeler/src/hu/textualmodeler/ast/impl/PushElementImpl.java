@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -18,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link hu.textualmodeler.ast.impl.PushElementImpl#getEclassURI <em>Eclass URI</em>}</li>
+ *   <li>{@link hu.textualmodeler.ast.impl.PushElementImpl#getEclass <em>Eclass</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,24 +27,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class PushElementImpl extends NodeImpl implements PushElement {
 	/**
-	 * The default value of the '{@link #getEclassURI() <em>Eclass URI</em>}' attribute.
+	 * The cached value of the '{@link #getEclass() <em>Eclass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEclassURI()
+	 * @see #getEclass()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ECLASS_URI_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getEclassURI() <em>Eclass URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEclassURI()
-	 * @generated
-	 * @ordered
-	 */
-	protected String eclassURI = ECLASS_URI_EDEFAULT;
+	protected EClass eclass;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -69,8 +60,16 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getEclassURI() {
-		return eclassURI;
+	public EClass getEclass() {
+		if (eclass != null && eclass.eIsProxy()) {
+			InternalEObject oldEclass = (InternalEObject)eclass;
+			eclass = (EClass)eResolveProxy(oldEclass);
+			if (eclass != oldEclass) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstPackage.PUSH_ELEMENT__ECLASS, oldEclass, eclass));
+			}
+		}
+		return eclass;
 	}
 
 	/**
@@ -78,11 +77,20 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEclassURI(String newEclassURI) {
-		String oldEclassURI = eclassURI;
-		eclassURI = newEclassURI;
+	public EClass basicGetEclass() {
+		return eclass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEclass(EClass newEclass) {
+		EClass oldEclass = eclass;
+		eclass = newEclass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.PUSH_ELEMENT__ECLASS_URI, oldEclassURI, eclassURI));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstPackage.PUSH_ELEMENT__ECLASS, oldEclass, eclass));
 	}
 
 	/**
@@ -93,8 +101,9 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstPackage.PUSH_ELEMENT__ECLASS_URI:
-				return getEclassURI();
+			case AstPackage.PUSH_ELEMENT__ECLASS:
+				if (resolve) return getEclass();
+				return basicGetEclass();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +116,8 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstPackage.PUSH_ELEMENT__ECLASS_URI:
-				setEclassURI((String)newValue);
+			case AstPackage.PUSH_ELEMENT__ECLASS:
+				setEclass((EClass)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +131,8 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstPackage.PUSH_ELEMENT__ECLASS_URI:
-				setEclassURI(ECLASS_URI_EDEFAULT);
+			case AstPackage.PUSH_ELEMENT__ECLASS:
+				setEclass((EClass)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,26 +146,10 @@ public class PushElementImpl extends NodeImpl implements PushElement {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstPackage.PUSH_ELEMENT__ECLASS_URI:
-				return ECLASS_URI_EDEFAULT == null ? eclassURI != null : !ECLASS_URI_EDEFAULT.equals(eclassURI);
+			case AstPackage.PUSH_ELEMENT__ECLASS:
+				return eclass != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (eclassURI: ");
-		result.append(eclassURI);
-		result.append(')');
-		return result.toString();
 	}
 
 } //PushElementImpl

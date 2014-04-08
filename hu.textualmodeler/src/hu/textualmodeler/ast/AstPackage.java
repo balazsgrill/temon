@@ -718,13 +718,13 @@ public interface AstPackage extends EPackage {
 	int PUSH_ELEMENT = 12;
 
 	/**
-	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * The feature id for the '<em><b>Eclass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH_ELEMENT__ECLASS_URI = NODE_FEATURE_COUNT + 0;
+	int PUSH_ELEMENT__ECLASS = NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Push Element</em>' class.
@@ -755,13 +755,13 @@ public interface AstPackage extends EPackage {
 	int FEATURE_SET_PUSH_ELEMENT = 13;
 
 	/**
-	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * The feature id for the '<em><b>Eclass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FEATURE_SET_PUSH_ELEMENT__ECLASS_URI = PUSH_ELEMENT__ECLASS_URI;
+	int FEATURE_SET_PUSH_ELEMENT__ECLASS = PUSH_ELEMENT__ECLASS;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -1049,15 +1049,15 @@ public interface AstPackage extends EPackage {
 	EClass getPushElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link hu.textualmodeler.ast.PushElement#getEclassURI <em>Eclass URI</em>}'.
+	 * Returns the meta object for the reference '{@link hu.textualmodeler.ast.PushElement#getEclass <em>Eclass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Eclass URI</em>'.
-	 * @see hu.textualmodeler.ast.PushElement#getEclassURI()
+	 * @return the meta object for the reference '<em>Eclass</em>'.
+	 * @see hu.textualmodeler.ast.PushElement#getEclass()
 	 * @see #getPushElement()
 	 * @generated
 	 */
-	EAttribute getPushElement_EclassURI();
+	EReference getPushElement_Eclass();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.ast.FeatureSetPushElement <em>Feature Set Push Element</em>}'.
@@ -1305,12 +1305,12 @@ public interface AstPackage extends EPackage {
 		EClass PUSH_ELEMENT = eINSTANCE.getPushElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Eclass URI</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Eclass</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PUSH_ELEMENT__ECLASS_URI = eINSTANCE.getPushElement_EclassURI();
+		EReference PUSH_ELEMENT__ECLASS = eINSTANCE.getPushElement_Eclass();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.

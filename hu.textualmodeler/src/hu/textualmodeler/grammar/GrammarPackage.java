@@ -112,13 +112,22 @@ public interface GrammarPackage extends EPackage {
 	int GRAMMAR_MODEL__NAME = 4;
 
 	/**
+	 * The feature id for the '<em><b>Eimport</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GRAMMAR_MODEL__EIMPORT = 5;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GRAMMAR_MODEL_FEATURE_COUNT = 5;
+	int GRAMMAR_MODEL_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -562,13 +571,13 @@ public interface GrammarPackage extends EPackage {
 	int PUSH = 9;
 
 	/**
-	 * The feature id for the '<em><b>Eclass URI</b></em>' attribute.
+	 * The feature id for the '<em><b>Eclass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PUSH__ECLASS_URI = RULE_ITEM_FEATURE_COUNT + 0;
+	int PUSH__ECLASS = RULE_ITEM_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
@@ -690,6 +699,17 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGrammarModel_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link hu.textualmodeler.grammar.GrammarModel#getEimport <em>Eimport</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Eimport</em>'.
+	 * @see hu.textualmodeler.grammar.GrammarModel#getEimport()
+	 * @see #getGrammarModel()
+	 * @generated
+	 */
+	EReference getGrammarModel_Eimport();
 
 	/**
 	 * Returns the meta object for class '{@link hu.textualmodeler.grammar.Terminal <em>Terminal</em>}'.
@@ -980,15 +1000,15 @@ public interface GrammarPackage extends EPackage {
 	EClass getPush();
 
 	/**
-	 * Returns the meta object for the attribute '{@link hu.textualmodeler.grammar.Push#getEclassURI <em>Eclass URI</em>}'.
+	 * Returns the meta object for the reference '{@link hu.textualmodeler.grammar.Push#getEclass <em>Eclass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Eclass URI</em>'.
-	 * @see hu.textualmodeler.grammar.Push#getEclassURI()
+	 * @return the meta object for the reference '<em>Eclass</em>'.
+	 * @see hu.textualmodeler.grammar.Push#getEclass()
 	 * @see #getPush()
 	 * @generated
 	 */
-	EAttribute getPush_EclassURI();
+	EReference getPush_Eclass();
 
 	/**
 	 * Returns the meta object for the attribute '{@link hu.textualmodeler.grammar.Push#getFeatureName <em>Feature Name</em>}'.
@@ -1083,6 +1103,14 @@ public interface GrammarPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GRAMMAR_MODEL__NAME = eINSTANCE.getGrammarModel_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Eimport</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GRAMMAR_MODEL__EIMPORT = eINSTANCE.getGrammarModel_Eimport();
 
 		/**
 		 * The meta object literal for the '{@link hu.textualmodeler.grammar.impl.TerminalImpl <em>Terminal</em>}' class.
@@ -1319,12 +1347,12 @@ public interface GrammarPackage extends EPackage {
 		EClass PUSH = eINSTANCE.getPush();
 
 		/**
-		 * The meta object literal for the '<em><b>Eclass URI</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Eclass</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PUSH__ECLASS_URI = eINSTANCE.getPush_EclassURI();
+		EReference PUSH__ECLASS = eINSTANCE.getPush_Eclass();
 
 		/**
 		 * The meta object literal for the '<em><b>Feature Name</b></em>' attribute feature.

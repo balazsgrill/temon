@@ -46,7 +46,7 @@ public abstract class ParseMapping<T extends RuleItem> {
 						p = AstFactory.eINSTANCE.createPushElement();
 					}
 					
-					p.setEclassURI(((Push) item).getEclassURI());
+					p.setEclass(((Push) item).getEclass());
 					
 					return p;
 				}

@@ -4,13 +4,10 @@ package hu.textualmodeler.tokens.provider;
 
 
 import hu.textualmodeler.ast.provider.TextualmodelerEditPlugin;
-import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.tokens.Token;
 import hu.textualmodeler.tokens.TokensPackage;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -175,15 +172,10 @@ public class TokenItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Token token = (Token) object;
 		String label = ((Token)object).getValue();
-		StringBuilder sb = new StringBuilder();
-		Terminal t = token.getTerminal();
-		if (t != null){
-			sb.append(t.getName()+ ": ");
-		}
-		sb.append(label);
-		return sb.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Token_type") :
+			getString("_UI_Token_type") + " " + label;
 	}
 
 	/**

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -18,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link hu.textualmodeler.grammar.impl.PushImpl#getEclassURI <em>Eclass URI</em>}</li>
+ *   <li>{@link hu.textualmodeler.grammar.impl.PushImpl#getEclass <em>Eclass</em>}</li>
  *   <li>{@link hu.textualmodeler.grammar.impl.PushImpl#getFeatureName <em>Feature Name</em>}</li>
  * </ul>
  * </p>
@@ -27,24 +28,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class PushImpl extends RuleItemImpl implements Push {
 	/**
-	 * The default value of the '{@link #getEclassURI() <em>Eclass URI</em>}' attribute.
+	 * The cached value of the '{@link #getEclass() <em>Eclass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEclassURI()
+	 * @see #getEclass()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ECLASS_URI_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getEclassURI() <em>Eclass URI</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getEclassURI()
-	 * @generated
-	 * @ordered
-	 */
-	protected String eclassURI = ECLASS_URI_EDEFAULT;
+	protected EClass eclass;
 
 	/**
 	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
@@ -90,8 +81,16 @@ public class PushImpl extends RuleItemImpl implements Push {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getEclassURI() {
-		return eclassURI;
+	public EClass getEclass() {
+		if (eclass != null && eclass.eIsProxy()) {
+			InternalEObject oldEclass = (InternalEObject)eclass;
+			eclass = (EClass)eResolveProxy(oldEclass);
+			if (eclass != oldEclass) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, GrammarPackage.PUSH__ECLASS, oldEclass, eclass));
+			}
+		}
+		return eclass;
 	}
 
 	/**
@@ -99,11 +98,20 @@ public class PushImpl extends RuleItemImpl implements Push {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEclassURI(String newEclassURI) {
-		String oldEclassURI = eclassURI;
-		eclassURI = newEclassURI;
+	public EClass basicGetEclass() {
+		return eclass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setEclass(EClass newEclass) {
+		EClass oldEclass = eclass;
+		eclass = newEclass;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.PUSH__ECLASS_URI, oldEclassURI, eclassURI));
+			eNotify(new ENotificationImpl(this, Notification.SET, GrammarPackage.PUSH__ECLASS, oldEclass, eclass));
 	}
 
 	/**
@@ -135,8 +143,9 @@ public class PushImpl extends RuleItemImpl implements Push {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case GrammarPackage.PUSH__ECLASS_URI:
-				return getEclassURI();
+			case GrammarPackage.PUSH__ECLASS:
+				if (resolve) return getEclass();
+				return basicGetEclass();
 			case GrammarPackage.PUSH__FEATURE_NAME:
 				return getFeatureName();
 		}
@@ -151,8 +160,8 @@ public class PushImpl extends RuleItemImpl implements Push {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case GrammarPackage.PUSH__ECLASS_URI:
-				setEclassURI((String)newValue);
+			case GrammarPackage.PUSH__ECLASS:
+				setEclass((EClass)newValue);
 				return;
 			case GrammarPackage.PUSH__FEATURE_NAME:
 				setFeatureName((String)newValue);
@@ -169,8 +178,8 @@ public class PushImpl extends RuleItemImpl implements Push {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case GrammarPackage.PUSH__ECLASS_URI:
-				setEclassURI(ECLASS_URI_EDEFAULT);
+			case GrammarPackage.PUSH__ECLASS:
+				setEclass((EClass)null);
 				return;
 			case GrammarPackage.PUSH__FEATURE_NAME:
 				setFeatureName(FEATURE_NAME_EDEFAULT);
@@ -187,8 +196,8 @@ public class PushImpl extends RuleItemImpl implements Push {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case GrammarPackage.PUSH__ECLASS_URI:
-				return ECLASS_URI_EDEFAULT == null ? eclassURI != null : !ECLASS_URI_EDEFAULT.equals(eclassURI);
+			case GrammarPackage.PUSH__ECLASS:
+				return eclass != null;
 			case GrammarPackage.PUSH__FEATURE_NAME:
 				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
 		}
@@ -205,9 +214,7 @@ public class PushImpl extends RuleItemImpl implements Push {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (eclassURI: ");
-		result.append(eclassURI);
-		result.append(", featureName: ");
+		result.append(" (featureName: ");
 		result.append(featureName);
 		result.append(')');
 		return result.toString();

@@ -68,6 +68,7 @@ public class GrammarModelItemProvider
 			addStartItemPropertyDescriptor(object);
 			addImportPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addEimportPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -134,6 +135,28 @@ public class GrammarModelItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Eimport feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEimportPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GrammarModel_eimport_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_GrammarModel_eimport_feature", "_UI_GrammarModel_type"),
+				 GrammarPackage.Literals.GRAMMAR_MODEL__EIMPORT,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

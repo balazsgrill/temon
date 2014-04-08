@@ -25,11 +25,9 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * @author balazs.grill
@@ -55,7 +53,7 @@ public class ModelBuilder {
 		
 		public void resolve() throws ReferencedElementNotFoundException{
 			Terminal term = null;
-			if (terminal != null && terminal.getTerminal() != null){
+			if (terminal != null){
 				term = terminal.getTerminal();
 			}
 			Object o = featureResolver.resolve(context, feature, term, value);
@@ -108,7 +106,11 @@ public class ModelBuilder {
 				String featurename = null;
 				if (node instanceof FeatureSet){
 					featurename = ((FeatureSet) node).getFeatureName();
-					feature = findFeature(modelStack.peek().eClass(), featurename);
+					if (modelStack.isEmpty()){
+						pcontext.logError("Model stack is empty feature is ignored: "+featurename, (node instanceof VisibleNode ? (VisibleNode)node : null));
+					}else{
+						feature = findFeature(modelStack.peek().eClass(), featurename);
+					}
 				}
 				
 				
@@ -162,10 +164,12 @@ public class ModelBuilder {
 						modelStack.pop();
 					}
 				}else if (node instanceof PushElement){
-					String eclassURI = ((PushElement) node).getEclassURI();
-					EClass eclass = findEClass(eclassURI);
+					EClass eclass = ((PushElement) node).getEclass();
 					if (eclass == null){
-						throw new IllegalArgumentException("Could not find EClass "+eclassURI);
+						throw new IllegalArgumentException("Could not find EClass!");
+					}
+					if (eclass.eIsProxy()){
+						EcoreUtil.resolve(eclass, pcontext.getResourceContext());
 					}
 					EObject element = eclass.getEPackage().getEFactoryInstance().create(eclass);
 					if (feature != null){
@@ -248,14 +252,6 @@ public class ModelBuilder {
 			}
 		}
 		return null;
-	}
-	
-	public static EClass findEClass(String EClassURI){
-		int i = EClassURI.indexOf('#');
-		String nsURI = EClassURI.substring(0, i);
-		String name = EClassURI.substring(i+1);
-		ExtendedMetaData metaData = new BasicExtendedMetaData(Registry.INSTANCE);
-		return (EClass)metaData.getType(nsURI, name);
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -35,7 +35,7 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated textualmodeler -->
       <factory
-            uri="http://textualmodeler.hu/tokensr"
+            uri="http://textualmodeler.hu/tokens"
             class="hu.textualmodeler.tokens.provider.TokensItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

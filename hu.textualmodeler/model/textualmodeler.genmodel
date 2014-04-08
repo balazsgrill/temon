@@ -40,7 +40,8 @@
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//ast/FeatureSetCompositeNode"/>
       <genClasses ecoreClass="textualmodeler.ecore#//ast/PushElement">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//ast/PushElement/eclassURI"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//ast/PushElement/eclass"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//ast/FeatureSetPushElement"/>
       <genClasses ecoreClass="textualmodeler.ecore#//ast/PopElement"/>
@@ -54,6 +55,8 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/GrammarModel/import"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/GrammarModel/name"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/GrammarModel/eimport"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Terminal">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Terminal/name"/>
@@ -91,7 +94,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/SetValue/value"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Push">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Push/eclassURI"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/Push/eclass"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute textualmodeler.ecore#//grammar/Push/featureName"/>
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Pop"/>

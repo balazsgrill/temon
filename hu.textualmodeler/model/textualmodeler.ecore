@@ -33,8 +33,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="FeatureSetCompositeNode" eSuperTypes="#//ast/CompositeNode #//ast/FeatureSet"/>
     <eClassifiers xsi:type="ecore:EClass" name="PushElement" eSuperTypes="#//ast/Node">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclassURI" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eclass" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="FeatureSetPushElement" eSuperTypes="#//ast/PushElement #//ast/FeatureSet"/>
     <eClassifiers xsi:type="ecore:EClass" name="PopElement" eSuperTypes="#//ast/Node"/>
@@ -51,6 +51,8 @@
           eType="#//grammar/GrammarModel"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eimport" upperBound="-1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Terminal">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
@@ -98,13 +100,13 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Push" eSuperTypes="#//grammar/RuleItem">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="eclassURI" lowerBound="1"
-          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eclass" lowerBound="1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
   </eSubpackages>
-  <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokensr" nsPrefix="tokens">
+  <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokens" nsPrefix="tokens">
     <eClassifiers xsi:type="ecore:EClass" name="Token">
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

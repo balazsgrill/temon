@@ -1,6 +1,8 @@
 @namespace(uri="http://textualmodeler.hu", prefix="textualmodeler")
 package textualmodeler;
 
+import "http://www.eclipse.org/emf/2002/Ecore";
+
 @namespace(uri="http://textualmodeler.hu/ast", prefix="ast")
 package ast{
 	
@@ -56,7 +58,7 @@ package ast{
 	}
 	
 	class PushElement extends Node{
-		attr String[1] eclassURI;
+		ref EClass[1] eclass;
 	}
 	
 	class FeatureSetPushElement extends PushElement, FeatureSet{
@@ -78,6 +80,7 @@ package grammar{
 		attr String[1] startItem;
 		ref GrammarModel[*] ~import;
 		attr String[1] name;
+		ref ecore.EPackage[*] eimport;
 	}
 
 	class Terminal{
@@ -123,7 +126,7 @@ package grammar{
 	}
 
 	class Push extends RuleItem{
-		attr String[1] eclassURI;
+		ref EClass[1] eclass;
 		attr String featureName;
 	}
 
@@ -132,7 +135,7 @@ package grammar{
 
 }
 
-@namespace(uri="http://textualmodeler.hu/tokensr", prefix="tokens")
+@namespace(uri="http://textualmodeler.hu/tokens", prefix="tokens")
 package tokens{
 	
 	class Token{

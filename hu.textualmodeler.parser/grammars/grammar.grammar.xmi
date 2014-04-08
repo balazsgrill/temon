@@ -16,7 +16,9 @@
   <terminals name="OPERATOR_SUPERTERM" regex="\:" priority="10"/>
   <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
     <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
-    <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g" eclassURI="http://textualmodeler.hu/grammar#GrammarModel"/>
+    <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g">
+      <eclass href="http://textualmodeler.hu/grammar#//GrammarModel"/>
+    </body>
     <body xsi:type="grammar:NonTerminalItem" featureName="name" nonTerminal="QUALIFIEDID"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgLZKEeKDArD2cbZQHA" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgbZKEeKDArD2cbZQHA" featureName="startItem">
@@ -39,7 +41,9 @@
   </rules>
   <rules xmi:id="_7pQ1MLGVEeK1ScU5DNcoWg" nonTerminal="Terminal">
     <body xsi:type="grammar:TerminalItem" xmi:id="_FEic0LGWEeK1ScU5DNcoWg" terminal="_9bZhMLGVEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_hysqYLGWEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#Terminal" featureName="terminals"/>
+    <body xsi:type="grammar:Push" xmi:id="_hysqYLGWEeK1ScU5DNcoWg" featureName="terminals">
+      <eclass href="http://textualmodeler.hu/grammar#//Terminal"/>
+    </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_Xti_ULGWEeK1ScU5DNcoWg" optional="true" featureName="hide" terminal="_UIBqILGWEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_HsyRcLGWEeK1ScU5DNcoWg" featureName="name">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
@@ -64,7 +68,9 @@
   </rules>
   <rules xmi:id="_o60uMLGXEeK1ScU5DNcoWg" nonTerminal="Rule">
     <body xsi:type="grammar:TerminalItem" xmi:id="_rEcGELGXEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_s7UvMLGXEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#Rule" featureName="rules"/>
+    <body xsi:type="grammar:Push" xmi:id="_s7UvMLGXEeK1ScU5DNcoWg" featureName="rules">
+      <eclass href="http://textualmodeler.hu/grammar#//Rule"/>
+    </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_z1sgULGXEeK1ScU5DNcoWg" featureName="nonTerminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
@@ -77,7 +83,9 @@
     <body xsi:type="grammar:Pop" xmi:id="_KPPVMLGYEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_OhaVALGYEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_cC91gLGYEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#TerminalItem" featureName="body"/>
+    <body xsi:type="grammar:Push" xmi:id="_cC91gLGYEeK1ScU5DNcoWg" featureName="body">
+      <eclass href="http://textualmodeler.hu/grammar#//TerminalItem"/>
+    </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_0bb1MLGYEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_k82nULGYEeK1ScU5DNcoWg" featureName="terminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
@@ -92,7 +100,9 @@
     <body xsi:type="grammar:TerminalItem" xmi:id="_9TZUYLGYEeK1ScU5DNcoWg" terminal="_274_wLGYEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_HWS8sLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_LXSF4LGZEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#NonTerminalItem" featureName="body"/>
+    <body xsi:type="grammar:Push" xmi:id="_LXSF4LGZEeK1ScU5DNcoWg" featureName="body">
+      <eclass href="http://textualmodeler.hu/grammar#//NonTerminalItem"/>
+    </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_Uao4ELfAEeKWpqZiG1Fi3Q" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_cEGBcLGZEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_dSg8YLGZEeK1ScU5DNcoWg" featureName="nonTerminal">
@@ -103,17 +113,21 @@
     <body xsi:type="grammar:Pop" xmi:id="_aBaYALGZEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_tL0-cLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_Lb7f4LGaEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#Push" featureName="body"/>
+    <body xsi:type="grammar:Push" xmi:id="_Lb7f4LGaEeK1ScU5DNcoWg" featureName="body">
+      <eclass href="http://textualmodeler.hu/grammar#//Push"/>
+    </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_atZe0LGaEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_CuxigLGaEeK1ScU5DNcoWg" terminal="_15FpgLGZEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_EZ3yYLGaEeK1ScU5DNcoWg" featureName="eclassURI">
+    <body xsi:type="grammar:TerminalItem" xmi:id="_EZ3yYLGaEeK1ScU5DNcoWg" featureName="eclass">
       <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
     <body xsi:type="grammar:Pop" xmi:id="_c_pOQLGaEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_fxBwwLGaEeK1ScU5DNcoWg" nonTerminal="RuleItem">
     <body xsi:type="grammar:TerminalItem" xmi:id="_keJAILGaEeK1ScU5DNcoWg" terminal="_7BefoLGZEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_mUmygLGaEeK1ScU5DNcoWg" eclassURI="http://textualmodeler.hu/grammar#Pop" featureName="body"/>
+    <body xsi:type="grammar:Push" xmi:id="_mUmygLGaEeK1ScU5DNcoWg" featureName="body">
+      <eclass href="http://textualmodeler.hu/grammar#//Pop"/>
+    </body>
     <body xsi:type="grammar:Pop" xmi:id="_nSD5QLGaEeK1ScU5DNcoWg"/>
   </rules>
   <rules xmi:id="_me9eoLZLEeKDArD2cbZQHA" nonTerminal="Multiplicity">
@@ -130,7 +144,9 @@
     <body xsi:type="grammar:SetValue" featureName="optional" value="true"/>
   </rules>
   <rules xmi:id="_BwNPEN8ZEeKzJqytnsiUUA" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_BwNPEd8ZEeKzJqytnsiUUA" eclassURI="http://textualmodeler.hu/grammar#SetValue" featureName="body"/>
+    <body xsi:type="grammar:Push" xmi:id="_BwNPEd8ZEeKzJqytnsiUUA" featureName="body">
+      <eclass href="http://textualmodeler.hu/grammar#//SetValue"/>
+    </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_BwNPEt8ZEeKzJqytnsiUUA" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_BwNPFN8ZEeKzJqytnsiUUA" featureName="value">
       <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>

@@ -2,6 +2,8 @@
  */
 package hu.textualmodeler.ast;
 
+import org.eclipse.emf.ecore.EClass;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +13,7 @@ package hu.textualmodeler.ast;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link hu.textualmodeler.ast.PushElement#getEclassURI <em>Eclass URI</em>}</li>
+ *   <li>{@link hu.textualmodeler.ast.PushElement#getEclass <em>Eclass</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,29 +23,29 @@ package hu.textualmodeler.ast;
  */
 public interface PushElement extends Node {
 	/**
-	 * Returns the value of the '<em><b>Eclass URI</b></em>' attribute.
+	 * Returns the value of the '<em><b>Eclass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Eclass URI</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Eclass</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Eclass URI</em>' attribute.
-	 * @see #setEclassURI(String)
-	 * @see hu.textualmodeler.ast.AstPackage#getPushElement_EclassURI()
+	 * @return the value of the '<em>Eclass</em>' reference.
+	 * @see #setEclass(EClass)
+	 * @see hu.textualmodeler.ast.AstPackage#getPushElement_Eclass()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getEclassURI();
+	EClass getEclass();
 
 	/**
-	 * Sets the value of the '{@link hu.textualmodeler.ast.PushElement#getEclassURI <em>Eclass URI</em>}' attribute.
+	 * Sets the value of the '{@link hu.textualmodeler.ast.PushElement#getEclass <em>Eclass</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Eclass URI</em>' attribute.
-	 * @see #getEclassURI()
+	 * @param value the new value of the '<em>Eclass</em>' reference.
+	 * @see #getEclass()
 	 * @generated
 	 */
-	void setEclassURI(String value);
+	void setEclass(EClass value);
 
 } // PushElement

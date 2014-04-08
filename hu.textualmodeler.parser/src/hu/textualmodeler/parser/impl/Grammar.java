@@ -83,7 +83,7 @@ public class Grammar implements IGrammar {
 			for(Rule rule : ruleList){
 				for(RuleItem ri : rule.getBody()){
 					if (ri instanceof Push){
-						result.add(((Push) ri).getEclassURI());
+						result.add(((Push) ri).getEclass().getInstanceClass().getCanonicalName());
 					}
 				}
 			}

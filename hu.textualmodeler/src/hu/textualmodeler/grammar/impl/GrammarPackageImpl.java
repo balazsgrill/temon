@@ -237,6 +237,15 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getGrammarModel_Eimport() {
+		return (EReference)grammarModelEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTerminal() {
 		return terminalEClass;
 	}
@@ -480,8 +489,8 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPush_EclassURI() {
-		return (EAttribute)pushEClass.getEStructuralFeatures().get(0);
+	public EReference getPush_Eclass() {
+		return (EReference)pushEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -536,6 +545,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		createEAttribute(grammarModelEClass, GRAMMAR_MODEL__START_ITEM);
 		createEReference(grammarModelEClass, GRAMMAR_MODEL__IMPORT);
 		createEAttribute(grammarModelEClass, GRAMMAR_MODEL__NAME);
+		createEReference(grammarModelEClass, GRAMMAR_MODEL__EIMPORT);
 
 		terminalEClass = createEClass(TERMINAL);
 		createEAttribute(terminalEClass, TERMINAL__NAME);
@@ -572,7 +582,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		createEAttribute(setValueEClass, SET_VALUE__VALUE);
 
 		pushEClass = createEClass(PUSH);
-		createEAttribute(pushEClass, PUSH__ECLASS_URI);
+		createEReference(pushEClass, PUSH__ECLASS);
 		createEAttribute(pushEClass, PUSH__FEATURE_NAME);
 
 		popEClass = createEClass(POP);
@@ -620,6 +630,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEAttribute(getGrammarModel_StartItem(), ecorePackage.getEString(), "startItem", null, 1, 1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGrammarModel_Import(), this.getGrammarModel(), null, "import", null, 0, -1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGrammarModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGrammarModel_Eimport(), ecorePackage.getEPackage(), null, "eimport", null, 0, -1, GrammarModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(terminalEClass, Terminal.class, "Terminal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTerminal_Name(), ecorePackage.getEString(), "name", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -656,7 +667,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEAttribute(getSetValue_Value(), ecorePackage.getEString(), "value", null, 1, 1, SetValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pushEClass, Push.class, "Push", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPush_EclassURI(), ecorePackage.getEString(), "eclassURI", null, 1, 1, Push.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPush_Eclass(), ecorePackage.getEClass(), null, "eclass", null, 1, 1, Push.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPush_FeatureName(), ecorePackage.getEString(), "featureName", null, 0, 1, Push.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(popEClass, Pop.class, "Pop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

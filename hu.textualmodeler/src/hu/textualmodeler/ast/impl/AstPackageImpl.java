@@ -413,8 +413,8 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPushElement_EclassURI() {
-		return (EAttribute)pushElementEClass.getEStructuralFeatures().get(0);
+	public EReference getPushElement_Eclass() {
+		return (EReference)pushElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -497,7 +497,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		featureSetCompositeNodeEClass = createEClass(FEATURE_SET_COMPOSITE_NODE);
 
 		pushElementEClass = createEClass(PUSH_ELEMENT);
-		createEAttribute(pushElementEClass, PUSH_ELEMENT__ECLASS_URI);
+		createEReference(pushElementEClass, PUSH_ELEMENT__ECLASS);
 
 		featureSetPushElementEClass = createEClass(FEATURE_SET_PUSH_ELEMENT);
 
@@ -589,7 +589,7 @@ public class AstPackageImpl extends EPackageImpl implements AstPackage {
 		initEClass(featureSetCompositeNodeEClass, FeatureSetCompositeNode.class, "FeatureSetCompositeNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pushElementEClass, PushElement.class, "PushElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPushElement_EclassURI(), ecorePackage.getEString(), "eclassURI", null, 1, 1, PushElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPushElement_Eclass(), ecorePackage.getEClass(), null, "eclass", null, 1, 1, PushElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureSetPushElementEClass, FeatureSetPushElement.class, "FeatureSetPushElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
