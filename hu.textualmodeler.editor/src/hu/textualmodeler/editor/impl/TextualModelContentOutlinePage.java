@@ -4,6 +4,7 @@
 package hu.textualmodeler.editor.impl;
 
 import hu.textualmodeler.ast.Node;
+import hu.textualmodeler.editor.TextualModelEditor;
 import hu.textualmodeler.parser.AbstractTextualResource;
 import hu.textualmodeler.tokens.TokenList;
 
@@ -18,7 +19,12 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.jface.text.TextSelection;
+import org.eclipse.jface.viewers.DoubleClickEvent;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Composite;
@@ -32,6 +38,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 public class TextualModelContentOutlinePage extends ContentOutlinePage implements ITreeContentProvider{
 
 	private final AbstractTextualResource resource;
+	private final TextualModelEditor editor;
 	private AdapterFactory adapterFactory;
 	
 	private ITreeContentProvider contentProvider;
@@ -45,7 +52,8 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 
 	}
 	
-	public TextualModelContentOutlinePage(Resource resource) {
+	public TextualModelContentOutlinePage(Resource resource, TextualModelEditor editor) {
+		this.editor = editor;
 		if (resource instanceof AbstractTextualResource){
 			this.resource = (AbstractTextualResource)resource;
 			
@@ -77,6 +85,25 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
+		getTreeViewer().addDoubleClickListener(new IDoubleClickListener() {
+			
+			@Override
+			public void doubleClick(DoubleClickEvent event) {
+				ISelection s = event.getSelection();
+				if (s instanceof IStructuredSelection){
+					Object o = ((IStructuredSelection) s).getFirstElement();
+					if (o instanceof EObject){
+						EObject element = (EObject)o;
+						int start = resource.getElementCreationTracker().getStartPosition(element);
+						int end = resource.getElementCreationTracker().getEndPosition(element);
+						if (start != -1 && end != -1){
+							editor.getSelectionProvider().setSelection(new TextSelection(start, end-start));
+						}
+					}
+				}
+				
+			}
+		});
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.Terminal;
 import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.IParserInput;
-import hu.textualmodeler.parser.TerminalMatch;
 
 import java.util.ArrayList;
 import java.util.Collection;

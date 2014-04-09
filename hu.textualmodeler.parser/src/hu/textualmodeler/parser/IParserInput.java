@@ -5,6 +5,7 @@ package hu.textualmodeler.parser;
 
 import hu.textualmodeler.ast.WhitespaceNode;
 import hu.textualmodeler.grammar.Terminal;
+import hu.textualmodeler.parser.impl.TerminalMatch;
 
 import java.util.List;
 

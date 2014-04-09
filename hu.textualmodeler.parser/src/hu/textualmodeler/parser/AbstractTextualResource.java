@@ -8,8 +8,10 @@ import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.GrammarModel;
 import hu.textualmodeler.parser.errors.ParsingError;
+import hu.textualmodeler.parser.impl.ModelBuilder;
 import hu.textualmodeler.parser.impl.Tokenizer;
 import hu.textualmodeler.parser.impl.earley.EarleyParser;
+import hu.textualmodeler.parser.impl.tracking.ElementCreationTracker;
 import hu.textualmodeler.tokens.TokenList;
 
 import java.io.IOException;
@@ -29,10 +31,36 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  */
 public abstract class AbstractTextualResource extends ResourceImpl implements IParserContext{
 
-	private TokenList input;
-	private IParser parser;
-	private Tokenizer tokenizer;
-	private String data;
+	/**
+	 * Load option to enable tracking element creation. This is required if client wants to find 
+	 * elements by position in text resource or find element defined by position.
+	 */
+	public static final String OPTION_TRACK_ELEMENT_CREATION = AbstractTextualResource.class.getCanonicalName()+".load_option.track_element_creation";
+	
+	private TokenList input = null;
+	private IParser parser = null;
+	private Tokenizer tokenizer = null;
+	private String data = null;
+	private ElementCreationTracker elementCreationTracker = null;
+	
+	private IFeatureResolver featureResolver;
+	
+	public IFeatureResolver getFeatureResolver() {
+		if (featureResolver == null){
+			featureResolver = createFeatureResolver();
+		}
+		return featureResolver;
+	}
+	
+	/**
+	 * Get tracker interface. Only available if resource is loaded with option 
+	 * {@link OPTION_TRACK_ELEMENT_CREATION} set to {@link Boolean}.true. Otherwise
+	 * this method returns null.
+	 * @return
+	 */
+	public ElementCreationTracker getElementCreationTracker() {
+		return elementCreationTracker;
+	}
 	
 	public IParser getParser(){
 		if (parser == null){
@@ -86,17 +114,20 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	protected void doLoad(InputStream inputStream, Map<?, ?> options)
 			throws IOException {
 		
-		data = inputStreamToString(inputStream);
+		/* Process options */
+		boolean option_elementCreationTrackingEnabled = false;
+		if (options != null){
+			option_elementCreationTrackingEnabled = Boolean.TRUE.equals(options.get(OPTION_TRACK_ELEMENT_CREATION));
+		}
 		
+		data = inputStreamToString(inputStream);
 		input = getTokenizer().tokenize(data);
-//		for(Token t : input.getTokens()){
-//			System.out.println(t.getTerminal().getName() +" = "+t.getValue());
-//		}
 		
 		this.ast = getParser().parse(input, this, 0);
 		
-		IFeatureResolver featureResolver = createFeatureResolver();
+		IFeatureResolver featureResolver = getFeatureResolver();
 		ModelBuilder builder = new ModelBuilder(featureResolver, this);
+		elementCreationTracker = option_elementCreationTrackingEnabled ? new ElementCreationTracker(builder) : null;
 		
 		this.getContents().clear();
 		if (this.ast instanceof CompositeNode){

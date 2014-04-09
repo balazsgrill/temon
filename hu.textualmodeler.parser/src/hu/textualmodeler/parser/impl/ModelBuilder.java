@@ -1,7 +1,7 @@
 /**
  * 
  */
-package hu.textualmodeler.parser;
+package hu.textualmodeler.parser.impl;
 
 import hu.textualmodeler.ast.CompositeNode;
 import hu.textualmodeler.ast.FeatureSet;
@@ -15,6 +15,8 @@ import hu.textualmodeler.ast.RemovedTerminalNode;
 import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
 import hu.textualmodeler.grammar.Terminal;
+import hu.textualmodeler.parser.IFeatureResolver;
+import hu.textualmodeler.parser.IParserContext;
 import hu.textualmodeler.parser.errors.ReferencedElementNotFoundException;
 
 import java.util.LinkedList;
@@ -102,6 +104,10 @@ public class ModelBuilder {
 		public EObject process(Node node){
 			try{
 				
+				if (node instanceof VisibleNode){
+					fireAdapters.visibleNodeEncountered((VisibleNode)node);
+				}
+				
 				EStructuralFeature feature = null;
 				String featurename = null;
 				if (node instanceof FeatureSet){
@@ -161,7 +167,8 @@ public class ModelBuilder {
 					if (modelStack.isEmpty()){
 						pcontext.logError("Could not finish rule", null);
 					}else{
-						modelStack.pop();
+						EObject element = modelStack.pop();
+						fireAdapters.elementCreationEnded(element, (PopElement)node);
 					}
 				}else if (node instanceof PushElement){
 					EClass eclass = ((PushElement) node).getEclass();
@@ -176,6 +183,7 @@ public class ModelBuilder {
 						EObject parent = modelStack.peek();
 						eSetOrAdd(parent, feature, element);
 					}
+					fireAdapters.elementCreationStarted(element, (PushElement)node);
 					modelStack.push(element);
 					if (result == null){
 						result = element;
@@ -222,6 +230,39 @@ public class ModelBuilder {
 	private final IFeatureResolver featureResolver;
 	
 	private final IParserContext pcontext;
+	
+	private List<IModelBuilderAdapter> adapters = null;
+	
+	public void addAdapter(IModelBuilderAdapter adapter){
+		if (adapters == null){
+			adapters = new LinkedList<>();
+		}
+		adapters.add(adapter);
+	}
+	
+	private final IModelBuilderAdapter fireAdapters = new IModelBuilderAdapter() {
+		
+		@Override
+		public void elementCreationStarted(EObject element, PushElement node) {
+			if (adapters != null) for (IModelBuilderAdapter adapter : adapters){
+				adapter.elementCreationStarted(element, node);
+			}
+		}
+		
+		@Override
+		public void elementCreationEnded(EObject element, PopElement node) {
+			if (adapters != null) for (IModelBuilderAdapter adapter : adapters){
+				adapter.elementCreationEnded(element, node);
+			}
+		}
+		
+		@Override
+		public void visibleNodeEncountered(VisibleNode visibleNode) {
+			if (adapters != null) for (IModelBuilderAdapter adapter : adapters){
+				adapter.visibleNodeEncountered(visibleNode);
+			}
+		}
+	}; 
 	
 	public IFeatureResolver getFeatureResolver() {
 		return featureResolver;

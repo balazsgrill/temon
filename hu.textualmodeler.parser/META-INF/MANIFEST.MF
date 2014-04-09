@@ -13,4 +13,5 @@ Export-Package: hu.textualmodeler.parser,
  hu.textualmodeler.parser.grammar,
  hu.textualmodeler.parser.impl,
  hu.textualmodeler.parser.impl.earley,
+ hu.textualmodeler.parser.impl.tracking,
  hu.textualmodeler.parser.scope

@@ -80,7 +80,7 @@ public class TextualModelEditor extends TextEditor {
 		
 		try {
 			resource.unload();
-			resource.load(is, null);
+			resource.load(is, edomain.getResourceSet().getLoadOptions());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -143,6 +143,7 @@ public class TextualModelEditor extends TextEditor {
 	
 	private static EditingDomain createEditingDomain(){
 		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getLoadOptions().put(AbstractTextualResource.OPTION_TRACK_ELEMENT_CREATION, Boolean.TRUE);
 		EditingDomain editingDomain = TransactionalEditingDomainImpl.FactoryImpl.INSTANCE.createEditingDomain(resourceSet);
 		return editingDomain;
 	}
@@ -192,7 +193,7 @@ public class TextualModelEditor extends TextEditor {
 	
 	private IContentOutlinePage getContentOutlinePage(){
 		if (contentOutlinePage == null){
-			contentOutlinePage = new TextualModelContentOutlinePage(resource);
+			contentOutlinePage = new TextualModelContentOutlinePage(resource, this);
 			reloader.trigger();
 		}
 		return contentOutlinePage;

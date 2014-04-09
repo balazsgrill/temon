@@ -1,7 +1,9 @@
 /**
  * 
  */
-package hu.textualmodeler.parser;
+package hu.textualmodeler.parser.impl;
+
+import hu.textualmodeler.parser.IStringValue;
 
 /**
  * @author balazs.grill
