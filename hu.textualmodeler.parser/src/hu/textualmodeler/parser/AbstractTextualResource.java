@@ -34,12 +34,26 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	private Tokenizer tokenizer;
 	private String data;
 	
+	public IParser getParser(){
+		if (parser == null){
+			parser = new EarleyParser(loadGrammar());
+		}
+		return parser;
+	}
+	
+	public Tokenizer getTokenizer(){
+		if (tokenizer == null){
+			tokenizer = new Tokenizer(getGrammar().terminals(), this);
+		}
+		return tokenizer;
+	}
+	
 	public AbstractTextualResource(URI uri) {
 		super(uri);
 	}
 	
 	public IGrammar getGrammar(){
-		return parser.getGrammar();
+		return getParser().getGrammar();
 	}
 	
 	protected static String inputStreamToString(InputStream inputStream) throws IOException{
@@ -74,15 +88,12 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 		
 		data = inputStreamToString(inputStream);
 		
-		parser = new EarleyParser(loadGrammar());
-		tokenizer = new Tokenizer(parser.getGrammar().terminals(), this);
-		
-		input = tokenizer.tokenize(data);
+		input = getTokenizer().tokenize(data);
 //		for(Token t : input.getTokens()){
 //			System.out.println(t.getTerminal().getName() +" = "+t.getValue());
 //		}
 		
-		this.ast = parser.parse(input, this, 0);
+		this.ast = getParser().parse(input, this, 0);
 		
 		IFeatureResolver featureResolver = createFeatureResolver();
 		ModelBuilder builder = new ModelBuilder(featureResolver, this);

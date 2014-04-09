@@ -14,7 +14,10 @@ import hu.textualmodeler.tokens.TokensFactory;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -29,6 +32,102 @@ public class Tokenizer {
 	private final IParserContext context;
 	private final Map<Terminal, Pattern> terminals = new LinkedHashMap<Terminal, Pattern>();
 	private final Map<Terminal, Set<Terminal>> overrides = new HashMap<Terminal, Set<Terminal>>();
+	
+	public Collection<Terminal> getTerminals() {
+		return terminals.keySet();
+	}
+	
+	private class TokenIterator implements Iterator<Token>{
+
+		private final String input;
+		private int position;
+		
+		public TokenIterator(String input) {
+			this.input = input;
+			position = 0;
+		}
+		
+		private Token doMatchToken(String input, Terminal terminal, int position){
+			Pattern pattern = terminals.get(terminal);
+			if (pattern == null){
+				throw new IllegalArgumentException("Terminal is unknown: "+terminal);
+			}
+			Matcher matcher = pattern.matcher(input);
+			matcher.region(position, input.length());
+			if (matcher.lookingAt()){
+				int start = matcher.start();
+				int end = matcher.end();
+				if (start == position){
+					Token t = TokensFactory.eINSTANCE.createToken();
+					t.setLength(end-start);
+					t.setStart(start);
+					t.setTerminal(terminal);
+					t.setValue(getProcessedValue(input.substring(start, end), terminal));
+					return t;
+				}
+			}
+			return null;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			return position < input.length();
+		}
+
+		@Override
+		public Token next() {
+			Token bestToken = null;
+			
+			for(Terminal terminal : terminals.keySet()){
+				Token t = doMatchToken(input, terminal, position);
+				if (t != null){
+					if (bestToken == null){
+						bestToken = t;
+					}else{
+						if (bestToken.getLength() < t.getLength()){
+							bestToken = t;
+						}
+						if (bestToken.getLength() == t.getLength() && t.getTerminal().getPriority() > bestToken.getTerminal().getPriority()){
+							bestToken = t;
+						}
+					}
+				}
+			}
+			
+			if (bestToken != null){
+				position += bestToken.getLength();
+				return bestToken;
+			}else{
+				String err = ""+input.charAt(position);
+				position++;
+				Token errtoken = TokensFactory.eINSTANCE.createToken();
+				errtoken.setStart(position);
+				errtoken.setLength(1);
+				errtoken.setValue(err);
+				return errtoken;
+			}
+		}
+
+		@Override
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+		
+	}
+	
+	public Iterator<Token> createTokenIterator(String input){
+		return new TokenIterator(input);
+	}
+	
+	public Iterable<Token> createTokenIterable(final String input){
+		return new Iterable<Token>() {
+			
+			@Override
+			public Iterator<Token> iterator() {
+				return createTokenIterator(input);
+			}
+		};
+	}
 	
 	/**
 	 * 
@@ -71,66 +170,44 @@ public class Tokenizer {
 		return value;
 	}
 	
-	private Token doMatchToken(String input, Terminal terminal, int position){
-		Pattern pattern = terminals.get(terminal);
-		if (pattern == null){
-			throw new IllegalArgumentException("Terminal is unknown: "+terminal);
+	private static Token mergeErrorTokens(List<Token> tokens){
+		Token result = TokensFactory.eINSTANCE.createToken();
+		result.setStart(tokens.get(0).getStart());
+		String value = "";
+		for(Token t : tokens){
+			value += t.getValue();
 		}
-		Matcher matcher = pattern.matcher(input);
-		matcher.region(position, input.length());
-		if (matcher.lookingAt()){
-			int start = matcher.start();
-			int end = matcher.end();
-			if (start == position){
-				Token t = TokensFactory.eINSTANCE.createToken();
-				t.setLength(end-start);
-				t.setStart(start);
-				t.setTerminal(terminal);
-				t.setValue(getProcessedValue(input.substring(start, end), terminal));
-				return t;
-			}
-		}
-		return null;
+		result.setValue(value);
+		result.setLength(value.length());
+		return result;
 	}
 	
 	public TokenList tokenize(final String input){
 		TokenList result = TokensFactory.eINSTANCE.createTokenList();
 		
-		int position = 0;
-		String err = "";
-		while(position < input.length()){
+		List<Token> errTokens = new LinkedList<>();
+		
+		for(Token t : createTokenIterable(input)){
 			
-			Token bestToken = null;
-			
-			for(Terminal terminal : terminals.keySet()){
-				Token t = doMatchToken(input, terminal, position);
-				if (t != null){
-					if (bestToken == null){
-						bestToken = t;
-					}else{
-						if (bestToken.getLength() < t.getLength()){
-							bestToken = t;
-						}
-						if (bestToken.getLength() == t.getLength() && t.getTerminal().getPriority() > bestToken.getTerminal().getPriority()){
-							bestToken = t;
-						}
-					}
+			if (t.getTerminal() != null){
+				if (!errTokens.isEmpty()){
+					Token err = mergeErrorTokens(errTokens);
+					errTokens.clear();
+					int[] lc = ParsingError.getLineAndColumn(input, err.getStart());
+					context.logError(new ParsingError("Invalid characters found: '"+err.getValue()+"'", "", lc[0], lc[1]));
 				}
-			}
-			
-			if (bestToken != null){
-				if (!err.isEmpty()){
-					int[] lc = ParsingError.getLineAndColumn(input, position);
-					context.logError(new ParsingError("Invalid characters found: '"+err+"'", "", lc[0], lc[1]));
-					err = "";
-				}
-				result.getTokens().add(bestToken);
-				position += bestToken.getLength();
+				result.getTokens().add(t);
 			}else{
-				err = err + input.charAt(position);
-				position++;
+				errTokens.add(t);
 			}
 			
+		}
+		
+		if (!errTokens.isEmpty()){
+			Token err = mergeErrorTokens(errTokens);
+			errTokens.clear();
+			int[] lc = ParsingError.getLineAndColumn(input, err.getStart());
+			context.logError(new ParsingError("Invalid characters found: '"+err.getValue()+"'", "", lc[0], lc[1]));
 		}
 		
 		return result;
