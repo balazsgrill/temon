@@ -72,22 +72,6 @@ public class ModelBuilder {
 		
 	}
 	
-	private static String contentOf(Node node){
-		if (node instanceof CompositeNode){
-			StringBuilder sb = new StringBuilder();
-			for(Node n : ((CompositeNode) node).getChildren()){
-				sb.append(contentOf(n));
-			}
-			return sb.toString();
-		}
-		if (node instanceof TerminalNode && !(node instanceof InsertedTerminalNode) && !(node instanceof RemovedTerminalNode)){
-			TerminalNode tn = (TerminalNode)node;
-			return tn.getContent();
-		}
-		
-		return "";
-	}
-	
 	private class Context{
 		
 		EObject result = null;
@@ -110,12 +94,14 @@ public class ModelBuilder {
 				
 				EStructuralFeature feature = null;
 				String featurename = null;
+				EObject contextElement = modelStack.isEmpty() ? null : modelStack.peek();
 				if (node instanceof FeatureSet){
 					featurename = ((FeatureSet) node).getFeatureName();
-					if (modelStack.isEmpty()){
+					if (contextElement == null){
 						pcontext.logError("Model stack is empty feature is ignored: "+featurename, (node instanceof VisibleNode ? (VisibleNode)node : null));
 					}else{
-						feature = findFeature(modelStack.peek().eClass(), featurename);
+						feature = findFeature(contextElement.eClass(), featurename);
+						fireAdapters.featureSetNodeEncountered(contextElement, feature, (FeatureSet)node);
 					}
 				}
 				
@@ -130,21 +116,21 @@ public class ModelBuilder {
 					}
 					
 					if (feature != null){
-						EObject context = modelStack.peek();
+						EObject context = contextElement;
 						if (feature instanceof EReference){
 
 							if (((EReference) feature).isContainment()){
 								EObject element = subContext.result;
 								eSetOrAdd(context, feature, element);
 							}else{
-								String value = contentOf(node);
+								String value = AstUtils.contentOf(node);
 								FeatureValue fv = new FeatureValue(context, feature, null, value);
 								featureValues.add(fv);
 							}
 
 						}
 						if (feature instanceof EAttribute){
-							String value = contentOf(node);
+							String value = AstUtils.contentOf(node);
 							FeatureValue fv = new FeatureValue(context, feature, null, value);
 							fv.resolve();
 						}
@@ -155,7 +141,7 @@ public class ModelBuilder {
 				}else if (node instanceof InsertedTerminalNode){
 					pcontext.logError("Missing terminal: "+((InsertedTerminalNode) node).getTerminal().getName(), (InsertedTerminalNode)node);
 				}else if (node instanceof FeatureSetValue){
-					FeatureValue fv = new FeatureValue(modelStack.peek(), 
+					FeatureValue fv = new FeatureValue(contextElement, 
 							feature, null, 
 							((FeatureSetValue) node).getValue());
 					if (fv.unconditional()) {
@@ -260,6 +246,13 @@ public class ModelBuilder {
 		public void visibleNodeEncountered(VisibleNode visibleNode) {
 			if (adapters != null) for (IModelBuilderAdapter adapter : adapters){
 				adapter.visibleNodeEncountered(visibleNode);
+			}
+		}
+		
+		@Override
+		public void featureSetNodeEncountered(EObject context, EStructuralFeature feature, FeatureSet node) {
+			if (adapters != null) for (IModelBuilderAdapter adapter : adapters){
+				adapter.featureSetNodeEncountered(context, feature, node);
 			}
 		}
 	}; 

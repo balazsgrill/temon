@@ -54,7 +54,7 @@ public abstract class AbstractTextualResource extends ResourceImpl implements IP
 	
 	/**
 	 * Get tracker interface. Only available if resource is loaded with option 
-	 * {@link OPTION_TRACK_ELEMENT_CREATION} set to {@link Boolean}.true. Otherwise
+	 * {@link OPTION_TRACK_ELEMENT_CREATION} set to {@link Boolean}.TRUE. Otherwise
 	 * this method returns null.
 	 * @return
 	 */

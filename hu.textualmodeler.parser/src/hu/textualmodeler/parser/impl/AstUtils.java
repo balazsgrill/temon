@@ -3,11 +3,15 @@
  */
 package hu.textualmodeler.parser.impl;
 
-import org.eclipse.emf.ecore.EObject;
-
 import hu.textualmodeler.ast.CompositeNode;
+import hu.textualmodeler.ast.InsertedTerminalNode;
 import hu.textualmodeler.ast.Node;
+import hu.textualmodeler.ast.RemovedTerminalNode;
+import hu.textualmodeler.ast.TerminalNode;
 import hu.textualmodeler.ast.VisibleNode;
+
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * @author balazs.grill
@@ -103,6 +107,41 @@ public class AstUtils {
 			current = getPreviousNode(node);
 		}
 		return null;
+	}
+	
+	public static int[] getRange(Node node){
+		int[] range = new int[]{-1,-1};
+		if (node instanceof VisibleNode){
+			range[0] = ((VisibleNode) node).getStart();
+			range[1] = range[0]+((VisibleNode) node).getLength();
+		}
+		TreeIterator<EObject> iterator = node.eAllContents();
+		while(iterator.hasNext()){
+			EObject child = iterator.next();
+			if (child instanceof VisibleNode){
+				int start = ((VisibleNode) child).getStart();
+				int end = start+((VisibleNode) child).getLength();
+				range[0] = (range[0] == -1) ? start : Math.min(start, range[0]);
+				range[1] = (range[1] == -1) ? end : Math.max(end, range[1]);
+			}
+		}
+		return range;
+	}
+	
+	public static String contentOf(Node node){
+		if (node instanceof CompositeNode){
+			StringBuilder sb = new StringBuilder();
+			for(Node n : ((CompositeNode) node).getChildren()){
+				sb.append(contentOf(n));
+			}
+			return sb.toString();
+		}
+		if (node instanceof TerminalNode && !(node instanceof InsertedTerminalNode) && !(node instanceof RemovedTerminalNode)){
+			TerminalNode tn = (TerminalNode)node;
+			return tn.getContent();
+		}
+		
+		return "";
 	}
 	
 }

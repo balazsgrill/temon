@@ -161,7 +161,7 @@ public class TextualModelEditor extends TextEditor {
 				if (resource instanceof AbstractTextualResource){
 					this.resource = (AbstractTextualResource)resource;
 
-					setSourceViewerConfiguration(new TextualModelSourceViewerConfiguration(this.resource.getTokenizer(), getSharedColors()));
+					setSourceViewerConfiguration(new TextualModelSourceViewerConfiguration(this.resource, getSharedColors()));
 				}
 			}
 			
