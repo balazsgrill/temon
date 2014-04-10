@@ -3,7 +3,7 @@
  */
 package hu.textualmodeler.editor.impl.configuration;
 
-import hu.textualmodeler.parser.AbstractTextualResource;
+import hu.textualmodeler.editor.TextualModelEditor;
 
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.contentassist.ContentAssistant;
@@ -22,14 +22,14 @@ import org.eclipse.jface.text.source.SourceViewerConfiguration;
 public class TextualModelSourceViewerConfiguration extends
 		SourceViewerConfiguration {
 
-	private final AbstractTextualResource resource;
+	private final TextualModelEditor editor;
 	private final ISharedTextColors sharedColors;
 	
 	/**
 	 * 
 	 */
-	public TextualModelSourceViewerConfiguration(AbstractTextualResource resource, ISharedTextColors sharedColors) {
-		this.resource = resource;
+	public TextualModelSourceViewerConfiguration(TextualModelEditor editor, ISharedTextColors sharedColors) {
+		this.editor = editor;
 		this.sharedColors = sharedColors;
 	}
 
@@ -38,7 +38,7 @@ public class TextualModelSourceViewerConfiguration extends
 			ISourceViewer sourceViewer) {
 		PresentationReconciler reconciler = new PresentationReconciler();
 
-        DefaultDamagerRepairer dr = new DefaultDamagerRepairer(new GrammarBasedTokenScanner(resource.getTokenizer(), sharedColors));
+        DefaultDamagerRepairer dr = new DefaultDamagerRepairer(new GrammarBasedTokenScanner(editor.getResource().getTokenizer(), sharedColors));
         reconciler.setDamager(dr, IDocument.DEFAULT_CONTENT_TYPE);
         reconciler.setRepairer(dr, IDocument.DEFAULT_CONTENT_TYPE);
         
@@ -50,7 +50,7 @@ public class TextualModelSourceViewerConfiguration extends
 
 	        ContentAssistant assistant = new ContentAssistant();
 
-	        assistant.setContentAssistProcessor(new FeatureResolverBasedContenAssistProcessor(resource), IDocument.DEFAULT_CONTENT_TYPE);
+	        assistant.setContentAssistProcessor(new FeatureResolverBasedContenAssistProcessor(editor), IDocument.DEFAULT_CONTENT_TYPE);
 	        assistant.enableAutoActivation(false);
 	        assistant.setProposalPopupOrientation(IContentAssistant.CONTEXT_INFO_BELOW);
 	        assistant.setContextInformationPopupOrientation(IContentAssistant.CONTEXT_INFO_BELOW);

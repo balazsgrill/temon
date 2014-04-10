@@ -12,20 +12,27 @@ import hu.textualmodeler.parser.AbstractTextualResource;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.jface.text.ITextListener;
 import org.eclipse.jface.text.TextEvent;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
@@ -40,9 +47,26 @@ public class TextualModelEditor extends TextEditor {
 	
 	private EditingDomain edomain;
 	private AbstractTextualResource resource = null;
+	private AdapterFactory adapterFactory = createDomainAdapterFactory();
+	private ILabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 	
 	public TextualModelEditor() {
 		super();
+	}
+	
+	public AbstractTextualResource getResource() {
+		return resource;
+	}
+	
+	private AdapterFactory createDomainAdapterFactory(){
+		final List<AdapterFactory> factories = new ArrayList<AdapterFactory>(2);
+		factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+		factories.add(new ReflectiveItemProviderAdapterFactory());
+		return new ComposedAdapterFactory(factories);
+	}
+	
+	public ILabelProvider getLabelProvider() {
+		return labelProvider;
 	}
 	
 	volatile boolean dirty = false;
@@ -126,6 +150,7 @@ public class TextualModelEditor extends TextEditor {
 	
 	@Override
 	public void dispose() {
+		labelProvider.dispose();
 		if (markerManager != null){
 			markerManager.dispose();
 			markerManager = null;
@@ -161,7 +186,7 @@ public class TextualModelEditor extends TextEditor {
 				if (resource instanceof AbstractTextualResource){
 					this.resource = (AbstractTextualResource)resource;
 
-					setSourceViewerConfiguration(new TextualModelSourceViewerConfiguration(this.resource, getSharedColors()));
+					setSourceViewerConfiguration(new TextualModelSourceViewerConfiguration(this, getSharedColors()));
 				}
 			}
 			

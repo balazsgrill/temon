@@ -25,22 +25,22 @@ public class TerminalScope implements IFeatureScope {
 	private final String filter;
 	private final GrammarModel[] grammarModels;
 	
-	private final Set<GrammarModel> visited;
+	private final Set<String> visited;
 	
 	/**
 	 * 
 	 */
-	private TerminalScope(String filter, Set<GrammarModel> visited, GrammarModel...grammarModels) {
+	private TerminalScope(String filter, Set<String> visited, GrammarModel...grammarModels) {
 		this.filter = filter;
 		this.grammarModels = grammarModels;
 		this.visited = visited;
 		for(GrammarModel gm : grammarModels){
-			visited.add(gm);
+			this.visited.add(gm.getName());
 		}
 	}
 	
 	public TerminalScope(String filter, GrammarModel...grammarModels) {
-		this(filter, new HashSet<GrammarModel>(), grammarModels);
+		this(filter, new HashSet<String>(), grammarModels);
 	}
 
 	/* (non-Javadoc)
@@ -66,9 +66,13 @@ public class TerminalScope implements IFeatureScope {
 	public IFeatureScope parentScope() {
 		Set<GrammarModel> imported = new LinkedHashSet<>();
 		for(GrammarModel grammar : grammarModels){
-			imported.addAll(grammar.getImport());
+			for(GrammarModel im : grammar.getImport()){
+				if (!visited.contains(im.getName())){
+					visited.add(im.getName());
+					imported.add(im);
+				}
+			}
 		}
-		imported.removeAll(visited);
 		return imported.isEmpty() ? null : new TerminalScope(filter, visited, imported.toArray(new GrammarModel[imported.size()]));
 	}
 

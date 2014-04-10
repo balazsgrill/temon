@@ -3,6 +3,7 @@
  */
 package hu.textualmodeler.editor.impl.configuration;
 
+import hu.textualmodeler.editor.TextualModelEditor;
 import hu.textualmodeler.parser.AbstractTextualResource;
 import hu.textualmodeler.parser.IFeatureResolver;
 import hu.textualmodeler.parser.impl.tracking.ElementCreationTracker;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
@@ -23,6 +25,7 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.text.contentassist.IContextInformation;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
+import org.eclipse.jface.viewers.ILabelProvider;
 
 /**
  * @author balazs.grill
@@ -33,11 +36,14 @@ public class FeatureResolverBasedContenAssistProcessor implements
 
 	private final AbstractTextualResource resource;
 	
+	private final ILabelProvider labelProvider;
+	
 	/**
 	 * 
 	 */
-	public FeatureResolverBasedContenAssistProcessor(AbstractTextualResource resource) {
-		this.resource = resource;
+	public FeatureResolverBasedContenAssistProcessor(TextualModelEditor editor) {
+		this.resource = editor.getResource();
+		this.labelProvider = editor.getLabelProvider();
 	}
 
 	/* (non-Javadoc)
@@ -70,7 +76,9 @@ public class FeatureResolverBasedContenAssistProcessor implements
 		for(IScopeElement element : elements){
 			
 			String replacement = element.getIdentifier();
-			proposals[i]=new CompletionProposal(replacement, range[0], length, replacement.length());
+			EObject eobject = element.getValue(resource.getResourceSet());
+			proposals[i]=new CompletionProposal(replacement, range[0], length, replacement.length(), 
+					labelProvider.getImage(eobject), replacement, null, labelProvider.getText(eobject));
 			i++;
 		}
 		
