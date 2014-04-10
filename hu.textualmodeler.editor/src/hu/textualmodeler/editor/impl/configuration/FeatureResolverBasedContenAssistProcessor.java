@@ -53,7 +53,10 @@ public class FeatureResolverBasedContenAssistProcessor implements
 		
 		/* Find feature */
 		FeatureSetPoint featureSetPoint = elementTracker.findFeatureSetPoint(offset);
-		if (featureSetPoint == null) return null;
+		if (featureSetPoint == null){
+			/* TODO No feature is set here, try to enumerate possible keywords/terminals */
+			return null;
+		}
 		
 		IFeatureResolver featureResolver = resource.getFeatureResolver();
 		Collection<IScopeElement> elements = enumerateElements(viewer.getDocument(), featureResolver, featureSetPoint, offset);

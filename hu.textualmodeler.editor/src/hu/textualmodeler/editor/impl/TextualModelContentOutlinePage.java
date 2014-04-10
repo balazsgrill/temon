@@ -6,6 +6,8 @@ package hu.textualmodeler.editor.impl;
 import hu.textualmodeler.ast.Node;
 import hu.textualmodeler.editor.TextualModelEditor;
 import hu.textualmodeler.parser.AbstractTextualResource;
+import hu.textualmodeler.parser.impl.AstUtils;
+import hu.textualmodeler.tokens.Token;
 import hu.textualmodeler.tokens.TokenList;
 
 import java.util.ArrayList;
@@ -82,6 +84,12 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 		});
 	}
 	
+	private void setEditorSelection(int start, int end){
+		if (start != -1 && end != -1){
+			editor.getSelectionProvider().setSelection(new TextSelection(start, end-start));
+		}
+	}
+	
 	@Override
 	public void createControl(Composite parent) {
 		super.createControl(parent);
@@ -93,11 +101,19 @@ public class TextualModelContentOutlinePage extends ContentOutlinePage implement
 				if (s instanceof IStructuredSelection){
 					Object o = ((IStructuredSelection) s).getFirstElement();
 					if (o instanceof EObject){
-						EObject element = (EObject)o;
-						int start = resource.getElementCreationTracker().getStartPosition(element);
-						int end = resource.getElementCreationTracker().getEndPosition(element);
-						if (start != -1 && end != -1){
-							editor.getSelectionProvider().setSelection(new TextSelection(start, end-start));
+						
+						if (o instanceof Node){
+							int[] range = AstUtils.getRange((Node)o);
+							setEditorSelection(range[0], range[1]);
+						}else if (o instanceof Token){
+							int start = ((Token) o).getStart();
+							int end = start+((Token) o).getLength();
+							setEditorSelection(start, end);
+						}else{
+							EObject element = (EObject)o;
+							int start = resource.getElementCreationTracker().getStartPosition(element);
+							int end = resource.getElementCreationTracker().getEndPosition(element);
+							setEditorSelection(start, end);
 						}
 					}
 				}
