@@ -1,7 +1,7 @@
-textualmodeler
+Temon
 ==============
 
-Textual modeling toolkit for Eclipse Modeling Framework
+TExtual MOdel Notation library for Eclipse Modeling Framework
 
 This is a textual modeling framework for EMF sligthly similar to Xtext of EMFText with a few differences:
 
