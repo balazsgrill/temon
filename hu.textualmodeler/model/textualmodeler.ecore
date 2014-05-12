@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="textualmodeler" nsURI="http://textualmodeler.hu" nsPrefix="textualmodeler">
-  <eSubpackages name="ast" nsURI="http://textualmodeler.hu/ast" nsPrefix="ast">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="temon" nsURI="http://temon.hu" nsPrefix="temon">
+  <eSubpackages name="ast" nsURI="http://temon.hu/ast" nsPrefix="ast">
     <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="VisibleNode" abstract="true" eSuperTypes="#//ast/Node">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" lowerBound="1"
@@ -39,7 +39,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="FeatureSetPushElement" eSuperTypes="#//ast/PushElement #//ast/FeatureSet"/>
     <eClassifiers xsi:type="ecore:EClass" name="PopElement" eSuperTypes="#//ast/Node"/>
   </eSubpackages>
-  <eSubpackages name="grammar" nsURI="http://textualmodeler.hu/grammar" nsPrefix="grammar">
+  <eSubpackages name="grammar" nsURI="http://temon.hu/grammar" nsPrefix="grammar">
     <eClassifiers xsi:type="ecore:EClass" name="GrammarModel">
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminals" upperBound="-1"
           eType="#//grammar/Terminal" containment="true"/>
@@ -106,7 +106,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//grammar/RuleItem"/>
   </eSubpackages>
-  <eSubpackages name="tokens" nsURI="http://textualmodeler.hu/tokens" nsPrefix="tokens">
+  <eSubpackages name="tokens" nsURI="http://temon.hu/tokens" nsPrefix="tokens">
     <eClassifiers xsi:type="ecore:EClass" name="Token">
       <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" eType="#//grammar/Terminal"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

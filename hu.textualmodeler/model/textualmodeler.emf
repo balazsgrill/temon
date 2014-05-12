@@ -1,9 +1,9 @@
-@namespace(uri="http://textualmodeler.hu", prefix="textualmodeler")
-package textualmodeler;
+@namespace(uri="http://temon.hu", prefix="temon")
+package temon;
 
 import "http://www.eclipse.org/emf/2002/Ecore";
 
-@namespace(uri="http://textualmodeler.hu/ast", prefix="ast")
+@namespace(uri="http://temon.hu/ast", prefix="ast")
 package ast{
 	
 	abstract class Node{
@@ -71,7 +71,7 @@ package ast{
 	
 }
 
-@namespace(uri="http://textualmodeler.hu/grammar", prefix="grammar")
+@namespace(uri="http://temon.hu/grammar", prefix="grammar")
 package grammar{
 
 	class GrammarModel{
@@ -135,7 +135,7 @@ package grammar{
 
 }
 
-@namespace(uri="http://textualmodeler.hu/tokens", prefix="tokens")
+@namespace(uri="http://temon.hu/tokens", prefix="tokens")
 package tokens{
 	
 	class Token{

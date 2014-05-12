@@ -7,27 +7,27 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated textualmodeler -->
+      <!-- @generated temon -->
       <package
-            uri="http://textualmodeler.hu/ast"
-            class="hu.textualmodeler.ast.AstPackage"
-            genModel="model/textualmodeler.genmodel"/>
+            uri="http://temon.hu/ast"
+            class="hu.temon.ast.AstPackage"
+            genModel="model/temon.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated textualmodeler -->
+      <!-- @generated temon -->
       <package
-            uri="http://textualmodeler.hu/grammar"
-            class="hu.textualmodeler.grammar.GrammarPackage"
-            genModel="model/textualmodeler.genmodel"/>
+            uri="http://temon.hu/grammar"
+            class="hu.temon.grammar.GrammarPackage"
+            genModel="model/temon.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated textualmodeler -->
+      <!-- @generated temon -->
       <package
-            uri="http://textualmodeler.hu/tokens"
-            class="hu.textualmodeler.tokens.TokensPackage"
-            genModel="model/textualmodeler.genmodel"/>
+            uri="http://temon.hu/tokens"
+            class="hu.temon.tokens.TokensPackage"
+            genModel="model/temon.genmodel"/>
    </extension>
 
 </plugin>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension-point id="hu.textualmodeler.grammars" name="Grammar definition models" schema="schema/hu.textualmodeler.grammars.exsd"/>
+   <extension-point id="hu.temon.grammars" name="Grammar definition models" schema="schema/hu.temon.grammars.exsd"/>
    <extension
-         point="hu.textualmodeler.grammars">
+         point="hu.temon.grammars">
       <grammar
             id="basics"
             model="grammars/basics.grammar.xmi">
@@ -12,7 +12,7 @@
    <extension
          point="org.eclipse.emf.ecore.extension_parser">
       <parser
-            class="hu.textualmodeler.parser.grammar.GrammarResourceFactory"
+            class="hu.temon.parser.grammar.GrammarResourceFactory"
             type="grammar">
       </parser>
    </extension>

@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <fragment>
    <extension
-         point="hu.textualmodeler.grammars">
+         point="hu.temon.grammars">
       <grammar
             id="people"
             model="people.grammar">
@@ -11,17 +11,17 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="hu.textualmodeler.editor.TextualModelEditor"
+            class="hu.temon.editor.TextualModelEditor"
             default="false"
             extensions="people"
-            id="hu.textualmodeler.parser.test.editor"
+            id="hu.temon.parser.test.editor"
             name="People editor">
       </editor>
    </extension>
    <extension
          point="org.eclipse.emf.ecore.extension_parser">
       <parser
-            class="hu.textualmodeler.parser.test.PeopleResourceFactory"
+            class="hu.temon.parser.test.PeopleResourceFactory"
             type="people">
       </parser>
    </extension>

@@ -1,0 +1,1337 @@
+/**
+ */
+package hu.temon.ast;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Package</b> for the model.
+ * It contains accessors for the meta objects to represent
+ * <ul>
+ *   <li>each class,</li>
+ *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
+ *   <li>each enum,</li>
+ *   <li>and each data type</li>
+ * </ul>
+ * <!-- end-user-doc -->
+ * @see hu.temon.ast.AstFactory
+ * @model kind="package"
+ * @generated
+ */
+public interface AstPackage extends EPackage {
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNAME = "ast";
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_URI = "http://textualmodeler.hu/ast";
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_PREFIX = "ast";
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	AstPackage eINSTANCE = hu.temon.ast.impl.AstPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.NodeImpl <em>Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.NodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getNode()
+	 * @generated
+	 */
+	int NODE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.VisibleNodeImpl <em>Visible Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.VisibleNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getVisibleNode()
+	 * @generated
+	 */
+	int VISIBLE_NODE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISIBLE_NODE__START = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISIBLE_NODE__LENGTH = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Visible Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISIBLE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Visible Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VISIBLE_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.WhitespaceNodeImpl <em>Whitespace Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.WhitespaceNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getWhitespaceNode()
+	 * @generated
+	 */
+	int WHITESPACE_NODE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__START = VISIBLE_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__LENGTH = VISIBLE_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE__TERMINAL = VISIBLE_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Whitespace Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE_FEATURE_COUNT = VISIBLE_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Whitespace Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WHITESPACE_NODE_OPERATION_COUNT = VISIBLE_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.TerminalNodeImpl <em>Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.TerminalNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getTerminalNode()
+	 * @generated
+	 */
+	int TERMINAL_NODE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE__START = VISIBLE_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE__LENGTH = VISIBLE_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE__TERMINAL = VISIBLE_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE__CONTENT = VISIBLE_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE_FEATURE_COUNT = VISIBLE_NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL_NODE_OPERATION_COUNT = VISIBLE_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.RemovedTerminalNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+	 * @generated
+	 */
+	int REMOVED_TERMINAL_NODE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Removed Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REMOVED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.InsertedTerminalNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_TERMINAL_NODE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Inserted Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.InsertedFeatureSetTerminalNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+	 * @generated
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__START = INSERTED_TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__LENGTH = INSERTED_TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__TERMINAL = INSERTED_TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__CONTENT = INSERTED_TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE__FEATURE_NAME = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_FEATURE_COUNT = INSERTED_TERMINAL_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Inserted Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSERTED_FEATURE_SET_TERMINAL_NODE_OPERATION_COUNT = INSERTED_TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.FeatureSet <em>Feature Set</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.FeatureSet
+	 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSet()
+	 * @generated
+	 */
+	int FEATURE_SET = 7;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET__FEATURE_NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.FeatureSetValueImpl <em>Feature Set Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.FeatureSetValueImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetValue()
+	 * @generated
+	 */
+	int FEATURE_SET_VALUE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_VALUE__FEATURE_NAME = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_VALUE__VALUE = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_VALUE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_VALUE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.FeatureSetTerminalNodeImpl <em>Feature Set Terminal Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.FeatureSetTerminalNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetTerminalNode()
+	 * @generated
+	 */
+	int FEATURE_SET_TERMINAL_NODE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE__START = TERMINAL_NODE__START;
+
+	/**
+	 * The feature id for the '<em><b>Length</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE__LENGTH = TERMINAL_NODE__LENGTH;
+
+	/**
+	 * The feature id for the '<em><b>Terminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE__TERMINAL = TERMINAL_NODE__TERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE__CONTENT = TERMINAL_NODE__CONTENT;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE__FEATURE_NAME = TERMINAL_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE_FEATURE_COUNT = TERMINAL_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Terminal Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_TERMINAL_NODE_OPERATION_COUNT = TERMINAL_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.CompositeNodeImpl <em>Composite Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.CompositeNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getCompositeNode()
+	 * @generated
+	 */
+	int COMPOSITE_NODE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_NODE__NONTERMINAL = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_NODE__CHILDREN = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Composite Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Composite Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.FeatureSetCompositeNodeImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
+	 * @generated
+	 */
+	int FEATURE_SET_COMPOSITE_NODE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Nonterminal</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__NONTERMINAL = COMPOSITE_NODE__NONTERMINAL;
+
+	/**
+	 * The feature id for the '<em><b>Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__CHILDREN = COMPOSITE_NODE__CHILDREN;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE__FEATURE_NAME = COMPOSITE_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Composite Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE_FEATURE_COUNT = COMPOSITE_NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Composite Node</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_COMPOSITE_NODE_OPERATION_COUNT = COMPOSITE_NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.PushElementImpl <em>Push Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.PushElementImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getPushElement()
+	 * @generated
+	 */
+	int PUSH_ELEMENT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Eclass</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUSH_ELEMENT__ECLASS = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUSH_ELEMENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUSH_ELEMENT_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.FeatureSetPushElementImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+	 * @generated
+	 */
+	int FEATURE_SET_PUSH_ELEMENT = 13;
+
+	/**
+	 * The feature id for the '<em><b>Eclass</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__ECLASS = PUSH_ELEMENT__ECLASS;
+
+	/**
+	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT__FEATURE_NAME = PUSH_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_FEATURE_COUNT = PUSH_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature Set Push Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_SET_PUSH_ELEMENT_OPERATION_COUNT = PUSH_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link hu.temon.ast.impl.PopElementImpl <em>Pop Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see hu.temon.ast.impl.PopElementImpl
+	 * @see hu.temon.ast.impl.AstPackageImpl#getPopElement()
+	 * @generated
+	 */
+	int POP_ELEMENT = 14;
+
+	/**
+	 * The number of structural features of the '<em>Pop Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POP_ELEMENT_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Pop Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POP_ELEMENT_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.Node <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Node</em>'.
+	 * @see hu.temon.ast.Node
+	 * @generated
+	 */
+	EClass getNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.VisibleNode <em>Visible Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Visible Node</em>'.
+	 * @see hu.temon.ast.VisibleNode
+	 * @generated
+	 */
+	EClass getVisibleNode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.temon.ast.VisibleNode#getStart <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Start</em>'.
+	 * @see hu.temon.ast.VisibleNode#getStart()
+	 * @see #getVisibleNode()
+	 * @generated
+	 */
+	EAttribute getVisibleNode_Start();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.temon.ast.VisibleNode#getLength <em>Length</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Length</em>'.
+	 * @see hu.temon.ast.VisibleNode#getLength()
+	 * @see #getVisibleNode()
+	 * @generated
+	 */
+	EAttribute getVisibleNode_Length();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.WhitespaceNode <em>Whitespace Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Whitespace Node</em>'.
+	 * @see hu.temon.ast.WhitespaceNode
+	 * @generated
+	 */
+	EClass getWhitespaceNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.temon.ast.WhitespaceNode#getTerminal <em>Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Terminal</em>'.
+	 * @see hu.temon.ast.WhitespaceNode#getTerminal()
+	 * @see #getWhitespaceNode()
+	 * @generated
+	 */
+	EReference getWhitespaceNode_Terminal();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.TerminalNode <em>Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Terminal Node</em>'.
+	 * @see hu.temon.ast.TerminalNode
+	 * @generated
+	 */
+	EClass getTerminalNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.temon.ast.TerminalNode#getTerminal <em>Terminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Terminal</em>'.
+	 * @see hu.temon.ast.TerminalNode#getTerminal()
+	 * @see #getTerminalNode()
+	 * @generated
+	 */
+	EReference getTerminalNode_Terminal();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.temon.ast.TerminalNode#getContent <em>Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content</em>'.
+	 * @see hu.temon.ast.TerminalNode#getContent()
+	 * @see #getTerminalNode()
+	 * @generated
+	 */
+	EAttribute getTerminalNode_Content();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.RemovedTerminalNode <em>Removed Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Removed Terminal Node</em>'.
+	 * @see hu.temon.ast.RemovedTerminalNode
+	 * @generated
+	 */
+	EClass getRemovedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.InsertedTerminalNode <em>Inserted Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Terminal Node</em>'.
+	 * @see hu.temon.ast.InsertedTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.InsertedFeatureSetTerminalNode <em>Inserted Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Inserted Feature Set Terminal Node</em>'.
+	 * @see hu.temon.ast.InsertedFeatureSetTerminalNode
+	 * @generated
+	 */
+	EClass getInsertedFeatureSetTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.FeatureSet <em>Feature Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set</em>'.
+	 * @see hu.temon.ast.FeatureSet
+	 * @generated
+	 */
+	EClass getFeatureSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.temon.ast.FeatureSet#getFeatureName <em>Feature Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Feature Name</em>'.
+	 * @see hu.temon.ast.FeatureSet#getFeatureName()
+	 * @see #getFeatureSet()
+	 * @generated
+	 */
+	EAttribute getFeatureSet_FeatureName();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.FeatureSetValue <em>Feature Set Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Value</em>'.
+	 * @see hu.temon.ast.FeatureSetValue
+	 * @generated
+	 */
+	EClass getFeatureSetValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link hu.temon.ast.FeatureSetValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see hu.temon.ast.FeatureSetValue#getValue()
+	 * @see #getFeatureSetValue()
+	 * @generated
+	 */
+	EAttribute getFeatureSetValue_Value();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.FeatureSetTerminalNode <em>Feature Set Terminal Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Terminal Node</em>'.
+	 * @see hu.temon.ast.FeatureSetTerminalNode
+	 * @generated
+	 */
+	EClass getFeatureSetTerminalNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.CompositeNode <em>Composite Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Node</em>'.
+	 * @see hu.temon.ast.CompositeNode
+	 * @generated
+	 */
+	EClass getCompositeNode();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.temon.ast.CompositeNode#getNonterminal <em>Nonterminal</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Nonterminal</em>'.
+	 * @see hu.temon.ast.CompositeNode#getNonterminal()
+	 * @see #getCompositeNode()
+	 * @generated
+	 */
+	EReference getCompositeNode_Nonterminal();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hu.temon.ast.CompositeNode#getChildren <em>Children</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Children</em>'.
+	 * @see hu.temon.ast.CompositeNode#getChildren()
+	 * @see #getCompositeNode()
+	 * @generated
+	 */
+	EReference getCompositeNode_Children();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.FeatureSetCompositeNode <em>Feature Set Composite Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Composite Node</em>'.
+	 * @see hu.temon.ast.FeatureSetCompositeNode
+	 * @generated
+	 */
+	EClass getFeatureSetCompositeNode();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.PushElement <em>Push Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Push Element</em>'.
+	 * @see hu.temon.ast.PushElement
+	 * @generated
+	 */
+	EClass getPushElement();
+
+	/**
+	 * Returns the meta object for the reference '{@link hu.temon.ast.PushElement#getEclass <em>Eclass</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Eclass</em>'.
+	 * @see hu.temon.ast.PushElement#getEclass()
+	 * @see #getPushElement()
+	 * @generated
+	 */
+	EReference getPushElement_Eclass();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.FeatureSetPushElement <em>Feature Set Push Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature Set Push Element</em>'.
+	 * @see hu.temon.ast.FeatureSetPushElement
+	 * @generated
+	 */
+	EClass getFeatureSetPushElement();
+
+	/**
+	 * Returns the meta object for class '{@link hu.temon.ast.PopElement <em>Pop Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pop Element</em>'.
+	 * @see hu.temon.ast.PopElement
+	 * @generated
+	 */
+	EClass getPopElement();
+
+	/**
+	 * Returns the factory that creates the instances of the model.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
+	 * @generated
+	 */
+	AstFactory getAstFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals {
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.NodeImpl <em>Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.NodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getNode()
+		 * @generated
+		 */
+		EClass NODE = eINSTANCE.getNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.VisibleNodeImpl <em>Visible Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.VisibleNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getVisibleNode()
+		 * @generated
+		 */
+		EClass VISIBLE_NODE = eINSTANCE.getVisibleNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VISIBLE_NODE__START = eINSTANCE.getVisibleNode_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Length</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VISIBLE_NODE__LENGTH = eINSTANCE.getVisibleNode_Length();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.WhitespaceNodeImpl <em>Whitespace Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.WhitespaceNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getWhitespaceNode()
+		 * @generated
+		 */
+		EClass WHITESPACE_NODE = eINSTANCE.getWhitespaceNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference WHITESPACE_NODE__TERMINAL = eINSTANCE.getWhitespaceNode_Terminal();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.TerminalNodeImpl <em>Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.TerminalNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getTerminalNode()
+		 * @generated
+		 */
+		EClass TERMINAL_NODE = eINSTANCE.getTerminalNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Terminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TERMINAL_NODE__TERMINAL = eINSTANCE.getTerminalNode_Terminal();
+
+		/**
+		 * The meta object literal for the '<em><b>Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TERMINAL_NODE__CONTENT = eINSTANCE.getTerminalNode_Content();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.RemovedTerminalNodeImpl <em>Removed Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.RemovedTerminalNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getRemovedTerminalNode()
+		 * @generated
+		 */
+		EClass REMOVED_TERMINAL_NODE = eINSTANCE.getRemovedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.InsertedTerminalNodeImpl <em>Inserted Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.InsertedTerminalNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getInsertedTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_TERMINAL_NODE = eINSTANCE.getInsertedTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.InsertedFeatureSetTerminalNodeImpl <em>Inserted Feature Set Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.InsertedFeatureSetTerminalNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getInsertedFeatureSetTerminalNode()
+		 * @generated
+		 */
+		EClass INSERTED_FEATURE_SET_TERMINAL_NODE = eINSTANCE.getInsertedFeatureSetTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.FeatureSet <em>Feature Set</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.FeatureSet
+		 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSet()
+		 * @generated
+		 */
+		EClass FEATURE_SET = eINSTANCE.getFeatureSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Feature Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_SET__FEATURE_NAME = eINSTANCE.getFeatureSet_FeatureName();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.FeatureSetValueImpl <em>Feature Set Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.FeatureSetValueImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetValue()
+		 * @generated
+		 */
+		EClass FEATURE_SET_VALUE = eINSTANCE.getFeatureSetValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FEATURE_SET_VALUE__VALUE = eINSTANCE.getFeatureSetValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.FeatureSetTerminalNodeImpl <em>Feature Set Terminal Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.FeatureSetTerminalNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetTerminalNode()
+		 * @generated
+		 */
+		EClass FEATURE_SET_TERMINAL_NODE = eINSTANCE.getFeatureSetTerminalNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.CompositeNodeImpl <em>Composite Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.CompositeNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getCompositeNode()
+		 * @generated
+		 */
+		EClass COMPOSITE_NODE = eINSTANCE.getCompositeNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Nonterminal</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_NODE__NONTERMINAL = eINSTANCE.getCompositeNode_Nonterminal();
+
+		/**
+		 * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_NODE__CHILDREN = eINSTANCE.getCompositeNode_Children();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.FeatureSetCompositeNodeImpl <em>Feature Set Composite Node</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.FeatureSetCompositeNodeImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetCompositeNode()
+		 * @generated
+		 */
+		EClass FEATURE_SET_COMPOSITE_NODE = eINSTANCE.getFeatureSetCompositeNode();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.PushElementImpl <em>Push Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.PushElementImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getPushElement()
+		 * @generated
+		 */
+		EClass PUSH_ELEMENT = eINSTANCE.getPushElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Eclass</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PUSH_ELEMENT__ECLASS = eINSTANCE.getPushElement_Eclass();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.FeatureSetPushElementImpl <em>Feature Set Push Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.FeatureSetPushElementImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getFeatureSetPushElement()
+		 * @generated
+		 */
+		EClass FEATURE_SET_PUSH_ELEMENT = eINSTANCE.getFeatureSetPushElement();
+
+		/**
+		 * The meta object literal for the '{@link hu.temon.ast.impl.PopElementImpl <em>Pop Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see hu.temon.ast.impl.PopElementImpl
+		 * @see hu.temon.ast.impl.AstPackageImpl#getPopElement()
+		 * @generated
+		 */
+		EClass POP_ELEMENT = eINSTANCE.getPopElement();
+
+	}
+
+} //AstPackage

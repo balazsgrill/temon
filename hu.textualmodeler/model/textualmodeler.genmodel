@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.textualmodeler/src" modelPluginID="hu.textualmodeler"
-    modelName="Textualmodeler" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.temon/src" modelPluginID="hu.temon"
+    modelName="Temon" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>textualmodeler.ecore</foreignModel>
-  <genPackages prefix="textualmodeler" basePackage="hu" disposableProviderFactory="true"
-      ecorePackage="textualmodeler.ecore#/">
-    <nestedGenPackages prefix="Ast" basePackage="hu.textualmodeler" disposableProviderFactory="true"
+  <genPackages prefix="temon" basePackage="hu" disposableProviderFactory="true" ecorePackage="textualmodeler.ecore#/">
+    <nestedGenPackages prefix="Ast" basePackage="hu.temon" disposableProviderFactory="true"
         ecorePackage="textualmodeler.ecore#//ast">
       <genClasses image="false" ecoreClass="textualmodeler.ecore#//ast/Node"/>
       <genClasses image="false" ecoreClass="textualmodeler.ecore#//ast/VisibleNode">
@@ -46,7 +45,7 @@
       <genClasses ecoreClass="textualmodeler.ecore#//ast/FeatureSetPushElement"/>
       <genClasses ecoreClass="textualmodeler.ecore#//ast/PopElement"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Grammar" basePackage="hu.textualmodeler" disposableProviderFactory="true"
+    <nestedGenPackages prefix="Grammar" basePackage="hu.temon" disposableProviderFactory="true"
         ecorePackage="textualmodeler.ecore#//grammar">
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/GrammarModel">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference textualmodeler.ecore#//grammar/GrammarModel/terminals"/>
@@ -100,7 +99,7 @@
       </genClasses>
       <genClasses ecoreClass="textualmodeler.ecore#//grammar/Pop"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Tokens" basePackage="hu.textualmodeler" disposableProviderFactory="true"
+    <nestedGenPackages prefix="Tokens" basePackage="hu.temon" disposableProviderFactory="true"
         ecorePackage="textualmodeler.ecore#//tokens">
       <genClasses ecoreClass="textualmodeler.ecore#//tokens/Token">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"

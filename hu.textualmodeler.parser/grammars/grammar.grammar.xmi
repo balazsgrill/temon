@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://textualmodeler.hu/grammar" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
+<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://temon.hu/grammar" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
   <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_GRAMMAR" regex="grammar" priority="10"/>
   <terminals xmi:id="_Ve5BULGUEeK1ScU5DNcoWg" name="KEYWORD_IMPORT" regex="import" priority="10"/>
   <terminals xmi:id="_9bZhMLGVEeK1ScU5DNcoWg" name="KEYWORD_TERMINAL" regex="terminal" priority="10"/>
@@ -17,7 +17,7 @@
   <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
     <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
     <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g">
-      <eclass href="http://textualmodeler.hu/grammar#//GrammarModel"/>
+      <eclass href="http://temon.hu/grammar#//GrammarModel"/>
     </body>
     <body xsi:type="grammar:NonTerminalItem" featureName="name" nonTerminal="QUALIFIEDID"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgLZKEeKDArD2cbZQHA" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
@@ -42,7 +42,7 @@
   <rules xmi:id="_7pQ1MLGVEeK1ScU5DNcoWg" nonTerminal="Terminal">
     <body xsi:type="grammar:TerminalItem" xmi:id="_FEic0LGWEeK1ScU5DNcoWg" terminal="_9bZhMLGVEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:Push" xmi:id="_hysqYLGWEeK1ScU5DNcoWg" featureName="terminals">
-      <eclass href="http://textualmodeler.hu/grammar#//Terminal"/>
+      <eclass href="http://temon.hu/grammar#//Terminal"/>
     </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_Xti_ULGWEeK1ScU5DNcoWg" optional="true" featureName="hide" terminal="_UIBqILGWEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_HsyRcLGWEeK1ScU5DNcoWg" featureName="name">
@@ -69,7 +69,7 @@
   <rules xmi:id="_o60uMLGXEeK1ScU5DNcoWg" nonTerminal="Rule">
     <body xsi:type="grammar:TerminalItem" xmi:id="_rEcGELGXEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:Push" xmi:id="_s7UvMLGXEeK1ScU5DNcoWg" featureName="rules">
-      <eclass href="http://textualmodeler.hu/grammar#//Rule"/>
+      <eclass href="http://temon.hu/grammar#//Rule"/>
     </body>
     <body xsi:type="grammar:TerminalItem" xmi:id="_z1sgULGXEeK1ScU5DNcoWg" featureName="nonTerminal">
       <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
@@ -84,7 +84,7 @@
   </rules>
   <rules xmi:id="_OhaVALGYEeK1ScU5DNcoWg" nonTerminal="RuleItem">
     <body xsi:type="grammar:Push" xmi:id="_cC91gLGYEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://textualmodeler.hu/grammar#//TerminalItem"/>
+      <eclass href="http://temon.hu/grammar#//TerminalItem"/>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_0bb1MLGYEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_k82nULGYEeK1ScU5DNcoWg" featureName="terminal">
@@ -101,7 +101,7 @@
   </rules>
   <rules xmi:id="_HWS8sLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
     <body xsi:type="grammar:Push" xmi:id="_LXSF4LGZEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://textualmodeler.hu/grammar#//NonTerminalItem"/>
+      <eclass href="http://temon.hu/grammar#//NonTerminalItem"/>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_Uao4ELfAEeKWpqZiG1Fi3Q" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_cEGBcLGZEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
@@ -114,7 +114,7 @@
   </rules>
   <rules xmi:id="_tL0-cLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
     <body xsi:type="grammar:Push" xmi:id="_Lb7f4LGaEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://textualmodeler.hu/grammar#//Push"/>
+      <eclass href="http://temon.hu/grammar#//Push"/>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_atZe0LGaEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_CuxigLGaEeK1ScU5DNcoWg" terminal="_15FpgLGZEeK1ScU5DNcoWg"/>
@@ -126,7 +126,7 @@
   <rules xmi:id="_fxBwwLGaEeK1ScU5DNcoWg" nonTerminal="RuleItem">
     <body xsi:type="grammar:TerminalItem" xmi:id="_keJAILGaEeK1ScU5DNcoWg" terminal="_7BefoLGZEeK1ScU5DNcoWg"/>
     <body xsi:type="grammar:Push" xmi:id="_mUmygLGaEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://textualmodeler.hu/grammar#//Pop"/>
+      <eclass href="http://temon.hu/grammar#//Pop"/>
     </body>
     <body xsi:type="grammar:Pop" xmi:id="_nSD5QLGaEeK1ScU5DNcoWg"/>
   </rules>
@@ -145,7 +145,7 @@
   </rules>
   <rules xmi:id="_BwNPEN8ZEeKzJqytnsiUUA" nonTerminal="RuleItem">
     <body xsi:type="grammar:Push" xmi:id="_BwNPEd8ZEeKzJqytnsiUUA" featureName="body">
-      <eclass href="http://textualmodeler.hu/grammar#//SetValue"/>
+      <eclass href="http://temon.hu/grammar#//SetValue"/>
     </body>
     <body xsi:type="grammar:NonTerminalItem" xmi:id="_BwNPEt8ZEeKzJqytnsiUUA" nonTerminal="TerminalItemFeatureName"/>
     <body xsi:type="grammar:TerminalItem" xmi:id="_BwNPFN8ZEeKzJqytnsiUUA" featureName="value">

@@ -1,0 +1,160 @@
+/**
+ * 
+ */
+package hu.temon.parser.impl.earley;
+
+import hu.temon.ast.Node;
+import hu.temon.grammar.GrammarFactory;
+import hu.temon.grammar.GrammarModel;
+import hu.temon.grammar.NonTerminalItem;
+import hu.temon.grammar.Rule;
+import hu.temon.parser.IGrammar;
+import hu.temon.parser.IParser;
+import hu.temon.parser.IParserContext;
+import hu.temon.parser.errors.ParsingError;
+import hu.temon.parser.impl.Grammar;
+import hu.temon.tokens.TokenList;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+/**
+ * @author balazs.grill
+ *
+ */
+public class EarleyParser implements IParser {
+	
+	private final IGrammar grammar;
+	private final Rule startRule;
+	
+	/**
+	 * 
+	 */
+	public EarleyParser(GrammarModel syntax) {
+		//this.grammar = new FlattenedGrammar(syntax);
+		this.grammar = new Grammar(syntax);
+		startRule = GrammarFactory.eINSTANCE.createRule();
+		NonTerminalItem nonterm = GrammarFactory.eINSTANCE.createNonTerminalItem();
+		nonterm.setNonTerminal(syntax.getStartItem());
+		startRule.getBody().add(nonterm);
+	}
+
+	/* (non-Javadoc)
+	 * @see hu.modembed.syntax.persistence.IParser#getGrammar()
+	 */
+	@Override
+	public IGrammar getGrammar() {
+		return grammar;
+	}
+
+	/* (non-Javadoc)
+	 * @see hu.modembed.syntax.persistence.IParser#parse(hu.modembed.syntax.persistence.IParserInput, hu.modembed.syntax.persistence.IParserContext, int)
+	 */
+	@Override
+	public Node parse(TokenList input,
+			IParserContext context, int start) {
+
+		ParserTable table = new ParserTable();
+		int currentLevel = 0;
+		table.get(currentLevel).add(EarleyState.create(startRule, start));
+		
+		boolean done = false;
+		List<EarleyState> finished = new LinkedList<EarleyState>();
+		
+		List<EarleyState> failed = new LinkedList<>();
+		
+		while(!done){
+			
+			Queue<EarleyState> queue = table.get(currentLevel).getQueue();
+			
+			if (queue.isEmpty() && finished.isEmpty()){
+				
+				System.out.println(failed.size()+" failed states available.");
+				table.removeVisitedStates(failed);
+				
+				List<EarleyState> statesToRetry = new ArrayList<>(failed);
+				// Sort by position, descending
+				Collections.sort(statesToRetry, new Comparator<EarleyState>() {
+
+					@Override
+					public int compare(EarleyState arg0, EarleyState arg1) {
+						return -Integer.compare(arg0.getPosition(), arg1.getPosition());
+					}
+				});
+				//Retry with at most 100 states
+				queue.addAll(statesToRetry.subList(0, Math.min(100, statesToRetry.size())));
+				
+				System.out.println("Failure. Retrying "+failed.size()+" token list modifications.");
+				failed.clear();
+			}
+			
+			done = queue.isEmpty();
+
+			while(!queue.isEmpty()){
+				
+				EarleyState state = queue.poll();
+
+				//System.out.println(state);
+				
+				if (state.isCompleted()){
+					int consumed = state.getPosition();
+					
+					if (consumed == input.getTokens().size()){
+						finished.add(state);
+					}else{
+						/* Try to recover by consuming terminals after finished AST */
+						failed.addAll(state.scanAfterFinish(input, grammar));
+					}
+				}else
+				if (state.prediction()){
+					for(EarleyState s : state.predict(currentLevel, grammar)){
+						table.get(currentLevel).add(s);
+					}
+				}else
+				if (state.scanning()){			
+					EarleyState prescannedState = state.scanHidden(input);
+					for(EarleyState s : prescannedState.scan(input, grammar)){
+						if (s.lastScanFailed()){
+							/* Failed scan. Parsing can recover from here when no other options left */
+							failed.add(s);
+						}else{
+							s = s.scanHidden(input);
+							int level = (s.getPosition() > state.getPosition()) ? 1 : 0;
+							table.get(currentLevel+level).add(s);
+						}
+					}
+				}else
+				if (state.completion()){
+					for(EarleyState s : state.complete(table)){
+						table.get(currentLevel).add(s);
+					}
+				}else
+				if (state.silent()){
+					EarleyState s = state.consumeSilent();
+					if (s != null) {
+						table.get(currentLevel).add(s);
+					}
+				}
+				
+			}
+			table.get(currentLevel).queueFinished();
+			currentLevel++;
+			
+		}
+		
+		if (finished.isEmpty()){
+			context.logError(new ParsingError("No valid syntax path could be found.", "", 0, 0));
+			return null;
+		}else{
+			if (finished.size() > 1){
+				context.logError(new ParsingError("Input has multiple possible syntax trees (possibly the grammar is ambiguous)", "", 0, 0));
+			}
+			return finished.get(0).getSteps();
+		}
+	}
+
+}

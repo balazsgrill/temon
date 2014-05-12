@@ -10,7 +10,7 @@
       <!-- @generated textualmodeler -->
       <factory
             uri="http://textualmodeler.hu/ast"
-            class="hu.textualmodeler.ast.provider.AstItemProviderAdapterFactory"
+            class="hu.temon.ast.provider.AstItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -23,7 +23,7 @@
       <!-- @generated textualmodeler -->
       <factory
             uri="http://textualmodeler.hu/grammar"
-            class="hu.textualmodeler.grammar.provider.GrammarItemProviderAdapterFactory"
+            class="hu.temon.grammar.provider.GrammarItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -36,7 +36,7 @@
       <!-- @generated textualmodeler -->
       <factory
             uri="http://textualmodeler.hu/tokens"
-            class="hu.textualmodeler.tokens.provider.TokensItemProviderAdapterFactory"
+            class="hu.temon.tokens.provider.TokensItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

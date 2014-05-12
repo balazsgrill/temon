@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Parser
-Bundle-SymbolicName: hu.textualmodeler.parser;singleton:=true
+Bundle-SymbolicName: hu.temon.parser;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Require-Bundle: hu.textualmodeler;bundle-version="0.1.0";visibility:=reexport,
+Require-Bundle: hu.temon;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.emf;bundle-version="2.6.0";visibility:=reexport,
  org.eclipse.emf.ecore;bundle-version="2.6.0",
  org.eclipse.core.runtime;bundle-version="3.6.0"
-Export-Package: hu.textualmodeler.parser,
- hu.textualmodeler.parser.errors,
- hu.textualmodeler.parser.grammar,
- hu.textualmodeler.parser.impl,
- hu.textualmodeler.parser.impl.earley,
- hu.textualmodeler.parser.impl.tracking,
- hu.textualmodeler.parser.scope
+Export-Package: hu.temon.parser,
+ hu.temon.parser.errors,
+ hu.temon.parser.grammar,
+ hu.temon.parser.impl,
+ hu.temon.parser.impl.earley,
+ hu.temon.parser.impl.tracking,
+ hu.temon.parser.scope

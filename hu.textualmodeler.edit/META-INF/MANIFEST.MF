@@ -1,17 +1,17 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: hu.textualmodeler.edit;singleton:=true
+Bundle-SymbolicName: hu.temon.edit;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: hu.textualmodeler.ast.provider.TextualmodelerEditPlugin$Implementation
+Bundle-Activator: hu.temon.ast.provider.TextualmodelerEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: hu.textualmodeler.ast.provider,
- hu.textualmodeler.grammar.provider,
- hu.textualmodeler.tokens.provider
+Export-Package: hu.temon.ast.provider,
+ hu.temon.grammar.provider,
+ hu.temon.tokens.provider
 Require-Bundle: org.eclipse.core.runtime,
- hu.textualmodeler;visibility:=reexport,
+ hu.temon;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

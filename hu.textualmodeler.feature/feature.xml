@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="hu.textualmodeler.feature"
-      label="Textualmodeler Feature"
+      id="hu.temon.feature"
+      label="Temon Feature"
       version="0.1.0.qualifier">
 
    <description url="http://www.example.com/description">
@@ -17,28 +17,28 @@
    </license>
 
    <plugin
-         id="hu.textualmodeler"
+         id="hu.temon"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="hu.textualmodeler.editor"
+         id="hu.temon.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="hu.textualmodeler.parser"
+         id="hu.temon.parser"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="hu.textualmodeler.edit"
+         id="hu.temon.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
