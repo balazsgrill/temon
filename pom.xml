@@ -2,26 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
-        <groupId>hu.textualmodeler-group</groupId>
-        <artifactId>hu.textualmodeler-root</artifactId>
+        <groupId>hu.temon-group</groupId>
+        <artifactId>hu.temon-root</artifactId>
         <version>0.1.0</version>
         <packaging>pom</packaging>
 
         <modules>
         	
         	<!-- Core modules -->	
-        	<module>hu.textualmodeler</module>
-        	<module>hu.textualmodeler.edit</module>
-            <module>hu.textualmodeler.editor</module>
-            <module>hu.textualmodeler.parser</module>
+        	<module>hu.temon</module>
+        	<module>hu.temon.edit</module>
+            <module>hu.temon.editor</module>
+            <module>hu.temon.parser</module>
                 
             <!-- Release -->
-            <module>hu.textualmodeler.feature</module>
-            <module>hu.textualmodeler.site</module>
+            <module>hu.temon.feature</module>
+            <module>hu.temon.site</module>
             
             <!-- Parser tests -->
-            <module>hu.textualmodeler.parser.test.model</module>
-            <module>hu.textualmodeler.parser.test</module>
+            <module>hu.temon.parser.test.model</module>
+            <module>hu.temon.parser.test</module>
                 
 
         </modules>

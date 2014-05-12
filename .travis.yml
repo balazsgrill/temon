@@ -12,14 +12,14 @@ branches:
 after_success:
   - cd ..
   - ssh -o StrictHostKeyChecking=no github.com
-  - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git gh_pages
+  - git clone --branch=gh-pages https://$GH_TOKEN@github.com/balazsgrill/temon.git gh_pages
   - cd gh_pages
   - git config user.email balage.g@gmail.com
   - git config user.name balazsgrill
-  - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/textualmodeler.git
+  - git remote add deploy https://$GH_TOKEN@github.com/balazsgrill/temon.git
   - rm -f -R site/$TRAVIS_BRANCH
   - mkdir site/$TRAVIS_BRANCH
-  - cp -R ../textualmodeler/hu.textualmodeler.site/target/repository/* site/$TRAVIS_BRANCH
+  - cp -R ../temon/hu.temon.site/target/repository/* site/$TRAVIS_BRANCH
   - git add site
   - git commit -m "Publish build $TRAVIS_JOB_NUMBER"
   - git push deploy
