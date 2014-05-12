@@ -4,13 +4,13 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>hu.textualmodeler-root</artifactId>
-		<groupId>hu.textualmodeler-group</groupId>
+		<artifactId>hu.temon-root</artifactId>
+		<groupId>hu.temon-group</groupId>
 		<version>0.1.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<groupId>hu.textualmodeler-group</groupId>
-	<artifactId>hu.textualmodeler.parser.test.model</artifactId>
+	<groupId>hu.temon-group</groupId>
+	<artifactId>hu.temon.parser.test.model</artifactId>
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>eclipse-plugin</packaging>
 </project>
