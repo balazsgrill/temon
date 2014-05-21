@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Grammar development toolkit
+Bundle-SymbolicName: hu.temon.sdk;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: hu.temon.sdk.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ hu.temon;bundle-version="0.1.0",
+ hu.temon.editor;bundle-version="0.1.0",
+ hu.temon.parser;bundle-version="0.1.0",
+ org.eclipse.pde.core,
+ org.eclipse.ui.editors;bundle-version="3.8.100",
+ org.eclipse.jface.text;bundle-version="3.8.100",
+ org.eclipse.core.resources;bundle-version="3.8.100",
+ org.eclipse.emf.ecore;bundle-version="2.9.1",
+ org.eclipse.emf.edit;bundle-version="2.9.0",
+ org.eclipse.emf.codegen.ecore;bundle-version="2.9.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

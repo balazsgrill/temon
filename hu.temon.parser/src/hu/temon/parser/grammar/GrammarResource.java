@@ -3,8 +3,11 @@
  */
 package hu.temon.parser.grammar;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
@@ -12,6 +15,7 @@ import hu.temon.grammar.GrammarModel;
 import hu.temon.grammar.Terminal;
 import hu.temon.parser.AbstractTextualResource;
 import hu.temon.parser.IFeatureResolver;
+import hu.temon.parser.MergedFeatureResolver;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -27,10 +31,28 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
  */
 public class GrammarResource extends AbstractTextualResource {
 	
+	public static final String OPTION_ADDITIONAL_FEATURE_RESOLVER = GrammarResource.class.getCanonicalName()+".additional.feature.resolver";
+	
+	private IFeatureResolver additionalResolver = null;
+	
 	private GrammarConstants constants = null;
 	
 	public GrammarResource(URI uri){
 		super(uri);
+	}
+	
+	@Override
+	protected void doLoad(InputStream inputStream, Map<?, ?> options)
+			throws IOException {
+		
+		if (options != null){
+			Object afr = options.get(OPTION_ADDITIONAL_FEATURE_RESOLVER);
+			if (afr instanceof IFeatureResolver){
+				additionalResolver = (IFeatureResolver)afr;
+			}
+		}
+		
+		super.doLoad(inputStream, options);
 	}
 	
 	/* (non-Javadoc)
@@ -73,7 +95,11 @@ public class GrammarResource extends AbstractTextualResource {
 	
 	@Override
 	protected IFeatureResolver createFeatureResolver() {
-		return new GrammarFeatureResolver(getResourceSet(), constants);
+		IFeatureResolver grammarResolver = new GrammarFeatureResolver(getResourceSet(), constants);
+		if (additionalResolver != null){
+			grammarResolver = new MergedFeatureResolver(additionalResolver, grammarResolver);
+		}
+		return grammarResolver;
 	}
 
 	static EClass findEClass(String EClassURI){

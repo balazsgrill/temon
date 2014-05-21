@@ -29,7 +29,11 @@ public class GrammarRegistry{
 	
 	private final Map<String, URI> grammarURIs = new HashMap<String, URI>();
 	
-	private static final String EPID = "hu.temon.grammars";
+	public static final String EPID = "hu.temon.grammars";
+	
+	public static final String ELEMENT_GRAMMAR = "grammar";
+	public static final String ATTR_ID = "id";
+	public static final String ATTR_PATH = "model";
 	
 	private static GrammarRegistry instance;
 	
@@ -45,9 +49,9 @@ public class GrammarRegistry{
 			resourceSet = new ResourceSetImpl();
 
 			for(IConfigurationElement ce : Platform.getExtensionRegistry().getConfigurationElementsFor(EPID)){
-				String id = ce.getAttribute("id");
+				String id = ce.getAttribute(ATTR_ID);
 				
-				String loc = ce.getAttribute("model");
+				String loc = ce.getAttribute(ATTR_PATH);
 				String contributor = ce.getContributor().getName();
 				URI uri = URI.createPlatformPluginURI(contributor+"/"+loc, true);
 

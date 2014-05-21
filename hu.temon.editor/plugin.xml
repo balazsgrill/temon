@@ -2,16 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            class="hu.temon.editor.TextualModelEditor"
-            default="true"
-            extensions="grammar"
-            id="hu.temon.editor.grammar"
-            name="Grammar editor">
-      </editor>
-   </extension>
-   <extension
          id="hu.temon.editor.syntaxerrormarker"
          name="Syntax Error Marker"
          point="org.eclipse.core.resources.markers">

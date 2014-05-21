@@ -166,7 +166,7 @@ public class TextualModelEditor extends TextEditor {
 		return null;
 	}
 	
-	private static EditingDomain createEditingDomain(){
+	protected EditingDomain createEditingDomain(IFile resource){
 		ResourceSet resourceSet = new ResourceSetImpl();
 		resourceSet.getLoadOptions().put(AbstractTextualResource.OPTION_TRACK_ELEMENT_CREATION, Boolean.TRUE);
 		EditingDomain editingDomain = TransactionalEditingDomainImpl.FactoryImpl.INSTANCE.createEditingDomain(resourceSet);
@@ -179,7 +179,7 @@ public class TextualModelEditor extends TextEditor {
 			IFile file = ((IFileEditorInput) input).getFile();
 			URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
 			if (edomain == null){
-				edomain = createEditingDomain();
+				edomain = createEditingDomain(file);
 			}
 			if (this.resource == null){
 				Resource resource = edomain.getResourceSet().createResource(uri);
