@@ -16,6 +16,11 @@ public class ReferencedElementNotFoundException extends Exception {
 
 	private final String value;
 	
+	public ReferencedElementNotFoundException(Throwable e, String value) {
+		super(e);
+		this.value = value;
+	}
+	
 	public ReferencedElementNotFoundException(String value) {
 		this.value = value;
 	}

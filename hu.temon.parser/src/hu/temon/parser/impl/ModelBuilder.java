@@ -58,7 +58,12 @@ public class ModelBuilder {
 			if (terminal != null){
 				term = terminal.getTerminal();
 			}
-			Object o = featureResolver.resolve(context, feature, term, value);
+			Object o = null;
+			try{
+				o = featureResolver.resolve(context, feature, term, value);
+			}catch(Exception e){
+				throw new ReferencedElementNotFoundException(value);
+			}
 			if (o != null){
 				eSetOrAdd(context, feature, o);
 			}else{

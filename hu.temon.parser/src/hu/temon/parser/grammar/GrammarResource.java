@@ -35,8 +35,6 @@ public class GrammarResource extends AbstractTextualResource {
 	
 	private IFeatureResolver additionalResolver = null;
 	
-	private GrammarConstants constants = null;
-	
 	public GrammarResource(URI uri){
 		super(uri);
 	}
@@ -62,7 +60,6 @@ public class GrammarResource extends AbstractTextualResource {
 	protected GrammarModel loadGrammar() {
 		URI grammarURI = URI.createPlatformPluginURI("hu.temon.parser/grammars/grammar.grammar.xmi", true);
 		Resource r = getResourceSet().getResource(grammarURI, true);
-		constants = new GrammarConstants(getResourceSet());
 		
 		return (GrammarModel)r.getContents().get(0);
 	}
@@ -95,7 +92,7 @@ public class GrammarResource extends AbstractTextualResource {
 	
 	@Override
 	protected IFeatureResolver createFeatureResolver() {
-		IFeatureResolver grammarResolver = new GrammarFeatureResolver(getResourceSet(), constants);
+		IFeatureResolver grammarResolver = new GrammarFeatureResolver(getResourceSet());
 		if (additionalResolver != null){
 			grammarResolver = new MergedFeatureResolver(additionalResolver, grammarResolver);
 		}

@@ -15,11 +15,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 class GrammarFeatureResolver extends BasicFeatureResolver {
-	private final GrammarConstants constants;
 	
-	GrammarFeatureResolver(ResourceSet resourceSet, GrammarConstants constants) {
+	GrammarFeatureResolver(ResourceSet resourceSet) {
 		super(resourceSet);
-		this.constants = constants;
 	}
 
 	@Override
@@ -48,7 +46,7 @@ class GrammarFeatureResolver extends BasicFeatureResolver {
 		}
 		
 		if (GrammarPackage.eINSTANCE.getPush_Eclass().equals(feature)){
-			if (Objects.equals(constants.STRING, terminal)){
+			if (Objects.equals(getConstants().STRING, terminal)){
 				return GrammarResource.findEClass(value);
 			}
 		}

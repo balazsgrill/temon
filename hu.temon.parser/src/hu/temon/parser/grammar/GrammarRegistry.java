@@ -37,6 +37,15 @@ public class GrammarRegistry{
 	
 	private static GrammarRegistry instance;
 	
+	private GrammarConstants constants = null;
+	
+	public GrammarConstants getConstants() {
+		if (constants == null){
+			constants = new GrammarConstants(resourceSet);
+		}
+		return constants;
+	}
+	
 	public static GrammarRegistry getInstance() {
 		if (instance == null){
 			instance = new GrammarRegistry();
