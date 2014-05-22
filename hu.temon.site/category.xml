@@ -2,4 +2,13 @@
 <site>
    <feature url="features/hu.temon.feature_0.1.0.qualifier.jar" id="hu.temon.feature" version="0.1.0.qualifier"/>
    <feature url="features/hu.temon.feature-sources-feature.jar" id="hu.temon.feature.source" version="0.1.0.qualifier"/>
+   <feature url="features/hu.temon.ui.feature_0.1.0.qualifier.jar" id="hu.temon.ui.feature" version="0.1.0.qualifier"/>
+   <feature url="features/hu.temon.ui.feature-sources-feature.jar" id="hu.temon.ui.feature.source" version="0.1.0.qualifier"/>
+   <feature url="features/hu.temon.sdk.feature_0.1.0.qualifier.jar" id="hu.temon.sdk.feature" version="0.1.0.qualifier">
+      <category name="hu.temon.category"/>
+   </feature>
+   <feature url="features/hu.temon.sdk.feature-sources-feature.jar" id="hu.temon.sdk.feature.source" version="0.1.0.qualifier">
+      <category name="hu.temon.category"/>
+   </feature>
+   <category-def name="hu.temon.category" label="Temon SDK"/>
 </site>

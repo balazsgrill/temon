@@ -16,6 +16,10 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import feature="org.eclipse.emf.ecore" version="2.6.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="hu.temon"
          download-size="0"

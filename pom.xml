@@ -14,9 +14,12 @@
         	<module>hu.temon.edit</module>
             <module>hu.temon.editor</module>
             <module>hu.temon.parser</module>
+            <module>hu.temon.sdk</module>
                 
             <!-- Release -->
             <module>hu.temon.feature</module>
+            <module>hu.temon.ui.feature</module>
+            <module>hu.temon.sdk.feature</module>
             <module>hu.temon.site</module>
             
             <!-- Parser tests -->
@@ -27,7 +30,7 @@
         </modules>
 
         <properties>
-                <tycho-version>0.18.1</tycho-version>
+                <tycho-version>0.20.0</tycho-version>
         </properties>
         <repositories>
                 <repository>
