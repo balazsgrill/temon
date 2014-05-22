@@ -3,13 +3,11 @@
 package hu.temon.tokens.provider;
 
 
-import hu.temon.ast.provider.TextualmodelerEditPlugin;
+import hu.temon.ast.provider.TemonEditPlugin;
 import hu.temon.tokens.Token;
 import hu.temon.tokens.TokensPackage;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -221,7 +219,7 @@ public class TokenItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TextualmodelerEditPlugin.INSTANCE;
+		return TemonEditPlugin.INSTANCE;
 	}
 
 }

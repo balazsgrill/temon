@@ -3,14 +3,12 @@
 package hu.temon.grammar.provider;
 
 
-import hu.temon.ast.provider.TextualmodelerEditPlugin;
+import hu.temon.ast.provider.TemonEditPlugin;
 import hu.temon.grammar.GrammarFactory;
 import hu.temon.grammar.GrammarPackage;
 import hu.temon.grammar.Terminal;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -192,7 +190,8 @@ public class TerminalItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(GrammarPackage.Literals.TERMINAL__REPLACE);
+			childrenFeatures.add(GrammarPackage.Literals.TERMINAL__CONVERT_FROM);
+			childrenFeatures.add(GrammarPackage.Literals.TERMINAL__CONVERT_TO);
 		}
 		return childrenFeatures;
 	}
@@ -253,7 +252,8 @@ public class TerminalItemProvider
 			case GrammarPackage.TERMINAL__PRIORITY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case GrammarPackage.TERMINAL__REPLACE:
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+			case GrammarPackage.TERMINAL__CONVERT_TO:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -273,8 +273,36 @@ public class TerminalItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(GrammarPackage.Literals.TERMINAL__REPLACE,
+				(GrammarPackage.Literals.TERMINAL__CONVERT_FROM,
 				 GrammarFactory.eINSTANCE.createReplace()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(GrammarPackage.Literals.TERMINAL__CONVERT_TO,
+				 GrammarFactory.eINSTANCE.createReplace()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == GrammarPackage.Literals.TERMINAL__CONVERT_FROM ||
+			childFeature == GrammarPackage.Literals.TERMINAL__CONVERT_TO;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**
@@ -285,7 +313,7 @@ public class TerminalItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TextualmodelerEditPlugin.INSTANCE;
+		return TemonEditPlugin.INSTANCE;
 	}
 
 }

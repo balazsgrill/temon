@@ -3,6 +3,7 @@
  */
 package hu.temon.parser.grammar;
 
+import hu.temon.parser.scope.AbstractScope;
 import hu.temon.parser.scope.IFeatureScope;
 import hu.temon.parser.scope.IScopeElement;
 import hu.temon.parser.scope.SimpleScopeElement;
@@ -21,7 +22,7 @@ import org.eclipse.emf.ecore.EPackage.Registry;
  * @author balazs.grill
  *
  */
-public class EObjectURIScope implements IFeatureScope {
+public class EObjectURIScope extends AbstractScope {
 
 	private final String filter;
 	
@@ -29,12 +30,12 @@ public class EObjectURIScope implements IFeatureScope {
 	 * 
 	 */
 	public EObjectURIScope(String filter) {
-		if (filter.startsWith("\"")){
-			filter = filter.substring(1);
-		}
-		if (filter.endsWith("\"")){
-			filter = filter.substring(0, filter.length()-1);
-		}
+//		if (filter.startsWith("\"")){
+//			filter = filter.substring(1);
+//		}
+//		if (filter.endsWith("\"")){
+//			filter = filter.substring(0, filter.length()-1);
+//		}
 		this.filter = filter;
 	}
 
@@ -55,7 +56,7 @@ public class EObjectURIScope implements IFeatureScope {
 					EPackage epack = (EPackage)regElement;
 					for(EClassifier eclass : epack.getEClassifiers()){
 						if (eclass instanceof EClass && eclass.getName().startsWith(name)){
-							elements.add(new SimpleScopeElement("\""+epackNsUri+"#"+eclass.getName()+"\"", eclass));
+							elements.add(new SimpleScopeElement(epackNsUri+"#"+eclass.getName(), eclass));
 						}
 					}
 				}
@@ -69,15 +70,6 @@ public class EObjectURIScope implements IFeatureScope {
 	 */
 	@Override
 	public IFeatureScope parentScope() {
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.temon.parser.scope.IFeatureScope#find(java.lang.String)
-	 */
-	@Override
-	public IScopeElement find(String identifier) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

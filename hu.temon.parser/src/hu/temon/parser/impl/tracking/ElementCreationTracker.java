@@ -106,7 +106,7 @@ public class ElementCreationTracker implements IModelBuilderAdapter{
 			int[] range = AstUtils.getRange(n);
 			if (range[0] != -1 && range[1] != -1){
 				String content = AstUtils.contentOf(n);
-				featureSets.add(new FeatureSetPoint(context, feature, content, range));
+				featureSets.add(new FeatureSetPoint(n, context, feature, content, range));
 			}
 		}
 	}

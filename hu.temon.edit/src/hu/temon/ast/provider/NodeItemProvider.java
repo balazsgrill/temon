@@ -102,7 +102,7 @@ public class NodeItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TextualmodelerEditPlugin.INSTANCE;
+		return TemonEditPlugin.INSTANCE;
 	}
 
 }

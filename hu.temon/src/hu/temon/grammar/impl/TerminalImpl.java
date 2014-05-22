@@ -28,7 +28,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getName <em>Name</em>}</li>
  *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getRegex <em>Regex</em>}</li>
  *   <li>{@link hu.temon.grammar.impl.TerminalImpl#isHide <em>Hide</em>}</li>
- *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getReplace <em>Replace</em>}</li>
+ *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getConvertFrom <em>Convert From</em>}</li>
+ *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getConvertTo <em>Convert To</em>}</li>
  *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link hu.temon.grammar.impl.TerminalImpl#getSuperTerminal <em>Super Terminal</em>}</li>
  * </ul>
@@ -98,14 +99,24 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	protected boolean hide = HIDE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getReplace() <em>Replace</em>}' containment reference list.
+	 * The cached value of the '{@link #getConvertFrom() <em>Convert From</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReplace()
+	 * @see #getConvertFrom()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Replace> replace;
+	protected EList<Replace> convertFrom;
+
+	/**
+	 * The cached value of the '{@link #getConvertTo() <em>Convert To</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConvertTo()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Replace> convertTo;
 
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
@@ -224,11 +235,23 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Replace> getReplace() {
-		if (replace == null) {
-			replace = new EObjectContainmentEList<Replace>(Replace.class, this, GrammarPackage.TERMINAL__REPLACE);
+	public EList<Replace> getConvertFrom() {
+		if (convertFrom == null) {
+			convertFrom = new EObjectContainmentEList<Replace>(Replace.class, this, GrammarPackage.TERMINAL__CONVERT_FROM);
 		}
-		return replace;
+		return convertFrom;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Replace> getConvertTo() {
+		if (convertTo == null) {
+			convertTo = new EObjectContainmentEList<Replace>(Replace.class, this, GrammarPackage.TERMINAL__CONVERT_TO);
+		}
+		return convertTo;
 	}
 
 	/**
@@ -298,8 +321,10 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case GrammarPackage.TERMINAL__REPLACE:
-				return ((InternalEList<?>)getReplace()).basicRemove(otherEnd, msgs);
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+				return ((InternalEList<?>)getConvertFrom()).basicRemove(otherEnd, msgs);
+			case GrammarPackage.TERMINAL__CONVERT_TO:
+				return ((InternalEList<?>)getConvertTo()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -318,8 +343,10 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return getRegex();
 			case GrammarPackage.TERMINAL__HIDE:
 				return isHide();
-			case GrammarPackage.TERMINAL__REPLACE:
-				return getReplace();
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+				return getConvertFrom();
+			case GrammarPackage.TERMINAL__CONVERT_TO:
+				return getConvertTo();
 			case GrammarPackage.TERMINAL__PRIORITY:
 				return getPriority();
 			case GrammarPackage.TERMINAL__SUPER_TERMINAL:
@@ -347,9 +374,13 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 			case GrammarPackage.TERMINAL__HIDE:
 				setHide((Boolean)newValue);
 				return;
-			case GrammarPackage.TERMINAL__REPLACE:
-				getReplace().clear();
-				getReplace().addAll((Collection<? extends Replace>)newValue);
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+				getConvertFrom().clear();
+				getConvertFrom().addAll((Collection<? extends Replace>)newValue);
+				return;
+			case GrammarPackage.TERMINAL__CONVERT_TO:
+				getConvertTo().clear();
+				getConvertTo().addAll((Collection<? extends Replace>)newValue);
 				return;
 			case GrammarPackage.TERMINAL__PRIORITY:
 				setPriority((Integer)newValue);
@@ -378,8 +409,11 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 			case GrammarPackage.TERMINAL__HIDE:
 				setHide(HIDE_EDEFAULT);
 				return;
-			case GrammarPackage.TERMINAL__REPLACE:
-				getReplace().clear();
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+				getConvertFrom().clear();
+				return;
+			case GrammarPackage.TERMINAL__CONVERT_TO:
+				getConvertTo().clear();
 				return;
 			case GrammarPackage.TERMINAL__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
@@ -405,8 +439,10 @@ public class TerminalImpl extends MinimalEObjectImpl.Container implements Termin
 				return REGEX_EDEFAULT == null ? regex != null : !REGEX_EDEFAULT.equals(regex);
 			case GrammarPackage.TERMINAL__HIDE:
 				return hide != HIDE_EDEFAULT;
-			case GrammarPackage.TERMINAL__REPLACE:
-				return replace != null && !replace.isEmpty();
+			case GrammarPackage.TERMINAL__CONVERT_FROM:
+				return convertFrom != null && !convertFrom.isEmpty();
+			case GrammarPackage.TERMINAL__CONVERT_TO:
+				return convertTo != null && !convertTo.isEmpty();
 			case GrammarPackage.TERMINAL__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
 			case GrammarPackage.TERMINAL__SUPER_TERMINAL:

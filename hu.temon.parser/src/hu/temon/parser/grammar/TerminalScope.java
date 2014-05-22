@@ -5,6 +5,7 @@ package hu.temon.parser.grammar;
 
 import hu.temon.grammar.GrammarModel;
 import hu.temon.grammar.Terminal;
+import hu.temon.parser.scope.AbstractScope;
 import hu.temon.parser.scope.IFeatureScope;
 import hu.temon.parser.scope.IScopeElement;
 import hu.temon.parser.scope.SimpleScopeElement;
@@ -20,7 +21,7 @@ import java.util.Set;
  * @author balazs.grill
  *
  */
-public class TerminalScope implements IFeatureScope {
+public class TerminalScope extends AbstractScope {
 
 	private final String filter;
 	private final GrammarModel[] grammarModels;
@@ -74,15 +75,6 @@ public class TerminalScope implements IFeatureScope {
 			}
 		}
 		return imported.isEmpty() ? null : new TerminalScope(filter, visited, imported.toArray(new GrammarModel[imported.size()]));
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.temon.parser.scope.IFeatureScope#find(java.lang.String)
-	 */
-	@Override
-	public IScopeElement find(String identifier) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

@@ -159,9 +159,19 @@ public class Tokenizer {
 		}
 	}
 	
-	private static String getProcessedValue(String match, Terminal terminal){
+	public static String getProcessedValue(String match, Terminal terminal){
 		String value = match;
-		for(Replace r : terminal.getReplace()){
+		for(Replace r : terminal.getConvertFrom()){
+			String regex = r.getSearch();
+			String replacement = r.getReplace();
+			if (replacement == null) replacement= "";
+			value = value.replaceAll(regex, replacement);
+		}
+		return value;
+	}
+	
+	public static String getOriginalValue(String value, Terminal terminal){
+		for(Replace r : terminal.getConvertTo()){
 			String regex = r.getSearch();
 			String replacement = r.getReplace();
 			if (replacement == null) replacement= "";

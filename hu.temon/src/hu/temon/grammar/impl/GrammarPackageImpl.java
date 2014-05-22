@@ -283,7 +283,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTerminal_Replace() {
+	public EReference getTerminal_ConvertFrom() {
 		return (EReference)terminalEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -292,8 +292,17 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTerminal_ConvertTo() {
+		return (EReference)terminalEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTerminal_Priority() {
-		return (EAttribute)terminalEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)terminalEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -302,7 +311,7 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 	 * @generated
 	 */
 	public EReference getTerminal_SuperTerminal() {
-		return (EReference)terminalEClass.getEStructuralFeatures().get(5);
+		return (EReference)terminalEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -552,7 +561,8 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		createEAttribute(terminalEClass, TERMINAL__NAME);
 		createEAttribute(terminalEClass, TERMINAL__REGEX);
 		createEAttribute(terminalEClass, TERMINAL__HIDE);
-		createEReference(terminalEClass, TERMINAL__REPLACE);
+		createEReference(terminalEClass, TERMINAL__CONVERT_FROM);
+		createEReference(terminalEClass, TERMINAL__CONVERT_TO);
 		createEAttribute(terminalEClass, TERMINAL__PRIORITY);
 		createEReference(terminalEClass, TERMINAL__SUPER_TERMINAL);
 
@@ -637,7 +647,8 @@ public class GrammarPackageImpl extends EPackageImpl implements GrammarPackage {
 		initEAttribute(getTerminal_Name(), ecorePackage.getEString(), "name", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTerminal_Regex(), ecorePackage.getEString(), "regex", null, 1, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTerminal_Hide(), ecorePackage.getEBoolean(), "hide", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTerminal_Replace(), this.getReplace(), null, "replace", null, 0, -1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTerminal_ConvertFrom(), this.getReplace(), null, "convertFrom", null, 0, -1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTerminal_ConvertTo(), this.getReplace(), null, "convertTo", null, 0, -1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTerminal_Priority(), ecorePackage.getEInt(), "priority", "1", 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTerminal_SuperTerminal(), this.getTerminal(), null, "superTerminal", null, 0, 1, Terminal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

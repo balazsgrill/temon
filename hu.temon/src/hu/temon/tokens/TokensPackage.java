@@ -38,7 +38,7 @@ public interface TokensPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://textualmodeler.hu/tokens";
+	String eNS_URI = "http://temon.hu/tokens";
 
 	/**
 	 * The package namespace name.

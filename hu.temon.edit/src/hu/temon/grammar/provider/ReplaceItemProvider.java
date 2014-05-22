@@ -3,13 +3,11 @@
 package hu.temon.grammar.provider;
 
 
-import hu.temon.ast.provider.TextualmodelerEditPlugin;
+import hu.temon.ast.provider.TemonEditPlugin;
 import hu.temon.grammar.GrammarPackage;
 import hu.temon.grammar.Replace;
-
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -174,7 +172,7 @@ public class ReplaceItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return TextualmodelerEditPlugin.INSTANCE;
+		return TemonEditPlugin.INSTANCE;
 	}
 
 }

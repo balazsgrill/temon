@@ -31,7 +31,7 @@ public class TerminalMatch implements IStringValue{
 	@Override
 	public String getProcessedValue(){
 		String value = match;
-		for(Replace r : terminal.getReplace()){
+		for(Replace r : terminal.getConvertFrom()){
 			String regex = r.getSearch();
 			String replacement = r.getReplace();
 			if (replacement == null) replacement= "";

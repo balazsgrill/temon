@@ -4,6 +4,7 @@
 package hu.temon.parser.grammar;
 
 import hu.temon.grammar.GrammarModel;
+import hu.temon.parser.scope.AbstractScope;
 import hu.temon.parser.scope.IFeatureScope;
 import hu.temon.parser.scope.IScopeElement;
 import hu.temon.parser.scope.SimpleScopeElement;
@@ -16,7 +17,7 @@ import java.util.List;
  * @author balazs.grill
  *
  */
-public class ImportGrammarScope implements IFeatureScope {
+public class ImportGrammarScope extends AbstractScope {
 
 	private final String filter;
 	
@@ -46,14 +47,6 @@ public class ImportGrammarScope implements IFeatureScope {
 	 */
 	@Override
 	public IFeatureScope parentScope() {
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see hu.temon.parser.scope.IFeatureScope#find(java.lang.String)
-	 */
-	@Override
-	public IScopeElement find(String identifier) {
 		return null;
 	}
 

@@ -17,7 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link hu.temon.grammar.Terminal#getName <em>Name</em>}</li>
  *   <li>{@link hu.temon.grammar.Terminal#getRegex <em>Regex</em>}</li>
  *   <li>{@link hu.temon.grammar.Terminal#isHide <em>Hide</em>}</li>
- *   <li>{@link hu.temon.grammar.Terminal#getReplace <em>Replace</em>}</li>
+ *   <li>{@link hu.temon.grammar.Terminal#getConvertFrom <em>Convert From</em>}</li>
+ *   <li>{@link hu.temon.grammar.Terminal#getConvertTo <em>Convert To</em>}</li>
  *   <li>{@link hu.temon.grammar.Terminal#getPriority <em>Priority</em>}</li>
  *   <li>{@link hu.temon.grammar.Terminal#getSuperTerminal <em>Super Terminal</em>}</li>
  * </ul>
@@ -107,20 +108,36 @@ public interface Terminal extends EObject {
 	void setHide(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Replace</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Convert From</b></em>' containment reference list.
 	 * The list contents are of type {@link hu.temon.grammar.Replace}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Replace</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Convert From</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Replace</em>' containment reference list.
-	 * @see hu.temon.grammar.GrammarPackage#getTerminal_Replace()
+	 * @return the value of the '<em>Convert From</em>' containment reference list.
+	 * @see hu.temon.grammar.GrammarPackage#getTerminal_ConvertFrom()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Replace> getReplace();
+	EList<Replace> getConvertFrom();
+
+	/**
+	 * Returns the value of the '<em><b>Convert To</b></em>' containment reference list.
+	 * The list contents are of type {@link hu.temon.grammar.Replace}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Convert To</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Convert To</em>' containment reference list.
+	 * @see hu.temon.grammar.GrammarPackage#getTerminal_ConvertTo()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Replace> getConvertTo();
 
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.

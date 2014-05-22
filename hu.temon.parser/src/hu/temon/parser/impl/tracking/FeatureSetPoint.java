@@ -3,6 +3,8 @@
  */
 package hu.temon.parser.impl.tracking;
 
+import hu.temon.ast.Node;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -18,13 +20,20 @@ public class FeatureSetPoint {
 	private final String value;
 	private final int[] range;
 	
-	public FeatureSetPoint(EObject context, EStructuralFeature feature,
+	private final Node node;
+	
+	public FeatureSetPoint(Node node, EObject context, EStructuralFeature feature,
 			String value, int[] range) {
 		super();
 		this.context = context;
 		this.feature = feature;
 		this.value = value;
 		this.range = range;
+		this.node = node;
+	}
+	
+	public Node getNode() {
+		return node;
 	}
 	
 	public EObject getContext() {

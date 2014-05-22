@@ -87,7 +87,8 @@ package grammar{
 		attr String[1] name;
 		attr String[1] regex;
 		attr boolean hide;
-		val Replace[*] replace;
+		val Replace[*] convertFrom;
+		val Replace[*] convertTo;
 		attr int priority = 1;
 		ref Terminal superTerminal;
 	}

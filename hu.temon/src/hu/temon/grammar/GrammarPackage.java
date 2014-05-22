@@ -38,7 +38,7 @@ public interface GrammarPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://textualmodeler.hu/grammar";
+	String eNS_URI = "http://temon.hu/grammar";
 
 	/**
 	 * The package namespace name.
@@ -176,13 +176,22 @@ public interface GrammarPackage extends EPackage {
 	int TERMINAL__HIDE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Replace</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Convert From</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__REPLACE = 3;
+	int TERMINAL__CONVERT_FROM = 3;
+
+	/**
+	 * The feature id for the '<em><b>Convert To</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINAL__CONVERT_TO = 4;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -191,7 +200,7 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__PRIORITY = 4;
+	int TERMINAL__PRIORITY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Super Terminal</b></em>' reference.
@@ -200,7 +209,7 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL__SUPER_TERMINAL = 5;
+	int TERMINAL__SUPER_TERMINAL = 6;
 
 	/**
 	 * The number of structural features of the '<em>Terminal</em>' class.
@@ -209,7 +218,7 @@ public interface GrammarPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TERMINAL_FEATURE_COUNT = 6;
+	int TERMINAL_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Terminal</em>' class.
@@ -755,15 +764,26 @@ public interface GrammarPackage extends EPackage {
 	EAttribute getTerminal_Hide();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link hu.temon.grammar.Terminal#getReplace <em>Replace</em>}'.
+	 * Returns the meta object for the containment reference list '{@link hu.temon.grammar.Terminal#getConvertFrom <em>Convert From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Replace</em>'.
-	 * @see hu.temon.grammar.Terminal#getReplace()
+	 * @return the meta object for the containment reference list '<em>Convert From</em>'.
+	 * @see hu.temon.grammar.Terminal#getConvertFrom()
 	 * @see #getTerminal()
 	 * @generated
 	 */
-	EReference getTerminal_Replace();
+	EReference getTerminal_ConvertFrom();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link hu.temon.grammar.Terminal#getConvertTo <em>Convert To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Convert To</em>'.
+	 * @see hu.temon.grammar.Terminal#getConvertTo()
+	 * @see #getTerminal()
+	 * @generated
+	 */
+	EReference getTerminal_ConvertTo();
 
 	/**
 	 * Returns the meta object for the attribute '{@link hu.temon.grammar.Terminal#getPriority <em>Priority</em>}'.
@@ -1147,12 +1167,20 @@ public interface GrammarPackage extends EPackage {
 		EAttribute TERMINAL__HIDE = eINSTANCE.getTerminal_Hide();
 
 		/**
-		 * The meta object literal for the '<em><b>Replace</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Convert From</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TERMINAL__REPLACE = eINSTANCE.getTerminal_Replace();
+		EReference TERMINAL__CONVERT_FROM = eINSTANCE.getTerminal_ConvertFrom();
+
+		/**
+		 * The meta object literal for the '<em><b>Convert To</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TERMINAL__CONVERT_TO = eINSTANCE.getTerminal_ConvertTo();
 
 		/**
 		 * The meta object literal for the '<em><b>Priority</b></em>' attribute feature.

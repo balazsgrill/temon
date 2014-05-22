@@ -3,9 +3,12 @@
  */
 package hu.temon.editor.impl.configuration;
 
+import hu.temon.ast.TerminalNode;
 import hu.temon.editor.TextualModelEditor;
+import hu.temon.grammar.Terminal;
 import hu.temon.parser.AbstractTextualResource;
 import hu.temon.parser.IFeatureResolver;
+import hu.temon.parser.impl.Tokenizer;
 import hu.temon.parser.impl.tracking.ElementCreationTracker;
 import hu.temon.parser.impl.tracking.FeatureSetPoint;
 import hu.temon.parser.scope.IFeatureScope;
@@ -76,6 +79,11 @@ public class FeatureResolverBasedContenAssistProcessor implements
 		for(IScopeElement element : elements){
 			
 			String replacement = element.getIdentifier();
+			if (featureSetPoint.getNode() instanceof TerminalNode){
+				TerminalNode tn = (TerminalNode)featureSetPoint.getNode();
+				Terminal term = tn.getTerminal();
+				replacement = Tokenizer.getOriginalValue(replacement, term);
+			}
 			EObject eobject = element.getValue(resource.getResourceSet());
 			proposals[i]=new CompletionProposal(replacement, range[0], length, replacement.length(), 
 					labelProvider.getImage(eobject), replacement, null, labelProvider.getText(eobject));
@@ -96,6 +104,7 @@ public class FeatureResolverBasedContenAssistProcessor implements
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			//String value = point.getValue().substring(0, offset-point.getRange()[0]);
 			IFeatureScope scope = resolver.getScope(point.getContext(), (EReference)point.getFeature(), null, value);
 			

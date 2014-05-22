@@ -38,7 +38,7 @@ public interface AstPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://textualmodeler.hu/ast";
+	String eNS_URI = "http://temon.hu/ast";
 
 	/**
 	 * The package namespace name.
