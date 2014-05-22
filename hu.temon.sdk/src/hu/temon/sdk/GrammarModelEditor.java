@@ -8,12 +8,13 @@ import hu.temon.parser.grammar.GrammarResource;
 
 import java.util.Arrays;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 import org.eclipse.pde.core.plugin.PluginRegistry;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IFileEditorInput;
 
 /**
  * @author balazs.grill
@@ -29,24 +30,26 @@ public class GrammarModelEditor extends TextualModelEditor {
 	}
 	
 	@Override
-	protected EditingDomain createEditingDomain(IFile resource) {
-		EditingDomain edomain = super.createEditingDomain(resource);
-		IProject project = resource.getProject();
-		try {
-			if (isPluginProject(project)){
-				
-				IPluginModelBase modelBase = PluginRegistry.findModel(project.getName());
-				if (modelBase != null){
-					edomain.getResourceSet().getLoadOptions().put(GrammarResource.OPTION_ADDITIONAL_FEATURE_RESOLVER, 
-							new PluginBasedGrammarFeatureResolver(edomain.getResourceSet(), modelBase));
+	protected void doSetInput(IEditorInput input) throws CoreException {
+		super.doSetInput(input);
+		
+		if (input instanceof IFileEditorInput){
+			IProject project = ((IFileEditorInput) input).getFile().getProject();
+			try {
+				if (isPluginProject(project)){
+					
+					IPluginModelBase modelBase = PluginRegistry.findModel(project.getName());
+					if (modelBase != null){
+						ResourceSet resourceSet = getEditingDomain().getResourceSet();
+						resourceSet.getLoadOptions().put(GrammarResource.OPTION_ADDITIONAL_FEATURE_RESOLVER, 
+								new PluginBasedGrammarFeatureResolver(getResource(), modelBase));
+					}
 				}
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		return edomain; 
 	}
-	
 	
 }

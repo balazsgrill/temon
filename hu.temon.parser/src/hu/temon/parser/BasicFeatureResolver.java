@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * @author balazs.grill
@@ -23,8 +23,8 @@ public class BasicFeatureResolver extends AbstractFeatureResolver {
 	
 	private final GrammarConstants constants;
 	
-	public BasicFeatureResolver(ResourceSet resourceSet) {
-		super(resourceSet);
+	public BasicFeatureResolver(Resource resource) {
+		super(resource);
 		constants = GrammarRegistry.getInstance().getConstants();
 	}
 

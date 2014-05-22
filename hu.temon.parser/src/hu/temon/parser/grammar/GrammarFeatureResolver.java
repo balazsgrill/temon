@@ -12,12 +12,12 @@ import java.util.Objects;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource;
 
 class GrammarFeatureResolver extends BasicFeatureResolver {
 	
-	GrammarFeatureResolver(ResourceSet resourceSet) {
-		super(resourceSet);
+	GrammarFeatureResolver(Resource resource) {
+		super(resource);
 	}
 
 	@Override

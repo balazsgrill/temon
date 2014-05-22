@@ -50,7 +50,7 @@ public class PeopleResource extends AbstractTextualResource {
 	
 	@Override
 	protected IFeatureResolver createFeatureResolver() {
-		return new BasicFeatureResolver(getResourceSet()){
+		return new BasicFeatureResolver(this){
 			@Override
 			public Object resolve(EObject context, EStructuralFeature feature,
 					Terminal terminal, String value) {

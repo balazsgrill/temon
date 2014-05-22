@@ -11,7 +11,7 @@ import hu.temon.parser.scope.IFeatureScope;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 
 /**
@@ -26,8 +26,8 @@ public class PluginBasedGrammarFeatureResolver extends AbstractFeatureResolver {
 	 * @param modelBase 
 	 * 
 	 */
-	public PluginBasedGrammarFeatureResolver(ResourceSet resourceSet, IPluginModelBase modelBase) {
-		super(resourceSet);
+	public PluginBasedGrammarFeatureResolver(Resource resource, IPluginModelBase modelBase) {
+		super(resource);
 		this.modelBase = modelBase;
 	}
 

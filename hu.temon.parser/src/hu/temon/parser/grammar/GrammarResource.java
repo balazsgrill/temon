@@ -92,7 +92,7 @@ public class GrammarResource extends AbstractTextualResource {
 	
 	@Override
 	protected IFeatureResolver createFeatureResolver() {
-		IFeatureResolver grammarResolver = new GrammarFeatureResolver(getResourceSet());
+		IFeatureResolver grammarResolver = new GrammarFeatureResolver(this);
 		if (additionalResolver != null){
 			grammarResolver = new MergedFeatureResolver(additionalResolver, grammarResolver);
 		}

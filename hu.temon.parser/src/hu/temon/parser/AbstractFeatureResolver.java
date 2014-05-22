@@ -10,6 +10,7 @@ import hu.temon.parser.scope.IScopeElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
@@ -18,10 +19,14 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  */
 public abstract class AbstractFeatureResolver implements IFeatureResolver {
 
-	protected final ResourceSet resourceSet;
+	protected final Resource resource;
 	
-	public AbstractFeatureResolver(ResourceSet resourceSet) {
-		this.resourceSet = resourceSet;
+	public AbstractFeatureResolver(Resource resource) {
+		this.resource = resource;
+	}
+	
+	protected ResourceSet getResourceSet(){
+		return resource.getResourceSet();
 	}
 	
 	/* (non-Javadoc)
@@ -38,7 +43,7 @@ public abstract class AbstractFeatureResolver implements IFeatureResolver {
 				
 				IScopeElement element = scope.find(value);
 				if (element != null){
-					return element.getValue(resourceSet);
+					return element.getValue(getResourceSet());
 				}
 				
 				scope = scope.parentScope();
