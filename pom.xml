@@ -14,7 +14,9 @@
         	<module>hu.temon.edit</module>
             <module>hu.temon.editor</module>
             <module>hu.temon.parser</module>
+	    <module>hu.temon.expressions</module>
             <module>hu.temon.sdk</module>
+
                 
             <!-- Release -->
             <module>hu.temon.feature</module>
@@ -22,9 +24,10 @@
             <module>hu.temon.sdk.feature</module>
             <module>hu.temon.site</module>
             
-            <!-- Parser tests -->
+            <!-- Tests -->
             <module>hu.temon.parser.test.model</module>
             <module>hu.temon.parser.test</module>
+	    <module>hu.temon.expressions.test</module>
                 
 
         </modules>

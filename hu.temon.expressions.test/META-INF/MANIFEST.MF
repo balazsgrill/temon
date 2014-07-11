@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Expressions Test
+Bundle-SymbolicName: hu.temon.expressions.test
+Bundle-Version: 0.1.0.qualifier
+Fragment-Host: hu.temon.expressions;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.junit

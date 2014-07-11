@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="hu.temon.grammars">
+      <grammar
+            id="basic.operators"
+            model="basic.operators.grammar">
+      </grammar>
+      <grammar
+            id="expressions"
+            model="expressions.grammar">
+      </grammar>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated expressions -->
+      <package
+            uri="http://temon.hu/expressions"
+            class="hu.temon.expressions.ExpressionsPackage"
+            genModel="model/expressions.genmodel"/>
+   </extension>
+
+</plugin>
