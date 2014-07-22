@@ -41,6 +41,7 @@ public class GrammarRegistry{
 	
 	public GrammarConstants getConstants() {
 		if (constants == null){
+			lazyinit();
 			constants = new GrammarConstants(resourceSet);
 		}
 		return constants;

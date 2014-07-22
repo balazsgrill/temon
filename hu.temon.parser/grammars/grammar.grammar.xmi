@@ -1,157 +1,386 @@
 <?xml version="1.0" encoding="ASCII"?>
-<grammar:GrammarModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:grammar="http://temon.hu/grammar" xmi:id="_Sm8MgLGDEeKaMu577qmfxA" startItem="Start" name="grammar">
-  <terminals xmi:id="_pnRUkLGDEeKaMu577qmfxA" name="KEYWORD_GRAMMAR" regex="grammar" priority="10"/>
-  <terminals xmi:id="_Ve5BULGUEeK1ScU5DNcoWg" name="KEYWORD_IMPORT" regex="import" priority="10"/>
-  <terminals xmi:id="_9bZhMLGVEeK1ScU5DNcoWg" name="KEYWORD_TERMINAL" regex="terminal" priority="10"/>
-  <terminals xmi:id="_UIBqILGWEeK1ScU5DNcoWg" name="KEYWORD_HIDDEN" regex="hidden" priority="10"/>
-  <terminals xmi:id="_ZYSNYLGXEeK1ScU5DNcoWg" name="OPERATOR_NONTERM_START" regex="\&lt;" priority="10"/>
-  <terminals xmi:id="_fP3r0LGXEeK1ScU5DNcoWg" name="OPERATOR_NONTERM_END" regex="\>" priority="10"/>
-  <terminals xmi:id="_gwqJILGXEeK1ScU5DNcoWg" name="OPERATOR_RULE_BODY" regex="\:\-" priority="10"/>
-  <terminals xmi:id="_274_wLGYEeK1ScU5DNcoWg" name="OPERATOR_EQUAL" regex="\=" priority="10"/>
-  <terminals xmi:id="_15FpgLGZEeK1ScU5DNcoWg" name="OPERATOR_PUSH" regex="\{" priority="10"/>
-  <terminals xmi:id="_7BefoLGZEeK1ScU5DNcoWg" name="OPERATOR_POP" regex="\}" priority="10"/>
-  <terminals xmi:id="_Zjqs4LZLEeKDArD2cbZQHA" name="OPERATOR_MULTI" regex="\+" priority="10"/>
-  <terminals xmi:id="_eFcO8LZLEeKDArD2cbZQHA" name="OPERATOR_OPTIONAL" regex="\?" priority="10"/>
-  <terminals name="OPERATOR_OPT_MULTI" regex="\*" priority="10"/>
-  <terminals name="OPERATOR_SUPERTERM" regex="\:" priority="10"/>
-  <rules xmi:id="_amuRELGEEeKaMu577qmfxA" nonTerminal="Start">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_f1lioLGEEeKaMu577qmfxA" terminal="_pnRUkLGDEeKaMu577qmfxA"/>
-    <body xsi:type="grammar:Push" xmi:id="_SSq6wLGFEeK-59W38_3F4g">
-      <eclass href="http://temon.hu/grammar#//GrammarModel"/>
+<grammar:GrammarModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:grammar="http://temon.hu/grammar"
+    xmi:id="_Sm8MgLGDEeKaMu577qmfxA"
+    startItem="Start"
+    name="grammar">
+  <terminals
+      xmi:id="_pnRUkLGDEeKaMu577qmfxA"
+      name="KEYWORD_GRAMMAR"
+      regex="grammar"
+      priority="10"/>
+  <terminals
+      xmi:id="_Ve5BULGUEeK1ScU5DNcoWg"
+      name="KEYWORD_IMPORT"
+      regex="import"
+      priority="10"/>
+  <terminals
+      xmi:id="_9bZhMLGVEeK1ScU5DNcoWg"
+      name="KEYWORD_TERMINAL"
+      regex="terminal"
+      priority="10"/>
+  <terminals
+      xmi:id="_UIBqILGWEeK1ScU5DNcoWg"
+      name="KEYWORD_HIDDEN"
+      regex="hidden"
+      priority="10"/>
+  <terminals
+      xmi:id="_ZYSNYLGXEeK1ScU5DNcoWg"
+      name="OPERATOR_NONTERM_START"
+      regex="\&lt;"
+      priority="10"/>
+  <terminals
+      xmi:id="_fP3r0LGXEeK1ScU5DNcoWg"
+      name="OPERATOR_NONTERM_END"
+      regex="\>"
+      priority="10"/>
+  <terminals
+      xmi:id="_gwqJILGXEeK1ScU5DNcoWg"
+      name="OPERATOR_RULE_BODY"
+      regex="\:\-"
+      priority="10"/>
+  <terminals
+      xmi:id="_274_wLGYEeK1ScU5DNcoWg"
+      name="OPERATOR_EQUAL"
+      regex="\="
+      priority="10"/>
+  <terminals
+      xmi:id="_15FpgLGZEeK1ScU5DNcoWg"
+      name="OPERATOR_PUSH"
+      regex="\{"
+      priority="10"/>
+  <terminals
+      xmi:id="_7BefoLGZEeK1ScU5DNcoWg"
+      name="OPERATOR_POP"
+      regex="\}"
+      priority="10"/>
+  <terminals
+      xmi:id="_Zjqs4LZLEeKDArD2cbZQHA"
+      name="OPERATOR_MULTI"
+      regex="\+"
+      priority="10"/>
+  <terminals
+      xmi:id="_eFcO8LZLEeKDArD2cbZQHA"
+      name="OPERATOR_OPTIONAL"
+      regex="\?"
+      priority="10"/>
+  <terminals
+      name="OPERATOR_OPT_MULTI"
+      regex="\*"
+      priority="10"/>
+  <terminals
+      name="OPERATOR_SUPERTERM"
+      regex="\:"
+      priority="10"/>
+  <rules xmi:id="_amuRELGEEeKaMu577qmfxA"
+      nonTerminal="Start">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_f1lioLGEEeKaMu577qmfxA"
+        terminal="_pnRUkLGDEeKaMu577qmfxA"/>
+    <body xsi:type="grammar:Push"
+        xmi:id="_SSq6wLGFEeK-59W38_3F4g">
+      <eclass
+          href="http://temon.hu/grammar#//GrammarModel"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" featureName="name" nonTerminal="QUALIFIEDID"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgLZKEeKDArD2cbZQHA" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgbZKEeKDArD2cbZQHA" featureName="startItem">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        featureName="name"
+        nonTerminal="QUALIFIEDID"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_Np0mgLZKEeKDArD2cbZQHA"
+        terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_Np0mgbZKEeKDArD2cbZQHA"
+        featureName="startItem">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_Np0mgrZKEeKDArD2cbZQHA" terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_iAFEQLGEEeKaMu577qmfxA">
-      <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_Np0mgrZKEeKDArD2cbZQHA"
+        terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_iAFEQLGEEeKaMu577qmfxA">
+      <terminal
+          href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_bvKFgLGUEeK1ScU5DNcoWg" optional="true" many="true" nonTerminal="Import"/>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_yQuYgLGVEeK1ScU5DNcoWg" optional="true" many="true" nonTerminal="Terminal"/>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_lk8-kLGXEeK1ScU5DNcoWg" optional="true" many="true" nonTerminal="Rule"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_bvKFgLGUEeK1ScU5DNcoWg"
+        optional="true"
+        many="true"
+        nonTerminal="Import"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_yQuYgLGVEeK1ScU5DNcoWg"
+        optional="true"
+        many="true"
+        nonTerminal="Terminal"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_lk8-kLGXEeK1ScU5DNcoWg"
+        optional="true"
+        many="true"
+        nonTerminal="Rule"/>
   </rules>
-  <rules xmi:id="_Q4sSQLGUEeK1ScU5DNcoWg" nonTerminal="Import">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_kwBCALGUEeK1ScU5DNcoWg" terminal="_Ve5BULGUEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:NonTerminalItem" featureName="import" nonTerminal="QUALIFIEDID"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_71r9ELGUEeK1ScU5DNcoWg">
-      <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
+  <rules xmi:id="_Q4sSQLGUEeK1ScU5DNcoWg"
+      nonTerminal="Import">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_kwBCALGUEeK1ScU5DNcoWg"
+        terminal="_Ve5BULGUEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        featureName="import"
+        nonTerminal="QUALIFIEDID"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_71r9ELGUEeK1ScU5DNcoWg">
+      <terminal
+          href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
     </body>
   </rules>
-  <rules xmi:id="_7pQ1MLGVEeK1ScU5DNcoWg" nonTerminal="Terminal">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_FEic0LGWEeK1ScU5DNcoWg" terminal="_9bZhMLGVEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_hysqYLGWEeK1ScU5DNcoWg" featureName="terminals">
-      <eclass href="http://temon.hu/grammar#//Terminal"/>
+  <rules xmi:id="_7pQ1MLGVEeK1ScU5DNcoWg"
+      nonTerminal="Terminal">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_FEic0LGWEeK1ScU5DNcoWg"
+        terminal="_9bZhMLGVEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Push"
+        xmi:id="_hysqYLGWEeK1ScU5DNcoWg"
+        featureName="terminals">
+      <eclass
+          href="http://temon.hu/grammar#//Terminal"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_Xti_ULGWEeK1ScU5DNcoWg" optional="true" featureName="hide" terminal="_UIBqILGWEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_HsyRcLGWEeK1ScU5DNcoWg" featureName="name">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        optional="true"
+        nonTerminal="TerminalHidden"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_HsyRcLGWEeK1ScU5DNcoWg"
+        featureName="name">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" optional="true" nonTerminal="SuperTerminal"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_cCHy4LGWEeK1ScU5DNcoWg" featureName="regex">
-      <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        optional="true"
+        nonTerminal="SuperTerminal"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_cCHy4LGWEeK1ScU5DNcoWg"
+        featureName="regex">
+      <terminal
+          href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" optional="true" featureName="priority">
-      <terminal href="basics.grammar.xmi#_0qbswLGTEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        optional="true"
+        featureName="priority">
+      <terminal
+          href="basics.grammar.xmi#_0qbswLGTEeK1ScU5DNcoWg"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_fqXE4LGWEeK1ScU5DNcoWg">
-      <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_fqXE4LGWEeK1ScU5DNcoWg">
+      <terminal
+          href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
     </body>
-    <body xsi:type="grammar:Pop" xmi:id="_onRVgLGWEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_onRVgLGWEeK1ScU5DNcoWg"/>
+  </rules>
+  <rules nonTerminal="TerminalHidden">
+    <body xsi:type="grammar:TerminalItem"
+        terminal="_UIBqILGWEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:SetValue"
+        featureName="hide"
+        value="true"/>
   </rules>
   <rules nonTerminal="SuperTerminal">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.13"/>
-    <body xsi:type="grammar:TerminalItem" featureName="superTerminal">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:TerminalItem"
+        terminal="//@terminals.13"/>
+    <body xsi:type="grammar:TerminalItem"
+        featureName="superTerminal">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
   </rules>
-  <rules xmi:id="_o60uMLGXEeK1ScU5DNcoWg" nonTerminal="Rule">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_rEcGELGXEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_s7UvMLGXEeK1ScU5DNcoWg" featureName="rules">
-      <eclass href="http://temon.hu/grammar#//Rule"/>
+  <rules xmi:id="_o60uMLGXEeK1ScU5DNcoWg"
+      nonTerminal="Rule">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_rEcGELGXEeK1ScU5DNcoWg"
+        terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Push"
+        xmi:id="_s7UvMLGXEeK1ScU5DNcoWg"
+        featureName="rules">
+      <eclass
+          href="http://temon.hu/grammar#//Rule"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_z1sgULGXEeK1ScU5DNcoWg" featureName="nonTerminal">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_z1sgULGXEeK1ScU5DNcoWg"
+        featureName="nonTerminal">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_hXVcsLGZEeK1ScU5DNcoWg" terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_7TtKALGXEeK1ScU5DNcoWg" terminal="_gwqJILGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_Eu-KkLGYEeK1ScU5DNcoWg" many="true" nonTerminal="RuleItem"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_JCDJULGYEeK1ScU5DNcoWg">
-      <terminal href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_hXVcsLGZEeK1ScU5DNcoWg"
+        terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_7TtKALGXEeK1ScU5DNcoWg"
+        terminal="_gwqJILGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_Eu-KkLGYEeK1ScU5DNcoWg"
+        many="true"
+        nonTerminal="RuleItem"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_JCDJULGYEeK1ScU5DNcoWg">
+      <terminal
+          href="basics.grammar.xmi#_tb_jYLGDEeKaMu577qmfxA"/>
     </body>
-    <body xsi:type="grammar:Pop" xmi:id="_KPPVMLGYEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_KPPVMLGYEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_OhaVALGYEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_cC91gLGYEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://temon.hu/grammar#//TerminalItem"/>
+  <rules xmi:id="_OhaVALGYEeK1ScU5DNcoWg"
+      nonTerminal="RuleItem">
+    <body xsi:type="grammar:Push"
+        xmi:id="_cC91gLGYEeK1ScU5DNcoWg"
+        featureName="body">
+      <eclass
+          href="http://temon.hu/grammar#//TerminalItem"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_0bb1MLGYEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_k82nULGYEeK1ScU5DNcoWg" featureName="terminal">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_0bb1MLGYEeK1ScU5DNcoWg"
+        optional="true"
+        nonTerminal="TerminalItemFeatureName"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_k82nULGYEeK1ScU5DNcoWg"
+        featureName="terminal">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_xzd4wLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
-    <body xsi:type="grammar:Pop" xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_xzd4wLZLEeKDArD2cbZQHA"
+        optional="true"
+        nonTerminal="Multiplicity"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_tfyRsLGYEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_xGQCELGYEeK1ScU5DNcoWg" nonTerminal="TerminalItemFeatureName">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_6TUOkLGYEeK1ScU5DNcoWg" featureName="featureName">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+  <rules xmi:id="_xGQCELGYEeK1ScU5DNcoWg"
+      nonTerminal="TerminalItemFeatureName">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_6TUOkLGYEeK1ScU5DNcoWg"
+        featureName="featureName">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_9TZUYLGYEeK1ScU5DNcoWg" terminal="_274_wLGYEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_9TZUYLGYEeK1ScU5DNcoWg"
+        terminal="_274_wLGYEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_HWS8sLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_LXSF4LGZEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://temon.hu/grammar#//NonTerminalItem"/>
+  <rules xmi:id="_HWS8sLGZEeK1ScU5DNcoWg"
+      nonTerminal="RuleItem">
+    <body xsi:type="grammar:Push"
+        xmi:id="_LXSF4LGZEeK1ScU5DNcoWg"
+        featureName="body">
+      <eclass
+          href="http://temon.hu/grammar#//NonTerminalItem"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_Uao4ELfAEeKWpqZiG1Fi3Q" optional="true" nonTerminal="TerminalItemFeatureName"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_cEGBcLGZEeK1ScU5DNcoWg" terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_dSg8YLGZEeK1ScU5DNcoWg" featureName="nonTerminal">
-      <terminal href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_Uao4ELfAEeKWpqZiG1Fi3Q"
+        optional="true"
+        nonTerminal="TerminalItemFeatureName"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_cEGBcLGZEeK1ScU5DNcoWg"
+        terminal="_ZYSNYLGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_dSg8YLGZEeK1ScU5DNcoWg"
+        featureName="nonTerminal">
+      <terminal
+          href="basics.grammar.xmi#_qOGHMLGHEeK-59W38_3F4g"/>
     </body>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_jUEPILGZEeK1ScU5DNcoWg" terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_2IkQwLZLEeKDArD2cbZQHA" optional="true" nonTerminal="Multiplicity"/>
-    <body xsi:type="grammar:Pop" xmi:id="_aBaYALGZEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_jUEPILGZEeK1ScU5DNcoWg"
+        terminal="_fP3r0LGXEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_2IkQwLZLEeKDArD2cbZQHA"
+        optional="true"
+        nonTerminal="Multiplicity"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_aBaYALGZEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_tL0-cLGZEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_Lb7f4LGaEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://temon.hu/grammar#//Push"/>
+  <rules xmi:id="_tL0-cLGZEeK1ScU5DNcoWg"
+      nonTerminal="RuleItem">
+    <body xsi:type="grammar:Push"
+        xmi:id="_Lb7f4LGaEeK1ScU5DNcoWg"
+        featureName="body">
+      <eclass
+          href="http://temon.hu/grammar#//Push"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_atZe0LGaEeK1ScU5DNcoWg" optional="true" nonTerminal="TerminalItemFeatureName"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_CuxigLGaEeK1ScU5DNcoWg" terminal="_15FpgLGZEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_EZ3yYLGaEeK1ScU5DNcoWg" featureName="eclass">
-      <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_atZe0LGaEeK1ScU5DNcoWg"
+        optional="true"
+        nonTerminal="TerminalItemFeatureName"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_CuxigLGaEeK1ScU5DNcoWg"
+        terminal="_15FpgLGZEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_EZ3yYLGaEeK1ScU5DNcoWg"
+        featureName="eclass">
+      <terminal
+          href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
-    <body xsi:type="grammar:Pop" xmi:id="_c_pOQLGaEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_c_pOQLGaEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_fxBwwLGaEeK1ScU5DNcoWg" nonTerminal="RuleItem">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_keJAILGaEeK1ScU5DNcoWg" terminal="_7BefoLGZEeK1ScU5DNcoWg"/>
-    <body xsi:type="grammar:Push" xmi:id="_mUmygLGaEeK1ScU5DNcoWg" featureName="body">
-      <eclass href="http://temon.hu/grammar#//Pop"/>
+  <rules xmi:id="_fxBwwLGaEeK1ScU5DNcoWg"
+      nonTerminal="RuleItem">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_keJAILGaEeK1ScU5DNcoWg"
+        terminal="_7BefoLGZEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Push"
+        xmi:id="_mUmygLGaEeK1ScU5DNcoWg"
+        featureName="body">
+      <eclass
+          href="http://temon.hu/grammar#//Pop"/>
     </body>
-    <body xsi:type="grammar:Pop" xmi:id="_nSD5QLGaEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_nSD5QLGaEeK1ScU5DNcoWg"/>
   </rules>
-  <rules xmi:id="_me9eoLZLEeKDArD2cbZQHA" nonTerminal="Multiplicity">
-    <body xsi:type="grammar:TerminalItem" xmi:id="_o4m2kLZLEeKDArD2cbZQHA" featureName="" terminal="_Zjqs4LZLEeKDArD2cbZQHA"/>
-    <body xsi:type="grammar:SetValue" featureName="many" value="true"/>
+  <rules xmi:id="_me9eoLZLEeKDArD2cbZQHA"
+      nonTerminal="Multiplicity">
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_o4m2kLZLEeKDArD2cbZQHA"
+        featureName=""
+        terminal="_Zjqs4LZLEeKDArD2cbZQHA"/>
+    <body xsi:type="grammar:SetValue"
+        featureName="many"
+        value="true"/>
   </rules>
   <rules nonTerminal="Multiplicity">
-    <body xsi:type="grammar:TerminalItem" terminal="_eFcO8LZLEeKDArD2cbZQHA"/>
-    <body xsi:type="grammar:SetValue" featureName="optional" value="true"/>
+    <body xsi:type="grammar:TerminalItem"
+        terminal="_eFcO8LZLEeKDArD2cbZQHA"/>
+    <body xsi:type="grammar:SetValue"
+        featureName="optional"
+        value="true"/>
   </rules>
   <rules nonTerminal="Multiplicity">
-    <body xsi:type="grammar:TerminalItem" terminal="//@terminals.12"/>
-    <body xsi:type="grammar:SetValue" featureName="many" value="true"/>
-    <body xsi:type="grammar:SetValue" featureName="optional" value="true"/>
+    <body xsi:type="grammar:TerminalItem"
+        terminal="//@terminals.12"/>
+    <body xsi:type="grammar:SetValue"
+        featureName="many"
+        value="true"/>
+    <body xsi:type="grammar:SetValue"
+        featureName="optional"
+        value="true"/>
   </rules>
-  <rules xmi:id="_BwNPEN8ZEeKzJqytnsiUUA" nonTerminal="RuleItem">
-    <body xsi:type="grammar:Push" xmi:id="_BwNPEd8ZEeKzJqytnsiUUA" featureName="body">
-      <eclass href="http://temon.hu/grammar#//SetValue"/>
+  <rules xmi:id="_BwNPEN8ZEeKzJqytnsiUUA"
+      nonTerminal="RuleItem">
+    <body xsi:type="grammar:Push"
+        xmi:id="_BwNPEd8ZEeKzJqytnsiUUA"
+        featureName="body">
+      <eclass
+          href="http://temon.hu/grammar#//SetValue"/>
     </body>
-    <body xsi:type="grammar:NonTerminalItem" xmi:id="_BwNPEt8ZEeKzJqytnsiUUA" nonTerminal="TerminalItemFeatureName"/>
-    <body xsi:type="grammar:TerminalItem" xmi:id="_BwNPFN8ZEeKzJqytnsiUUA" featureName="value">
-      <terminal href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
+    <body xsi:type="grammar:NonTerminalItem"
+        xmi:id="_BwNPEt8ZEeKzJqytnsiUUA"
+        nonTerminal="TerminalItemFeatureName"/>
+    <body xsi:type="grammar:TerminalItem"
+        xmi:id="_BwNPFN8ZEeKzJqytnsiUUA"
+        featureName="value">
+      <terminal
+          href="basics.grammar.xmi#_uhiJ8LGVEeK1ScU5DNcoWg"/>
     </body>
-    <body xsi:type="grammar:Pop" xmi:id="_BwNPFd8ZEeKzJqytnsiUUA"/>
+    <body xsi:type="grammar:Pop"
+        xmi:id="_BwNPFd8ZEeKzJqytnsiUUA"/>
   </rules>
   <import href="basics.grammar.xmi#_3yl34LGQEeK1ScU5DNcoWg"/>
 </grammar:GrammarModel>
