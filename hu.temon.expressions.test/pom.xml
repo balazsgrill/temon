@@ -21,7 +21,7 @@
             	<artifactId>tycho-surefire-plugin</artifactId>
             	<version>${tycho-version}</version>
             	<configuration>
-            		<!--testSuite>hu.temon.parser.test</testSuite-->
+            		<testSuite>hu.temon.expressions.test.ExpressionTestsSuite</testSuite>
             		<testClass>hu.temon.expressions.test.ExpressionTests</testClass>
             		<!-- >argLine>-Xmx512m</argLine-->
             		<appArgLine>-nl en</appArgLine>
