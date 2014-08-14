@@ -29,6 +29,10 @@ public abstract class AbstractFeatureResolver implements IFeatureResolver {
 		return resource.getResourceSet();
 	}
 	
+	public Resource getResource() {
+		return resource;
+	}
+	
 	/* (non-Javadoc)
 	 * @see hu.temon.parser.IFeatureResolver#resolve(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, hu.temon.grammar.Terminal, java.lang.String)
 	 */
